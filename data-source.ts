@@ -1,5 +1,6 @@
 import { DataSource } from 'typeorm';
 import * as path from 'path';
+import * as fs from 'fs';
 import * as entities from './entities';
 
 let _appDataSource: DataSource | null = null;
@@ -9,25 +10,58 @@ function createDataSource(): DataSource {
     return _appDataSource;
   }
 
-  // Use a function to get the project root that works in both CommonJS and ESM
-  let projectRoot: string;
-  try {
-    // Try ESM first (import.meta.url)
-    // @ts-ignore - import.meta is available in ESM but TypeScript complains in CommonJS mode
-    if (typeof import.meta !== 'undefined' && (import.meta as any).url) {
-      const { fileURLToPath } = require('url');
-      // @ts-ignore
-      projectRoot = path.resolve(path.dirname(fileURLToPath((import.meta as any).url)), '..');
+  // Get the project root by finding the workspace root (where data directory exists)
+  // This ensures consistency regardless of where the code is executed from
+  let projectRoot: string = process.cwd();
+  
+  // Try to find the workspace root by looking for the data directory
+  // This is the most reliable indicator of the workspace root
+  let currentPath = process.cwd();
+  let found = false;
+  const maxDepth = 10;
+  let depth = 0;
+  
+  while (!found && depth < maxDepth) {
+    // Check if this is the workspace root (has data/sqlite directory)
+    const hasDataSqliteDir = fs.existsSync(path.join(currentPath, 'data', 'sqlite'));
+    const hasDataDir = fs.existsSync(path.join(currentPath, 'data'));
+    
+    // Primary indicator: data/sqlite directory exists (where the database should be)
+    // Secondary: data directory exists (workspace structure)
+    if (hasDataSqliteDir || hasDataDir) {
+      projectRoot = currentPath;
+      found = true;
     } else {
-      // Fallback to CommonJS (__dirname)
-      projectRoot = path.resolve(__dirname, '..');
+      const parentPath = path.dirname(currentPath);
+      if (parentPath === currentPath) {
+        // Reached filesystem root
+        break;
+      }
+      currentPath = parentPath;
+      depth++;
     }
-  } catch {
-    // Final fallback
+  }
+  
+  // If we couldn't find the workspace root, use process.cwd() as fallback
+  if (!found) {
     projectRoot = process.cwd();
   }
   
-  const dbPath = process.env.SQLITE_DB_PATH || path.join(projectRoot, 'data', 'sqlite', 'database.db');
+  const dbPath = process.env.SQLITE_DB_PATH 
+    ? path.resolve(process.env.SQLITE_DB_PATH)
+    : path.resolve(projectRoot, 'data', 'sqlite', 'database.db');
+  
+  // Ensure the database directory exists
+  const dbDir = path.dirname(dbPath);
+  if (!fs.existsSync(dbDir)) {
+    fs.mkdirSync(dbDir, { recursive: true });
+  }
+  
+  // Log the database path for debugging (only in development)
+  if (process.env.NODE_ENV !== 'production') {
+    console.log(`[DB] Database path: ${dbPath}`);
+    console.log(`[DB] Project root: ${projectRoot}`);
+  }
 
   _appDataSource = new DataSource({
     type: 'better-sqlite3',

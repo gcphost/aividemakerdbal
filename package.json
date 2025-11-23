@@ -10,19 +10,19 @@
   },
   "exports": {
     ".": {
-      "import": "./data-source.ts",
-      "require": "./data-source.ts",
+      "import": "./dist/data-source.js",
+      "require": "./dist/data-source.js",
       "types": "./data-source.ts",
-      "default": "./data-source.ts"
+      "default": "./dist/data-source.js"
     },
     "./entities": {
-      "import": "./entities/index.ts",
-      "require": "./entities/index.ts",
+      "import": "./dist/entities/index.js",
+      "require": "./dist/entities/index.js",
       "types": "./entities/index.ts"
     },
     "./entities/*": {
-      "import": "./entities/*.ts",
-      "require": "./entities/*.ts",
+      "import": "./dist/entities/*.js",
+      "require": "./dist/entities/*.js",
       "types": "./entities/*.ts"
     },
     "./types": {
