@@ -48,6 +48,16 @@ class BaseEntity extends typeorm_1.BaseEntity {
         const repository = AppDataSource.getRepository(this);
         return repository.findOne(options);
     }
+    // MongoDB-style find method
+    static async find(options) {
+        // Get the DataSource and repository
+        const { AppDataSource } = await Promise.resolve().then(() => __importStar(require('../data-source')));
+        if (!AppDataSource.isInitialized) {
+            await AppDataSource.initialize();
+        }
+        const repository = AppDataSource.getRepository(this);
+        return repository.find(options);
+    }
     // MongoDB-style create method (wrapper for TypeORM's create)
     static create(data) {
         // Use TypeORM's create method

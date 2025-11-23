@@ -17,7 +17,19 @@ export class BaseEntity extends TypeORMBaseEntity {
     return repository.findOne(options as any) as Promise<T | null>;
   }
 
-
+  // MongoDB-style find method
+  static async find<T extends BaseEntity>(
+    this: { new(): T } & typeof BaseEntity,
+    options?: any
+  ): Promise<T[]> {
+    // Get the DataSource and repository
+    const { AppDataSource } = await import('../data-source');
+    if (!AppDataSource.isInitialized) {
+      await AppDataSource.initialize();
+    }
+    const repository = AppDataSource.getRepository(this as any);
+    return repository.find(options as any) as Promise<T[]>;
+  }
 
   // MongoDB-style create method (wrapper for TypeORM's create)
   static create<T extends BaseEntity>(
