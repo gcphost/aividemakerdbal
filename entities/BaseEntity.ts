@@ -1,4 +1,4 @@
-import { BaseEntity as TypeORMBaseEntity, ObjectLiteral, DeepPartial } from 'typeorm';
+import { BaseEntity as TypeORMBaseEntity, ObjectLiteral, DeepPartial, FindManyOptions, FindOneOptions } from 'typeorm';
 import { randomUUID } from 'crypto';
 
 // @ts-expect-error - TypeORM's BaseEntity has findOne with different signature, but we need our own implementation
@@ -6,7 +6,7 @@ export class BaseEntity extends TypeORMBaseEntity {
   // MongoDB-style findOne method
   static async findOne<T extends BaseEntity>(
     this: { new(): T } & typeof BaseEntity,
-    options?: any
+    options?: FindOneOptions<T>
   ): Promise<T | null> {
     // Get the DataSource and repository
     const { AppDataSource } = await import('../data-source');
@@ -20,7 +20,7 @@ export class BaseEntity extends TypeORMBaseEntity {
   // MongoDB-style find method
   static async find<T extends BaseEntity>(
     this: { new(): T } & typeof BaseEntity,
-    options?: any
+    options?: FindManyOptions<T>
   ): Promise<T[]> {
     // Get the DataSource and repository
     const { AppDataSource } = await import('../data-source');
