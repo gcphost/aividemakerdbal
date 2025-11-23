@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import { BaseEntity as TypeORMBaseEntity } from 'typeorm';
 export declare class BaseEntity extends TypeORMBaseEntity {
     static findOne<T extends BaseEntity>(this: {

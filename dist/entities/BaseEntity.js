@@ -34,7 +34,6 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BaseEntity = void 0;
-require("reflect-metadata");
 const typeorm_1 = require("typeorm");
 const crypto_1 = require("crypto");
 // @ts-expect-error - TypeORM's BaseEntity has findOne with different signature, but we need our own implementation
