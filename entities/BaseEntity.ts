@@ -1,4 +1,4 @@
-import { BaseEntity as TypeORMBaseEntity, ObjectLiteral } from 'typeorm';
+import { BaseEntity as TypeORMBaseEntity, ObjectLiteral, DeepPartial } from 'typeorm';
 import { randomUUID } from 'crypto';
 
 // @ts-expect-error - TypeORM's BaseEntity has findOne with different signature, but we need our own implementation
@@ -31,17 +31,6 @@ export class BaseEntity extends TypeORMBaseEntity {
     return repository.find(options as any) as Promise<T[]>;
   }
 
-  // MongoDB-style create method (wrapper for TypeORM's create)
-  static create<T extends BaseEntity>(
-    this: { new(): T } & typeof BaseEntity,
-    data: Partial<T>
-  ): T {
-    // Directly instantiate and assign properties to avoid infinite recursion
-    // This mimics TypeORM's create behavior without calling the parent's create method
-    const entity = new this();
-    Object.assign(entity, data);
-    return entity as T;
-  }
 
   // MongoDB-style findById method
   static async findById<T extends BaseEntity>(this: { new(): T } & typeof BaseEntity, id: string): Promise<T | null> {

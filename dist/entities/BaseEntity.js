@@ -58,14 +58,6 @@ class BaseEntity extends typeorm_1.BaseEntity {
         const repository = AppDataSource.getRepository(this);
         return repository.find(options);
     }
-    // MongoDB-style create method (wrapper for TypeORM's create)
-    static create(data) {
-        // Directly instantiate and assign properties to avoid infinite recursion
-        // This mimics TypeORM's create behavior without calling the parent's create method
-        const entity = new this();
-        Object.assign(entity, data);
-        return entity;
-    }
     // MongoDB-style findById method
     static async findById(id) {
         return this.findOne({ where: { _id: id } });
