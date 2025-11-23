@@ -26,6 +26,11 @@ let File = class File extends BaseEntity_1.BaseEntity {
     status;
     type;
     category;
+    title;
+    description;
+    prompt;
+    volume;
+    loop;
     hash; // SHA-256 hash for deduplication
     metadata;
     vectorEmbedding;
@@ -90,6 +95,26 @@ __decorate([
     (0, typeorm_1.Column)('varchar', { nullable: true }),
     __metadata("design:type", String)
 ], File.prototype, "category", void 0);
+__decorate([
+    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    __metadata("design:type", String)
+], File.prototype, "title", void 0);
+__decorate([
+    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    __metadata("design:type", String)
+], File.prototype, "description", void 0);
+__decorate([
+    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    __metadata("design:type", String)
+], File.prototype, "prompt", void 0);
+__decorate([
+    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    __metadata("design:type", String)
+], File.prototype, "volume", void 0);
+__decorate([
+    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    __metadata("design:type", String)
+], File.prototype, "loop", void 0);
 __decorate([
     (0, typeorm_1.Column)('varchar', { nullable: true }),
     __metadata("design:type", String)

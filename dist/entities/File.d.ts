@@ -13,6 +13,11 @@ export declare class File extends BaseEntity {
     status: "draft" | "processing" | "ready";
     type?: string;
     category?: string;
+    title?: string;
+    description?: string;
+    prompt?: string;
+    volume?: string;
+    loop?: string;
     hash?: string;
     metadata?: string;
     vectorEmbedding?: string;

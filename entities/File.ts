@@ -43,6 +43,21 @@ export class File extends BaseEntity {
   category?: string;
 
   @Column('varchar', { nullable: true })
+  title?: string;
+
+  @Column('varchar', { nullable: true })
+  description?: string;
+
+  @Column('varchar', { nullable: true })
+  prompt?: string;
+
+  @Column('varchar', { nullable: true })
+  volume?: string;
+
+  @Column('varchar', { nullable: true })
+  loop?: string;
+
+  @Column('varchar', { nullable: true })
   hash?: string; // SHA-256 hash for deduplication
 
   @Column({ type: 'text', nullable: true })

@@ -34,7 +34,6 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PerformanceMetrics = exports.ProcessEstimate = exports.Process = exports.ApiKey = exports.Usage = exports.Settings = exports.Profile = exports.Channel = exports.File = exports.Chapter = exports.Video = exports.User = exports.AppDataSource = exports.getAppDataSource = void 0;
-require("reflect-metadata");
 const typeorm_1 = require("typeorm");
 const path = __importStar(require("path"));
 const fs = __importStar(require("fs"));
