@@ -1,0 +1,46 @@
+{
+  "name": "shared-db",
+  "version": "1.0.0",
+  "description": "Shared database configuration and entities",
+  "main": "data-source.ts",
+  "types": "data-source.ts",
+  "exports": {
+    ".": {
+      "import": "./data-source.ts",
+      "require": "./data-source.ts",
+      "types": "./data-source.ts",
+      "default": "./data-source.ts"
+    },
+    "./entities": {
+      "import": "./entities/index.ts",
+      "require": "./entities/index.ts",
+      "types": "./entities/index.ts"
+    },
+    "./entities/*": {
+      "import": "./entities/*.ts",
+      "require": "./entities/*.ts",
+      "types": "./entities/*.ts"
+    },
+    "./types": {
+      "import": "./types/index.ts",
+      "require": "./types/index.ts",
+      "types": "./types/index.ts"
+    },
+    "./types/*": {
+      "import": "./types/*.ts",
+      "require": "./types/*.ts",
+      "types": "./types/*.ts"
+    }
+  },
+  "devDependencies": {
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.27"
+  },
+  "peerDependencies": {
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.27"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.10.0"
+  }
+}

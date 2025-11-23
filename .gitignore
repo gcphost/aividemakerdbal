@@ -1,0 +1,14 @@
+node_modules/
+*.log
+.env
+.env.local
+*.db
+*.db-shm
+*.db-wal
+*.js
+*.js.map
+*.d.ts
+*.d.ts.map
+dist/
+build/
+
