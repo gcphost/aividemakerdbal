@@ -2,28 +2,28 @@
   "name": "shared-db",
   "version": "1.0.0",
   "description": "Shared database configuration and entities",
-  "main": "data-source.ts",
-  "types": "data-source.ts",
+  "main": "dist/data-source.js",
+  "types": "dist/data-source.d.ts",
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build"
   },
   "exports": {
     ".": {
-      "import": "./data-source.ts",
+      "import": "./dist/data-source.js",
       "require": "./dist/data-source.js",
-      "types": "./data-source.ts",
-      "default": "./data-source.ts"
+      "types": "./dist/data-source.d.ts",
+      "default": "./dist/data-source.js"
     },
     "./entities": {
-      "import": "./entities/index.ts",
+      "import": "./dist/entities/index.js",
       "require": "./dist/entities/index.js",
-      "types": "./entities/index.ts"
+      "types": "./dist/entities/index.d.ts"
     },
     "./entities/*": {
-      "import": "./entities/*.ts",
+      "import": "./dist/entities/*.js",
       "require": "./dist/entities/*.js",
-      "types": "./entities/*.ts"
+      "types": "./dist/entities/*.d.ts"
     },
     "./types": {
       "import": "./types/index.ts",
