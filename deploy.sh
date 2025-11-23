@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Shared-DB Deployment Script
+# This script builds, commits, and pushes shared-db changes, then updates app and socket-server
+
+set -e  # Exit on error
+
+echo "🔨 Building shared-db..."
+cd "$(dirname "$0")"
+npm run build
+
+echo "📝 Checking for changes..."
+if [ -z "$(git status --porcelain)" ]; then
+    echo "⚠️  No changes to commit"
+    exit 0
+fi
+
+echo "📦 Committing changes..."
+git add -A
+git commit -m "${1:-Update shared-db}"
+
+echo "🚀 Pushing to GitHub..."
+git push
+
+echo "🔄 Updating app..."
+cd ../app
+npm install
+
+echo "🔄 Updating socket-server..."
+cd ../socket-server
+npm install
+
+echo "✅ Deployment complete!"
+

@@ -81,18 +81,8 @@ export const getAppDataSource = (): DataSource => {
   return createDataSource();
 };
 
-// For backward compatibility, export a getter object that doesn't trigger DataSource creation
-export const AppDataSource = {
-  get isInitialized() { return _appDataSource?.isInitialized || false; },
-  get driver() { return _appDataSource?.driver; },
-  get manager() { return _appDataSource?.manager; },
-  get options() { return _appDataSource?.options; },
-  async initialize() { return createDataSource().initialize(); },
-  async destroy() { return _appDataSource?.destroy(); },
-  getRepository(entity: any) { return createDataSource().getRepository(entity); },
-  getTreeRepository(entity: any) { return createDataSource().getTreeRepository(entity); },
-  getMongoRepository(entity: any) { return createDataSource().getMongoRepository(entity); },
-} as DataSource;
+// Export the actual DataSource instance (lazy creation)
+export const AppDataSource = createDataSource();
 
 // Re-export entities to ensure they're the same references used in DataSource
 export { User, Video, Chapter, File, Channel, Profile, Settings, Usage, ApiKey, BackgroundAudio, Process, ProcessEstimate, PerformanceMetrics } from './entities';
