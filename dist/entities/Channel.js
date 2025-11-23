@@ -18,6 +18,8 @@ let Channel = class Channel extends BaseEntity_1.BaseEntity {
     profileId;
     name;
     description;
+    tagline;
+    youtubeName;
     customUrl;
     youtubeChannelId;
     youtubeChannelUrl;
@@ -58,6 +60,14 @@ __decorate([
     (0, typeorm_1.Column)('varchar', { nullable: true }),
     __metadata("design:type", String)
 ], Channel.prototype, "description", void 0);
+__decorate([
+    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    __metadata("design:type", String)
+], Channel.prototype, "tagline", void 0);
+__decorate([
+    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    __metadata("design:type", String)
+], Channel.prototype, "youtubeName", void 0);
 __decorate([
     (0, typeorm_1.Column)('varchar', { nullable: true }),
     __metadata("design:type", String)

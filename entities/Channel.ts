@@ -19,6 +19,12 @@ export class Channel extends BaseEntity {
   description?: string;
 
   @Column('varchar', { nullable: true })
+  tagline?: string;
+
+  @Column('varchar', { nullable: true })
+  youtubeName?: string;
+
+  @Column('varchar', { nullable: true })
   customUrl?: string;
 
   @Column('varchar', { nullable: true })
