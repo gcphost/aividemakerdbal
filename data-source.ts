@@ -13,9 +13,11 @@ function createDataSource(): DataSource {
   let projectRoot: string;
   try {
     // Try ESM first (import.meta.url)
-    if (typeof import.meta !== 'undefined' && import.meta.url) {
+    // @ts-ignore - import.meta is available in ESM but TypeScript complains in CommonJS mode
+    if (typeof import.meta !== 'undefined' && (import.meta as any).url) {
       const { fileURLToPath } = require('url');
-      projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+      // @ts-ignore
+      projectRoot = path.resolve(path.dirname(fileURLToPath((import.meta as any).url)), '..');
     } else {
       // Fallback to CommonJS (__dirname)
       projectRoot = path.resolve(__dirname, '..');

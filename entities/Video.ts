@@ -14,7 +14,7 @@ export class Video extends BaseEntity {
   @Column('varchar', { nullable: true })
   description?: string;
 
-  @Column('varchar', { default: 120 })
+  @Column('integer', { default: 120 })
   length!: number;
 
   @Column('varchar', { default: 'draft' })
@@ -38,7 +38,7 @@ export class Video extends BaseEntity {
   @Column({ type: 'datetime', nullable: true })
   videoGeneratedAt?: Date;
 
-  @Column('varchar', { nullable: true })
+  @Column('integer', { nullable: true })
   videoRenderTimeMs?: number;
 
   @Column('varchar', { nullable: true })
@@ -77,7 +77,7 @@ export class Video extends BaseEntity {
   @Column('varchar', { default: 'unlisted' })
   privacyStatus!: "public" | "unlisted" | "private";
 
-  @Column('varchar', { default: false })
+  @Column('integer', { default: 0 })
   madeForKids!: boolean;
 
   @Column('varchar', { nullable: true })
