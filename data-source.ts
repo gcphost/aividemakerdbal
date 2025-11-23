@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import * as path from 'path';
 import * as fs from 'fs';
