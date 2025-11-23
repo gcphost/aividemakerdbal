@@ -86,14 +86,24 @@ function createDataSource() {
     }
     // Log the database path for debugging (only in development)
     if (process.env.NODE_ENV !== 'production') {
-        console.log(`[DB] Database path: ${dbPath}`);
+        console.log(`[DB] ========== Database Configuration ==========`);
+        console.log(`[DB] process.cwd(): ${process.cwd()}`);
         console.log(`[DB] Project root: ${projectRoot}`);
+        console.log(`[DB] SQLITE_DB_PATH env var: ${process.env.SQLITE_DB_PATH || 'NOT SET'}`);
+        console.log(`[DB] Final database path: ${dbPath}`);
+        console.log(`[DB] Database file exists: ${fs.existsSync(dbPath)}`);
+        if (fs.existsSync(dbPath)) {
+            const stats = fs.statSync(dbPath);
+            console.log(`[DB] Database file size: ${stats.size} bytes`);
+            console.log(`[DB] Database file modified: ${stats.mtime}`);
+        }
+        console.log(`[DB] ===========================================`);
     }
     _appDataSource = new typeorm_1.DataSource({
         type: 'better-sqlite3',
         database: dbPath,
-        synchronize: true, // Auto-create tables for now (can be changed to false later with migrations)
-        logging: false,
+        synchronize: false, // DISABLED FOR TESTING - manually managing schema
+        logging: ['schema', 'error', 'warn'], // Log schema changes and errors
         entities: Object.values(entities),
         migrations: [path.join(__dirname || process.cwd(), 'migrations', '*.ts')],
         subscribers: [],
