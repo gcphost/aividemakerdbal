@@ -3,6 +3,9 @@ export declare class BaseEntity extends TypeORMBaseEntity {
     static findOne<T extends BaseEntity>(this: {
         new (): T;
     } & typeof BaseEntity, options?: any): Promise<T | null>;
+    static create<T extends BaseEntity>(this: {
+        new (): T;
+    } & typeof BaseEntity, data: Partial<T>): T;
     static findById<T extends BaseEntity>(this: {
         new (): T;
     } & typeof BaseEntity, id: string): Promise<T | null>;

@@ -19,6 +19,15 @@ export class BaseEntity extends TypeORMBaseEntity {
 
 
 
+  // MongoDB-style create method (wrapper for TypeORM's create)
+  static create<T extends BaseEntity>(
+    this: { new(): T } & typeof BaseEntity,
+    data: Partial<T>
+  ): T {
+    // Use TypeORM's create method
+    return (this as any).create(data) as T;
+  }
+
   // MongoDB-style findById method
   static async findById<T extends BaseEntity>(this: { new(): T } & typeof BaseEntity, id: string): Promise<T | null> {
     return this.findOne({ where: { _id: id } } as any) as Promise<T | null>;
