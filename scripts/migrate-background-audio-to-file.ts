@@ -97,7 +97,7 @@ async function migrateBackgroundAudioToFile(): Promise<void> {
       _id: bgAudio._id, // Keep the same ID for easier migration
       userId: bgAudio.userId,
       filename: `${bgAudio.name}.mp3`, // Assume mp3 extension, could be improved
-      originalName: bgAudio.name,
+      title: bgAudio.name,
       mimeType: 'audio/mpeg', // Default, could be improved
       size: 0, // Unknown, could be improved by checking actual file
       url: bgAudio.audioUrl,
@@ -142,7 +142,7 @@ async function migrateBackgroundAudioToFile(): Promise<void> {
                 const newFileId = idMapping.get(item.backgroundAudioId)!;
                 console.log(`🔄 Updating timeline reference: ${item.backgroundAudioId} → ${newFileId}`);
                 item.fileId = newFileId;
-                item.backgroundAudioId = newFileId; // Keep for backward compatibility during transition
+                delete item.backgroundAudioId; // Remove old field
                 updated = true;
               }
             }
@@ -157,7 +157,7 @@ async function migrateBackgroundAudioToFile(): Promise<void> {
             const newFileId = idMapping.get(bgAudio.id)!;
             console.log(`🔄 Updating source reference: ${bgAudio.id} → ${newFileId}`);
             bgAudio.fileId = newFileId;
-            bgAudio.backgroundAudioId = newFileId; // Keep for backward compatibility
+            delete bgAudio.backgroundAudioId; // Remove old field
             updated = true;
           }
         }

@@ -16,7 +16,6 @@ let File = class File extends BaseEntity_1.BaseEntity {
     _id;
     userId;
     filename;
-    originalName;
     mimeType;
     size;
     path;
@@ -56,10 +55,6 @@ __decorate([
     __metadata("design:type", String)
 ], File.prototype, "filename", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar'),
-    __metadata("design:type", String)
-], File.prototype, "originalName", void 0);
-__decorate([
     (0, typeorm_1.Column)('varchar', { nullable: true }),
     __metadata("design:type", String)
 ], File.prototype, "mimeType", void 0);
@@ -96,7 +91,7 @@ __decorate([
     __metadata("design:type", String)
 ], File.prototype, "category", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)('varchar'),
     __metadata("design:type", String)
 ], File.prototype, "title", void 0);
 __decorate([

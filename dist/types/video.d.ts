@@ -25,7 +25,7 @@ export interface SoundSource {
     searchTerm?: string;
     type: string;
     audioUrl?: string;
-    backgroundAudioId?: string;
+    fileId?: string;
     volume?: number;
     duration?: number;
     loop?: boolean;
@@ -33,7 +33,6 @@ export interface SoundSource {
 export interface BackgroundAudioSource {
     id: string;
     fileId?: string;
-    backgroundAudioId?: string;
     name: string;
     title?: string;
     searchTerm?: string;

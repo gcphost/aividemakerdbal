@@ -12,9 +12,6 @@ export class File extends BaseEntity {
   @Column('varchar')
   filename!: string;
 
-  @Column('varchar')
-  originalName!: string;
-
   @Column('varchar', { nullable: true })
   mimeType?: string;
 
@@ -42,8 +39,8 @@ export class File extends BaseEntity {
   @Column('varchar', { nullable: true })
   category?: string;
 
-  @Column('varchar', { nullable: true })
-  title?: string;
+  @Column('varchar')
+  title!: string;
 
   @Column('varchar', { nullable: true })
   description?: string;

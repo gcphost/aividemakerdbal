@@ -3,7 +3,6 @@ export declare class File extends BaseEntity {
     _id: string;
     userId: string;
     filename: string;
-    originalName: string;
     mimeType?: string;
     size: number;
     path?: string;
@@ -13,7 +12,7 @@ export declare class File extends BaseEntity {
     status: "draft" | "processing" | "ready";
     type?: string;
     category?: string;
-    title?: string;
+    title: string;
     description?: string;
     prompt?: string;
     volume?: string;
