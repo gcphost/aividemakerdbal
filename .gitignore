@@ -5,10 +5,7 @@ node_modules/
 *.db
 *.db-shm
 *.db-wal
-*.js
-*.js.map
-*.d.ts
-*.d.ts.map
-dist/
+# Don't ignore dist/ - it needs to be in the GitHub package
+# dist/
 build/
 

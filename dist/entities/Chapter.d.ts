@@ -1,0 +1,42 @@
+import { BaseEntity } from './BaseEntity';
+export declare class Chapter extends BaseEntity {
+    _id: string;
+    videoId: string;
+    chapterNumber: number;
+    title?: string;
+    description?: string;
+    narrationScript?: string;
+    startTime?: number;
+    endTime?: number;
+    audioUrl?: string;
+    audioFileId?: string;
+    audioDuration?: number;
+    audioGeneratedAt?: Date;
+    audioGenerationTimeMs?: number;
+    generatedAudioUrl?: string;
+    generatedAudioChunks?: string;
+    generatedAudioFileId?: string;
+    generatedAudioChunkFileIds?: string;
+    generatedVideoUrl?: string;
+    generatedVideoFileId?: string;
+    targetDuration?: number;
+    actualAudioDuration?: number;
+    audioSampleRate?: number;
+    wordTimestamps?: string;
+    approved?: boolean;
+    imagesDisabled?: boolean;
+    audioChunkStatus?: string;
+    visualCues?: string;
+    soundCues?: string;
+    timeline?: string;
+    imagePrompt?: string;
+    imageUrl?: string;
+    imageFileId?: string;
+    imageGeneratedAt?: Date;
+    imageGenerationTimeMs?: number;
+    status: "draft" | "processing" | "ready";
+    userId: string;
+    createdAt: Date;
+    updatedAt: Date;
+}
+//# sourceMappingURL=Chapter.d.ts.map

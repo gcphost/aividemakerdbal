@@ -1,0 +1,39 @@
+import { BaseEntity } from './BaseEntity';
+export type VideoStatus = "draft" | "processing" | "ready" | "published";
+export declare class Video extends BaseEntity {
+    _id: string;
+    subject: string;
+    description?: string;
+    length: number;
+    status: VideoStatus;
+    youtubeId?: string;
+    generatedVideoUrl?: string;
+    generatedVideoPublicUrl?: string;
+    generatedVideoFileId?: string;
+    generatedVideoFilePath?: string;
+    videoGeneratedAt?: Date;
+    videoRenderTimeMs?: number;
+    previewVideoUrl?: string;
+    youtubeTitle?: string;
+    youtubeDescription?: string;
+    thumbnailUrl?: string;
+    thumbnailFileId?: string;
+    originalThumbnailUrl?: string;
+    originalThumbnailFileId?: string;
+    thumbnailDesign?: string;
+    thumbnailVariations?: string;
+    tags?: string;
+    categoryId?: string;
+    privacyStatus: "public" | "unlisted" | "private";
+    madeForKids: boolean;
+    profileId?: string;
+    channelId?: string;
+    introPrompt?: string;
+    advertisingPrompt?: string;
+    videoStyle: "minimal-talking" | "standard" | "heavy-narration";
+    timeline?: string;
+    userId: string;
+    createdAt: Date;
+    updatedAt: Date;
+}
+//# sourceMappingURL=Video.d.ts.map
