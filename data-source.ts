@@ -82,6 +82,42 @@ function createDataSource(): DataSource {
     entities: Object.values(entities),
     migrations: [path.join(__dirname || process.cwd(), 'migrations', '*.ts')],
     subscribers: [],
+    extra: {
+      // Load sqlite-vec extension if available (for vector search support)
+      // This allows TypeORM to query databases with vec0 virtual tables
+      prepareDatabase: async (db: any) => {
+        try {
+          // Try to load sqlite-vec extension if available
+          // This is optional - if the extension isn't available, we'll continue without it
+          // Use dynamic import with string to avoid TypeScript checking for the module
+          // sqlite-vec may not be installed in all packages (e.g., electron)
+          const sqliteVecModule = 'sqlite-vec';
+          const sqliteVec = await import(/* @ts-ignore */ sqliteVecModule).catch(() => null);
+          if (sqliteVec) {
+            if (db.loadExtension && typeof db.loadExtension === 'function') {
+              if (typeof sqliteVec.getLoadablePath === 'function') {
+                const extensionPath = sqliteVec.getLoadablePath();
+                db.loadExtension(extensionPath);
+                if (process.env.NODE_ENV !== 'production') {
+                  console.log('[DB] ✅ Loaded sqlite-vec extension for TypeORM connection');
+                }
+              } else if (sqliteVec.load && typeof sqliteVec.load === 'function') {
+                sqliteVec.load(db);
+                if (process.env.NODE_ENV !== 'production') {
+                  console.log('[DB] ✅ Loaded sqlite-vec extension for TypeORM connection (via load method)');
+                }
+              }
+            }
+          }
+        } catch (error: any) {
+          // Silently fail - vec0 extension is optional
+          // Only log in development to avoid noise
+          if (process.env.NODE_ENV !== 'production') {
+            console.warn('[DB] ⚠️ Could not load sqlite-vec extension (this is OK if vector search is not used):', error.message);
+          }
+        }
+      },
+    },
   });
 
   return _appDataSource;

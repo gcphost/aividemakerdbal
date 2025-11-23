@@ -34,6 +34,12 @@ export class Process extends BaseEntity {
   groupId?: string;
 
   @Column('varchar', { nullable: true })
+  parentProcessId?: string; // Parent process ID for master/slave relationships
+
+  @Column('boolean', { default: false })
+  isMaster!: boolean; // True for master processes, false for slave processes
+
+  @Column('varchar', { nullable: true })
   stage?: string;
 
   @Column({ type: 'text', nullable: true })

@@ -23,6 +23,8 @@ let Process = class Process extends BaseEntity_1.BaseEntity {
     resourceId;
     serverId;
     groupId;
+    parentProcessId; // Parent process ID for master/slave relationships
+    isMaster; // True for master processes, false for slave processes
     stage;
     message;
     currentStep;
@@ -84,6 +86,14 @@ __decorate([
     (0, typeorm_1.Column)('varchar', { nullable: true }),
     __metadata("design:type", String)
 ], Process.prototype, "groupId", void 0);
+__decorate([
+    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    __metadata("design:type", String)
+], Process.prototype, "parentProcessId", void 0);
+__decorate([
+    (0, typeorm_1.Column)('boolean', { default: false }),
+    __metadata("design:type", Boolean)
+], Process.prototype, "isMaster", void 0);
 __decorate([
     (0, typeorm_1.Column)('varchar', { nullable: true }),
     __metadata("design:type", String)

@@ -10,6 +10,8 @@ export declare class Process extends BaseEntity {
     resourceId?: string;
     serverId?: string;
     groupId?: string;
+    parentProcessId?: string;
+    isMaster: boolean;
     stage?: string;
     message?: string;
     currentStep?: number;
