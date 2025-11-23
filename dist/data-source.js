@@ -38,9 +38,6 @@ const typeorm_1 = require("typeorm");
 const path = __importStar(require("path"));
 const fs = __importStar(require("fs"));
 const entities = __importStar(require("./entities"));
-// Import schemas for entities that use EntitySchema (no decorators)
-const User_schema_1 = require("./entities/User.schema");
-const Settings_schema_1 = require("./entities/Settings.schema");
 let _appDataSource = null;
 function createDataSource() {
     if (_appDataSource) {
@@ -106,8 +103,8 @@ function createDataSource() {
     const allEntities = [
         ...Object.values(entities),
         // Add EntitySchema-based entities (no decorators, no reflect-metadata needed)
-        User_schema_1.UserSchema,
-        Settings_schema_1.SettingsSchema,
+        UserSchema,
+        SettingsSchema,
     ];
     _appDataSource = new typeorm_1.DataSource({
         type: 'better-sqlite3',

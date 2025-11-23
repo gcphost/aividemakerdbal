@@ -2,9 +2,6 @@ import { DataSource } from 'typeorm';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as entities from './entities';
-// Import schemas for entities that use EntitySchema (no decorators)
-import { UserSchema } from './entities/User.schema';
-import { SettingsSchema } from './entities/Settings.schema';
 
 let _appDataSource: DataSource | null = null;
 
