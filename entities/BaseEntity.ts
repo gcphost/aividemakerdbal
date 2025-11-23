@@ -1,7 +1,24 @@
 import { BaseEntity as TypeORMBaseEntity, ObjectLiteral } from 'typeorm';
 import { randomUUID } from 'crypto';
 
+// @ts-expect-error - TypeORM's BaseEntity has findOne with different signature, but we need our own implementation
 export class BaseEntity extends TypeORMBaseEntity {
+  // MongoDB-style findOne method
+  static async findOne<T extends BaseEntity>(
+    this: { new(): T } & typeof BaseEntity,
+    options?: any
+  ): Promise<T | null> {
+    // Get the DataSource and repository
+    const { AppDataSource } = await import('../data-source');
+    if (!AppDataSource.isInitialized) {
+      await AppDataSource.initialize();
+    }
+    const repository = AppDataSource.getRepository(this as any);
+    return repository.findOne(options as any) as Promise<T | null>;
+  }
+
+
+
   // MongoDB-style findById method
   static async findById<T extends BaseEntity>(this: { new(): T } & typeof BaseEntity, id: string): Promise<T | null> {
     return this.findOne({ where: { _id: id } } as any) as Promise<T | null>;
@@ -40,7 +57,7 @@ export class BaseEntity extends TypeORMBaseEntity {
       return null;
     }
 
-    await this.delete({ _id: id } as any);
+    await (this as any).delete({ _id: id } as any);
     return entity;
   }
 
@@ -77,7 +94,7 @@ export class BaseEntity extends TypeORMBaseEntity {
       return null;
     }
 
-    await this.delete(filter as any);
+    await (this as any).delete(filter as any);
     return entity;
   }
 
@@ -107,14 +124,14 @@ export class BaseEntity extends TypeORMBaseEntity {
     this: { new(): T } & typeof BaseEntity,
     filter: Partial<T> = {}
   ): Promise<number> {
-    return this.count({ where: filter } as any);
+    return (this as any).count({ where: filter } as any);
   }
 
   static async deleteOne<T extends BaseEntity>(
     this: { new(): T } & typeof BaseEntity,
     filter: Partial<T>
   ): Promise<{ deletedCount?: number }> {
-    const result = await this.delete(filter as any);
+    const result = await (this as any).delete(filter as any);
     return { deletedCount: result.affected ?? undefined };
   }
 
@@ -122,7 +139,7 @@ export class BaseEntity extends TypeORMBaseEntity {
     this: { new(): T } & typeof BaseEntity,
     filter: Partial<T>
   ): Promise<{ deletedCount?: number }> {
-    const result = await this.delete(filter as any);
+    const result = await (this as any).delete(filter as any);
     return { deletedCount: result.affected ?? undefined };
   }
 
