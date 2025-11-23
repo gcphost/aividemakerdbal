@@ -38,6 +38,9 @@ const typeorm_1 = require("typeorm");
 const path = __importStar(require("path"));
 const fs = __importStar(require("fs"));
 const entities = __importStar(require("./entities"));
+// Import schemas for entities that use EntitySchema (no decorators)
+const User_schema_1 = require("./entities/User.schema");
+const Settings_schema_1 = require("./entities/Settings.schema");
 let _appDataSource = null;
 function createDataSource() {
     if (_appDataSource) {
@@ -99,12 +102,19 @@ function createDataSource() {
         }
         console.log(`[DB] ===========================================`);
     }
+    // Collect all entities - mix of decorator-based and schema-based
+    const allEntities = [
+        ...Object.values(entities),
+        // Add EntitySchema-based entities (no decorators, no reflect-metadata needed)
+        User_schema_1.UserSchema,
+        Settings_schema_1.SettingsSchema,
+    ];
     _appDataSource = new typeorm_1.DataSource({
         type: 'better-sqlite3',
         database: dbPath,
         synchronize: false, // DISABLED FOR TESTING - manually managing schema
         logging: ['schema', 'error', 'warn'], // Log schema changes and errors
-        entities: Object.values(entities),
+        entities: allEntities,
         migrations: [path.join(__dirname || process.cwd(), 'migrations', '*.ts')],
         subscribers: [],
     });

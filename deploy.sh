@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Shared-DB Deployment Script
-# This script builds, commits, and pushes shared-db changes, then updates app and socket-server
+# This script builds, commits, and pushes shared-db changes, then updates app, socket-server, and electron
 
 set -e  # Exit on error
 
@@ -30,6 +30,12 @@ npm install
 
 echo "🔄 Updating socket-server..."
 cd ../socket-server
+npm cache clean --force
+rm -rf node_modules/shared-db
+npm install
+
+echo "🔄 Updating electron..."
+cd ../electron
 npm cache clean --force
 rm -rf node_modules/shared-db
 npm install

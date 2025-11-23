@@ -1,35 +1,19 @@
-import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+// NO DECORATORS - Using EntitySchema instead (see User.schema.ts)
+// This file exports the class for compatibility
 import { BaseEntity } from './BaseEntity';
 
-@Entity('users')
 export class User extends BaseEntity {
-  @PrimaryColumn('varchar')
   _id!: string;
-
-  @Column('varchar', { unique: true })
   email!: string;
-
-  @Column('varchar')
   password!: string;
-
-  @Column('varchar', { nullable: true })
   firstName?: string;
-
-  @Column('varchar', { nullable: true })
   lastName?: string;
-
-  @Column('varchar', { nullable: true })
   avatarUrl?: string;
-
-  @Column('varchar', { default: 'user' })
   role!: 'admin' | 'user';
-
-  @Column('varchar', { default: true })
   isActive!: boolean;
-
-  @CreateDateColumn()
   createdAt!: Date;
-
-  @UpdateDateColumn()
   updatedAt!: Date;
 }
+
+// Export the schema for TypeORM registration
+export { UserSchema } from './User.schema';

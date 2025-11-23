@@ -2,6 +2,9 @@ import { DataSource } from 'typeorm';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as entities from './entities';
+// Import schemas for entities that use EntitySchema (no decorators)
+import { UserSchema } from './entities/User.schema';
+import { SettingsSchema } from './entities/Settings.schema';
 
 let _appDataSource: DataSource | null = null;
 
@@ -73,12 +76,20 @@ function createDataSource(): DataSource {
     console.log(`[DB] ===========================================`);
   }
 
+  // Collect all entities - mix of decorator-based and schema-based
+  const allEntities = [
+    ...Object.values(entities),
+    // Add EntitySchema-based entities (no decorators, no reflect-metadata needed)
+    UserSchema,
+    SettingsSchema,
+  ];
+
   _appDataSource = new DataSource({
     type: 'better-sqlite3',
     database: dbPath,
     synchronize: false, // DISABLED FOR TESTING - manually managing schema
     logging: ['schema', 'error', 'warn'], // Log schema changes and errors
-    entities: Object.values(entities),
+    entities: allEntities,
     migrations: [path.join(__dirname || process.cwd(), 'migrations', '*.ts')],
     subscribers: [],
   });

@@ -35,6 +35,14 @@ When you modify ANY file in the `shared-db` package, you MUST complete ALL of th
    npm install
    ```
 
+5. **Update electron**
+   ```bash
+   cd ../electron
+   npm cache clean --force
+   rm -rf node_modules/shared-db
+   npm install
+   ```
+
 ### Quick Deploy Script
 
 You can use the included `deploy.sh` script:
@@ -67,8 +75,8 @@ chmod +x deploy.sh
 
 ### Remember
 
-- Build → Commit → Push → Update App → Update Socket-Server
-- **ALL FIVE STEPS** must be completed
+- Build → Commit → Push → Update App → Update Socket-Server → Update Electron
+- **ALL SIX STEPS** must be completed
 - Do not skip any step
 - Do not change package.json references to local files
 

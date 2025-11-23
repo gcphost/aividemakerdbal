@@ -11,4 +11,5 @@ export declare class User extends BaseEntity {
     createdAt: Date;
     updatedAt: Date;
 }
+export { UserSchema } from './User.schema';
 //# sourceMappingURL=User.d.ts.map

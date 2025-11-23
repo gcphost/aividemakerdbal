@@ -11,4 +11,5 @@ export declare class Settings extends BaseEntity {
     createdAt: Date;
     updatedAt: Date;
 }
+export { SettingsSchema } from './Settings.schema';
 //# sourceMappingURL=Settings.d.ts.map
