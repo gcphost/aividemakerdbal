@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { BaseEntity as TypeORMBaseEntity, ObjectLiteral } from 'typeorm';
 import { randomUUID } from 'crypto';
 

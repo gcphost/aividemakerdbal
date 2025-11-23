@@ -25,20 +25,21 @@ git push
 echo "🔄 Updating app..."
 cd ../app
 npm cache clean --force
-rm -rf node_modules/shared-db
+rm -rf node_modules/shared-db package-lock.json
 npm install
 
 echo "🔄 Updating socket-server..."
 cd ../socket-server
 npm cache clean --force
-rm -rf node_modules/shared-db
+rm -rf node_modules/shared-db package-lock.json
 npm install
 
 echo "🔄 Updating electron..."
 cd ../electron
 npm cache clean --force
-rm -rf node_modules/shared-db
+rm -rf node_modules/shared-db package-lock.json
 npm install
+npm run build
 
 echo "✅ Deployment complete!"
 
