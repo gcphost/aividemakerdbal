@@ -1,4 +1,5 @@
 import { BaseEntity as TypeORMBaseEntity, ObjectLiteral } from 'typeorm';
+import { randomUUID } from 'crypto';
 
 export class BaseEntity extends TypeORMBaseEntity {
   // MongoDB-style findById method
@@ -88,6 +89,11 @@ export class BaseEntity extends TypeORMBaseEntity {
     // If _id is not provided but processId is, use processId as _id
     if (!(data as any)._id && (data as any).processId) {
       (data as any)._id = (data as any).processId;
+    }
+    
+    // Auto-generate _id if not provided (for entities with PrimaryColumn _id)
+    if (!(data as any)._id) {
+      (data as any)._id = randomUUID();
     }
     
     // Use TypeORM's create method to create instance
