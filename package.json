@@ -60,6 +60,36 @@
       "require": "./dist/entities/Usage.js",
       "types": "./dist/entities/Usage.d.ts"
     },
+    "./entities/ApiKey": {
+      "import": "./dist/entities/ApiKey.js",
+      "require": "./dist/entities/ApiKey.js",
+      "types": "./dist/entities/ApiKey.d.ts"
+    },
+    "./entities/Settings": {
+      "import": "./dist/entities/Settings.js",
+      "require": "./dist/entities/Settings.js",
+      "types": "./dist/entities/Settings.d.ts"
+    },
+    "./entities/BaseEntity": {
+      "import": "./dist/entities/BaseEntity.js",
+      "require": "./dist/entities/BaseEntity.js",
+      "types": "./dist/entities/BaseEntity.d.ts"
+    },
+    "./entities/Process": {
+      "import": "./dist/entities/Process.js",
+      "require": "./dist/entities/Process.js",
+      "types": "./dist/entities/Process.d.ts"
+    },
+    "./entities/ProcessEstimate": {
+      "import": "./dist/entities/ProcessEstimate.js",
+      "require": "./dist/entities/ProcessEstimate.js",
+      "types": "./dist/entities/ProcessEstimate.d.ts"
+    },
+    "./entities/PerformanceMetrics": {
+      "import": "./dist/entities/PerformanceMetrics.js",
+      "require": "./dist/entities/PerformanceMetrics.js",
+      "types": "./dist/entities/PerformanceMetrics.d.ts"
+    },
     "./types": {
       "import": "./types/index.ts",
       "require": "./types/index.ts",
