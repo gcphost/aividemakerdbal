@@ -73,20 +73,13 @@ function createDataSource(): DataSource {
     console.log(`[DB] ===========================================`);
   }
 
-  // Collect all entities - mix of decorator-based and schema-based
-  const allEntities = [
-    ...Object.values(entities),
-    // Add EntitySchema-based entities (no decorators, no reflect-metadata needed)
-    UserSchema,
-    SettingsSchema,
-  ];
-
   _appDataSource = new DataSource({
     type: 'better-sqlite3',
     database: dbPath,
-    synchronize: false, // DISABLED FOR TESTING - manually managing schema
+    synchronize: false, // Keep false - use migrations instead
+    migrationsRun: true, // Auto-run pending migrations on startup
     logging: ['schema', 'error', 'warn'], // Log schema changes and errors
-    entities: allEntities,
+    entities: Object.values(entities),
     migrations: [path.join(__dirname || process.cwd(), 'migrations', '*.ts')],
     subscribers: [],
   });
@@ -103,6 +96,6 @@ export const getAppDataSource = (): DataSource => {
 export const AppDataSource = createDataSource();
 
 // Re-export entities to ensure they're the same references used in DataSource
-export { User, Video, Chapter, File, Channel, Profile, Settings, Usage, ApiKey, BackgroundAudio, Process, ProcessEstimate, PerformanceMetrics } from './entities';
+export { User, Video, Chapter, File, Channel, Profile, Settings, Usage, ApiKey, Process, ProcessEstimate, PerformanceMetrics } from './entities';
 
 export default AppDataSource;

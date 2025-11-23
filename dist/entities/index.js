@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PerformanceMetrics = exports.Usage = exports.ProcessEstimate = exports.Process = exports.File = exports.BackgroundAudio = exports.ApiKey = exports.Settings = exports.Channel = exports.Profile = exports.Chapter = exports.Video = exports.User = void 0;
+exports.PerformanceMetrics = exports.Usage = exports.ProcessEstimate = exports.Process = exports.File = exports.ApiKey = exports.Settings = exports.Channel = exports.Profile = exports.Chapter = exports.Video = exports.User = void 0;
 var User_1 = require("./User");
 Object.defineProperty(exports, "User", { enumerable: true, get: function () { return User_1.User; } });
 var Video_1 = require("./Video");
@@ -15,8 +15,7 @@ var Settings_1 = require("./Settings");
 Object.defineProperty(exports, "Settings", { enumerable: true, get: function () { return Settings_1.Settings; } });
 var ApiKey_1 = require("./ApiKey");
 Object.defineProperty(exports, "ApiKey", { enumerable: true, get: function () { return ApiKey_1.ApiKey; } });
-var BackgroundAudio_1 = require("./BackgroundAudio");
-Object.defineProperty(exports, "BackgroundAudio", { enumerable: true, get: function () { return BackgroundAudio_1.BackgroundAudio; } });
+// BackgroundAudio export removed - migrated to File entity
 var File_1 = require("./File");
 Object.defineProperty(exports, "File", { enumerable: true, get: function () { return File_1.File; } });
 var Process_1 = require("./Process");

@@ -5,7 +5,6 @@ export { Profile } from './Profile';
 export { Channel } from './Channel';
 export { Settings } from './Settings';
 export { ApiKey } from './ApiKey';
-export { BackgroundAudio } from './BackgroundAudio';
 export { File } from './File';
 export { Process } from './Process';
 export { ProcessEstimate } from './ProcessEstimate';

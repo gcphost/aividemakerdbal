@@ -33,7 +33,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PerformanceMetrics = exports.ProcessEstimate = exports.Process = exports.BackgroundAudio = exports.ApiKey = exports.Usage = exports.Settings = exports.Profile = exports.Channel = exports.File = exports.Chapter = exports.Video = exports.User = exports.AppDataSource = exports.getAppDataSource = void 0;
+exports.PerformanceMetrics = exports.ProcessEstimate = exports.Process = exports.ApiKey = exports.Usage = exports.Settings = exports.Profile = exports.Channel = exports.File = exports.Chapter = exports.Video = exports.User = exports.AppDataSource = exports.getAppDataSource = void 0;
 const typeorm_1 = require("typeorm");
 const path = __importStar(require("path"));
 const fs = __importStar(require("fs"));
@@ -99,19 +99,13 @@ function createDataSource() {
         }
         console.log(`[DB] ===========================================`);
     }
-    // Collect all entities - mix of decorator-based and schema-based
-    const allEntities = [
-        ...Object.values(entities),
-        // Add EntitySchema-based entities (no decorators, no reflect-metadata needed)
-        UserSchema,
-        SettingsSchema,
-    ];
     _appDataSource = new typeorm_1.DataSource({
         type: 'better-sqlite3',
         database: dbPath,
-        synchronize: false, // DISABLED FOR TESTING - manually managing schema
+        synchronize: false, // Keep false - use migrations instead
+        migrationsRun: true, // Auto-run pending migrations on startup
         logging: ['schema', 'error', 'warn'], // Log schema changes and errors
-        entities: allEntities,
+        entities: Object.values(entities),
         migrations: [path.join(__dirname || process.cwd(), 'migrations', '*.ts')],
         subscribers: [],
     });
@@ -135,7 +129,6 @@ Object.defineProperty(exports, "Profile", { enumerable: true, get: function () {
 Object.defineProperty(exports, "Settings", { enumerable: true, get: function () { return entities_1.Settings; } });
 Object.defineProperty(exports, "Usage", { enumerable: true, get: function () { return entities_1.Usage; } });
 Object.defineProperty(exports, "ApiKey", { enumerable: true, get: function () { return entities_1.ApiKey; } });
-Object.defineProperty(exports, "BackgroundAudio", { enumerable: true, get: function () { return entities_1.BackgroundAudio; } });
 Object.defineProperty(exports, "Process", { enumerable: true, get: function () { return entities_1.Process; } });
 Object.defineProperty(exports, "ProcessEstimate", { enumerable: true, get: function () { return entities_1.ProcessEstimate; } });
 Object.defineProperty(exports, "PerformanceMetrics", { enumerable: true, get: function () { return entities_1.PerformanceMetrics; } });

@@ -84,19 +84,19 @@ __decorate([
     __metadata("design:type", String)
 ], Usage.prototype, "model", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)({ type: 'integer', nullable: true }),
     __metadata("design:type", Number)
 ], Usage.prototype, "tokens", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)({ type: 'integer', nullable: true }),
     __metadata("design:type", Number)
 ], Usage.prototype, "characters", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)({ type: 'integer', nullable: true }),
     __metadata("design:type", Number)
 ], Usage.prototype, "images", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)({ type: 'real', nullable: true }),
     __metadata("design:type", Number)
 ], Usage.prototype, "duration", void 0);
 __decorate([
@@ -112,19 +112,19 @@ __decorate([
     __metadata("design:type", String)
 ], Usage.prototype, "metadata", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)({ type: 'integer', nullable: true }),
     __metadata("design:type", Number)
 ], Usage.prototype, "inputTokens", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)({ type: 'integer', nullable: true }),
     __metadata("design:type", Number)
 ], Usage.prototype, "outputTokens", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)({ type: 'integer', nullable: true }),
     __metadata("design:type", Number)
 ], Usage.prototype, "durationMs", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)({ type: 'integer', nullable: true }),
     __metadata("design:type", Number)
 ], Usage.prototype, "fileSize", void 0);
 __decorate([

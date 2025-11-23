@@ -39,7 +39,8 @@ export interface SoundSource {
 
 export interface BackgroundAudioSource {
   id: string;
-  backgroundAudioId?: string;
+  fileId?: string;
+  backgroundAudioId?: string; // Keep for backward compatibility during transition
   name: string;
   title?: string;
   searchTerm?: string;

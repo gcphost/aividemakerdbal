@@ -36,16 +36,16 @@ export class Usage extends BaseEntity {
   @Column('varchar', { nullable: true })
   model?: string;
 
-  @Column('varchar', { nullable: true })
+  @Column({ type: 'integer', nullable: true })
   tokens?: number;
 
-  @Column('varchar', { nullable: true })
+  @Column({ type: 'integer', nullable: true })
   characters?: number;
 
-  @Column('varchar', { nullable: true })
+  @Column({ type: 'integer', nullable: true })
   images?: number;
 
-  @Column('varchar', { nullable: true })
+  @Column({ type: 'real', nullable: true })
   duration?: number;
 
   @Column({ type: 'decimal', precision: 10, scale: 4, default: 0 })
@@ -57,16 +57,16 @@ export class Usage extends BaseEntity {
   @Column({ type: 'text', nullable: true })
   metadata?: string;
 
-  @Column('varchar', { nullable: true })
+  @Column({ type: 'integer', nullable: true })
   inputTokens?: number;
 
-  @Column('varchar', { nullable: true })
+  @Column({ type: 'integer', nullable: true })
   outputTokens?: number;
 
-  @Column('varchar', { nullable: true })
+  @Column({ type: 'integer', nullable: true })
   durationMs?: number;
 
-  @Column('varchar', { nullable: true })
+  @Column({ type: 'integer', nullable: true })
   fileSize?: number;
 
   @CreateDateColumn()

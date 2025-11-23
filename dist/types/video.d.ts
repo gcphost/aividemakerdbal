@@ -32,6 +32,7 @@ export interface SoundSource {
 }
 export interface BackgroundAudioSource {
     id: string;
+    fileId?: string;
     backgroundAudioId?: string;
     name: string;
     title?: string;
