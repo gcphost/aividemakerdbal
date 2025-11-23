@@ -1,5 +1,5 @@
 import { AppDataSource } from '../data-source';
-// BackgroundAudio entity removed - migration already completed
+// Migration script: BackgroundAudio entity was migrated to File entity (already completed)
 import { File } from '../entities/File';
 import { Video } from '../entities/Video';
 

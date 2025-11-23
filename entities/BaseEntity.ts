@@ -36,8 +36,11 @@ export class BaseEntity extends TypeORMBaseEntity {
     this: { new(): T } & typeof BaseEntity,
     data: Partial<T>
   ): T {
-    // Use TypeORM's create method
-    return (this as any).create(data) as T;
+    // Directly instantiate and assign properties to avoid infinite recursion
+    // This mimics TypeORM's create behavior without calling the parent's create method
+    const entity = new this();
+    Object.assign(entity, data);
+    return entity as T;
   }
 
   // MongoDB-style findById method

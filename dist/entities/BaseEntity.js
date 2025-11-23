@@ -60,8 +60,11 @@ class BaseEntity extends typeorm_1.BaseEntity {
     }
     // MongoDB-style create method (wrapper for TypeORM's create)
     static create(data) {
-        // Use TypeORM's create method
-        return this.create(data);
+        // Directly instantiate and assign properties to avoid infinite recursion
+        // This mimics TypeORM's create behavior without calling the parent's create method
+        const entity = new this();
+        Object.assign(entity, data);
+        return entity;
     }
     // MongoDB-style findById method
     static async findById(id) {

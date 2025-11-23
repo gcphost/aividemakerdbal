@@ -5,7 +5,7 @@ export { Profile } from './Profile';
 export { Channel } from './Channel';
 export { Settings } from './Settings';
 export { ApiKey } from './ApiKey';
-// BackgroundAudio export removed - migrated to File entity
+// Audio files are now stored in the File entity (BackgroundAudio was migrated)
 export { File } from './File';
 export { Process } from './Process';
 export { ProcessEstimate } from './ProcessEstimate';

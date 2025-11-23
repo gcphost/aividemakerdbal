@@ -15,7 +15,7 @@ var Settings_1 = require("./Settings");
 Object.defineProperty(exports, "Settings", { enumerable: true, get: function () { return Settings_1.Settings; } });
 var ApiKey_1 = require("./ApiKey");
 Object.defineProperty(exports, "ApiKey", { enumerable: true, get: function () { return ApiKey_1.ApiKey; } });
-// BackgroundAudio export removed - migrated to File entity
+// Audio files are now stored in the File entity (BackgroundAudio was migrated)
 var File_1 = require("./File");
 Object.defineProperty(exports, "File", { enumerable: true, get: function () { return File_1.File; } });
 var Process_1 = require("./Process");
