@@ -1,11 +1,5 @@
-import { BaseEntity as TypeORMBaseEntity, FindManyOptions, FindOneOptions } from 'typeorm';
+import { BaseEntity as TypeORMBaseEntity } from 'typeorm';
 export declare class BaseEntity extends TypeORMBaseEntity {
-    static findOne<T extends BaseEntity>(this: {
-        new (): T;
-    } & typeof BaseEntity, options?: FindOneOptions<T>): Promise<T | null>;
-    static find<T extends BaseEntity>(this: {
-        new (): T;
-    } & typeof BaseEntity, options?: FindManyOptions<T>): Promise<T[]>;
     static findById<T extends BaseEntity>(this: {
         new (): T;
     } & typeof BaseEntity, id: string): Promise<T | null>;
