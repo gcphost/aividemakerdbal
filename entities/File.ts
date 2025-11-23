@@ -42,6 +42,9 @@ export class File extends BaseEntity {
   @Column('varchar', { nullable: true })
   category?: string;
 
+  @Column('varchar', { nullable: true })
+  hash?: string; // SHA-256 hash for deduplication
+
   @Column({ type: 'text', nullable: true })
   metadata?: string;
 

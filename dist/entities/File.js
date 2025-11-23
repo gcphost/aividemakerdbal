@@ -26,6 +26,7 @@ let File = class File extends BaseEntity_1.BaseEntity {
     status;
     type;
     category;
+    hash; // SHA-256 hash for deduplication
     metadata;
     vectorEmbedding;
     versions;
@@ -89,6 +90,10 @@ __decorate([
     (0, typeorm_1.Column)('varchar', { nullable: true }),
     __metadata("design:type", String)
 ], File.prototype, "category", void 0);
+__decorate([
+    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    __metadata("design:type", String)
+], File.prototype, "hash", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'text', nullable: true }),
     __metadata("design:type", String)
