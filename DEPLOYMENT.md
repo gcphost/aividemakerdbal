@@ -22,12 +22,16 @@ When you modify ANY file in the `shared-db` package, you MUST complete ALL of th
 3. **Update app**
    ```bash
    cd ../app
+   npm cache clean --force
+   rm -rf node_modules/shared-db
    npm install
    ```
 
 4. **Update socket-server**
    ```bash
    cd ../socket-server
+   npm cache clean --force
+   rm -rf node_modules/shared-db
    npm install
    ```
 
@@ -52,6 +56,7 @@ chmod +x deploy.sh
 - Changes must be pushed to GitHub before they're available
 - Both consuming packages need `npm install` to pull the latest version
 - **NEVER** change package.json to use local file references - always use the GitHub reference
+- **IMPORTANT**: Always clear npm cache and remove node_modules/shared-db before reinstalling to ensure fresh installs
 
 ### Files That Require Deployment
 

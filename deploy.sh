@@ -24,10 +24,14 @@ git push
 
 echo "🔄 Updating app..."
 cd ../app
+npm cache clean --force
+rm -rf node_modules/shared-db
 npm install
 
 echo "🔄 Updating socket-server..."
 cd ../socket-server
+npm cache clean --force
+rm -rf node_modules/shared-db
 npm install
 
 echo "✅ Deployment complete!"
