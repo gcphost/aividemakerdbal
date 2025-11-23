@@ -2,11 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = exports.UserSchema = void 0;
 const typeorm_1 = require("typeorm");
-const BaseEntity_1 = require("./BaseEntity");
 exports.UserSchema = new typeorm_1.EntitySchema({
     name: 'User',
     tableName: 'users',
-    target: BaseEntity_1.BaseEntity,
+    // NO target - plain class, doesn't extend BaseEntity to avoid metadata initialization
     columns: {
         _id: {
             type: 'varchar',
@@ -49,8 +48,9 @@ exports.UserSchema = new typeorm_1.EntitySchema({
         },
     },
 });
-// Export a class for compatibility - no decorators needed
-class User extends BaseEntity_1.BaseEntity {
+// Export a plain class - NO extends BaseEntity to avoid TypeORM metadata initialization
+// BaseEntity methods are available through repository pattern
+class User {
     _id;
     email;
     password;

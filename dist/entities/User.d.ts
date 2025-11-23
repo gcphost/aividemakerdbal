@@ -1,15 +1,2 @@
-import { BaseEntity } from './BaseEntity';
-export declare class User extends BaseEntity {
-    _id: string;
-    email: string;
-    password: string;
-    firstName?: string;
-    lastName?: string;
-    avatarUrl?: string;
-    role: 'admin' | 'user';
-    isActive: boolean;
-    createdAt: Date;
-    updatedAt: Date;
-}
-export { UserSchema } from './User.schema';
+export { User, UserSchema } from './User.schema';
 //# sourceMappingURL=User.d.ts.map

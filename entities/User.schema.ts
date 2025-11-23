@@ -1,5 +1,4 @@
 import { EntitySchema } from 'typeorm';
-import { BaseEntity } from './BaseEntity';
 
 export interface IUser {
   _id: string;
@@ -17,7 +16,7 @@ export interface IUser {
 export const UserSchema = new EntitySchema<IUser>({
   name: 'User',
   tableName: 'users',
-  target: BaseEntity,
+  // NO target - plain class, doesn't extend BaseEntity to avoid metadata initialization
   columns: {
     _id: {
       type: 'varchar',
@@ -61,8 +60,9 @@ export const UserSchema = new EntitySchema<IUser>({
   },
 });
 
-// Export a class for compatibility - no decorators needed
-export class User extends BaseEntity {
+// Export a plain class - NO extends BaseEntity to avoid TypeORM metadata initialization
+// BaseEntity methods are available through repository pattern
+export class User {
   _id!: string;
   email!: string;
   password!: string;

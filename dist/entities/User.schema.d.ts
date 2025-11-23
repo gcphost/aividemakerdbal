@@ -1,5 +1,4 @@
 import { EntitySchema } from 'typeorm';
-import { BaseEntity } from './BaseEntity';
 export interface IUser {
     _id: string;
     email: string;
@@ -13,7 +12,7 @@ export interface IUser {
     updatedAt: Date;
 }
 export declare const UserSchema: EntitySchema<IUser>;
-export declare class User extends BaseEntity {
+export declare class User {
     _id: string;
     email: string;
     password: string;

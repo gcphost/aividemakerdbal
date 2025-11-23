@@ -1,5 +1,4 @@
 import { EntitySchema } from 'typeorm';
-import { BaseEntity } from './BaseEntity';
 export interface ISettings {
     _id: string;
     userId: string;
@@ -13,7 +12,7 @@ export interface ISettings {
     updatedAt: Date;
 }
 export declare const SettingsSchema: EntitySchema<ISettings>;
-export declare class Settings extends BaseEntity {
+export declare class Settings {
     _id: string;
     userId: string;
     theme?: string;
