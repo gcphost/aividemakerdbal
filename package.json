@@ -25,6 +25,41 @@
       "require": "./dist/entities/*.js",
       "types": "./dist/entities/*.d.ts"
     },
+    "./entities/User": {
+      "import": "./dist/entities/User.js",
+      "require": "./dist/entities/User.js",
+      "types": "./dist/entities/User.d.ts"
+    },
+    "./entities/Video": {
+      "import": "./dist/entities/Video.js",
+      "require": "./dist/entities/Video.js",
+      "types": "./dist/entities/Video.d.ts"
+    },
+    "./entities/Chapter": {
+      "import": "./dist/entities/Chapter.js",
+      "require": "./dist/entities/Chapter.js",
+      "types": "./dist/entities/Chapter.d.ts"
+    },
+    "./entities/Profile": {
+      "import": "./dist/entities/Profile.js",
+      "require": "./dist/entities/Profile.js",
+      "types": "./dist/entities/Profile.d.ts"
+    },
+    "./entities/Channel": {
+      "import": "./dist/entities/Channel.js",
+      "require": "./dist/entities/Channel.js",
+      "types": "./dist/entities/Channel.d.ts"
+    },
+    "./entities/File": {
+      "import": "./dist/entities/File.js",
+      "require": "./dist/entities/File.js",
+      "types": "./dist/entities/File.d.ts"
+    },
+    "./entities/Usage": {
+      "import": "./dist/entities/Usage.js",
+      "require": "./dist/entities/Usage.js",
+      "types": "./dist/entities/Usage.d.ts"
+    },
     "./types": {
       "import": "./types/index.ts",
       "require": "./types/index.ts",
