@@ -22,7 +22,7 @@
       "typeorm": ["./node_modules/typeorm"]
     }
   },
-  "include": ["entities/**/*", "data-source.ts", "migrations/**/*", "types/**/*", "run-migrations.ts"],
+  "include": ["entities/**/*", "data-source.ts", "migrations/**/*", "types/**/*", "utils/**/*", "run-migrations.ts"],
   "exclude": ["node_modules", "dist"]
 }
 
