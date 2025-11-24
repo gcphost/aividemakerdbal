@@ -73,9 +73,43 @@ function createDataSource(): DataSource {
     console.log(`[DB] ===========================================`);
   }
 
-  // Migrations are in electron/migrations - simple and reliable path
-  const migrationsDir = path.join(projectRoot, 'electron', 'migrations');
-  const migrationsPattern = path.join(migrationsDir, '*.ts');
+  // Migrations are in electron/migrations - try compiled first, then source
+  const possibleMigrationsPaths = [
+    path.join(projectRoot, 'electron', 'dist', 'migrations'),  // Compiled JS
+    path.join(projectRoot, 'electron', 'migrations'),          // Source TS
+  ];
+  
+  let migrationsDir: string;
+  let migrationsPattern: string;
+  
+  // Find the first existing migrations directory
+  let foundMigrationsDir: string | null = null;
+  for (const possiblePath of possibleMigrationsPaths) {
+    if (fs.existsSync(possiblePath)) {
+      foundMigrationsDir = possiblePath;
+      break;
+    }
+  }
+  
+  if (foundMigrationsDir) {
+    migrationsDir = foundMigrationsDir;
+    // Check if we have .js or .ts files
+    const hasJsFiles = fs.readdirSync(migrationsDir).some(f => f.endsWith('.js'));
+    const hasTsFiles = fs.readdirSync(migrationsDir).some(f => f.endsWith('.ts'));
+    
+    if (hasJsFiles) {
+      migrationsPattern = path.join(migrationsDir, '*.js');
+    } else if (hasTsFiles) {
+      migrationsPattern = path.join(migrationsDir, '*.ts');
+    } else {
+      // Default to .js if we can't determine
+      migrationsPattern = path.join(migrationsDir, '*.js');
+    }
+  } else {
+    // Fallback: use electron/migrations
+    migrationsDir = path.join(projectRoot, 'electron', 'migrations');
+    migrationsPattern = path.join(migrationsDir, '*.ts');
+  }
   
   // Log migration path for debugging
   if (process.env.NODE_ENV !== 'production') {
