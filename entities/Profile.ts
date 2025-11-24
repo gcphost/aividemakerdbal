@@ -114,6 +114,12 @@ export class Profile extends BaseEntity {
   @Column('varchar', { nullable: true, default: 'elevenlabs' })
   soundEffectProvider?: string;
 
+  @Column('varchar', { nullable: true, default: 'openai' })
+  embeddingsProvider?: string;
+
+  @Column('varchar', { nullable: true, default: 'text-embedding-3-small' })
+  embeddingsModel?: string;
+
   @Column('integer', { nullable: true })
   disableImageGeneration?: boolean;
 
