@@ -99,19 +99,54 @@ function createDataSource() {
         }
         console.log(`[DB] ===========================================`);
     }
-    // Determine migrations path - support both TypeScript (dev) and JavaScript (compiled)
-    // Check if we're running from compiled code (dist folder) or source
-    const isCompiled = __dirname?.includes('dist') || __dirname?.includes('node_modules');
-    const migrationsDir = path.join(__dirname || process.cwd(), 'migrations');
-    // Try to find migrations - check both .ts and .js patterns
-    // TypeORM will use whichever pattern matches files that exist
-    const migrationsPattern = isCompiled
-        ? path.join(migrationsDir, '*.js') // Compiled migrations
-        : path.join(migrationsDir, '*.ts'); // Source migrations
+    // Determine migrations path - use project root to find migrations
+    // Migrations are in shared-db/migrations, which should be relative to workspace root
+    let migrationsDir;
+    let migrationsPattern;
+    // Try to find migrations directory relative to project root
+    const possibleMigrationsPaths = [
+        path.join(projectRoot, 'shared-db', 'migrations'), // Source location
+        path.join(projectRoot, 'shared-db', 'dist', 'migrations'), // Compiled location
+        path.join(__dirname || process.cwd(), 'migrations'), // Fallback: relative to current file
+    ];
+    // Find the first existing migrations directory
+    let foundMigrationsDir = null;
+    for (const possiblePath of possibleMigrationsPaths) {
+        if (fs.existsSync(possiblePath)) {
+            foundMigrationsDir = possiblePath;
+            break;
+        }
+    }
+    if (foundMigrationsDir) {
+        migrationsDir = foundMigrationsDir;
+        // Check if we have .ts or .js files
+        const hasTsFiles = fs.readdirSync(migrationsDir).some(f => f.endsWith('.ts'));
+        const hasJsFiles = fs.readdirSync(migrationsDir).some(f => f.endsWith('.js'));
+        if (hasJsFiles) {
+            migrationsPattern = path.join(migrationsDir, '*.js');
+        }
+        else if (hasTsFiles) {
+            migrationsPattern = path.join(migrationsDir, '*.ts');
+        }
+        else {
+            // Default to .ts if we can't determine
+            migrationsPattern = path.join(migrationsDir, '*.ts');
+        }
+    }
+    else {
+        // Fallback: use project root
+        migrationsDir = path.join(projectRoot, 'shared-db', 'migrations');
+        migrationsPattern = path.join(migrationsDir, '*.ts');
+    }
     // Log migration path for debugging
     if (process.env.NODE_ENV !== 'production') {
+        console.log(`[DB] Migrations directory: ${migrationsDir}`);
         console.log(`[DB] Migrations pattern: ${migrationsPattern}`);
-        console.log(`[DB] Migrations directory exists: ${require('fs').existsSync(migrationsDir)}`);
+        console.log(`[DB] Migrations directory exists: ${fs.existsSync(migrationsDir)}`);
+        if (fs.existsSync(migrationsDir)) {
+            const files = fs.readdirSync(migrationsDir).filter(f => f.endsWith('.ts') || f.endsWith('.js'));
+            console.log(`[DB] Found ${files.length} migration file(s)`);
+        }
     }
     _appDataSource = new typeorm_1.DataSource({
         type: 'better-sqlite3',
