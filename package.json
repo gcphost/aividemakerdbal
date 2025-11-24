@@ -91,14 +91,14 @@
       "types": "./dist/entities/PerformanceMetrics.d.ts"
     },
     "./types": {
-      "import": "./types/index.ts",
-      "require": "./types/index.ts",
-      "types": "./types/index.ts"
+      "import": "./dist/types/index.js",
+      "require": "./dist/types/index.js",
+      "types": "./dist/types/index.d.ts"
     },
     "./types/*": {
-      "import": "./types/*.ts",
-      "require": "./types/*.ts",
-      "types": "./types/*.ts"
+      "import": "./dist/types/*.js",
+      "require": "./dist/types/*.js",
+      "types": "./dist/types/*.d.ts"
     },
     "./utils/timeline-helpers": {
       "import": "./dist/utils/timeline-helpers.js",
