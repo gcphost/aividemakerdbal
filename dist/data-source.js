@@ -99,14 +99,28 @@ function createDataSource() {
         }
         console.log(`[DB] ===========================================`);
     }
+    // Determine migrations path - support both TypeScript (dev) and JavaScript (compiled)
+    // Check if we're running from compiled code (dist folder) or source
+    const isCompiled = __dirname?.includes('dist') || __dirname?.includes('node_modules');
+    const migrationsDir = path.join(__dirname || process.cwd(), 'migrations');
+    // Try to find migrations - check both .ts and .js patterns
+    // TypeORM will use whichever pattern matches files that exist
+    const migrationsPattern = isCompiled
+        ? path.join(migrationsDir, '*.js') // Compiled migrations
+        : path.join(migrationsDir, '*.ts'); // Source migrations
+    // Log migration path for debugging
+    if (process.env.NODE_ENV !== 'production') {
+        console.log(`[DB] Migrations pattern: ${migrationsPattern}`);
+        console.log(`[DB] Migrations directory exists: ${require('fs').existsSync(migrationsDir)}`);
+    }
     _appDataSource = new typeorm_1.DataSource({
         type: 'better-sqlite3',
         database: dbPath,
         synchronize: false, // Keep false - use migrations instead
         migrationsRun: true, // Auto-run pending migrations on startup
-        logging: ['schema', 'error', 'warn'], // Log schema changes and errors
+        logging: ['schema', 'error', 'warn', 'migration'], // Log schema changes, errors, and migrations
         entities: Object.values(entities),
-        migrations: [path.join(__dirname || process.cwd(), 'migrations', '*.ts')],
+        migrations: [migrationsPattern],
         subscribers: [],
         extra: {
             // Load sqlite-vec extension if available (for vector search support)
