@@ -8,6 +8,7 @@ export interface IUser {
     avatarUrl?: string;
     role: 'admin' | 'user';
     isActive: boolean;
+    defaultProfileId?: string;
     createdAt: Date;
     updatedAt: Date;
 }
@@ -21,6 +22,7 @@ export declare class User {
     avatarUrl?: string;
     role: 'admin' | 'user';
     isActive: boolean;
+    defaultProfileId?: string;
     createdAt: Date;
     updatedAt: Date;
 }

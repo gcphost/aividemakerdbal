@@ -21,6 +21,7 @@ let User = class User extends BaseEntity_1.BaseEntity {
     avatarUrl;
     role;
     isActive;
+    defaultProfileId;
     createdAt;
     updatedAt;
 };
@@ -57,6 +58,10 @@ __decorate([
     (0, typeorm_1.Column)('varchar', { default: true }),
     __metadata("design:type", Boolean)
 ], User.prototype, "isActive", void 0);
+__decorate([
+    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    __metadata("design:type", String)
+], User.prototype, "defaultProfileId", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)

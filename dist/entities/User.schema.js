@@ -38,6 +38,10 @@ exports.UserSchema = new typeorm_1.EntitySchema({
             type: 'varchar',
             default: true,
         },
+        defaultProfileId: {
+            type: 'varchar',
+            nullable: true,
+        },
         createdAt: {
             type: 'datetime',
             createDate: true,
@@ -59,6 +63,7 @@ class User {
     avatarUrl;
     role;
     isActive;
+    defaultProfileId;
     createdAt;
     updatedAt;
 }

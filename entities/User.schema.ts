@@ -9,6 +9,7 @@ export interface IUser {
   avatarUrl?: string;
   role: 'admin' | 'user';
   isActive: boolean;
+  defaultProfileId?: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -49,6 +50,10 @@ export const UserSchema = new EntitySchema<IUser>({
       type: 'varchar',
       default: true,
     },
+    defaultProfileId: {
+      type: 'varchar',
+      nullable: true,
+    },
     createdAt: {
       type: 'datetime',
       createDate: true,
@@ -71,6 +76,7 @@ export class User {
   avatarUrl?: string;
   role!: 'admin' | 'user';
   isActive!: boolean;
+  defaultProfileId?: string;
   createdAt!: Date;
   updatedAt!: Date;
 }

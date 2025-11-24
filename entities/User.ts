@@ -27,6 +27,9 @@ export class User extends BaseEntity {
   @Column('varchar', { default: true })
   isActive!: boolean;
 
+  @Column('varchar', { nullable: true })
+  defaultProfileId?: string;
+
   @CreateDateColumn()
   createdAt!: Date;
 

@@ -8,6 +8,7 @@ export declare class User extends BaseEntity {
     avatarUrl?: string;
     role: 'admin' | 'user';
     isActive: boolean;
+    defaultProfileId?: string;
     createdAt: Date;
     updatedAt: Date;
 }

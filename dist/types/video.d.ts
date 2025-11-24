@@ -6,6 +6,7 @@ export interface ImageSource {
     id: string;
     prompt: string;
     title?: string;
+    description?: string;
     searchTerm?: string;
     generatedImageUrl?: string;
     generatedImageFileId?: string;
