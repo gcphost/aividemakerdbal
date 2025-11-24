@@ -73,46 +73,9 @@ function createDataSource(): DataSource {
     console.log(`[DB] ===========================================`);
   }
 
-  // Determine migrations path - use project root to find migrations
-  // Migrations are in shared-db/migrations, which should be relative to workspace root
-  let migrationsDir: string;
-  let migrationsPattern: string;
-  
-  // Try to find migrations directory relative to project root
-  const possibleMigrationsPaths = [
-    path.join(projectRoot, 'shared-db', 'migrations'),  // Source location
-    path.join(projectRoot, 'shared-db', 'dist', 'migrations'),  // Compiled location
-    path.join(__dirname || process.cwd(), 'migrations'),  // Fallback: relative to current file
-  ];
-  
-  // Find the first existing migrations directory
-  let foundMigrationsDir: string | null = null;
-  for (const possiblePath of possibleMigrationsPaths) {
-    if (fs.existsSync(possiblePath)) {
-      foundMigrationsDir = possiblePath;
-      break;
-    }
-  }
-  
-  if (foundMigrationsDir) {
-    migrationsDir = foundMigrationsDir;
-    // Check if we have .ts or .js files
-    const hasTsFiles = fs.readdirSync(migrationsDir).some(f => f.endsWith('.ts'));
-    const hasJsFiles = fs.readdirSync(migrationsDir).some(f => f.endsWith('.js'));
-    
-    if (hasJsFiles) {
-      migrationsPattern = path.join(migrationsDir, '*.js');
-    } else if (hasTsFiles) {
-      migrationsPattern = path.join(migrationsDir, '*.ts');
-    } else {
-      // Default to .ts if we can't determine
-      migrationsPattern = path.join(migrationsDir, '*.ts');
-    }
-  } else {
-    // Fallback: use project root
-    migrationsDir = path.join(projectRoot, 'shared-db', 'migrations');
-    migrationsPattern = path.join(migrationsDir, '*.ts');
-  }
+  // Migrations are in electron/migrations - simple and reliable path
+  const migrationsDir = path.join(projectRoot, 'electron', 'migrations');
+  const migrationsPattern = path.join(migrationsDir, '*.ts');
   
   // Log migration path for debugging
   if (process.env.NODE_ENV !== 'production') {
