@@ -17,7 +17,6 @@ let Usage = class Usage extends BaseEntity_1.BaseEntity {
     userId;
     date;
     videoId;
-    chapterId;
     service;
     action;
     serviceType;
@@ -35,6 +34,10 @@ let Usage = class Usage extends BaseEntity_1.BaseEntity {
     outputTokens;
     durationMs;
     fileSize;
+    // New fields for better tracking
+    prompt;
+    response;
+    fileId;
     createdAt;
     updatedAt;
 };
@@ -55,10 +58,6 @@ __decorate([
     (0, typeorm_1.Column)('varchar', { nullable: true }),
     __metadata("design:type", String)
 ], Usage.prototype, "videoId", void 0);
-__decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
-    __metadata("design:type", String)
-], Usage.prototype, "chapterId", void 0);
 __decorate([
     (0, typeorm_1.Column)('varchar'),
     __metadata("design:type", String)
@@ -127,6 +126,18 @@ __decorate([
     (0, typeorm_1.Column)({ type: 'integer', nullable: true }),
     __metadata("design:type", Number)
 ], Usage.prototype, "fileSize", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'text', nullable: true }),
+    __metadata("design:type", String)
+], Usage.prototype, "prompt", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'text', nullable: true }),
+    __metadata("design:type", String)
+], Usage.prototype, "response", void 0);
+__decorate([
+    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    __metadata("design:type", String)
+], Usage.prototype, "fileId", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)

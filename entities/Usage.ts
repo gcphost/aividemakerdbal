@@ -15,9 +15,6 @@ export class Usage extends BaseEntity {
   @Column('varchar', { nullable: true })
   videoId?: string;
 
-  @Column('varchar', { nullable: true })
-  chapterId?: string;
-
   @Column('varchar')
   service!: string;
 
@@ -68,6 +65,16 @@ export class Usage extends BaseEntity {
 
   @Column({ type: 'integer', nullable: true })
   fileSize?: number;
+
+  // New fields for better tracking
+  @Column({ type: 'text', nullable: true })
+  prompt?: string;
+
+  @Column({ type: 'text', nullable: true })
+  response?: string;
+
+  @Column('varchar', { nullable: true })
+  fileId?: string;
 
   @CreateDateColumn()
   createdAt!: Date;

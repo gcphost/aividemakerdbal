@@ -12,6 +12,26 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ApiKey = void 0;
 const typeorm_1 = require("typeorm");
 const BaseEntity_1 = require("./BaseEntity");
+const secure_crypto_1 = require("../utils/secure-crypto");
+/**
+ * Value transformer for encrypting/decrypting API keys and secrets
+ */
+const apiKeyTransformer = {
+    to: (value) => {
+        // Encrypt when saving to database
+        if (value === null || value === undefined) {
+            return null;
+        }
+        return (0, secure_crypto_1.encrypt)(value);
+    },
+    from: (value) => {
+        // Decrypt when reading from database
+        if (value === null || value === undefined) {
+            return null;
+        }
+        return (0, secure_crypto_1.decrypt)(value);
+    }
+};
 let ApiKey = class ApiKey extends BaseEntity_1.BaseEntity {
     _id;
     userId;
@@ -41,11 +61,11 @@ __decorate([
     __metadata("design:type", String)
 ], ApiKey.prototype, "service", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)('varchar', { nullable: true, transformer: apiKeyTransformer }),
     __metadata("design:type", String)
 ], ApiKey.prototype, "apiKey", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)('varchar', { nullable: true, transformer: apiKeyTransformer }),
     __metadata("design:type", String)
 ], ApiKey.prototype, "apiSecret", void 0);
 __decorate([

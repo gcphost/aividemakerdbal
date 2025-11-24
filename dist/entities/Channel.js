@@ -12,6 +12,26 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Channel = void 0;
 const typeorm_1 = require("typeorm");
 const BaseEntity_1 = require("./BaseEntity");
+const secure_crypto_1 = require("../utils/secure-crypto");
+/**
+ * Value transformer for encrypting/decrypting tokens
+ */
+const tokenTransformer = {
+    to: (value) => {
+        // Encrypt when saving to database
+        if (value === null || value === undefined) {
+            return null;
+        }
+        return (0, secure_crypto_1.encrypt)(value);
+    },
+    from: (value) => {
+        // Decrypt when reading from database
+        if (value === null || value === undefined) {
+            return null;
+        }
+        return (0, secure_crypto_1.decrypt)(value);
+    }
+};
 let Channel = class Channel extends BaseEntity_1.BaseEntity {
     _id;
     userId;
@@ -113,11 +133,11 @@ __decorate([
     __metadata("design:type", Boolean)
 ], Channel.prototype, "isConnected", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'text', nullable: true }),
+    (0, typeorm_1.Column)({ type: 'text', nullable: true, transformer: tokenTransformer }),
     __metadata("design:type", String)
 ], Channel.prototype, "accessToken", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'text', nullable: true }),
+    (0, typeorm_1.Column)({ type: 'text', nullable: true, transformer: tokenTransformer }),
     __metadata("design:type", String)
 ], Channel.prototype, "refreshToken", void 0);
 __decorate([

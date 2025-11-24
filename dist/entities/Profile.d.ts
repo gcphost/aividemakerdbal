@@ -16,7 +16,7 @@ export declare class Profile extends BaseEntity {
     enableMidstoryCTA: boolean;
     chapterTransitionPrompt?: string;
     antiAiPrompt?: string;
-    imageProvider: string;
+    imageProvider?: string;
     ttsProvider?: string;
     ttsUseEmotionalTags: boolean;
     ttsSettings?: string;

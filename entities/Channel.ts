@@ -1,5 +1,26 @@
-import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, ValueTransformer } from 'typeorm';
 import { BaseEntity } from './BaseEntity';
+import { encrypt, decrypt } from '../utils/secure-crypto';
+
+/**
+ * Value transformer for encrypting/decrypting tokens
+ */
+const tokenTransformer: ValueTransformer = {
+  to: (value: string | null): string | null => {
+    // Encrypt when saving to database
+    if (value === null || value === undefined) {
+      return null;
+    }
+    return encrypt(value);
+  },
+  from: (value: string | null): string | null => {
+    // Decrypt when reading from database
+    if (value === null || value === undefined) {
+      return null;
+    }
+    return decrypt(value);
+  }
+};
 
 @Entity('channels')
 export class Channel extends BaseEntity {
@@ -57,10 +78,10 @@ export class Channel extends BaseEntity {
   @Column('varchar', { default: false })
   isConnected!: boolean;
 
-  @Column({ type: 'text', nullable: true })
+  @Column({ type: 'text', nullable: true, transformer: tokenTransformer })
   accessToken?: string;
 
-  @Column({ type: 'text', nullable: true })
+  @Column({ type: 'text', nullable: true, transformer: tokenTransformer })
   refreshToken?: string;
 
   @Column({ type: 'datetime', nullable: true })

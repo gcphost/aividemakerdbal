@@ -105,6 +105,11 @@
       "require": "./dist/utils/timeline-helpers.js",
       "types": "./dist/utils/timeline-helpers.d.ts"
     },
+    "./utils/secure-crypto": {
+      "import": "./dist/utils/secure-crypto.js",
+      "require": "./dist/utils/secure-crypto.js",
+      "types": "./dist/utils/secure-crypto.d.ts"
+    },
     "./utils/*": {
       "import": "./dist/utils/*.js",
       "require": "./dist/utils/*.js",

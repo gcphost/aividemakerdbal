@@ -4,7 +4,6 @@ export declare class Usage extends BaseEntity {
     userId: string;
     date: string;
     videoId?: string;
-    chapterId?: string;
     service: string;
     action: string;
     serviceType?: string;
@@ -22,6 +21,9 @@ export declare class Usage extends BaseEntity {
     outputTokens?: number;
     durationMs?: number;
     fileSize?: number;
+    prompt?: string;
+    response?: string;
+    fileId?: string;
     createdAt: Date;
     updatedAt: Date;
 }
