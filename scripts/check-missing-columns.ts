@@ -8,6 +8,7 @@ async function checkMissingColumns() {
     await dataSource.initialize();
   }
 
+  
   const queryRunner = dataSource.createQueryRunner();
   const missingColumns: Array<{ table: string; column: string; type: string }> = [];
 
