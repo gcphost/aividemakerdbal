@@ -135,8 +135,8 @@ export interface TextTimelineInstance {
 export type TimelineInstance = ImageTimelineInstance | SoundTimelineInstance | BackgroundAudioTimelineInstance | VideoTimelineInstance | TextTimelineInstance;
 export interface TimelineLayer {
     id: string;
-    name: string;
-    type: 'image' | 'sound' | 'backgroundAudio' | 'video' | 'text';
+    label: string;
+    type?: 'image' | 'sound' | 'backgroundAudio' | 'video' | 'text';
     visible: boolean;
     locked: boolean;
     items: TimelineInstance[];

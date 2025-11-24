@@ -155,8 +155,8 @@ export type TimelineInstance =
 
 export interface TimelineLayer {
   id: string;
-  name: string;
-  type: 'image' | 'sound' | 'backgroundAudio' | 'video' | 'text';
+  label: string;
+  type?: 'image' | 'sound' | 'backgroundAudio' | 'video' | 'text';
   visible: boolean;
   locked: boolean;
   items: TimelineInstance[];
