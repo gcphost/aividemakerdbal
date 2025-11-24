@@ -16,6 +16,16 @@ let ProcessEstimate = class ProcessEstimate extends BaseEntity_1.BaseEntity {
     _id;
     userId;
     processType;
+    // Model-level performance estimate fields (for calculateAllEstimates)
+    serviceType; // ServiceType enum: "tts", "image", "ai", etc.
+    provider; // e.g., "openai", "gemini"
+    model; // e.g., "tts-1", "gpt-4o-mini"
+    operation; // e.g., "generateSpeech", "generateImage"
+    timePerUnit; // milliseconds per unit (character, image, etc.)
+    unitType; // UnitType enum: "character", "image", "second", etc.
+    sampleCount; // Number of samples used to calculate this estimate
+    lastCalculated; // When this estimate was last calculated
+    // Per-process estimate fields (existing)
     videoId;
     chapterId;
     fileId;
@@ -43,6 +53,38 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)('varchar', { nullable: true }),
     __metadata("design:type", String)
+], ProcessEstimate.prototype, "serviceType", void 0);
+__decorate([
+    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    __metadata("design:type", String)
+], ProcessEstimate.prototype, "provider", void 0);
+__decorate([
+    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    __metadata("design:type", String)
+], ProcessEstimate.prototype, "model", void 0);
+__decorate([
+    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    __metadata("design:type", String)
+], ProcessEstimate.prototype, "operation", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'decimal', precision: 10, scale: 2, nullable: true }),
+    __metadata("design:type", Number)
+], ProcessEstimate.prototype, "timePerUnit", void 0);
+__decorate([
+    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    __metadata("design:type", String)
+], ProcessEstimate.prototype, "unitType", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'integer', nullable: true }),
+    __metadata("design:type", Number)
+], ProcessEstimate.prototype, "sampleCount", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'datetime', nullable: true }),
+    __metadata("design:type", Date)
+], ProcessEstimate.prototype, "lastCalculated", void 0);
+__decorate([
+    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    __metadata("design:type", String)
 ], ProcessEstimate.prototype, "videoId", void 0);
 __decorate([
     (0, typeorm_1.Column)('varchar', { nullable: true }),
@@ -53,15 +95,15 @@ __decorate([
     __metadata("design:type", String)
 ], ProcessEstimate.prototype, "fileId", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar'),
+    (0, typeorm_1.Column)('varchar', { nullable: true }),
     __metadata("design:type", Number)
 ], ProcessEstimate.prototype, "estimatedDurationMs", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar'),
+    (0, typeorm_1.Column)('varchar', { nullable: true }),
     __metadata("design:type", Number)
 ], ProcessEstimate.prototype, "estimatedCost", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { default: 'USD' }),
+    (0, typeorm_1.Column)('varchar', { default: 'USD', nullable: true }),
     __metadata("design:type", String)
 ], ProcessEstimate.prototype, "currency", void 0);
 __decorate([
