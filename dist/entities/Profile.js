@@ -50,6 +50,8 @@ let Profile = class Profile extends BaseEntity_1.BaseEntity {
     autoGenerateMusic;
     musicProvider;
     soundEffectProvider;
+    embeddingsProvider;
+    embeddingsModel;
     disableImageGeneration;
     channelIntroDurationSeconds;
     channelOutroDurationSeconds;
@@ -209,6 +211,14 @@ __decorate([
     (0, typeorm_1.Column)('varchar', { nullable: true, default: 'elevenlabs' }),
     __metadata("design:type", String)
 ], Profile.prototype, "soundEffectProvider", void 0);
+__decorate([
+    (0, typeorm_1.Column)('varchar', { nullable: true, default: 'openai' }),
+    __metadata("design:type", String)
+], Profile.prototype, "embeddingsProvider", void 0);
+__decorate([
+    (0, typeorm_1.Column)('varchar', { nullable: true, default: 'text-embedding-3-small' }),
+    __metadata("design:type", String)
+], Profile.prototype, "embeddingsModel", void 0);
 __decorate([
     (0, typeorm_1.Column)('integer', { nullable: true }),
     __metadata("design:type", Boolean)

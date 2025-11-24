@@ -37,6 +37,8 @@ export declare class Profile extends BaseEntity {
     autoGenerateMusic?: boolean;
     musicProvider?: string;
     soundEffectProvider?: string;
+    embeddingsProvider?: string;
+    embeddingsModel?: string;
     disableImageGeneration?: boolean;
     channelIntroDurationSeconds?: number;
     channelOutroDurationSeconds?: number;
