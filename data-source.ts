@@ -57,21 +57,24 @@ function createDataSource(): DataSource {
     fs.mkdirSync(dbDir, { recursive: true });
   }
   
-  // Log the database path for debugging (only in development)
-  if (process.env.NODE_ENV !== 'production') {
-    console.log(`[DB] ========== Database Configuration ==========`);
-    console.log(`[DB] process.cwd(): ${process.cwd()}`);
-    console.log(`[DB] Project root: ${projectRoot}`);
-    console.log(`[DB] SQLITE_DB_PATH env var: ${process.env.SQLITE_DB_PATH || 'NOT SET'}`);
-    console.log(`[DB] Final database path: ${dbPath}`);
-    console.log(`[DB] Database file exists: ${fs.existsSync(dbPath)}`);
-    if (fs.existsSync(dbPath)) {
-      const stats = fs.statSync(dbPath);
-      console.log(`[DB] Database file size: ${stats.size} bytes`);
-      console.log(`[DB] Database file modified: ${stats.mtime}`);
-    }
-    console.log(`[DB] ===========================================`);
+  // Check if this is a new database (doesn't exist or is empty)
+  // If new, we'll enable synchronize to create the schema automatically
+  const isNewDatabase = !fs.existsSync(dbPath) || fs.statSync(dbPath).size === 0;
+  
+  // Log the database path for debugging
+  console.log(`[DB] ========== Database Configuration ==========`);
+  console.log(`[DB] process.cwd(): ${process.cwd()}`);
+  console.log(`[DB] Project root: ${projectRoot}`);
+  console.log(`[DB] SQLITE_DB_PATH env var: ${process.env.SQLITE_DB_PATH || 'NOT SET'}`);
+  console.log(`[DB] Final database path: ${dbPath}`);
+  console.log(`[DB] Database file exists: ${fs.existsSync(dbPath)}`);
+  if (fs.existsSync(dbPath)) {
+    const stats = fs.statSync(dbPath);
+    console.log(`[DB] Database file size: ${stats.size} bytes`);
+    console.log(`[DB] Database file modified: ${stats.mtime}`);
   }
+  console.log(`[DB] New database (will sync schema): ${isNewDatabase}`);
+  console.log(`[DB] ===========================================`);
 
   // Migrations are in electron/migrations - try compiled first, then source
   const possibleMigrationsPaths = [
@@ -125,8 +128,9 @@ function createDataSource(): DataSource {
   _appDataSource = new DataSource({
     type: 'better-sqlite3',
     database: dbPath,
-    synchronize: false, // Keep false - use migrations instead
-    migrationsRun: true, // Auto-run pending migrations on startup
+    // Auto-sync schema on first run (new database), otherwise use migrations
+    synchronize: isNewDatabase,
+    migrationsRun: !isNewDatabase, // Only run migrations on existing databases
     logging: ['schema', 'error', 'warn', 'migration'], // Log schema changes, errors, and migrations
     entities: Object.values(entities),
     migrations: [migrationsPattern],
