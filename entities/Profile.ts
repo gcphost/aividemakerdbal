@@ -138,6 +138,9 @@ export class Profile extends BaseEntity {
   @Column({ type: 'text', nullable: true })
   videoSettings?: string;
 
+  @Column({ type: 'text', nullable: true })
+  openaiSettings?: string;
+
   @Column('varchar', { nullable: false, default: 'standard' })
   videoStyle!: "minimal-talking" | "standard" | "heavy-narration";
 
