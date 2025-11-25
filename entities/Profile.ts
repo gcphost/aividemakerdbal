@@ -51,10 +51,10 @@ export class Profile extends BaseEntity {
   @Column('varchar', { nullable: true })
   antiAiPrompt?: string;
 
-  @Column('varchar', { nullable: true, default: 'huggingface' })
+  @Column('varchar', { nullable: true, default: 'openai' })
   imageProvider?: string;
 
-  @Column('varchar', { nullable: true })
+  @Column('varchar', { nullable: true, default: 'openai' })
   ttsProvider?: string;
 
   @Column('integer', { nullable: false, default: 0 })
