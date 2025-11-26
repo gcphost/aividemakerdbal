@@ -43,6 +43,14 @@ let Video = class Video extends BaseEntity_1.BaseEntity {
     introPrompt;
     advertisingPrompt;
     videoStyle;
+    // Video structure controls (nullable = use profile defaults)
+    enableIntro;
+    enableOutro;
+    enableCTA;
+    chapterCount; // null = auto, 1+ = specific count
+    introDurationSeconds;
+    outroDurationSeconds;
+    ctaDurationSeconds;
     timeline;
     userId;
     createdAt;
@@ -50,131 +58,159 @@ let Video = class Video extends BaseEntity_1.BaseEntity {
 };
 exports.Video = Video;
 __decorate([
-    (0, typeorm_1.PrimaryColumn)('varchar'),
+    (0, typeorm_1.PrimaryColumn)("varchar"),
     __metadata("design:type", String)
 ], Video.prototype, "_id", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar'),
+    (0, typeorm_1.Column)("varchar"),
     __metadata("design:type", String)
 ], Video.prototype, "subject", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Video.prototype, "description", void 0);
 __decorate([
-    (0, typeorm_1.Column)('integer', { default: 120 }),
+    (0, typeorm_1.Column)("integer", { default: 120 }),
     __metadata("design:type", Number)
 ], Video.prototype, "length", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { default: 'draft' }),
+    (0, typeorm_1.Column)("varchar", { default: "draft" }),
     __metadata("design:type", String)
 ], Video.prototype, "status", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Video.prototype, "youtubeId", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Video.prototype, "generatedVideoUrl", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Video.prototype, "generatedVideoPublicUrl", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Video.prototype, "generatedVideoFileId", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Video.prototype, "generatedVideoFilePath", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'datetime', nullable: true }),
+    (0, typeorm_1.Column)({ type: "datetime", nullable: true }),
     __metadata("design:type", Date)
 ], Video.prototype, "videoGeneratedAt", void 0);
 __decorate([
-    (0, typeorm_1.Column)('integer', { nullable: true }),
+    (0, typeorm_1.Column)("integer", { nullable: true }),
     __metadata("design:type", Number)
 ], Video.prototype, "videoRenderTimeMs", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Video.prototype, "previewVideoUrl", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Video.prototype, "youtubeTitle", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Video.prototype, "youtubeDescription", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Video.prototype, "thumbnailUrl", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Video.prototype, "thumbnailFileId", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Video.prototype, "originalThumbnailUrl", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Video.prototype, "originalThumbnailFileId", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'text', nullable: true }),
+    (0, typeorm_1.Column)({ type: "text", nullable: true }),
     __metadata("design:type", String)
 ], Video.prototype, "thumbnailDesign", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'text', nullable: true }),
+    (0, typeorm_1.Column)({ type: "text", nullable: true }),
     __metadata("design:type", String)
 ], Video.prototype, "thumbnailVariations", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'text', nullable: true }),
+    (0, typeorm_1.Column)({ type: "text", nullable: true }),
     __metadata("design:type", String)
 ], Video.prototype, "tags", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Video.prototype, "categoryId", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { default: 'unlisted' }),
+    (0, typeorm_1.Column)("varchar", { default: "unlisted" }),
     __metadata("design:type", String)
 ], Video.prototype, "privacyStatus", void 0);
 __decorate([
-    (0, typeorm_1.Column)('integer', { default: 0 }),
+    (0, typeorm_1.Column)("integer", { default: 0 }),
     __metadata("design:type", Boolean)
 ], Video.prototype, "madeForKids", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Video.prototype, "profileId", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Video.prototype, "channelId", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Video.prototype, "introPrompt", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Video.prototype, "advertisingPrompt", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { default: 'standard' }),
+    (0, typeorm_1.Column)("varchar", { default: "standard" }),
     __metadata("design:type", String)
 ], Video.prototype, "videoStyle", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'text', nullable: true }),
+    (0, typeorm_1.Column)("integer", { nullable: true }),
+    __metadata("design:type", Boolean)
+], Video.prototype, "enableIntro", void 0);
+__decorate([
+    (0, typeorm_1.Column)("integer", { nullable: true }),
+    __metadata("design:type", Boolean)
+], Video.prototype, "enableOutro", void 0);
+__decorate([
+    (0, typeorm_1.Column)("integer", { nullable: true }),
+    __metadata("design:type", Boolean)
+], Video.prototype, "enableCTA", void 0);
+__decorate([
+    (0, typeorm_1.Column)("integer", { nullable: true }),
+    __metadata("design:type", Number)
+], Video.prototype, "chapterCount", void 0);
+__decorate([
+    (0, typeorm_1.Column)("integer", { nullable: true }),
+    __metadata("design:type", Number)
+], Video.prototype, "introDurationSeconds", void 0);
+__decorate([
+    (0, typeorm_1.Column)("integer", { nullable: true }),
+    __metadata("design:type", Number)
+], Video.prototype, "outroDurationSeconds", void 0);
+__decorate([
+    (0, typeorm_1.Column)("integer", { nullable: true }),
+    __metadata("design:type", Number)
+], Video.prototype, "ctaDurationSeconds", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: "text", nullable: true }),
     __metadata("design:type", String)
 ], Video.prototype, "timeline", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar'),
+    (0, typeorm_1.Column)("varchar"),
     __metadata("design:type", String)
 ], Video.prototype, "userId", void 0);
 __decorate([
@@ -186,6 +222,6 @@ __decorate([
     __metadata("design:type", Date)
 ], Video.prototype, "updatedAt", void 0);
 exports.Video = Video = __decorate([
-    (0, typeorm_1.Entity)('videos')
+    (0, typeorm_1.Entity)("videos")
 ], Video);
 //# sourceMappingURL=Video.js.map

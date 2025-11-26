@@ -52,12 +52,15 @@ let Profile = class Profile extends BaseEntity_1.BaseEntity {
     soundEffectProvider;
     embeddingsProvider;
     embeddingsModel;
+    scriptProvider;
+    scriptSettings;
     disableImageGeneration;
     channelIntroDurationSeconds;
     channelOutroDurationSeconds;
     wordsPerMinute;
     videoProvider;
     videoSettings;
+    openaiSettings;
     videoStyle;
     createdAt;
     updatedAt;
@@ -128,11 +131,11 @@ __decorate([
     __metadata("design:type", String)
 ], Profile.prototype, "antiAiPrompt", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true, default: 'huggingface' }),
+    (0, typeorm_1.Column)('varchar', { nullable: true, default: 'openai' }),
     __metadata("design:type", String)
 ], Profile.prototype, "imageProvider", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)('varchar', { nullable: true, default: 'openai' }),
     __metadata("design:type", String)
 ], Profile.prototype, "ttsProvider", void 0);
 __decorate([
@@ -220,6 +223,14 @@ __decorate([
     __metadata("design:type", String)
 ], Profile.prototype, "embeddingsModel", void 0);
 __decorate([
+    (0, typeorm_1.Column)('varchar', { nullable: true, default: 'openai' }),
+    __metadata("design:type", String)
+], Profile.prototype, "scriptProvider", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'text', nullable: true }),
+    __metadata("design:type", String)
+], Profile.prototype, "scriptSettings", void 0);
+__decorate([
     (0, typeorm_1.Column)('integer', { nullable: true }),
     __metadata("design:type", Boolean)
 ], Profile.prototype, "disableImageGeneration", void 0);
@@ -243,6 +254,10 @@ __decorate([
     (0, typeorm_1.Column)({ type: 'text', nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "videoSettings", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'text', nullable: true }),
+    __metadata("design:type", String)
+], Profile.prototype, "openaiSettings", void 0);
 __decorate([
     (0, typeorm_1.Column)('varchar', { nullable: false, default: 'standard' }),
     __metadata("design:type", String)

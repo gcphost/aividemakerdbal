@@ -1,4 +1,4 @@
-import { BaseEntity } from './BaseEntity';
+import { BaseEntity } from "./BaseEntity";
 export type VideoStatus = "draft" | "processing" | "ready" | "published";
 export declare class Video extends BaseEntity {
     _id: string;
@@ -31,6 +31,13 @@ export declare class Video extends BaseEntity {
     introPrompt?: string;
     advertisingPrompt?: string;
     videoStyle: "minimal-talking" | "standard" | "heavy-narration";
+    enableIntro?: boolean;
+    enableOutro?: boolean;
+    enableCTA?: boolean;
+    chapterCount?: number;
+    introDurationSeconds?: number;
+    outroDurationSeconds?: number;
+    ctaDurationSeconds?: number;
     timeline?: string;
     userId: string;
     createdAt: Date;

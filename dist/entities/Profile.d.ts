@@ -39,12 +39,15 @@ export declare class Profile extends BaseEntity {
     soundEffectProvider?: string;
     embeddingsProvider?: string;
     embeddingsModel?: string;
+    scriptProvider?: string;
+    scriptSettings?: string;
     disableImageGeneration?: boolean;
     channelIntroDurationSeconds?: number;
     channelOutroDurationSeconds?: number;
     wordsPerMinute?: number;
     videoProvider: string;
     videoSettings?: string;
+    openaiSettings?: string;
     videoStyle: "minimal-talking" | "standard" | "heavy-narration";
     createdAt: Date;
     updatedAt: Date;
