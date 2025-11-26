@@ -29,6 +29,13 @@ export declare class Video {
     introPrompt?: string;
     advertisingPrompt?: string;
     videoStyle: "minimal-talking" | "standard" | "heavy-narration";
+    enableIntro?: boolean;
+    enableOutro?: boolean;
+    enableCTA?: boolean;
+    chapterCount?: number;
+    introDurationSeconds?: number;
+    outroDurationSeconds?: number;
+    ctaDurationSeconds?: number;
     timeline?: string;
     userId: string;
     createdAt: Date;

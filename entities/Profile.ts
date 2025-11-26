@@ -120,6 +120,12 @@ export class Profile extends BaseEntity {
   @Column('varchar', { nullable: true, default: 'text-embedding-3-small' })
   embeddingsModel?: string;
 
+  @Column('varchar', { nullable: true, default: 'openai' })
+  scriptProvider?: string;
+
+  @Column({ type: 'text', nullable: true })
+  scriptSettings?: string;
+
   @Column('integer', { nullable: true })
   disableImageGeneration?: boolean;
 
