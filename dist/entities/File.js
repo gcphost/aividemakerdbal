@@ -35,6 +35,12 @@ let File = class File extends BaseEntity_1.BaseEntity {
     vectorEmbedding;
     versions;
     references;
+    // Versioning fields
+    versionNumber;
+    parentVersionId;
+    versionChainId;
+    isCurrentVersion;
+    versionChange;
     isPublic;
     expiresAt;
     lastAccessedAt;
@@ -130,6 +136,26 @@ __decorate([
     (0, typeorm_1.Column)({ type: 'text', nullable: true }),
     __metadata("design:type", String)
 ], File.prototype, "references", void 0);
+__decorate([
+    (0, typeorm_1.Column)('integer', { nullable: true, default: 1 }),
+    __metadata("design:type", Number)
+], File.prototype, "versionNumber", void 0);
+__decorate([
+    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    __metadata("design:type", String)
+], File.prototype, "parentVersionId", void 0);
+__decorate([
+    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    __metadata("design:type", String)
+], File.prototype, "versionChainId", void 0);
+__decorate([
+    (0, typeorm_1.Column)('boolean', { nullable: true, default: true }),
+    __metadata("design:type", Boolean)
+], File.prototype, "isCurrentVersion", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'text', nullable: true }),
+    __metadata("design:type", String)
+], File.prototype, "versionChange", void 0);
 __decorate([
     (0, typeorm_1.Column)('varchar', { default: false }),
     __metadata("design:type", Boolean)

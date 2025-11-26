@@ -69,6 +69,22 @@ export class File extends BaseEntity {
   @Column({ type: 'text', nullable: true })
   references?: string;
 
+  // Versioning fields
+  @Column('integer', { nullable: true, default: 1 })
+  versionNumber?: number;
+
+  @Column('varchar', { nullable: true })
+  parentVersionId?: string;
+
+  @Column('varchar', { nullable: true })
+  versionChainId?: string;
+
+  @Column('boolean', { nullable: true, default: true })
+  isCurrentVersion?: boolean;
+
+  @Column({ type: 'text', nullable: true })
+  versionChange?: string;
+
   @Column('varchar', { default: false })
   isPublic!: boolean;
 

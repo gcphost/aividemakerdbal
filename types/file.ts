@@ -14,17 +14,14 @@ export interface FileMetadata {
   [key: string]: any;
 }
 
-export interface IFile extends Omit<File, 'metadata' | 'references'> {
+export interface IFile extends Omit<File, 'metadata' | 'references' | 'versionChange'> {
   references?: FileReference[] | string; // Can be FileReference[] or JSON string
   metadata?: FileMetadata | string; // Can be FileMetadata object or JSON string
   hash?: string;
   filePath?: string;
   fileType?: string;
-  versionNumber?: number;
-  parentVersionId?: string | null;
+  // Override versionChange to be parsed object instead of string
   versionChange?: VersionChange | null;
-  isCurrentVersion?: boolean;
-  versionChainId?: string | null;
 }
 
 export interface VersionChange {

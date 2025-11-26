@@ -22,6 +22,11 @@ export declare class File extends BaseEntity {
     vectorEmbedding?: string;
     versions?: string;
     references?: string;
+    versionNumber?: number;
+    parentVersionId?: string;
+    versionChainId?: string;
+    isCurrentVersion?: boolean;
+    versionChange?: string;
     isPublic: boolean;
     expiresAt?: Date;
     lastAccessedAt?: Date;

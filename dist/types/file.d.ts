@@ -9,17 +9,13 @@ export interface FileReference {
 export interface FileMetadata {
     [key: string]: any;
 }
-export interface IFile extends Omit<File, 'metadata' | 'references'> {
+export interface IFile extends Omit<File, 'metadata' | 'references' | 'versionChange'> {
     references?: FileReference[] | string;
     metadata?: FileMetadata | string;
     hash?: string;
     filePath?: string;
     fileType?: string;
-    versionNumber?: number;
-    parentVersionId?: string | null;
     versionChange?: VersionChange | null;
-    isCurrentVersion?: boolean;
-    versionChainId?: string | null;
 }
 export interface VersionChange {
     changeType: 'created' | 'updated' | 'reverted';
