@@ -167,6 +167,7 @@ export interface TimelineData {
   duration: number;
   endTime?: number;
   videoId?: string;
+  text?: string;
   layers: TimelineLayer[];
   sources: {
     images: ImageSource[];
