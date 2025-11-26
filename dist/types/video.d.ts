@@ -144,6 +144,7 @@ export interface TimelineLayer {
 }
 export interface TimelineData {
     duration: number;
+    endTime?: number;
     layers: TimelineLayer[];
     sources: {
         images: ImageSource[];
