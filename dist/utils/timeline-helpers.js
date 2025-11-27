@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.createDefaultTimelineSources = createDefaultTimelineSources;
 exports.createDefaultTimelineLayer = createDefaultTimelineLayer;
 exports.createDefaultTimelineData = createDefaultTimelineData;
+exports.parseTimeline = parseTimeline;
 /**
  * Creates a default timeline sources object with all source arrays initialized to empty arrays.
  * This ensures consistency across all handlers and prevents missing arrays.
@@ -47,5 +48,25 @@ function createDefaultTimelineData() {
         layers: [],
         sources: createDefaultTimelineSources(),
     };
+}
+/**
+ * Parses a timeline that may be stored as a JSON string or already as an object.
+ * Handles the common pattern where timeline data may come from DB as string or object.
+ *
+ * @param timeline - The timeline data, either as a JSON string or TimelineData object
+ * @returns Parsed TimelineData object, or null if input is null/undefined/invalid
+ */
+function parseTimeline(timeline) {
+    if (!timeline)
+        return null;
+    if (typeof timeline === 'string') {
+        try {
+            return JSON.parse(timeline);
+        }
+        catch {
+            return null;
+        }
+    }
+    return timeline;
 }
 //# sourceMappingURL=timeline-helpers.js.map

@@ -58,3 +58,22 @@ export function createDefaultTimelineData(): TimelineData {
   };
 }
 
+/**
+ * Parses a timeline that may be stored as a JSON string or already as an object.
+ * Handles the common pattern where timeline data may come from DB as string or object.
+ * 
+ * @param timeline - The timeline data, either as a JSON string or TimelineData object
+ * @returns Parsed TimelineData object, or null if input is null/undefined/invalid
+ */
+export function parseTimeline(timeline: string | TimelineData | null | undefined): TimelineData | null {
+  if (!timeline) return null;
+  if (typeof timeline === 'string') {
+    try {
+      return JSON.parse(timeline);
+    } catch {
+      return null;
+    }
+  }
+  return timeline;
+}
+
