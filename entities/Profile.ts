@@ -129,6 +129,12 @@ export class Profile extends BaseEntity {
   @Column('integer', { nullable: true })
   disableImageGeneration?: boolean;
 
+  @Column('integer', { nullable: true })
+  disableMusicGeneration?: boolean;
+
+  @Column('integer', { nullable: true })
+  disableSoundGeneration?: boolean;
+
   @Column('float', { nullable: true, default: 120 })
   channelIntroDurationSeconds?: number;
 

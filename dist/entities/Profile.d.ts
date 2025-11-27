@@ -42,6 +42,8 @@ export declare class Profile extends BaseEntity {
     scriptProvider?: string;
     scriptSettings?: string;
     disableImageGeneration?: boolean;
+    disableMusicGeneration?: boolean;
+    disableSoundGeneration?: boolean;
     channelIntroDurationSeconds?: number;
     channelOutroDurationSeconds?: number;
     wordsPerMinute?: number;

@@ -55,6 +55,8 @@ let Profile = class Profile extends BaseEntity_1.BaseEntity {
     scriptProvider;
     scriptSettings;
     disableImageGeneration;
+    disableMusicGeneration;
+    disableSoundGeneration;
     channelIntroDurationSeconds;
     channelOutroDurationSeconds;
     wordsPerMinute;
@@ -234,6 +236,14 @@ __decorate([
     (0, typeorm_1.Column)('integer', { nullable: true }),
     __metadata("design:type", Boolean)
 ], Profile.prototype, "disableImageGeneration", void 0);
+__decorate([
+    (0, typeorm_1.Column)('integer', { nullable: true }),
+    __metadata("design:type", Boolean)
+], Profile.prototype, "disableMusicGeneration", void 0);
+__decorate([
+    (0, typeorm_1.Column)('integer', { nullable: true }),
+    __metadata("design:type", Boolean)
+], Profile.prototype, "disableSoundGeneration", void 0);
 __decorate([
     (0, typeorm_1.Column)('float', { nullable: true, default: 120 }),
     __metadata("design:type", Number)
