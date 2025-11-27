@@ -1,13 +1,13 @@
 // Process-related types
-import { Process } from '../entities/Process';
-import { ProcessEstimate } from '../entities/ProcessEstimate';
+import { Process } from "../entities/Process";
+import { ProcessEstimate } from "../entities/ProcessEstimate";
 
 export type IProcess = Process;
 export type NewProcess = Partial<Process>;
 
 export type IProcessEstimate = ProcessEstimate;
 
-export type ServiceType = 
+export type ServiceType =
   | "video-generation"
   | "image-generation"
   | "audio-generation"
@@ -19,11 +19,4 @@ export type ServiceType =
   | "music-generation"
   | "video-extension";
 
-export type UnitType = 
-  | "character"
-  | "token"
-  | "image"
-  | "second"
-  | "minute"
-  | "unit";
-
+export type UnitType = "character" | "token" | "image" | "second" | "minute" | "unit";
