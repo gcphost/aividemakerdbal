@@ -16,6 +16,7 @@ export interface ImageSource {
   generatedImageUrl?: string;
   generatedImageFileId?: string;
   resolvedUrl?: string;
+  imageUrl?: string;
   isReused?: boolean;
   reusedFrom?: {
     videoSubject?: string;
@@ -42,6 +43,7 @@ export interface SoundSource {
 export interface BackgroundAudioSource {
   id: string;
   fileId?: string;
+  audioFileId?: string;
   name: string;
   title?: string;
   searchTerm?: string;
@@ -52,6 +54,8 @@ export interface BackgroundAudioSource {
   tempo?: string;
   instrumental?: boolean;
   audioUrl?: string;
+  imageUrl?: string;
+  waveformPeaks?: number[];
   volume?: number;
   duration?: number;
   loop?: boolean;
@@ -62,7 +66,7 @@ export interface VideoSource {
   prompt: string;
   title?: string;
   searchTerm?: string;
-  generatedVideoFileId?: string;
+  generatedVideoFileId?: string | number;
   generatedVideoUrl?: string;
   resolvedUrl?: string;
   duration?: number;
