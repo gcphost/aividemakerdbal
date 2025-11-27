@@ -33,6 +33,7 @@ export declare class Profile extends BaseEntity {
     chapterDelaySeconds?: number;
     chapterGapDurationSeconds?: number;
     chunkDelaySeconds?: number;
+    autoGenerateImages?: boolean;
     autoGenerateSounds?: boolean;
     autoGenerateMusic?: boolean;
     musicProvider?: string;

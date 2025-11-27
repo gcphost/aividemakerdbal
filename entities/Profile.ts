@@ -103,6 +103,9 @@ export class Profile extends BaseEntity {
   chunkDelaySeconds?: number;
 
   @Column('integer', { nullable: true })
+  autoGenerateImages?: boolean;
+
+  @Column('integer', { nullable: true })
   autoGenerateSounds?: boolean;
 
   @Column('integer', { nullable: true })

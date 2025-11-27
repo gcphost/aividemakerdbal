@@ -46,6 +46,7 @@ let Profile = class Profile extends BaseEntity_1.BaseEntity {
     chapterDelaySeconds;
     chapterGapDurationSeconds;
     chunkDelaySeconds;
+    autoGenerateImages;
     autoGenerateSounds;
     autoGenerateMusic;
     musicProvider;
@@ -200,6 +201,10 @@ __decorate([
     (0, typeorm_1.Column)('float', { nullable: true, default: 1.0 }),
     __metadata("design:type", Number)
 ], Profile.prototype, "chunkDelaySeconds", void 0);
+__decorate([
+    (0, typeorm_1.Column)('integer', { nullable: true }),
+    __metadata("design:type", Boolean)
+], Profile.prototype, "autoGenerateImages", void 0);
 __decorate([
     (0, typeorm_1.Column)('integer', { nullable: true }),
     __metadata("design:type", Boolean)
