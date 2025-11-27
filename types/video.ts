@@ -1,8 +1,8 @@
 // Video-related types and interfaces
-import { Video } from '../entities/Video';
+import { Video } from "../entities/Video";
 
 export type VideoType = typeof Video.prototype;
-export type NewVideo = Omit<VideoType, '_id' | 'createdAt' | 'updatedAt'>;
+export type NewVideo = Omit<VideoType, "_id" | "createdAt" | "updatedAt">;
 
 export type VideoStatus = "draft" | "processing" | "ready" | "published";
 
@@ -29,6 +29,7 @@ export interface SoundSource {
   id: string;
   prompt: string;
   title?: string;
+  description?: string; // User-friendly summary of the sound
   searchTerm?: string;
   type: string;
   audioUrl?: string;
@@ -78,7 +79,7 @@ export interface VideoSource {
 }
 
 export interface ImageTimelineInstance {
-  type: 'image';
+  type: "image";
   id?: string;
   sourceId: string;
   startTime: number;
@@ -97,7 +98,7 @@ export interface ImageTimelineInstance {
 }
 
 export interface SoundTimelineInstance {
-  type: 'sound';
+  type: "sound";
   id?: string;
   sourceId: string;
   startTime: number;
@@ -107,7 +108,7 @@ export interface SoundTimelineInstance {
 }
 
 export interface BackgroundAudioTimelineInstance {
-  type: 'backgroundAudio';
+  type: "backgroundAudio";
   id?: string;
   sourceId: string;
   startTime: number;
@@ -117,7 +118,7 @@ export interface BackgroundAudioTimelineInstance {
 }
 
 export interface VideoTimelineInstance {
-  type: 'video';
+  type: "video";
   id?: string;
   sourceId: string;
   startTime: number;
@@ -126,7 +127,7 @@ export interface VideoTimelineInstance {
 }
 
 export interface TextTimelineInstance {
-  type: 'text';
+  type: "text";
   id?: string;
   content: string;
   startTime: number;
@@ -136,7 +137,7 @@ export interface TextTimelineInstance {
     fontFamily?: string;
     color?: string;
     fontWeight?: string;
-    textAlign?: 'left' | 'center' | 'right';
+    textAlign?: "left" | "center" | "right";
     x?: number;
     y?: number;
     width?: number;
@@ -157,7 +158,7 @@ export type TimelineInstance =
 export interface TimelineLayer {
   id: string;
   label: string;
-  type?: 'image' | 'sound' | 'backgroundAudio' | 'video' | 'text';
+  type?: "image" | "sound" | "backgroundAudio" | "video" | "text";
   visible: boolean;
   locked: boolean;
   items: TimelineInstance[];
@@ -176,4 +177,3 @@ export interface TimelineData {
     videos: VideoSource[];
   };
 }
-
