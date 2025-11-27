@@ -1,5 +1,5 @@
-import { Process } from '../entities/Process';
-import { ProcessEstimate } from '../entities/ProcessEstimate';
+import { Process } from "../entities/Process";
+import { ProcessEstimate } from "../entities/ProcessEstimate";
 export type IProcess = Process;
 export type NewProcess = Partial<Process>;
 export type IProcessEstimate = ProcessEstimate;

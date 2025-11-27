@@ -23,7 +23,6 @@ export interface ImageSource {
     chapterTitle?: string;
     similarity?: number;
   };
-  duration?: number;
 }
 
 export interface SoundSource {
