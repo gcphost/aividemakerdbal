@@ -7,23 +7,18 @@ class AddAutoGenerateColumnsToProfile1764800000000 {
         // Add autoGenerateImages column if it doesn't exist
         const profileTable = await queryRunner.getTable('profiles');
         const hasAutoGenerateImages = profileTable?.columns.find(column => column.name === 'autoGenerateImages');
-        
         if (!hasAutoGenerateImages) {
             await queryRunner.query(`ALTER TABLE "profiles" ADD COLUMN "autoGenerateImages" integer`);
             console.log('[Migration] Added autoGenerateImages column to profiles table');
         }
-        
         // Add disableMusicGeneration column if it doesn't exist  
         const hasDisableMusicGeneration = profileTable?.columns.find(column => column.name === 'disableMusicGeneration');
-        
         if (!hasDisableMusicGeneration) {
             await queryRunner.query(`ALTER TABLE "profiles" ADD COLUMN "disableMusicGeneration" integer`);
             console.log('[Migration] Added disableMusicGeneration column to profiles table');
         }
-        
         // Add disableSoundGeneration column if it doesn't exist
         const hasDisableSoundGeneration = profileTable?.columns.find(column => column.name === 'disableSoundGeneration');
-        
         if (!hasDisableSoundGeneration) {
             await queryRunner.query(`ALTER TABLE "profiles" ADD COLUMN "disableSoundGeneration" integer`);
             console.log('[Migration] Added disableSoundGeneration column to profiles table');
@@ -36,4 +31,4 @@ class AddAutoGenerateColumnsToProfile1764800000000 {
     }
 }
 exports.AddAutoGenerateColumnsToProfile1764800000000 = AddAutoGenerateColumnsToProfile1764800000000;
-
+//# sourceMappingURL=1764800000000-AddAutoGenerateColumnsToProfile.js.map

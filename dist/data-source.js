@@ -101,10 +101,15 @@ function createDataSource() {
     }
     console.log(`[DB] New database (will sync schema): ${isNewDatabase}`);
     console.log(`[DB] ===========================================`);
-    // Migrations are in electron/migrations - try compiled first, then source
+    // Migrations are in shared-db/migrations - try compiled first, then source
+    // Also check electron/migrations for backward compatibility
     const possibleMigrationsPaths = [
-        path.join(projectRoot, "electron", "dist", "migrations"), // Compiled JS
-        path.join(projectRoot, "electron", "migrations"), // Source TS
+        path.join(__dirname, "dist", "migrations"), // Compiled JS in shared-db/dist/migrations
+        path.join(__dirname, "migrations"), // Source TS in shared-db/migrations
+        path.join(projectRoot, "shared-db", "dist", "migrations"), // Compiled JS (when running from project root)
+        path.join(projectRoot, "shared-db", "migrations"), // Source TS (when running from project root)
+        path.join(projectRoot, "electron", "dist", "migrations"), // Compiled JS (backward compatibility)
+        path.join(projectRoot, "electron", "migrations"), // Source TS (backward compatibility)
     ];
     let migrationsDir;
     let migrationsPattern;

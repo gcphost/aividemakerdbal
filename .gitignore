@@ -9,3 +9,25 @@ node_modules/
 # dist/
 build/
 
+# Compiled files in source directories (should only be in dist/)
+entities/**/*.js
+entities/**/*.d.ts
+entities/**/*.js.map
+entities/**/*.d.ts.map
+types/**/*.js
+types/**/*.d.ts
+types/**/*.js.map
+types/**/*.d.ts.map
+utils/**/*.js
+utils/**/*.d.ts
+utils/**/*.js.map
+utils/**/*.d.ts.map
+data-source.js
+data-source.d.ts
+data-source.js.map
+data-source.d.ts.map
+run-migrations.js
+run-migrations.d.ts
+run-migrations.js.map
+run-migrations.d.ts.map
+
