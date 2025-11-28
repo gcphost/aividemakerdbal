@@ -10,6 +10,7 @@ export interface ImageSource {
     searchTerm?: string;
     generatedImageUrl?: string;
     generatedImageFileId?: string;
+    fileId?: string;
     resolvedUrl?: string;
     imageUrl?: string;
     isReused?: boolean;
@@ -80,6 +81,7 @@ export interface ImageTimelineInstance {
     endTime: number;
     generatedImageUrl?: string;
     generatedImageFileId?: string;
+    fileId?: string;
     resolvedUrl?: string;
     kenBurnsConfig?: {
         startScale?: number;

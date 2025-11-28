@@ -15,6 +15,7 @@ export interface ImageSource {
   searchTerm?: string;
   generatedImageUrl?: string;
   generatedImageFileId?: string;
+  fileId?: string;
   resolvedUrl?: string;
   imageUrl?: string;
   isReused?: boolean;
