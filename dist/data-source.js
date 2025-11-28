@@ -164,10 +164,16 @@ function createDataSource() {
                 try {
                     // Try to load sqlite-vec extension if available
                     // This is optional - if the extension isn't available, we'll continue without it
-                    // Use dynamic import with string to avoid TypeScript checking for the module
-                    // sqlite-vec may not be installed in all packages (e.g., electron)
-                    const sqliteVecModule = 'sqlite-vec';
-                    const sqliteVec = await Promise.resolve(`${sqliteVecModule}`).then(s => __importStar(require(s))).catch(() => null);
+                    // Use require instead of import for better compatibility with Next.js and Electron
+                    let sqliteVec = null;
+                    try {
+                        // Try to require sqlite-vec - this will fail gracefully if not available
+                        sqliteVec = require('sqlite-vec');
+                    }
+                    catch (requireError) {
+                        // Module not available - this is OK
+                        sqliteVec = null;
+                    }
                     if (sqliteVec) {
                         if (db.loadExtension && typeof db.loadExtension === 'function') {
                             if (typeof sqliteVec.getLoadablePath === 'function') {
