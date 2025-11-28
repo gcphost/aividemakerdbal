@@ -76,12 +76,10 @@ function createDataSource(): DataSource {
   console.log(`[DB] New database (will sync schema): ${isNewDatabase}`);
   console.log(`[DB] ===========================================`);
 
-  // Migrations are in electron/migrations
-  // For Next.js dev/build: ALWAYS use source TS files (electron/migrations/*.ts)
-  // For Electron: use compiled JS files (electron/dist/migrations/*.js)
-  // Priority: source TS files first, then compiled JS
+  // Migrations are in electron/migrations - try compiled first, then source
   const possibleMigrationsPaths = [
-    path.join(projectRoot, "electron", "migrations"), // Source TS - works in Next.js
+    path.join(projectRoot, "electron", "dist", "migrations"), // Compiled JS
+    path.join(projectRoot, "electron", "migrations"), // Source TS
   ];
 
   let migrationsDir: string;
@@ -146,16 +144,10 @@ function createDataSource(): DataSource {
         try {
           // Try to load sqlite-vec extension if available
           // This is optional - if the extension isn't available, we'll continue without it
-          // Use require instead of import for better compatibility with Next.js and Electron
-          let sqliteVec: any = null;
-          try {
-            // Try to require sqlite-vec - this will fail gracefully if not available
-            sqliteVec = require("sqlite-vec");
-          } catch (requireError) {
-            // Module not available - this is OK
-            sqliteVec = null;
-          }
-
+          // Use dynamic import with string to avoid TypeScript checking for the module
+          // sqlite-vec may not be installed in all packages (e.g., electron)
+          const sqliteVecModule = "sqlite-vec";
+          const sqliteVec = await import(/* @ts-ignore */ sqliteVecModule).catch(() => null);
           if (sqliteVec) {
             if (db.loadExtension && typeof db.loadExtension === "function") {
               if (typeof sqliteVec.getLoadablePath === "function") {
