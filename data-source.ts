@@ -76,11 +76,19 @@ function createDataSource(): DataSource {
   console.log(`[DB] New database (will sync schema): ${isNewDatabase}`);
   console.log(`[DB] ===========================================`);
 
-  // Migrations are in electron/migrations - try compiled first, then source
-  const possibleMigrationsPaths = [
-    path.join(projectRoot, "electron", "dist", "migrations"), // Compiled JS
-    path.join(projectRoot, "electron", "migrations"), // Source TS
-  ];
+  // Migrations are in electron/migrations
+  // For Next.js dev/build: use source TS files (electron/migrations/*.ts)
+  // For Electron: use compiled JS files (electron/dist/migrations/*.js)
+  const isElectron = process.versions && process.versions.electron;
+  const possibleMigrationsPaths = isElectron
+    ? [
+        path.join(projectRoot, "electron", "dist", "migrations"), // Compiled JS for Electron
+        path.join(projectRoot, "electron", "migrations"), // Fallback to source
+      ]
+    : [
+        path.join(projectRoot, "electron", "migrations"), // Source TS for Next.js
+        path.join(projectRoot, "electron", "dist", "migrations"), // Fallback to compiled
+      ];
 
   let migrationsDir: string;
   let migrationsPattern: string;

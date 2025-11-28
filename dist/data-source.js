@@ -54,8 +54,8 @@ function createDataSource() {
     let depth = 0;
     while (!found && depth < maxDepth) {
         // Check if this is the workspace root (has data/sqlite directory)
-        const hasDataSqliteDir = fs.existsSync(path.join(currentPath, 'data', 'sqlite'));
-        const hasDataDir = fs.existsSync(path.join(currentPath, 'data'));
+        const hasDataSqliteDir = fs.existsSync(path.join(currentPath, "data", "sqlite"));
+        const hasDataDir = fs.existsSync(path.join(currentPath, "data"));
         // Primary indicator: data/sqlite directory exists (where the database should be)
         // Secondary: data directory exists (workspace structure)
         if (hasDataSqliteDir || hasDataDir) {
@@ -78,7 +78,7 @@ function createDataSource() {
     }
     const dbPath = process.env.SQLITE_DB_PATH
         ? path.resolve(process.env.SQLITE_DB_PATH)
-        : path.resolve(projectRoot, 'data', 'sqlite', 'database.db');
+        : path.resolve(projectRoot, "data", "sqlite", "database.db");
     // Ensure the database directory exists
     const dbDir = path.dirname(dbPath);
     if (!fs.existsSync(dbDir)) {
@@ -91,7 +91,7 @@ function createDataSource() {
     console.log(`[DB] ========== Database Configuration ==========`);
     console.log(`[DB] process.cwd(): ${process.cwd()}`);
     console.log(`[DB] Project root: ${projectRoot}`);
-    console.log(`[DB] SQLITE_DB_PATH env var: ${process.env.SQLITE_DB_PATH || 'NOT SET'}`);
+    console.log(`[DB] SQLITE_DB_PATH env var: ${process.env.SQLITE_DB_PATH || "NOT SET"}`);
     console.log(`[DB] Final database path: ${dbPath}`);
     console.log(`[DB] Database file exists: ${fs.existsSync(dbPath)}`);
     if (fs.existsSync(dbPath)) {
@@ -101,11 +101,19 @@ function createDataSource() {
     }
     console.log(`[DB] New database (will sync schema): ${isNewDatabase}`);
     console.log(`[DB] ===========================================`);
-    // Migrations are in electron/migrations - try compiled first, then source
-    const possibleMigrationsPaths = [
-        path.join(projectRoot, 'electron', 'dist', 'migrations'), // Compiled JS
-        path.join(projectRoot, 'electron', 'migrations'), // Source TS
-    ];
+    // Migrations are in electron/migrations
+    // For Next.js dev/build: use source TS files (electron/migrations/*.ts)
+    // For Electron: use compiled JS files (electron/dist/migrations/*.js)
+    const isElectron = process.versions && process.versions.electron;
+    const possibleMigrationsPaths = isElectron
+        ? [
+            path.join(projectRoot, "electron", "dist", "migrations"), // Compiled JS for Electron
+            path.join(projectRoot, "electron", "migrations"), // Fallback to source
+        ]
+        : [
+            path.join(projectRoot, "electron", "migrations"), // Source TS for Next.js
+            path.join(projectRoot, "electron", "dist", "migrations"), // Fallback to compiled
+        ];
     let migrationsDir;
     let migrationsPattern;
     // Find the first existing migrations directory
@@ -119,41 +127,43 @@ function createDataSource() {
     if (foundMigrationsDir) {
         migrationsDir = foundMigrationsDir;
         // Check if we have .js or .ts files
-        const hasJsFiles = fs.readdirSync(migrationsDir).some(f => f.endsWith('.js'));
-        const hasTsFiles = fs.readdirSync(migrationsDir).some(f => f.endsWith('.ts'));
+        const hasJsFiles = fs.readdirSync(migrationsDir).some(f => f.endsWith(".js"));
+        const hasTsFiles = fs.readdirSync(migrationsDir).some(f => f.endsWith(".ts"));
         if (hasJsFiles) {
-            migrationsPattern = path.join(migrationsDir, '*.js');
+            migrationsPattern = path.join(migrationsDir, "*.js");
         }
         else if (hasTsFiles) {
-            migrationsPattern = path.join(migrationsDir, '*.ts');
+            migrationsPattern = path.join(migrationsDir, "*.ts");
         }
         else {
             // Default to .js if we can't determine
-            migrationsPattern = path.join(migrationsDir, '*.js');
+            migrationsPattern = path.join(migrationsDir, "*.js");
         }
     }
     else {
         // Fallback: use electron/migrations
-        migrationsDir = path.join(projectRoot, 'electron', 'migrations');
-        migrationsPattern = path.join(migrationsDir, '*.ts');
+        migrationsDir = path.join(projectRoot, "electron", "migrations");
+        migrationsPattern = path.join(migrationsDir, "*.ts");
     }
     // Log migration path for debugging
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== "production") {
         console.log(`[DB] Migrations directory: ${migrationsDir}`);
         console.log(`[DB] Migrations pattern: ${migrationsPattern}`);
         console.log(`[DB] Migrations directory exists: ${fs.existsSync(migrationsDir)}`);
         if (fs.existsSync(migrationsDir)) {
-            const files = fs.readdirSync(migrationsDir).filter(f => f.endsWith('.ts') || f.endsWith('.js'));
+            const files = fs
+                .readdirSync(migrationsDir)
+                .filter(f => f.endsWith(".ts") || f.endsWith(".js"));
             console.log(`[DB] Found ${files.length} migration file(s)`);
         }
     }
     _appDataSource = new typeorm_1.DataSource({
-        type: 'better-sqlite3',
+        type: "better-sqlite3",
         database: dbPath,
         // Auto-sync schema on first run (new database), otherwise use migrations
         synchronize: isNewDatabase,
         migrationsRun: !isNewDatabase, // Only run migrations on existing databases
-        logging: ['schema', 'error', 'warn', 'migration'], // Log schema changes, errors, and migrations
+        logging: ["schema", "error", "warn", "migration"], // Log schema changes, errors, and migrations
         entities: Object.values(entities),
         migrations: [migrationsPattern],
         subscribers: [],
@@ -168,25 +178,25 @@ function createDataSource() {
                     let sqliteVec = null;
                     try {
                         // Try to require sqlite-vec - this will fail gracefully if not available
-                        sqliteVec = require('sqlite-vec');
+                        sqliteVec = require("sqlite-vec");
                     }
                     catch (requireError) {
                         // Module not available - this is OK
                         sqliteVec = null;
                     }
                     if (sqliteVec) {
-                        if (db.loadExtension && typeof db.loadExtension === 'function') {
-                            if (typeof sqliteVec.getLoadablePath === 'function') {
+                        if (db.loadExtension && typeof db.loadExtension === "function") {
+                            if (typeof sqliteVec.getLoadablePath === "function") {
                                 const extensionPath = sqliteVec.getLoadablePath();
                                 db.loadExtension(extensionPath);
-                                if (process.env.NODE_ENV !== 'production') {
-                                    console.log('[DB] ✅ Loaded sqlite-vec extension for TypeORM connection');
+                                if (process.env.NODE_ENV !== "production") {
+                                    console.log("[DB] ✅ Loaded sqlite-vec extension for TypeORM connection");
                                 }
                             }
-                            else if (sqliteVec.load && typeof sqliteVec.load === 'function') {
+                            else if (sqliteVec.load && typeof sqliteVec.load === "function") {
                                 sqliteVec.load(db);
-                                if (process.env.NODE_ENV !== 'production') {
-                                    console.log('[DB] ✅ Loaded sqlite-vec extension for TypeORM connection (via load method)');
+                                if (process.env.NODE_ENV !== "production") {
+                                    console.log("[DB] ✅ Loaded sqlite-vec extension for TypeORM connection (via load method)");
                                 }
                             }
                         }
@@ -195,8 +205,8 @@ function createDataSource() {
                 catch (error) {
                     // Silently fail - vec0 extension is optional
                     // Only log in development to avoid noise
-                    if (process.env.NODE_ENV !== 'production') {
-                        console.warn('[DB] ⚠️ Could not load sqlite-vec extension (this is OK if vector search is not used):', error.message);
+                    if (process.env.NODE_ENV !== "production") {
+                        console.warn("[DB] ⚠️ Could not load sqlite-vec extension (this is OK if vector search is not used):", error.message);
                     }
                 }
             },
