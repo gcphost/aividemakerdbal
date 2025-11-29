@@ -81,7 +81,6 @@ export interface ImageTimelineInstance {
     endTime: number;
     generatedImageUrl?: string;
     generatedImageFileId?: string;
-    fileId?: string;
     resolvedUrl?: string;
     kenBurnsConfig?: {
         startScale?: number;
