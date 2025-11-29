@@ -39,6 +39,9 @@ export class Channel extends BaseEntity {
   @Column('varchar', { nullable: true })
   description?: string;
 
+  @Column('text', { nullable: true })
+  descriptionFooter?: string;
+
   @Column('varchar', { nullable: true })
   tagline?: string;
 

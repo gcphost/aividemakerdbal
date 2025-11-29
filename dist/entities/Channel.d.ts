@@ -5,6 +5,7 @@ export declare class Channel extends BaseEntity {
     profileId?: string;
     name: string;
     description?: string;
+    descriptionFooter?: string;
     tagline?: string;
     youtubeName?: string;
     customUrl?: string;
