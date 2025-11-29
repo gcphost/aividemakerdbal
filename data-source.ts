@@ -59,9 +59,7 @@ function createDataSource(): DataSource {
 
   // Check if this is a new database (doesn't exist or is empty)
   // If new, we'll enable synchronize to create the schema automatically
-  // Also allow forcing synchronize via environment variable for migrations
   const isNewDatabase = !fs.existsSync(dbPath) || fs.statSync(dbPath).size === 0;
-  const forceSynchronize = process.env.TYPEORM_SYNCHRONIZE === "true";
 
   // Log the database path for debugging
   console.log(`[DB] ========== Database Configuration ==========`);
@@ -136,9 +134,8 @@ function createDataSource(): DataSource {
     type: "better-sqlite3",
     database: dbPath,
     // Auto-sync schema on first run (new database), otherwise use migrations
-    // Can be forced with TYPEORM_SYNCHRONIZE=true environment variable
-    synchronize: isNewDatabase || forceSynchronize,
-    migrationsRun: !isNewDatabase && !forceSynchronize, // Only run migrations on existing databases
+    synchronize: isNewDatabase,
+    migrationsRun: !isNewDatabase, // Only run migrations on existing databases
     logging: ["schema", "error", "warn", "migration"], // Log schema changes, errors, and migrations
     entities: Object.values(entities),
     migrations: [migrationsPattern],
