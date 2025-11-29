@@ -18,4 +18,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./file"), exports);
 __exportStar(require("./video"), exports);
 __exportStar(require("./process"), exports);
+__exportStar(require("./prompts"), exports);
 //# sourceMappingURL=index.js.map
