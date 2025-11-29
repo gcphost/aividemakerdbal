@@ -34,7 +34,8 @@ export type ProcessType =
   | "thumbnail-generation"
   | "music-generation"
   | "sound-generation"
-  | "description-generation";
+  | "description-generation"
+  | "content-generation";
 
 export type ProcessStatus =
   | "pending"

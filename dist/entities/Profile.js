@@ -30,6 +30,7 @@ let Profile = class Profile extends BaseEntity_1.BaseEntity {
     chapterTransitionPrompt;
     antiAiPrompt;
     imageProvider;
+    imageModel;
     ttsProvider;
     ttsUseEmotionalTags;
     ttsSettings;
@@ -39,6 +40,7 @@ let Profile = class Profile extends BaseEntity_1.BaseEntity {
     ttsElevenLabsVoiceId;
     ttsChunkDurationSeconds;
     thumbnailImageProvider;
+    thumbnailImageModel;
     imageSettings;
     imagesPerMinute;
     maxImagesPerChapter;
@@ -50,7 +52,9 @@ let Profile = class Profile extends BaseEntity_1.BaseEntity {
     autoGenerateSounds;
     autoGenerateMusic;
     musicProvider;
+    musicModel;
     soundEffectProvider;
+    soundModel;
     embeddingsProvider;
     embeddingsModel;
     scriptProvider;
@@ -62,6 +66,7 @@ let Profile = class Profile extends BaseEntity_1.BaseEntity {
     channelOutroDurationSeconds;
     wordsPerMinute;
     videoProvider;
+    videoModel;
     videoSettings;
     openaiSettings;
     videoStyle;
@@ -71,215 +76,235 @@ let Profile = class Profile extends BaseEntity_1.BaseEntity {
 };
 exports.Profile = Profile;
 __decorate([
-    (0, typeorm_1.PrimaryColumn)('varchar'),
+    (0, typeorm_1.PrimaryColumn)("varchar"),
     __metadata("design:type", String)
 ], Profile.prototype, "_id", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar'),
+    (0, typeorm_1.Column)("varchar"),
     __metadata("design:type", String)
 ], Profile.prototype, "userId", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar'),
+    (0, typeorm_1.Column)("varchar"),
     __metadata("design:type", String)
 ], Profile.prototype, "name", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "description", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "narratorPromptTemplate", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "introScriptTemplate", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "outroScriptTemplate", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "imageStylePrompt", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "imageDescriptionPrompt", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "soundGenerationPrompt", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "musicGenerationPrompt", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "chapterGenerationPrompt", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "advertisingScriptPrompt", void 0);
 __decorate([
-    (0, typeorm_1.Column)('integer', { nullable: false, default: 1 }),
+    (0, typeorm_1.Column)("integer", { nullable: false, default: 1 }),
     __metadata("design:type", Boolean)
 ], Profile.prototype, "enableMidstoryCTA", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "chapterTransitionPrompt", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "antiAiPrompt", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true, default: 'openai' }),
+    (0, typeorm_1.Column)("varchar", { nullable: true, default: "openai" }),
     __metadata("design:type", String)
 ], Profile.prototype, "imageProvider", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true, default: 'openai' }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
+    __metadata("design:type", String)
+], Profile.prototype, "imageModel", void 0);
+__decorate([
+    (0, typeorm_1.Column)("varchar", { nullable: true, default: "openai" }),
     __metadata("design:type", String)
 ], Profile.prototype, "ttsProvider", void 0);
 __decorate([
-    (0, typeorm_1.Column)('integer', { nullable: false, default: 0 }),
+    (0, typeorm_1.Column)("integer", { nullable: false, default: 0 }),
     __metadata("design:type", Boolean)
 ], Profile.prototype, "ttsUseEmotionalTags", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'text', nullable: true }),
+    (0, typeorm_1.Column)({ type: "text", nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "ttsSettings", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "ttsVoice", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "ttsModel", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "ttsVoiceInstructions", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "ttsElevenLabsVoiceId", void 0);
 __decorate([
-    (0, typeorm_1.Column)('int', { nullable: true, default: 30 }),
+    (0, typeorm_1.Column)("int", { nullable: true, default: 30 }),
     __metadata("design:type", Number)
 ], Profile.prototype, "ttsChunkDurationSeconds", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "thumbnailImageProvider", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'text', nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
+    __metadata("design:type", String)
+], Profile.prototype, "thumbnailImageModel", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: "text", nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "imageSettings", void 0);
 __decorate([
-    (0, typeorm_1.Column)('float', { nullable: true, default: 2.5 }),
+    (0, typeorm_1.Column)("float", { nullable: true, default: 2.5 }),
     __metadata("design:type", Number)
 ], Profile.prototype, "imagesPerMinute", void 0);
 __decorate([
-    (0, typeorm_1.Column)('int', { nullable: true, default: 10 }),
+    (0, typeorm_1.Column)("int", { nullable: true, default: 10 }),
     __metadata("design:type", Number)
 ], Profile.prototype, "maxImagesPerChapter", void 0);
 __decorate([
-    (0, typeorm_1.Column)('float', { nullable: true, default: 5 }),
+    (0, typeorm_1.Column)("float", { nullable: true, default: 5 }),
     __metadata("design:type", Number)
 ], Profile.prototype, "kenBurnsZoomDuration", void 0);
 __decorate([
-    (0, typeorm_1.Column)('float', { nullable: true, default: 0 }),
+    (0, typeorm_1.Column)("float", { nullable: true, default: 0 }),
     __metadata("design:type", Number)
 ], Profile.prototype, "chapterDelaySeconds", void 0);
 __decorate([
-    (0, typeorm_1.Column)('float', { nullable: true, default: 2.0 }),
+    (0, typeorm_1.Column)("float", { nullable: true, default: 2.0 }),
     __metadata("design:type", Number)
 ], Profile.prototype, "chapterGapDurationSeconds", void 0);
 __decorate([
-    (0, typeorm_1.Column)('float', { nullable: true, default: 1.0 }),
+    (0, typeorm_1.Column)("float", { nullable: true, default: 1.0 }),
     __metadata("design:type", Number)
 ], Profile.prototype, "chunkDelaySeconds", void 0);
 __decorate([
-    (0, typeorm_1.Column)('integer', { nullable: true }),
+    (0, typeorm_1.Column)("integer", { nullable: true }),
     __metadata("design:type", Boolean)
 ], Profile.prototype, "autoGenerateImages", void 0);
 __decorate([
-    (0, typeorm_1.Column)('integer', { nullable: true }),
+    (0, typeorm_1.Column)("integer", { nullable: true }),
     __metadata("design:type", Boolean)
 ], Profile.prototype, "autoGenerateSounds", void 0);
 __decorate([
-    (0, typeorm_1.Column)('integer', { nullable: true }),
+    (0, typeorm_1.Column)("integer", { nullable: true }),
     __metadata("design:type", Boolean)
 ], Profile.prototype, "autoGenerateMusic", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true, default: 'elevenlabs' }),
+    (0, typeorm_1.Column)("varchar", { nullable: true, default: "elevenlabs" }),
     __metadata("design:type", String)
 ], Profile.prototype, "musicProvider", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true, default: 'elevenlabs' }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
+    __metadata("design:type", String)
+], Profile.prototype, "musicModel", void 0);
+__decorate([
+    (0, typeorm_1.Column)("varchar", { nullable: true, default: "elevenlabs" }),
     __metadata("design:type", String)
 ], Profile.prototype, "soundEffectProvider", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true, default: 'openai' }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
+    __metadata("design:type", String)
+], Profile.prototype, "soundModel", void 0);
+__decorate([
+    (0, typeorm_1.Column)("varchar", { nullable: true, default: "openai" }),
     __metadata("design:type", String)
 ], Profile.prototype, "embeddingsProvider", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true, default: 'text-embedding-3-small' }),
+    (0, typeorm_1.Column)("varchar", { nullable: true, default: "text-embedding-3-small" }),
     __metadata("design:type", String)
 ], Profile.prototype, "embeddingsModel", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true, default: 'openai' }),
+    (0, typeorm_1.Column)("varchar", { nullable: true, default: "openai" }),
     __metadata("design:type", String)
 ], Profile.prototype, "scriptProvider", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'text', nullable: true }),
+    (0, typeorm_1.Column)({ type: "text", nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "scriptSettings", void 0);
 __decorate([
-    (0, typeorm_1.Column)('integer', { nullable: true }),
+    (0, typeorm_1.Column)("integer", { nullable: true }),
     __metadata("design:type", Boolean)
 ], Profile.prototype, "disableImageGeneration", void 0);
 __decorate([
-    (0, typeorm_1.Column)('integer', { nullable: true }),
+    (0, typeorm_1.Column)("integer", { nullable: true }),
     __metadata("design:type", Boolean)
 ], Profile.prototype, "disableMusicGeneration", void 0);
 __decorate([
-    (0, typeorm_1.Column)('integer', { nullable: true }),
+    (0, typeorm_1.Column)("integer", { nullable: true }),
     __metadata("design:type", Boolean)
 ], Profile.prototype, "disableSoundGeneration", void 0);
 __decorate([
-    (0, typeorm_1.Column)('float', { nullable: true, default: 120 }),
+    (0, typeorm_1.Column)("float", { nullable: true, default: 120 }),
     __metadata("design:type", Number)
 ], Profile.prototype, "channelIntroDurationSeconds", void 0);
 __decorate([
-    (0, typeorm_1.Column)('float', { nullable: true, default: 120 }),
+    (0, typeorm_1.Column)("float", { nullable: true, default: 120 }),
     __metadata("design:type", Number)
 ], Profile.prototype, "channelOutroDurationSeconds", void 0);
 __decorate([
-    (0, typeorm_1.Column)('float', { nullable: true, default: 165 }),
+    (0, typeorm_1.Column)("float", { nullable: true, default: 165 }),
     __metadata("design:type", Number)
 ], Profile.prototype, "wordsPerMinute", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: false, default: 'google-veo' }),
+    (0, typeorm_1.Column)("varchar", { nullable: false, default: "google-veo" }),
     __metadata("design:type", String)
 ], Profile.prototype, "videoProvider", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'text', nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
+    __metadata("design:type", String)
+], Profile.prototype, "videoModel", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: "text", nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "videoSettings", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'text', nullable: true }),
+    (0, typeorm_1.Column)({ type: "text", nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "openaiSettings", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: false, default: 'standard' }),
+    (0, typeorm_1.Column)("varchar", { nullable: false, default: "standard" }),
     __metadata("design:type", String)
 ], Profile.prototype, "videoStyle", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "backgroundAudio", void 0);
 __decorate([
@@ -291,6 +316,6 @@ __decorate([
     __metadata("design:type", Date)
 ], Profile.prototype, "updatedAt", void 0);
 exports.Profile = Profile = __decorate([
-    (0, typeorm_1.Entity)('profiles')
+    (0, typeorm_1.Entity)("profiles")
 ], Profile);
 //# sourceMappingURL=Profile.js.map

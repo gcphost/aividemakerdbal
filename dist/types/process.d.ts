@@ -5,7 +5,7 @@ export type NewProcess = Partial<Process>;
 export type IProcessEstimate = ProcessEstimate;
 export type ServiceType = "video-generation" | "image-generation" | "audio-generation" | "description-generation" | "tts" | "video-compilation" | "thumbnail-generation" | "sound-generation" | "music-generation" | "video-extension";
 export type UnitType = "character" | "token" | "image" | "second" | "minute" | "unit";
-export type ProcessType = "image-generation" | "ai-call" | "audio-generation" | "video-compilation" | "video-generation" | "video-generation-ai" | "video-extension-ai" | "timeline-generation" | "thumbnail-generation" | "music-generation" | "sound-generation" | "description-generation";
+export type ProcessType = "image-generation" | "ai-call" | "audio-generation" | "video-compilation" | "video-generation" | "video-generation-ai" | "video-extension-ai" | "timeline-generation" | "thumbnail-generation" | "music-generation" | "sound-generation" | "description-generation" | "content-generation";
 export type ProcessStatus = "pending" | "queued" | "processing" | "stopping" | "completed" | "failed" | "cancelled";
 /**
  * Process group definition for aggregating related processes

@@ -1,4 +1,4 @@
-import { BaseEntity } from './BaseEntity';
+import { BaseEntity } from "./BaseEntity";
 export declare class Profile extends BaseEntity {
     _id: string;
     userId: string;
@@ -17,6 +17,7 @@ export declare class Profile extends BaseEntity {
     chapterTransitionPrompt?: string;
     antiAiPrompt?: string;
     imageProvider?: string;
+    imageModel?: string;
     ttsProvider?: string;
     ttsUseEmotionalTags: boolean;
     ttsSettings?: string;
@@ -26,6 +27,7 @@ export declare class Profile extends BaseEntity {
     ttsElevenLabsVoiceId?: string;
     ttsChunkDurationSeconds?: number;
     thumbnailImageProvider?: string;
+    thumbnailImageModel?: string;
     imageSettings?: string;
     imagesPerMinute?: number;
     maxImagesPerChapter?: number;
@@ -37,7 +39,9 @@ export declare class Profile extends BaseEntity {
     autoGenerateSounds?: boolean;
     autoGenerateMusic?: boolean;
     musicProvider?: string;
+    musicModel?: string;
     soundEffectProvider?: string;
+    soundModel?: string;
     embeddingsProvider?: string;
     embeddingsModel?: string;
     scriptProvider?: string;
@@ -49,6 +53,7 @@ export declare class Profile extends BaseEntity {
     channelOutroDurationSeconds?: number;
     wordsPerMinute?: number;
     videoProvider: string;
+    videoModel?: string;
     videoSettings?: string;
     openaiSettings?: string;
     videoStyle: "minimal-talking" | "standard" | "heavy-narration";
