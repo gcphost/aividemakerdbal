@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PerformanceMetrics = exports.Usage = exports.ProcessEstimate = exports.Process = exports.File = exports.ApiKey = exports.Settings = exports.Channel = exports.Profile = exports.Chapter = exports.Video = exports.User = void 0;
-require("reflect-metadata");
 var User_1 = require("./User");
 Object.defineProperty(exports, "User", { enumerable: true, get: function () { return User_1.User; } });
 var Video_1 = require("./Video");

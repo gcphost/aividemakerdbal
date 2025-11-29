@@ -35,6 +35,7 @@ export interface SoundSource {
   type: string;
   audioUrl?: string;
   fileId?: string;
+  waveformPeaks?: number[];
   volume?: number;
   duration?: number;
   loop?: boolean;
