@@ -148,6 +148,7 @@ export interface TimelineLayer {
     locked: boolean;
     items: TimelineInstance[];
 }
+export type VideoQuality = "preview" | "ultra-low" | "low" | "medium" | "high" | "2k" | "4k" | "vertical-hd" | "vertical-4k" | "square" | "custom";
 export interface TimelineData {
     duration: number;
     endTime?: number;
