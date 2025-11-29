@@ -17,6 +17,7 @@ export declare class File extends BaseEntity {
     prompt?: string;
     volume?: string;
     loop?: string;
+    duration?: number;
     hash?: string;
     metadata?: string;
     vectorEmbedding?: string;

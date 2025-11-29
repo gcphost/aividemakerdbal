@@ -30,6 +30,7 @@ let File = class File extends BaseEntity_1.BaseEntity {
     prompt;
     volume;
     loop;
+    duration; // Duration in seconds for audio/video files
     hash; // SHA-256 hash for deduplication
     metadata;
     vectorEmbedding;
@@ -116,6 +117,10 @@ __decorate([
     (0, typeorm_1.Column)('varchar', { nullable: true }),
     __metadata("design:type", String)
 ], File.prototype, "loop", void 0);
+__decorate([
+    (0, typeorm_1.Column)('real', { nullable: true }),
+    __metadata("design:type", Number)
+], File.prototype, "duration", void 0);
 __decorate([
     (0, typeorm_1.Column)('varchar', { nullable: true }),
     __metadata("design:type", String)

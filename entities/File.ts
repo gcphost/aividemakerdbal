@@ -54,6 +54,9 @@ export class File extends BaseEntity {
   @Column('varchar', { nullable: true })
   loop?: string;
 
+  @Column('real', { nullable: true })
+  duration?: number; // Duration in seconds for audio/video files
+
   @Column('varchar', { nullable: true })
   hash?: string; // SHA-256 hash for deduplication
 

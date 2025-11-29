@@ -7,27 +7,27 @@
  * Known default prompt names (user-configurable, stored in Profile)
  */
 export type DefaultPromptName =
-  | 'narrator'
-  | 'anti-ai'
-  | 'intro-script'
-  | 'outro-script'
-  | 'advertising'
-  | 'chapter-transition'
-  | 'chapter-generation'
-  | 'image-style'
-  | 'image-description'
-  | 'sound-generation'
-  | 'music-generation';
+  | "narrator"
+  | "anti-ai"
+  | "intro-script"
+  | "outro-script"
+  | "advertising"
+  | "chapter-transition"
+  | "chapter-generation"
+  | "image-style"
+  | "image-description"
+  | "sound-generation"
+  | "music-generation";
 
 /**
  * Known system prompt names (core AI instructions, not user-configurable)
  */
 export type SystemPromptName =
-  | 'chapter-outline'
-  | 'script-generation'
-  | 'timeline-generation'
-  | 'youtube-description'
-  | 'profile-generator';
+  | "chapter-outline"
+  | "script-generation"
+  | "timeline-generation"
+  | "youtube-description"
+  | "profile-generator";
 
 /**
  * All known prompt names
@@ -50,3 +50,4 @@ export interface PromptDefinition {
   /** The actual prompt template text with optional {{variable}} placeholders */
   prompt: string;
 }
+

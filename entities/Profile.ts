@@ -54,6 +54,9 @@ export class Profile extends BaseEntity {
   @Column('varchar', { nullable: true, default: 'openai' })
   imageProvider?: string;
 
+  @Column('varchar', { nullable: true })
+  imageModel?: string;
+
   @Column('varchar', { nullable: true, default: 'openai' })
   ttsProvider?: string;
 
@@ -80,6 +83,9 @@ export class Profile extends BaseEntity {
 
   @Column('varchar', { nullable: true })
   thumbnailImageProvider?: string;
+
+  @Column('varchar', { nullable: true })
+  thumbnailImageModel?: string;
 
   @Column({ type: 'text', nullable: true })
   imageSettings?: string;
@@ -149,6 +155,9 @@ export class Profile extends BaseEntity {
 
   @Column('varchar', { nullable: false, default: 'google-veo' })
   videoProvider!: string;
+
+  @Column('varchar', { nullable: true })
+  videoModel?: string;
 
   @Column({ type: 'text', nullable: true })
   videoSettings?: string;
