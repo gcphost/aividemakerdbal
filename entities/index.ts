@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 export { User } from './User';
 export { Video } from './Video';
 export { Chapter } from './Chapter';
