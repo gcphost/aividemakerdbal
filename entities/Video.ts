@@ -117,6 +117,9 @@ export class Video extends BaseEntity {
   @Column("integer", { nullable: true })
   ctaDurationSeconds?: number;
 
+  @Column("varchar", { nullable: true })
+  desiredResolution?: string; // Desired output resolution (preview, low, medium, high, 2k, 4k, etc.)
+
   @Column({ type: "text", nullable: true })
   timeline?: string;
 
