@@ -24,9 +24,7 @@ export interface ImageSource {
     chapterTitle?: string;
     similarity?: number;
   };
-  provider?: string;
-  model?: string;
-  providerSettings?: Record<string, any>;
+  // Note: provider/model/providerSettings are stored in File metadata, not here
 }
 
 export interface SoundSource {
@@ -43,9 +41,7 @@ export interface SoundSource {
   duration?: number;
   loop?: boolean;
   promptInfluence?: number;
-  provider?: string;
-  model?: string;
-  providerSettings?: Record<string, any>;
+  // Note: provider/model/providerSettings are stored in File metadata, not here
 }
 
 export interface BackgroundAudioSource {
@@ -67,9 +63,7 @@ export interface BackgroundAudioSource {
   volume?: number;
   duration?: number;
   loop?: boolean;
-  provider?: string;
-  model?: string;
-  providerSettings?: Record<string, any>;
+  // Note: provider/model/providerSettings are stored in File metadata, not here
 }
 
 export interface VideoSource {
@@ -91,9 +85,7 @@ export interface VideoSource {
     extendedFrom?: string;
     [key: string]: any;
   };
-  provider?: string;
-  model?: string;
-  providerSettings?: Record<string, any>;
+  // Note: provider/model/providerSettings are stored in File metadata, not here
 }
 
 export interface ImageTimelineInstance {

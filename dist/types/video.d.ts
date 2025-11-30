@@ -19,9 +19,6 @@ export interface ImageSource {
         chapterTitle?: string;
         similarity?: number;
     };
-    provider?: string;
-    model?: string;
-    providerSettings?: Record<string, any>;
 }
 export interface SoundSource {
     id: string;
@@ -37,9 +34,6 @@ export interface SoundSource {
     duration?: number;
     loop?: boolean;
     promptInfluence?: number;
-    provider?: string;
-    model?: string;
-    providerSettings?: Record<string, any>;
 }
 export interface BackgroundAudioSource {
     id: string;
@@ -60,9 +54,6 @@ export interface BackgroundAudioSource {
     volume?: number;
     duration?: number;
     loop?: boolean;
-    provider?: string;
-    model?: string;
-    providerSettings?: Record<string, any>;
 }
 export interface VideoSource {
     id: string;
@@ -83,9 +74,6 @@ export interface VideoSource {
         extendedFrom?: string;
         [key: string]: any;
     };
-    provider?: string;
-    model?: string;
-    providerSettings?: Record<string, any>;
 }
 export interface ImageTimelineInstance {
     type: "image";

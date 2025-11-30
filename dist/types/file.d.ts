@@ -15,7 +15,8 @@ export interface FileReference {
  *
  * For AI-generated files only:
  * @property {string} provider - Optional. Name of the AI provider (e.g., "Gemini", "Runway", "ElevenLabs", "Suno")
- * @property {object} providerSettings - Optional. Provider-specific configuration
+ * @property {string} model - Optional. Name of the AI model used (e.g., "dall-e-3", "gemini-2.5-flash", "eleven_multilingual_v2")
+ * @property {object} providerSettings - Optional. Provider-specific configuration used for generation
  *
  * For any file type:
  * @property {string} videoId - Optional. References a video if file belongs to a video
@@ -30,6 +31,7 @@ export interface FileMetadata {
     source?: "uploaded" | "ai-generated";
     type?: string;
     provider?: string;
+    model?: string;
     providerSettings?: any;
     videoId?: string;
     chapterId?: string;
