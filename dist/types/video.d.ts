@@ -19,6 +19,9 @@ export interface ImageSource {
         chapterTitle?: string;
         similarity?: number;
     };
+    provider?: string;
+    model?: string;
+    providerSettings?: Record<string, any>;
 }
 export interface SoundSource {
     id: string;
@@ -80,6 +83,9 @@ export interface VideoSource {
         extendedFrom?: string;
         [key: string]: any;
     };
+    provider?: string;
+    model?: string;
+    providerSettings?: Record<string, any>;
 }
 export interface ImageTimelineInstance {
     type: "image";
