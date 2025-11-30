@@ -284,7 +284,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Profile.prototype, "wordsPerMinute", void 0);
 __decorate([
-    (0, typeorm_1.Column)("varchar", { nullable: false, default: "google-veo" }),
+    (0, typeorm_1.Column)("varchar", { nullable: false, default: "gemini" }),
     __metadata("design:type", String)
 ], Profile.prototype, "videoProvider", void 0);
 __decorate([

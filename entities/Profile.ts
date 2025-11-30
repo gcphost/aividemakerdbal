@@ -159,7 +159,7 @@ export class Profile extends BaseEntity {
   @Column("float", { nullable: true, default: 165 })
   wordsPerMinute?: number;
 
-  @Column("varchar", { nullable: false, default: "google-veo" })
+  @Column("varchar", { nullable: false, default: "gemini" })
   videoProvider!: string;
 
   @Column("varchar", { nullable: true })
