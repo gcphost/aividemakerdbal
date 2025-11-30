@@ -38,6 +38,7 @@ export declare class Video extends BaseEntity {
     introDurationSeconds?: number;
     outroDurationSeconds?: number;
     ctaDurationSeconds?: number;
+    desiredResolution?: string;
     timeline?: string;
     userId: string;
     createdAt: Date;

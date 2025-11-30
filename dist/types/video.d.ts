@@ -33,6 +33,10 @@ export interface SoundSource {
     volume?: number;
     duration?: number;
     loop?: boolean;
+    promptInfluence?: number;
+    provider?: string;
+    model?: string;
+    providerSettings?: Record<string, any>;
 }
 export interface BackgroundAudioSource {
     id: string;
@@ -53,6 +57,9 @@ export interface BackgroundAudioSource {
     volume?: number;
     duration?: number;
     loop?: boolean;
+    provider?: string;
+    model?: string;
+    providerSettings?: Record<string, any>;
 }
 export interface VideoSource {
     id: string;
