@@ -134,7 +134,6 @@ function createDataSource(): DataSource {
   // Migrations will run in Electron only
   const isNextJs = typeof process !== "undefined" && process.env.NEXT_RUNTIME !== undefined;
   const migrations = isNextJs ? [] : [migrationsPattern];
-
   _appDataSource = new DataSource({
     type: "better-sqlite3",
     database: dbPath,
