@@ -10,25 +10,25 @@ function createDataSource(): DataSource {
     return _appDataSource;
   }
 
-  // Get the project root by finding the workspace root (where data directory exists)
-  // This ensures consistency regardless of where the code is executed from
+  // Get the project root by finding the workspace root
+  // Look for the workspace root by checking for multiple indicators
   let projectRoot: string = process.cwd();
 
-  // Try to find the workspace root by looking for the data directory
-  // This is the most reliable indicator of the workspace root
+  // Try to find the workspace root by looking for multiple indicators
   let currentPath = process.cwd();
   let found = false;
   const maxDepth = 10;
   let depth = 0;
 
   while (!found && depth < maxDepth) {
-    // Check if this is the workspace root (has data/sqlite directory)
-    const hasDataSqliteDir = fs.existsSync(path.join(currentPath, "data", "sqlite"));
-    const hasDataDir = fs.existsSync(path.join(currentPath, "data"));
+    // Check multiple indicators to identify the workspace root:
+    // Primary: Has electron/, app/, and shared-db/ directories (definitive workspace structure)
+    const hasElectronDir = fs.existsSync(path.join(currentPath, "electron"));
+    const hasAppDir = fs.existsSync(path.join(currentPath, "app"));
+    const hasSharedDbDir = fs.existsSync(path.join(currentPath, "shared-db"));
 
-    // Primary indicator: data/sqlite directory exists (where the database should be)
-    // Secondary: data directory exists (workspace structure)
-    if (hasDataSqliteDir || hasDataDir) {
+    // Workspace root MUST have electron/, app/, and shared-db/ directories
+    if (hasElectronDir && hasAppDir && hasSharedDbDir) {
       projectRoot = currentPath;
       found = true;
     } else {
