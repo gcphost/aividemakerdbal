@@ -130,15 +130,20 @@ function createDataSource(): DataSource {
     }
   }
 
+  // Disable migrations in Next.js (they can't handle dynamic patterns)
+  // Migrations will run in Electron only
+  const isNextJs = typeof process !== "undefined" && process.env.NEXT_RUNTIME !== undefined;
+  const migrations = isNextJs ? [] : [migrationsPattern];
+
   _appDataSource = new DataSource({
     type: "better-sqlite3",
     database: dbPath,
     // Auto-sync schema on first run (new database), otherwise use migrations
     synchronize: isNewDatabase,
-    migrationsRun: !isNewDatabase, // Only run migrations on existing databases
+    migrationsRun: !isNewDatabase && !isNextJs, // Only run migrations on existing databases, not in Next.js
     logging: ["schema", "error", "warn", "migration"], // Log schema changes, errors, and migrations
     entities: Object.values(entities),
-    migrations: [migrationsPattern],
+    migrations: migrations,
     subscribers: [],
     extra: {
       // Load sqlite-vec extension if available (for vector search support)
