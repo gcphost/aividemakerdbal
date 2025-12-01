@@ -11,6 +11,10 @@ const apiKeyTransformer: ValueTransformer = {
     if (value === null || value === undefined) {
       return null;
     }
+    // If value is already encrypted (contains colons from iv:encrypted:authTag format), don't re-encrypt
+    if (value.includes(':') && value.split(':').length === 3) {
+      return value;
+    }
     return encrypt(value);
   },
   from: (value: string | null): string | null => {
@@ -18,7 +22,18 @@ const apiKeyTransformer: ValueTransformer = {
     if (value === null || value === undefined) {
       return null;
     }
-    return decrypt(value);
+    // If value doesn't look encrypted (no colons), return as-is
+    if (!value.includes(':')) {
+      return value;
+    }
+    try {
+      return decrypt(value);
+    } catch (error: any) {
+      // Decryption failed - likely encryption key mismatch (e.g., moved to different machine)
+      // Return null so the app can still load, but the key will need to be re-entered
+      console.warn(`[ApiKey] Failed to decrypt API key: ${error.message}. This usually means the encryption key changed (e.g., moved to different machine). Please re-enter your API keys.`);
+      return null;
+    }
   }
 };
 
