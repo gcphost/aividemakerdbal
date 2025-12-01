@@ -8,6 +8,7 @@ export declare class Settings extends BaseEntity {
     language: string;
     timezone: string;
     preferences?: string;
+    systemUsage?: any;
     createdAt: Date;
     updatedAt: Date;
 }
