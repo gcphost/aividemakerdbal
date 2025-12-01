@@ -1,4 +1,4 @@
-import { EntitySchema } from 'typeorm';
+import { EntitySchema } from "typeorm";
 export interface ISettings {
     _id: string;
     userId: string;

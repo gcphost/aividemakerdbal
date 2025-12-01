@@ -1,4 +1,4 @@
-import { EntitySchema } from 'typeorm';
+import { EntitySchema } from "typeorm";
 export interface IUser {
     _id: string;
     email: string;
@@ -6,7 +6,7 @@ export interface IUser {
     firstName?: string;
     lastName?: string;
     avatarUrl?: string;
-    role: 'admin' | 'user';
+    role: "admin" | "user";
     isActive: boolean;
     defaultProfileId?: string;
     createdAt: Date;
@@ -20,7 +20,7 @@ export declare class User {
     firstName?: string;
     lastName?: string;
     avatarUrl?: string;
-    role: 'admin' | 'user';
+    role: "admin" | "user";
     isActive: boolean;
     defaultProfileId?: string;
     createdAt: Date;

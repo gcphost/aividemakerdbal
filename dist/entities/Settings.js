@@ -26,35 +26,35 @@ let Settings = class Settings extends BaseEntity_1.BaseEntity {
 };
 exports.Settings = Settings;
 __decorate([
-    (0, typeorm_1.PrimaryColumn)('varchar'),
+    (0, typeorm_1.PrimaryColumn)("varchar"),
     __metadata("design:type", String)
 ], Settings.prototype, "_id", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar'),
+    (0, typeorm_1.Column)("varchar"),
     __metadata("design:type", String)
 ], Settings.prototype, "userId", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Settings.prototype, "theme", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { default: true }),
+    (0, typeorm_1.Column)({ type: "boolean", default: true }),
     __metadata("design:type", Boolean)
 ], Settings.prototype, "notifications", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { default: true }),
+    (0, typeorm_1.Column)({ type: "boolean", default: true }),
     __metadata("design:type", Boolean)
 ], Settings.prototype, "emailNotifications", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { default: 'en' }),
+    (0, typeorm_1.Column)("varchar", { default: "en" }),
     __metadata("design:type", String)
 ], Settings.prototype, "language", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { default: 'UTC' }),
+    (0, typeorm_1.Column)("varchar", { default: "UTC" }),
     __metadata("design:type", String)
 ], Settings.prototype, "timezone", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'text', nullable: true }),
+    (0, typeorm_1.Column)({ type: "text", nullable: true }),
     __metadata("design:type", String)
 ], Settings.prototype, "preferences", void 0);
 __decorate([
@@ -66,6 +66,6 @@ __decorate([
     __metadata("design:type", Date)
 ], Settings.prototype, "updatedAt", void 0);
 exports.Settings = Settings = __decorate([
-    (0, typeorm_1.Entity)('settings')
+    (0, typeorm_1.Entity)("settings")
 ], Settings);
 //# sourceMappingURL=Settings.js.map

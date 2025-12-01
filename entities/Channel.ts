@@ -69,16 +69,16 @@ export class Channel extends BaseEntity {
   @Column('varchar', { nullable: true })
   youtubeChannelBanner?: string;
 
-  @Column('varchar', { default: 0 })
+  @Column({ type: 'integer', default: 0 })
   subscriberCount!: number;
 
-  @Column('varchar', { default: 0 })
+  @Column({ type: 'integer', default: 0 })
   videoCount!: number;
 
-  @Column('varchar', { default: 0 })
+  @Column({ type: 'integer', default: 0 })
   viewCount!: number;
 
-  @Column('varchar', { default: false })
+  @Column({ type: 'boolean', default: false })
   isConnected!: boolean;
 
   @Column({ type: 'text', nullable: true, transformer: tokenTransformer })
@@ -93,7 +93,7 @@ export class Channel extends BaseEntity {
   @Column('varchar', { default: 'unlisted' })
   defaultPrivacyStatus!: "public" | "unlisted" | "private";
 
-  @Column('varchar', { default: false })
+  @Column({ type: 'boolean', default: false })
   defaultMadeForKids!: boolean;
 
   @CreateDateColumn()

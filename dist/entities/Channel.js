@@ -122,19 +122,19 @@ __decorate([
     __metadata("design:type", String)
 ], Channel.prototype, "youtubeChannelBanner", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { default: 0 }),
+    (0, typeorm_1.Column)({ type: 'integer', default: 0 }),
     __metadata("design:type", Number)
 ], Channel.prototype, "subscriberCount", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { default: 0 }),
+    (0, typeorm_1.Column)({ type: 'integer', default: 0 }),
     __metadata("design:type", Number)
 ], Channel.prototype, "videoCount", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { default: 0 }),
+    (0, typeorm_1.Column)({ type: 'integer', default: 0 }),
     __metadata("design:type", Number)
 ], Channel.prototype, "viewCount", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { default: false }),
+    (0, typeorm_1.Column)({ type: 'boolean', default: false }),
     __metadata("design:type", Boolean)
 ], Channel.prototype, "isConnected", void 0);
 __decorate([
@@ -154,7 +154,7 @@ __decorate([
     __metadata("design:type", String)
 ], Channel.prototype, "defaultPrivacyStatus", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { default: false }),
+    (0, typeorm_1.Column)({ type: 'boolean', default: false }),
     __metadata("design:type", Boolean)
 ], Channel.prototype, "defaultMadeForKids", void 0);
 __decorate([

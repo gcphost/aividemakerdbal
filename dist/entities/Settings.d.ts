@@ -1,4 +1,4 @@
-import { BaseEntity } from './BaseEntity';
+import { BaseEntity } from "./BaseEntity";
 export declare class Settings extends BaseEntity {
     _id: string;
     userId: string;

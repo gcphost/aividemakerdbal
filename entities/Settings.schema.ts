@@ -1,4 +1,4 @@
-import { EntitySchema } from 'typeorm';
+import { EntitySchema } from "typeorm";
 
 export interface ISettings {
   _id: string;
@@ -14,47 +14,47 @@ export interface ISettings {
 }
 
 export const SettingsSchema = new EntitySchema<ISettings>({
-  name: 'Settings',
-  tableName: 'settings',
+  name: "Settings",
+  tableName: "settings",
   // NO target - plain class, doesn't extend BaseEntity to avoid metadata initialization
   columns: {
     _id: {
-      type: 'varchar',
+      type: "varchar",
       primary: true,
     },
     userId: {
-      type: 'varchar',
+      type: "varchar",
     },
     theme: {
-      type: 'varchar',
+      type: "varchar",
       nullable: true,
     },
     notifications: {
-      type: 'varchar',
+      type: "boolean",
       default: true,
     },
     emailNotifications: {
-      type: 'varchar',
+      type: "boolean",
       default: true,
     },
     language: {
-      type: 'varchar',
-      default: 'en',
+      type: "varchar",
+      default: "en",
     },
     timezone: {
-      type: 'varchar',
-      default: 'UTC',
+      type: "varchar",
+      default: "UTC",
     },
     preferences: {
-      type: 'text',
+      type: "text",
       nullable: true,
     },
     createdAt: {
-      type: 'datetime',
+      type: "datetime",
       createDate: true,
     },
     updatedAt: {
-      type: 'datetime',
+      type: "datetime",
       updateDate: true,
     },
   },
@@ -74,4 +74,3 @@ export class Settings {
   createdAt!: Date;
   updatedAt!: Date;
 }
-

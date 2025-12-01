@@ -162,7 +162,7 @@ __decorate([
     __metadata("design:type", String)
 ], File.prototype, "versionChange", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { default: false }),
+    (0, typeorm_1.Column)({ type: 'boolean', default: false }),
     __metadata("design:type", Boolean)
 ], File.prototype, "isPublic", void 0);
 __decorate([

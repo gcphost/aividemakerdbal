@@ -88,7 +88,7 @@ export class File extends BaseEntity {
   @Column({ type: 'text', nullable: true })
   versionChange?: string;
 
-  @Column('varchar', { default: false })
+  @Column({ type: 'boolean', default: false })
   isPublic!: boolean;
 
   @Column({ type: 'datetime', nullable: true })

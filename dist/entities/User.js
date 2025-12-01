@@ -27,39 +27,39 @@ let User = class User extends BaseEntity_1.BaseEntity {
 };
 exports.User = User;
 __decorate([
-    (0, typeorm_1.PrimaryColumn)('varchar'),
+    (0, typeorm_1.PrimaryColumn)("varchar"),
     __metadata("design:type", String)
 ], User.prototype, "_id", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { unique: true }),
+    (0, typeorm_1.Column)("varchar", { unique: true }),
     __metadata("design:type", String)
 ], User.prototype, "email", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar'),
+    (0, typeorm_1.Column)("varchar"),
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], User.prototype, "firstName", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], User.prototype, "lastName", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], User.prototype, "avatarUrl", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { default: 'user' }),
+    (0, typeorm_1.Column)("varchar", { default: "user" }),
     __metadata("design:type", String)
 ], User.prototype, "role", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { default: true }),
+    (0, typeorm_1.Column)({ type: "boolean", default: true }),
     __metadata("design:type", Boolean)
 ], User.prototype, "isActive", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], User.prototype, "defaultProfileId", void 0);
 __decorate([
@@ -71,6 +71,6 @@ __decorate([
     __metadata("design:type", Date)
 ], User.prototype, "updatedAt", void 0);
 exports.User = User = __decorate([
-    (0, typeorm_1.Entity)('users')
+    (0, typeorm_1.Entity)("users")
 ], User);
 //# sourceMappingURL=User.js.map

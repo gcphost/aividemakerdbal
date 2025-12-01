@@ -3,51 +3,51 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = exports.UserSchema = void 0;
 const typeorm_1 = require("typeorm");
 exports.UserSchema = new typeorm_1.EntitySchema({
-    name: 'User',
-    tableName: 'users',
+    name: "User",
+    tableName: "users",
     // NO target - plain class, doesn't extend BaseEntity to avoid metadata initialization
     columns: {
         _id: {
-            type: 'varchar',
+            type: "varchar",
             primary: true,
         },
         email: {
-            type: 'varchar',
+            type: "varchar",
             unique: true,
         },
         password: {
-            type: 'varchar',
+            type: "varchar",
         },
         firstName: {
-            type: 'varchar',
+            type: "varchar",
             nullable: true,
         },
         lastName: {
-            type: 'varchar',
+            type: "varchar",
             nullable: true,
         },
         avatarUrl: {
-            type: 'varchar',
+            type: "varchar",
             nullable: true,
         },
         role: {
-            type: 'varchar',
-            default: 'user',
+            type: "varchar",
+            default: "user",
         },
         isActive: {
-            type: 'varchar',
+            type: "boolean",
             default: true,
         },
         defaultProfileId: {
-            type: 'varchar',
+            type: "varchar",
             nullable: true,
         },
         createdAt: {
-            type: 'datetime',
+            type: "datetime",
             createDate: true,
         },
         updatedAt: {
-            type: 'datetime',
+            type: "datetime",
             updateDate: true,
         },
     },

@@ -1,4 +1,4 @@
-import { BaseEntity } from './BaseEntity';
+import { BaseEntity } from "./BaseEntity";
 export declare class User extends BaseEntity {
     _id: string;
     email: string;
@@ -6,7 +6,7 @@ export declare class User extends BaseEntity {
     firstName?: string;
     lastName?: string;
     avatarUrl?: string;
-    role: 'admin' | 'user';
+    role: "admin" | "user";
     isActive: boolean;
     defaultProfileId?: string;
     createdAt: Date;
