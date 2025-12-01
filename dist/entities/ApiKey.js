@@ -22,6 +22,10 @@ const apiKeyTransformer = {
         if (value === null || value === undefined) {
             return null;
         }
+        // If value is already encrypted (contains colons from iv:encrypted:authTag format), don't re-encrypt
+        if (value.includes(':') && value.split(':').length === 3) {
+            return value;
+        }
         return (0, secure_crypto_1.encrypt)(value);
     },
     from: (value) => {
@@ -29,7 +33,19 @@ const apiKeyTransformer = {
         if (value === null || value === undefined) {
             return null;
         }
-        return (0, secure_crypto_1.decrypt)(value);
+        // If value doesn't look encrypted (no colons), return as-is
+        if (!value.includes(':')) {
+            return value;
+        }
+        try {
+            return (0, secure_crypto_1.decrypt)(value);
+        }
+        catch (error) {
+            // Decryption failed - likely encryption key mismatch (e.g., moved to different machine)
+            // Return null so the app can still load, but the key will need to be re-entered
+            console.warn(`[ApiKey] Failed to decrypt API key: ${error.message}. This usually means the encryption key changed (e.g., moved to different machine). Please re-enter your API keys.`);
+            return null;
+        }
     }
 };
 let ApiKey = class ApiKey extends BaseEntity_1.BaseEntity {
@@ -77,7 +93,7 @@ __decorate([
     __metadata("design:type", String)
 ], ApiKey.prototype, "model", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { default: true }),
+    (0, typeorm_1.Column)({ type: 'boolean', default: true }),
     __metadata("design:type", Boolean)
 ], ApiKey.prototype, "isActive", void 0);
 __decorate([

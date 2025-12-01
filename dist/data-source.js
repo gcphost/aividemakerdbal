@@ -165,19 +165,14 @@ function createDataSource() {
         extra: {
             // Load sqlite-vec extension if available (for vector search support)
             // This allows TypeORM to query databases with vec0 virtual tables
-            // NOTE: prepareDatabase must be synchronous for better-sqlite3 driver
-            prepareDatabase: (db) => {
+            prepareDatabase: async (db) => {
                 try {
-                    // Try to load sqlite-vec extension synchronously
-                    // Use require instead of dynamic import since prepareDatabase must be sync
-                    let sqliteVec = null;
-                    try {
-                        sqliteVec = require("sqlite-vec");
-                    }
-                    catch {
-                        // Module not available, that's OK
-                        return;
-                    }
+                    // Try to load sqlite-vec extension if available
+                    // This is optional - if the extension isn't available, we'll continue without it
+                    // Use dynamic import with string to avoid TypeScript checking for the module
+                    // sqlite-vec may not be installed in all packages (e.g., electron)
+                    const sqliteVecModule = "sqlite-vec";
+                    const sqliteVec = await Promise.resolve(`${sqliteVecModule}`).then(s => __importStar(require(s))).catch(() => null);
                     if (sqliteVec) {
                         if (db.loadExtension && typeof db.loadExtension === "function") {
                             if (typeof sqliteVec.getLoadablePath === "function") {

@@ -61,7 +61,7 @@ export class ApiKey extends BaseEntity {
   @Column('varchar', { nullable: true })
   model?: string;
 
-  @Column('varchar', { default: true })
+  @Column({ type: 'boolean', default: true })
   isActive!: boolean;
 
   @Column({ type: 'text', nullable: true })
