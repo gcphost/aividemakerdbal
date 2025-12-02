@@ -22,7 +22,15 @@
       "typeorm": ["./node_modules/typeorm"]
     }
   },
-  "include": ["entities/**/*", "data-source.ts", "migrations/**/*", "types/**/*", "utils/**/*", "run-migrations.ts"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "entities/**/*",
+    "data-source.ts",
+    "migrations/**/*",
+    "types/**/*",
+    "utils/**/*",
+    "scripts/check-and-fix-schema.ts",
+    "scripts/add-missing-columns.ts",
+    "scripts/check-usage-data.ts"
+  ],
+  "exclude": ["node_modules", "dist", "scripts/migrate-background-audio-to-file.ts"]
 }
-
