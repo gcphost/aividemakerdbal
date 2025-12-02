@@ -101,70 +101,17 @@ function createDataSource() {
     }
     console.log(`[DB] New database (will sync schema): ${isNewDatabase}`);
     console.log(`[DB] ===========================================`);
-    // Migrations are in shared-db/dist/migrations (compiled) - check there first
-    // Also check electron/migrations for backward compatibility
-    const possibleMigrationsPaths = [
-        path.join(__dirname, "dist", "migrations"), // Compiled JS in shared-db/dist/migrations
-        path.join(projectRoot, "shared-db", "dist", "migrations"), // Compiled JS (when running from project root)
-        path.join(projectRoot, "electron", "dist", "migrations"), // Compiled JS (backward compatibility)
-        path.join(projectRoot, "electron", "migrations"), // Source TS (backward compatibility)
-    ];
-    let migrationsDir;
-    let migrationsPattern;
-    // Find the first existing migrations directory
-    let foundMigrationsDir = null;
-    for (const possiblePath of possibleMigrationsPaths) {
-        if (fs.existsSync(possiblePath)) {
-            foundMigrationsDir = possiblePath;
-            break;
-        }
-    }
-    if (foundMigrationsDir) {
-        migrationsDir = foundMigrationsDir;
-        // Check if we have .js or .ts files
-        const hasJsFiles = fs.readdirSync(migrationsDir).some(f => f.endsWith(".js"));
-        const hasTsFiles = fs.readdirSync(migrationsDir).some(f => f.endsWith(".ts"));
-        if (hasJsFiles) {
-            migrationsPattern = path.join(migrationsDir, "*.js");
-        }
-        else if (hasTsFiles) {
-            migrationsPattern = path.join(migrationsDir, "*.ts");
-        }
-        else {
-            // Default to .js if we can't determine
-            migrationsPattern = path.join(migrationsDir, "*.js");
-        }
-    }
-    else {
-        // Fallback: use electron/migrations
-        migrationsDir = path.join(projectRoot, "electron", "migrations");
-        migrationsPattern = path.join(migrationsDir, "*.ts");
-    }
-    // Log migration path for debugging
-    if (process.env.NODE_ENV !== "production") {
-        console.log(`[DB] Migrations directory: ${migrationsDir}`);
-        console.log(`[DB] Migrations pattern: ${migrationsPattern}`);
-        console.log(`[DB] Migrations directory exists: ${fs.existsSync(migrationsDir)}`);
-        if (fs.existsSync(migrationsDir)) {
-            const files = fs
-                .readdirSync(migrationsDir)
-                .filter(f => f.endsWith(".ts") || f.endsWith(".js"));
-            console.log(`[DB] Found ${files.length} migration file(s)`);
-        }
-    }
-    // Disable migrations in Next.js (they can't handle dynamic patterns)
-    // Migrations will run in Electron only
-    const isNextJs = typeof process !== "undefined" && process.env.NEXT_RUNTIME !== undefined;
-    const migrations = isNextJs ? [] : [migrationsPattern];
+    // Migrations are now handled by check-and-fix-schema.ts script
+    // Schema is auto-synced for new databases, and checked/fixed on startup for existing ones
     _appDataSource = new typeorm_1.DataSource({
         type: "better-sqlite3",
         database: dbPath,
-        // Auto-sync schema on first run (new database), otherwise use migrations
+        // Auto-sync schema on first run (new database)
         synchronize: isNewDatabase,
-        migrationsRun: !isNewDatabase && !isNextJs, // Only run migrations on existing databases, not in Next.js
-        logging: ["schema", "error", "warn", "migration"], // Log schema changes, errors, and migrations
+        migrationsRun: false, // Migrations disabled - use check-and-fix-schema.ts instead
+        logging: ["schema", "error", "warn"], // Log schema changes and errors
         entities: Object.values(entities),
-        migrations: migrations,
+        migrations: [], // Migrations disabled - use check-and-fix-schema.ts instead
         subscribers: [],
         extra: {
             // Load sqlite-vec extension if available (for vector search support)

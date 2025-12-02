@@ -114,6 +114,16 @@
       "import": "./dist/utils/*.js",
       "require": "./dist/utils/*.js",
       "types": "./dist/utils/*.d.ts"
+    },
+    "./scripts/check-and-fix-schema": {
+      "import": "./dist/scripts/check-and-fix-schema.js",
+      "require": "./dist/scripts/check-and-fix-schema.js",
+      "types": "./dist/scripts/check-and-fix-schema.d.ts"
+    },
+    "./scripts/*": {
+      "import": "./dist/scripts/*.js",
+      "require": "./dist/scripts/*.js",
+      "types": "./dist/scripts/*.d.ts"
     }
   },
   "devDependencies": {
