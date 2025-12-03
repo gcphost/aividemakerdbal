@@ -36,7 +36,19 @@ export type ProcessType =
   | "sound-generation"
   | "voice-generation"
   | "description-generation"
-  | "content-generation";
+  | "content-generation"
+  | "profile-generation"
+  | "chapter-generation"
+  | "script-generation"
+  | "video-creation"
+  | "audio-timeline-generation"
+  | "narration-chunk"
+  | "bulk-script-generation"
+  | "bulk-audio-generation"
+  | "bulk-image-generation"
+  | "bulk-music-generation"
+  | "bulk-sound-generation"
+  | "auto-generate-all-content";
 
 export type ProcessStatus =
   | "pending"
