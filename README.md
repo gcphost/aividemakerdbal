@@ -14,14 +14,13 @@ This package provides TypeORM entities and database configuration that can be sh
 
 ```typescript
 import { AppDataSource } from 'shared-db';
-import { User, Video, Chapter } from 'shared-db/entities';
+import { User, Video } from 'shared-db/entities';
 ```
 
 ## Entities
 
 - User
 - Video
-- Chapter
 - Profile
 - Settings
 - ApiKey

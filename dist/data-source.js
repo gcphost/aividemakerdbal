@@ -33,7 +33,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PerformanceMetrics = exports.ProcessEstimate = exports.Process = exports.ApiKey = exports.Usage = exports.Settings = exports.Profile = exports.Channel = exports.File = exports.Chapter = exports.Video = exports.User = exports.AppDataSource = exports.getAppDataSource = void 0;
+exports.PerformanceMetrics = exports.ProcessEstimate = exports.Process = exports.ApiKey = exports.Usage = exports.Settings = exports.Profile = exports.Channel = exports.File = exports.Video = exports.User = exports.AppDataSource = exports.getAppDataSource = void 0;
 const typeorm_1 = require("typeorm");
 const path = __importStar(require("path"));
 const fs = __importStar(require("fs"));
@@ -165,7 +165,6 @@ exports.AppDataSource = createDataSource();
 var entities_1 = require("./entities");
 Object.defineProperty(exports, "User", { enumerable: true, get: function () { return entities_1.User; } });
 Object.defineProperty(exports, "Video", { enumerable: true, get: function () { return entities_1.Video; } });
-Object.defineProperty(exports, "Chapter", { enumerable: true, get: function () { return entities_1.Chapter; } });
 Object.defineProperty(exports, "File", { enumerable: true, get: function () { return entities_1.File; } });
 Object.defineProperty(exports, "Channel", { enumerable: true, get: function () { return entities_1.Channel; } });
 Object.defineProperty(exports, "Profile", { enumerable: true, get: function () { return entities_1.Profile; } });

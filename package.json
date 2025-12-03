@@ -35,11 +35,6 @@
       "require": "./dist/entities/Video.js",
       "types": "./dist/entities/Video.d.ts"
     },
-    "./entities/Chapter": {
-      "import": "./dist/entities/Chapter.js",
-      "require": "./dist/entities/Chapter.js",
-      "types": "./dist/entities/Chapter.d.ts"
-    },
     "./entities/Profile": {
       "import": "./dist/entities/Profile.js",
       "require": "./dist/entities/Profile.js",

@@ -146,7 +146,6 @@ export const AppDataSource = createDataSource();
 export {
   User,
   Video,
-  Chapter,
   File,
   Channel,
   Profile,
