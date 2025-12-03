@@ -1,8 +1,7 @@
 // File-related types and interfaces
 import { File } from "../entities/File";
 
-export type FileType = typeof File.prototype;
-export type NewFile = Omit<FileType, "_id" | "createdAt" | "updatedAt">;
+export type FileType = string; // e.g., "image", "audio", "video", "tts", "background-audio"
 
 export interface FileReference {
   type: string; // e.g., "video", "chapter", "thumbnail"
