@@ -1,28 +1,39 @@
-import { TimelineData, TimelineLayer, TimelineInstance, ImageSource, SoundSource, BackgroundAudioSource, VideoSource } from '../types/video';
+import {
+  TimelineData,
+  TimelineLayer,
+  TimelineInstance,
+  ImageSource,
+  SoundSource,
+  BackgroundAudioSource,
+  VideoSource,
+  VoiceSource,
+} from "../types/video";
 
 /**
  * Creates a default timeline sources object with all source arrays initialized to empty arrays.
  * This ensures consistency across all handlers and prevents missing arrays.
- * 
- * @returns Default sources object with images, sounds, backgroundAudio, and videos arrays
+ *
+ * @returns Default sources object with images, sounds, backgroundAudio, videos, and voices arrays
  */
 export function createDefaultTimelineSources(): {
   images: ImageSource[];
   sounds: SoundSource[];
   backgroundAudio: BackgroundAudioSource[];
   videos: VideoSource[];
+  voices: VoiceSource[];
 } {
   return {
     images: [],
     sounds: [],
     backgroundAudio: [],
     videos: [],
+    voices: [],
   };
 }
 
 /**
  * Creates a default timeline layer with all required fields properly initialized.
- * 
+ *
  * @param id - Unique identifier for the layer
  * @param label - Display label for the layer
  * @param type - Optional type of the layer (image, sound, backgroundAudio, video, text)
@@ -32,7 +43,7 @@ export function createDefaultTimelineSources(): {
 export function createDefaultTimelineLayer(
   id: string,
   label: string,
-  type?: 'image' | 'sound' | 'backgroundAudio' | 'video' | 'text',
+  type?: "image" | "sound" | "backgroundAudio" | "video" | "text",
   items: TimelineInstance[] = []
 ): TimelineLayer {
   return {
@@ -47,7 +58,7 @@ export function createDefaultTimelineLayer(
 
 /**
  * Creates a default timeline data object with duration, empty layers, and default sources.
- * 
+ *
  * @returns Complete TimelineData object with all required fields initialized
  */
 export function createDefaultTimelineData(): TimelineData {
@@ -61,13 +72,15 @@ export function createDefaultTimelineData(): TimelineData {
 /**
  * Parses a timeline that may be stored as a JSON string or already as an object.
  * Handles the common pattern where timeline data may come from DB as string or object.
- * 
+ *
  * @param timeline - The timeline data, either as a JSON string or TimelineData object
  * @returns Parsed TimelineData object, or null if input is null/undefined/invalid
  */
-export function parseTimeline(timeline: string | TimelineData | null | undefined): TimelineData | null {
+export function parseTimeline(
+  timeline: string | TimelineData | null | undefined
+): TimelineData | null {
   if (!timeline) return null;
-  if (typeof timeline === 'string') {
+  if (typeof timeline === "string") {
     try {
       return JSON.parse(timeline);
     } catch {
@@ -76,4 +89,3 @@ export function parseTimeline(timeline: string | TimelineData | null | undefined
   }
   return timeline;
 }
-

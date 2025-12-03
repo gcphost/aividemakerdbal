@@ -88,6 +88,17 @@ export interface VideoSource {
   // Note: provider/model/providerSettings are stored in File metadata, not here
 }
 
+export interface VoiceSource {
+  id: string;
+  title?: string;
+  prompt?: string; // The TTS text (formerly narrationScript)
+  generatedAudioUrl?: string;
+  generatedAudioFileId?: string;
+  duration?: number;
+  waveformPeaks?: number[];
+  // Provider info stored in File.metadata
+}
+
 export interface ImageTimelineInstance {
   type: "image";
   id?: string;
@@ -136,6 +147,15 @@ export interface VideoTimelineInstance {
   loop?: boolean;
 }
 
+export interface VoiceTimelineInstance {
+  type: "voice";
+  id?: string;
+  sourceId: string;
+  startTime: number;
+  endTime: number;
+  volume?: number;
+}
+
 export interface TextTimelineInstance {
   type: "text";
   id?: string;
@@ -163,12 +183,13 @@ export type TimelineInstance =
   | SoundTimelineInstance
   | BackgroundAudioTimelineInstance
   | VideoTimelineInstance
+  | VoiceTimelineInstance
   | TextTimelineInstance;
 
 export interface TimelineLayer {
   id: string;
   label: string;
-  type?: "image" | "sound" | "backgroundAudio" | "video" | "text";
+  type?: "image" | "sound" | "backgroundAudio" | "video" | "voice" | "text";
   visible: boolean;
   locked: boolean;
   items: TimelineInstance[];
@@ -198,5 +219,6 @@ export interface TimelineData {
     sounds: SoundSource[];
     backgroundAudio: BackgroundAudioSource[];
     videos: VideoSource[];
+    voices: VoiceSource[];
   };
 }

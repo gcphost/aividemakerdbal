@@ -8,7 +8,7 @@ exports.parseTimeline = parseTimeline;
  * Creates a default timeline sources object with all source arrays initialized to empty arrays.
  * This ensures consistency across all handlers and prevents missing arrays.
  *
- * @returns Default sources object with images, sounds, backgroundAudio, and videos arrays
+ * @returns Default sources object with images, sounds, backgroundAudio, videos, and voices arrays
  */
 function createDefaultTimelineSources() {
     return {
@@ -16,6 +16,7 @@ function createDefaultTimelineSources() {
         sounds: [],
         backgroundAudio: [],
         videos: [],
+        voices: [],
     };
 }
 /**
@@ -59,7 +60,7 @@ function createDefaultTimelineData() {
 function parseTimeline(timeline) {
     if (!timeline)
         return null;
-    if (typeof timeline === 'string') {
+    if (typeof timeline === "string") {
         try {
             return JSON.parse(timeline);
         }

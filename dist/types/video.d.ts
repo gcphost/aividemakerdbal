@@ -75,6 +75,15 @@ export interface VideoSource {
         [key: string]: any;
     };
 }
+export interface VoiceSource {
+    id: string;
+    title?: string;
+    prompt?: string;
+    generatedAudioUrl?: string;
+    generatedAudioFileId?: string;
+    duration?: number;
+    waveformPeaks?: number[];
+}
 export interface ImageTimelineInstance {
     type: "image";
     id?: string;
@@ -119,6 +128,14 @@ export interface VideoTimelineInstance {
     endTime: number;
     loop?: boolean;
 }
+export interface VoiceTimelineInstance {
+    type: "voice";
+    id?: string;
+    sourceId: string;
+    startTime: number;
+    endTime: number;
+    volume?: number;
+}
 export interface TextTimelineInstance {
     type: "text";
     id?: string;
@@ -140,11 +157,11 @@ export interface TextTimelineInstance {
         padding?: number;
     };
 }
-export type TimelineInstance = ImageTimelineInstance | SoundTimelineInstance | BackgroundAudioTimelineInstance | VideoTimelineInstance | TextTimelineInstance;
+export type TimelineInstance = ImageTimelineInstance | SoundTimelineInstance | BackgroundAudioTimelineInstance | VideoTimelineInstance | VoiceTimelineInstance | TextTimelineInstance;
 export interface TimelineLayer {
     id: string;
     label: string;
-    type?: "image" | "sound" | "backgroundAudio" | "video" | "text";
+    type?: "image" | "sound" | "backgroundAudio" | "video" | "voice" | "text";
     visible: boolean;
     locked: boolean;
     items: TimelineInstance[];
@@ -161,6 +178,7 @@ export interface TimelineData {
         sounds: SoundSource[];
         backgroundAudio: BackgroundAudioSource[];
         videos: VideoSource[];
+        voices: VoiceSource[];
     };
 }
 //# sourceMappingURL=video.d.ts.map
