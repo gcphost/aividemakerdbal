@@ -1,4 +1,4 @@
-import { TimelineData, TimelineLayer, TimelineInstance, ImageSource, SoundSource, BackgroundAudioSource, VideoSource, VoiceSource } from "../types/video";
+import { TimelineData, TimelineLayer, TimelineInstance, ImageSource, SoundSource, AudioSource, VideoSource, VoiceSource } from "../types/video";
 /**
  * Creates a default timeline sources object with all source arrays initialized to empty arrays.
  * This ensures consistency across all handlers and prevents missing arrays.
@@ -8,7 +8,7 @@ import { TimelineData, TimelineLayer, TimelineInstance, ImageSource, SoundSource
 export declare function createDefaultTimelineSources(): {
     images: ImageSource[];
     sounds: SoundSource[];
-    backgroundAudio: BackgroundAudioSource[];
+    audio: AudioSource[];
     videos: VideoSource[];
     voices: VoiceSource[];
 };
@@ -21,7 +21,7 @@ export declare function createDefaultTimelineSources(): {
  * @param items - Optional initial items array (defaults to empty array)
  * @returns TimelineLayer object with all required fields
  */
-export declare function createDefaultTimelineLayer(id: string, label: string, type?: "image" | "sound" | "backgroundAudio" | "video" | "text", items?: TimelineInstance[]): TimelineLayer;
+export declare function createDefaultTimelineLayer(id: string, label: string, type?: "image" | "sound" | "audio" | "video" | "text", items?: TimelineInstance[]): TimelineLayer;
 /**
  * Creates a default timeline data object with duration, empty layers, and default sources.
  *

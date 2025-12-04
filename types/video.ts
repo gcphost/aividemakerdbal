@@ -13,18 +13,9 @@ export interface ImageSource {
   title?: string;
   description?: string;
   searchTerm?: string;
-  generatedImageUrl?: string;
-  generatedImageFileId?: string;
-  fileId?: string;
-  resolvedUrl?: string;
-  imageUrl?: string;
-  isReused?: boolean;
-  reusedFrom?: {
-    videoSubject?: string;
-    chapterTitle?: string;
-    similarity?: number;
-  };
+  fileId?: string; // Standardized file reference - URLs come from File.publicUrl
   // Note: provider/model/providerSettings are stored in File metadata, not here
+  // Note: Reuse tracking is done via File.references, not isReused/reusedFrom
 }
 
 export interface SoundSource {
@@ -34,9 +25,8 @@ export interface SoundSource {
   description?: string; // User-friendly summary of the sound
   searchTerm?: string;
   type: string;
-  audioUrl?: string;
-  fileId?: string;
-  waveformPeaks?: number[];
+  fileId?: string; // Standardized file reference - URLs come from File.publicUrl
+  waveformPeaks?: number[]; // Can also come from File.metadata
   volume?: number;
   duration?: number;
   loop?: boolean;
@@ -44,10 +34,9 @@ export interface SoundSource {
   // Note: provider/model/providerSettings are stored in File metadata, not here
 }
 
-export interface BackgroundAudioSource {
+export interface AudioSource {
   id: string;
-  fileId?: string;
-  audioFileId?: string;
+  fileId?: string; // Standardized file reference - URLs come from File.publicUrl
   name: string;
   title?: string;
   searchTerm?: string;
@@ -57,9 +46,7 @@ export interface BackgroundAudioSource {
   mood?: string;
   tempo?: string;
   instrumental?: boolean;
-  audioUrl?: string;
-  imageUrl?: string;
-  waveformPeaks?: number[];
+  waveformPeaks?: number[]; // Can also come from File.metadata
   volume?: number;
   duration?: number;
   loop?: boolean;
@@ -71,9 +58,7 @@ export interface VideoSource {
   prompt: string;
   title?: string;
   searchTerm?: string;
-  generatedVideoFileId?: string | number;
-  generatedVideoUrl?: string;
-  resolvedUrl?: string;
+  fileId?: string; // Standardized file reference - URLs come from File.publicUrl
   duration?: number;
   resolution?: string;
   aspectRatio?: string;
@@ -92,10 +77,9 @@ export interface VoiceSource {
   id: string;
   title?: string;
   prompt?: string; // The TTS text (formerly narrationScript)
-  generatedAudioUrl?: string;
-  generatedAudioFileId?: string;
+  fileId?: string; // Standardized file reference - URLs come from File.publicUrl
   duration?: number;
-  waveformPeaks?: number[];
+  waveformPeaks?: number[]; // Can also come from File.metadata
   // Provider info stored in File.metadata
 }
 
@@ -105,9 +89,6 @@ export interface ImageTimelineInstance {
   sourceId: string;
   startTime: number;
   endTime: number;
-  generatedImageUrl?: string;
-  generatedImageFileId?: string;
-  resolvedUrl?: string;
   kenBurnsConfig?: {
     startScale?: number;
     endScale?: number;
@@ -116,6 +97,7 @@ export interface ImageTimelineInstance {
     endX?: number;
     endY?: number;
   };
+  // Note: URLs and fileId come from the source, not the instance
 }
 
 export interface SoundTimelineInstance {
@@ -128,8 +110,8 @@ export interface SoundTimelineInstance {
   loop?: boolean;
 }
 
-export interface BackgroundAudioTimelineInstance {
-  type: "backgroundAudio";
+export interface AudioTimelineInstance {
+  type: "audio";
   id?: string;
   sourceId: string;
   startTime: number;
@@ -181,7 +163,7 @@ export interface TextTimelineInstance {
 export type TimelineInstance =
   | ImageTimelineInstance
   | SoundTimelineInstance
-  | BackgroundAudioTimelineInstance
+  | AudioTimelineInstance
   | VideoTimelineInstance
   | VoiceTimelineInstance
   | TextTimelineInstance;
@@ -189,7 +171,7 @@ export type TimelineInstance =
 export interface TimelineLayer {
   id: string;
   label: string;
-  type?: "image" | "sound" | "backgroundAudio" | "video" | "voice" | "text";
+  type?: "image" | "sound" | "audio" | "video" | "voice" | "text";
   visible: boolean;
   locked: boolean;
   items: TimelineInstance[];
@@ -217,7 +199,7 @@ export interface TimelineData {
   sources: {
     images: ImageSource[];
     sounds: SoundSource[];
-    backgroundAudio: BackgroundAudioSource[];
+    audio: AudioSource[];
     videos: VideoSource[];
     voices: VoiceSource[];
   };

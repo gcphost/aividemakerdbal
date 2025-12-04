@@ -8,17 +8,7 @@ export interface ImageSource {
     title?: string;
     description?: string;
     searchTerm?: string;
-    generatedImageUrl?: string;
-    generatedImageFileId?: string;
     fileId?: string;
-    resolvedUrl?: string;
-    imageUrl?: string;
-    isReused?: boolean;
-    reusedFrom?: {
-        videoSubject?: string;
-        chapterTitle?: string;
-        similarity?: number;
-    };
 }
 export interface SoundSource {
     id: string;
@@ -27,7 +17,6 @@ export interface SoundSource {
     description?: string;
     searchTerm?: string;
     type: string;
-    audioUrl?: string;
     fileId?: string;
     waveformPeaks?: number[];
     volume?: number;
@@ -35,10 +24,9 @@ export interface SoundSource {
     loop?: boolean;
     promptInfluence?: number;
 }
-export interface BackgroundAudioSource {
+export interface AudioSource {
     id: string;
     fileId?: string;
-    audioFileId?: string;
     name: string;
     title?: string;
     searchTerm?: string;
@@ -48,8 +36,6 @@ export interface BackgroundAudioSource {
     mood?: string;
     tempo?: string;
     instrumental?: boolean;
-    audioUrl?: string;
-    imageUrl?: string;
     waveformPeaks?: number[];
     volume?: number;
     duration?: number;
@@ -60,9 +46,7 @@ export interface VideoSource {
     prompt: string;
     title?: string;
     searchTerm?: string;
-    generatedVideoFileId?: string | number;
-    generatedVideoUrl?: string;
-    resolvedUrl?: string;
+    fileId?: string;
     duration?: number;
     resolution?: string;
     aspectRatio?: string;
@@ -79,8 +63,7 @@ export interface VoiceSource {
     id: string;
     title?: string;
     prompt?: string;
-    generatedAudioUrl?: string;
-    generatedAudioFileId?: string;
+    fileId?: string;
     duration?: number;
     waveformPeaks?: number[];
 }
@@ -90,9 +73,6 @@ export interface ImageTimelineInstance {
     sourceId: string;
     startTime: number;
     endTime: number;
-    generatedImageUrl?: string;
-    generatedImageFileId?: string;
-    resolvedUrl?: string;
     kenBurnsConfig?: {
         startScale?: number;
         endScale?: number;
@@ -111,8 +91,8 @@ export interface SoundTimelineInstance {
     volume?: number;
     loop?: boolean;
 }
-export interface BackgroundAudioTimelineInstance {
-    type: "backgroundAudio";
+export interface AudioTimelineInstance {
+    type: "audio";
     id?: string;
     sourceId: string;
     startTime: number;
@@ -157,11 +137,11 @@ export interface TextTimelineInstance {
         padding?: number;
     };
 }
-export type TimelineInstance = ImageTimelineInstance | SoundTimelineInstance | BackgroundAudioTimelineInstance | VideoTimelineInstance | VoiceTimelineInstance | TextTimelineInstance;
+export type TimelineInstance = ImageTimelineInstance | SoundTimelineInstance | AudioTimelineInstance | VideoTimelineInstance | VoiceTimelineInstance | TextTimelineInstance;
 export interface TimelineLayer {
     id: string;
     label: string;
-    type?: "image" | "sound" | "backgroundAudio" | "video" | "voice" | "text";
+    type?: "image" | "sound" | "audio" | "video" | "voice" | "text";
     visible: boolean;
     locked: boolean;
     items: TimelineInstance[];
@@ -176,7 +156,7 @@ export interface TimelineData {
     sources: {
         images: ImageSource[];
         sounds: SoundSource[];
-        backgroundAudio: BackgroundAudioSource[];
+        audio: AudioSource[];
         videos: VideoSource[];
         voices: VoiceSource[];
     };

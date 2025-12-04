@@ -4,7 +4,7 @@ import {
   TimelineInstance,
   ImageSource,
   SoundSource,
-  BackgroundAudioSource,
+  AudioSource,
   VideoSource,
   VoiceSource,
 } from "../types/video";
@@ -18,14 +18,14 @@ import {
 export function createDefaultTimelineSources(): {
   images: ImageSource[];
   sounds: SoundSource[];
-  backgroundAudio: BackgroundAudioSource[];
+    audio: AudioSource[];
   videos: VideoSource[];
   voices: VoiceSource[];
 } {
   return {
     images: [],
     sounds: [],
-    backgroundAudio: [],
+    audio: [],
     videos: [],
     voices: [],
   };
@@ -43,7 +43,7 @@ export function createDefaultTimelineSources(): {
 export function createDefaultTimelineLayer(
   id: string,
   label: string,
-  type?: "image" | "sound" | "backgroundAudio" | "video" | "text",
+  type?: "image" | "sound" | "audio" | "video" | "text",
   items: TimelineInstance[] = []
 ): TimelineLayer {
   return {

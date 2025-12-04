@@ -14,7 +14,7 @@ function createDefaultTimelineSources() {
     return {
         images: [],
         sounds: [],
-        backgroundAudio: [],
+        audio: [],
         videos: [],
         voices: [],
     };
