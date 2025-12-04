@@ -72,6 +72,7 @@ export interface TTSVoiceOption {
   name: string;
   description?: string;
   gender?: "female" | "male" | "neutral";
+  previewUrl?: string; // URL to preview audio sample
 }
 
 /**
