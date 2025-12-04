@@ -28,6 +28,7 @@
     "migrations/**/*",
     "types/**/*",
     "utils/**/*",
+    "lib/**/*",
     "scripts/check-and-fix-schema.ts",
     "scripts/add-missing-columns.ts",
     "scripts/check-usage-data.ts"
