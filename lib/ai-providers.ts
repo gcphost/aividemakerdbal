@@ -1333,9 +1333,10 @@ export function getModelPricing(providerId: string, modelId: string): ModelPrici
  * Get hard-coded default provider and model for a capability
  * Used as fallback when no profile or settings are configured
  */
-export function getHardCodedDefaults(
-  capability: ServiceCapability
-): { provider: string; model?: string } {
+export function getHardCodedDefaults(capability: ServiceCapability): {
+  provider: string;
+  model?: string;
+} {
   const providers = getProvidersByCapability(capability);
   if (providers.length === 0) {
     throw new Error(`No providers found for capability: ${capability}`);
