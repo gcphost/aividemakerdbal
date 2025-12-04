@@ -32,6 +32,7 @@ exports.getMoodsForModel = getMoodsForModel;
 exports.getTemposForModel = getTemposForModel;
 exports.getDurationRangeForModel = getDurationRangeForModel;
 exports.getModelPricing = getModelPricing;
+exports.getHardCodedDefaults = getHardCodedDefaults;
 exports.AI_PROVIDERS = {
     openai: {
         id: "openai",
@@ -1167,5 +1168,22 @@ function getModelPricing(providerId, modelId) {
         }
     }
     return undefined;
+}
+/**
+ * Get hard-coded default provider and model for a capability
+ * Used as fallback when no profile or settings are configured
+ */
+function getHardCodedDefaults(capability) {
+    const providers = getProvidersByCapability(capability);
+    if (providers.length === 0) {
+        throw new Error(`No providers found for capability: ${capability}`);
+    }
+    // Get the first provider that supports this capability
+    const defaultProvider = providers[0];
+    const defaultModel = getDefaultModel(defaultProvider.id, capability);
+    return {
+        provider: defaultProvider.id,
+        model: defaultModel?.id,
+    };
 }
 //# sourceMappingURL=ai-providers.js.map

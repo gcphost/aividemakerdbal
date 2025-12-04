@@ -236,4 +236,12 @@ export declare function getDurationRangeForModel(providerId: string, modelId: st
  * Get pricing for a specific model
  */
 export declare function getModelPricing(providerId: string, modelId: string): ModelPricing | undefined;
+/**
+ * Get hard-coded default provider and model for a capability
+ * Used as fallback when no profile or settings are configured
+ */
+export declare function getHardCodedDefaults(capability: ServiceCapability): {
+    provider: string;
+    model?: string;
+};
 //# sourceMappingURL=ai-providers.d.ts.map

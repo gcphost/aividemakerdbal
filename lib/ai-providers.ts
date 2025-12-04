@@ -1328,3 +1328,25 @@ export function getModelPricing(providerId: string, modelId: string): ModelPrici
   }
   return undefined;
 }
+
+/**
+ * Get hard-coded default provider and model for a capability
+ * Used as fallback when no profile or settings are configured
+ */
+export function getHardCodedDefaults(
+  capability: ServiceCapability
+): { provider: string; model?: string } {
+  const providers = getProvidersByCapability(capability);
+  if (providers.length === 0) {
+    throw new Error(`No providers found for capability: ${capability}`);
+  }
+
+  // Get the first provider that supports this capability
+  const defaultProvider = providers[0];
+  const defaultModel = getDefaultModel(defaultProvider.id, capability);
+
+  return {
+    provider: defaultProvider.id,
+    model: defaultModel?.id,
+  };
+}
