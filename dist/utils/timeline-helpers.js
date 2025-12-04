@@ -8,7 +8,7 @@ exports.parseTimeline = parseTimeline;
  * Creates a default timeline sources object with all source arrays initialized to empty arrays.
  * This ensures consistency across all handlers and prevents missing arrays.
  *
- * @returns Default sources object with images, sounds, backgroundAudio, videos, and voices arrays
+ * @returns Default sources object with images, sounds, audio, videos, and voices arrays
  */
 function createDefaultTimelineSources() {
     return {
@@ -24,7 +24,7 @@ function createDefaultTimelineSources() {
  *
  * @param id - Unique identifier for the layer
  * @param label - Display label for the layer
- * @param type - Optional type of the layer (image, sound, backgroundAudio, video, text)
+ * @param type - Optional type of the layer (image, sound, audio, video, text)
  * @param items - Optional initial items array (defaults to empty array)
  * @returns TimelineLayer object with all required fields
  */
