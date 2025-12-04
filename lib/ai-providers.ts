@@ -495,6 +495,24 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           pricing: { perMillionCharacters: 16 },
         },
         {
+          id: "gemini-2.5-flash-tts",
+          name: "Gemini 2.5 Flash TTS",
+          description: "Fast Gemini 2.5 Flash text-to-speech",
+          pricing: { perMillionCharacters: 16 },
+        },
+        {
+          id: "gemini-2.5-pro-tts",
+          name: "Gemini 2.5 Pro TTS",
+          description: "High-quality Gemini 2.5 Pro text-to-speech",
+          pricing: { perMillionCharacters: 16 },
+        },
+        {
+          id: "gemini-2.5-flash-lite-preview-tts",
+          name: "Gemini 2.5 Flash Lite TTS (Preview)",
+          description: "Lightweight preview Gemini 2.5 Flash TTS",
+          pricing: { perMillionCharacters: 16 },
+        },
+        {
           id: "google-cloud-tts",
           name: "Google Cloud TTS",
           description: "Standard high quality voices",
