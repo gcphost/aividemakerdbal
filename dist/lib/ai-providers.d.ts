@@ -22,6 +22,9 @@ export interface ModelPricing {
     perUnitStandard?: number;
     perUnitUltra?: number;
     perMillionCharacters?: number;
+    perMillionTokens?: number;
+    perMillionInputTokens?: number;
+    perMillionOutputTokens?: number;
     perSecond?: number;
     perGeneration?: number;
 }

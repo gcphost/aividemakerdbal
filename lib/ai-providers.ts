@@ -33,6 +33,9 @@ export interface ModelPricing {
   perUnitStandard?: number;
   perUnitUltra?: number;
   perMillionCharacters?: number;
+  perMillionTokens?: number; // For embeddings or unified token pricing
+  perMillionInputTokens?: number; // For text generation input
+  perMillionOutputTokens?: number; // For text generation output
   perSecond?: number;
   perGeneration?: number;
 }
@@ -803,36 +806,216 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
       "chirp3-hd": {
         ttsOptions: {
           voices: [
-            { id: "Achernar", name: "Achernar", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-achernar.wav" },
-            { id: "Achird", name: "Achird", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-achird.wav" },
-            { id: "Algenib", name: "Algenib", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-algenib.wav" },
-            { id: "Algieba", name: "Algieba", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-algieba.wav" },
-            { id: "Alnilam", name: "Alnilam", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-alnilam.wav" },
-            { id: "Aoede", name: "Aoede", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-aoede.wav" },
-            { id: "Autonoe", name: "Autonoe", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-autonoe.wav" },
-            { id: "Callirrhoe", name: "Callirrhoe", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-callirrhoe.wav" },
-            { id: "Charon", name: "Charon", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-charon.wav" },
-            { id: "Despina", name: "Despina", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-despina.wav" },
-            { id: "Enceladus", name: "Enceladus", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-enceladus.wav" },
-            { id: "Erinome", name: "Erinome", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-erinome.wav" },
-            { id: "Fenrir", name: "Fenrir", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-fenrir.wav" },
-            { id: "Gacrux", name: "Gacrux", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-gacrux.wav" },
-            { id: "Iapetus", name: "Iapetus", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-iapetus.wav" },
-            { id: "Kore", name: "Kore", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-kore.wav" },
-            { id: "Laomedeia", name: "Laomedeia", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-laomedeia.wav" },
-            { id: "Leda", name: "Leda", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-leda.wav" },
-            { id: "Orus", name: "Orus", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-orus.wav" },
-            { id: "Puck", name: "Puck", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-puck.wav" },
-            { id: "Pulcherrima", name: "Pulcherrima", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-pulcherrima.wav" },
-            { id: "Rasalgethi", name: "Rasalgethi", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-rasalgethi.wav" },
-            { id: "Sadachbia", name: "Sadachbia", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-sadachbia.wav" },
-            { id: "Sadaltager", name: "Sadaltager", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-sadaltager.wav" },
-            { id: "Schedar", name: "Schedar", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-schedar.wav" },
-            { id: "Sulafat", name: "Sulafat", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-sulafat.wav" },
-            { id: "Umbriel", name: "Umbriel", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-umbriel.wav" },
-            { id: "Vindemiatrix", name: "Vindemiatrix", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-vindemiatrix.wav" },
-            { id: "Zephyr", name: "Zephyr", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-zephyr.wav" },
-            { id: "Zubenelgenubi", name: "Zubenelgenubi", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-zubenelgenubi.wav" },
+            {
+              id: "Achernar",
+              name: "Achernar",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-achernar.wav",
+            },
+            {
+              id: "Achird",
+              name: "Achird",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-achird.wav",
+            },
+            {
+              id: "Algenib",
+              name: "Algenib",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-algenib.wav",
+            },
+            {
+              id: "Algieba",
+              name: "Algieba",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-algieba.wav",
+            },
+            {
+              id: "Alnilam",
+              name: "Alnilam",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-alnilam.wav",
+            },
+            {
+              id: "Aoede",
+              name: "Aoede",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-aoede.wav",
+            },
+            {
+              id: "Autonoe",
+              name: "Autonoe",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-autonoe.wav",
+            },
+            {
+              id: "Callirrhoe",
+              name: "Callirrhoe",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-callirrhoe.wav",
+            },
+            {
+              id: "Charon",
+              name: "Charon",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-charon.wav",
+            },
+            {
+              id: "Despina",
+              name: "Despina",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-despina.wav",
+            },
+            {
+              id: "Enceladus",
+              name: "Enceladus",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-enceladus.wav",
+            },
+            {
+              id: "Erinome",
+              name: "Erinome",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-erinome.wav",
+            },
+            {
+              id: "Fenrir",
+              name: "Fenrir",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-fenrir.wav",
+            },
+            {
+              id: "Gacrux",
+              name: "Gacrux",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-gacrux.wav",
+            },
+            {
+              id: "Iapetus",
+              name: "Iapetus",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-iapetus.wav",
+            },
+            {
+              id: "Kore",
+              name: "Kore",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-kore.wav",
+            },
+            {
+              id: "Laomedeia",
+              name: "Laomedeia",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-laomedeia.wav",
+            },
+            {
+              id: "Leda",
+              name: "Leda",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-leda.wav",
+            },
+            {
+              id: "Orus",
+              name: "Orus",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-orus.wav",
+            },
+            {
+              id: "Puck",
+              name: "Puck",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-puck.wav",
+            },
+            {
+              id: "Pulcherrima",
+              name: "Pulcherrima",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-pulcherrima.wav",
+            },
+            {
+              id: "Rasalgethi",
+              name: "Rasalgethi",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-rasalgethi.wav",
+            },
+            {
+              id: "Sadachbia",
+              name: "Sadachbia",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-sadachbia.wav",
+            },
+            {
+              id: "Sadaltager",
+              name: "Sadaltager",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-sadaltager.wav",
+            },
+            {
+              id: "Schedar",
+              name: "Schedar",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-schedar.wav",
+            },
+            {
+              id: "Sulafat",
+              name: "Sulafat",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-sulafat.wav",
+            },
+            {
+              id: "Umbriel",
+              name: "Umbriel",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-umbriel.wav",
+            },
+            {
+              id: "Vindemiatrix",
+              name: "Vindemiatrix",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-vindemiatrix.wav",
+            },
+            {
+              id: "Zephyr",
+              name: "Zephyr",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-zephyr.wav",
+            },
+            {
+              id: "Zubenelgenubi",
+              name: "Zubenelgenubi",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/chirp3-hd-zubenelgenubi.wav",
+            },
           ],
           languages: [
             { code: "ar-XA", name: "Arabic (Generic)" },
@@ -895,53 +1078,335 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
       "google-cloud-tts": {
         ttsOptions: {
           voices: [
-            { id: "1", name: "1", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-1.wav" },
-            { id: "A", name: "A", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-a.wav" },
-            { id: "Achernar", name: "Achernar", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-achernar.wav" },
-            { id: "Achird", name: "Achird", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-achird.wav" },
-            { id: "Algenib", name: "Algenib", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-algenib.wav" },
-            { id: "Algieba", name: "Algieba", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-algieba.wav" },
-            { id: "Alnilam", name: "Alnilam", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-alnilam.wav" },
-            { id: "Aoede", name: "Aoede", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-aoede.wav" },
-            { id: "Autonoe", name: "Autonoe", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-autonoe.wav" },
-            { id: "B", name: "B", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-b.wav" },
-            { id: "C", name: "C", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-c.wav" },
-            { id: "Callirrhoe", name: "Callirrhoe", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-callirrhoe.wav" },
-            { id: "Charon", name: "Charon", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-charon.wav" },
-            { id: "D", name: "D", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-d.wav" },
-            { id: "Despina", name: "Despina", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-despina.wav" },
-            { id: "E", name: "E", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-e.wav" },
-            { id: "Enceladus", name: "Enceladus", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-enceladus.wav" },
-            { id: "Erinome", name: "Erinome", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-erinome.wav" },
-            { id: "F", name: "F", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-f.wav" },
-            { id: "Fenrir", name: "Fenrir", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-fenrir.wav" },
-            { id: "G", name: "G", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-g.wav" },
-            { id: "Gacrux", name: "Gacrux", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-gacrux.wav" },
-            { id: "H", name: "H", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-h.wav" },
-            { id: "I", name: "I", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-i.wav" },
-            { id: "Iapetus", name: "Iapetus", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-iapetus.wav" },
-            { id: "J", name: "J", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-j.wav" },
-            { id: "K", name: "K", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-k.wav" },
-            { id: "Kore", name: "Kore", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-kore.wav" },
-            { id: "L", name: "L", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-l.wav" },
-            { id: "Laomedeia", name: "Laomedeia", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-laomedeia.wav" },
-            { id: "Leda", name: "Leda", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-leda.wav" },
-            { id: "M", name: "M", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-m.wav" },
-            { id: "N", name: "N", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-n.wav" },
-            { id: "O", name: "O", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-o.wav" },
-            { id: "Orus", name: "Orus", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-orus.wav" },
-            { id: "Puck", name: "Puck", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-puck.wav" },
-            { id: "Pulcherrima", name: "Pulcherrima", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-pulcherrima.wav" },
-            { id: "Q", name: "Q", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-q.wav" },
-            { id: "Rasalgethi", name: "Rasalgethi", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-rasalgethi.wav" },
-            { id: "Sadachbia", name: "Sadachbia", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-sadachbia.wav" },
-            { id: "Sadaltager", name: "Sadaltager", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-sadaltager.wav" },
-            { id: "Schedar", name: "Schedar", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-schedar.wav" },
-            { id: "Sulafat", name: "Sulafat", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-sulafat.wav" },
-            { id: "Umbriel", name: "Umbriel", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-umbriel.wav" },
-            { id: "Vindemiatrix", name: "Vindemiatrix", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-vindemiatrix.wav" },
-            { id: "Zephyr", name: "Zephyr", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-zephyr.wav" },
-            { id: "Zubenelgenubi", name: "Zubenelgenubi", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-zubenelgenubi.wav" },
+            {
+              id: "1",
+              name: "1",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-1.wav",
+            },
+            {
+              id: "A",
+              name: "A",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-a.wav",
+            },
+            {
+              id: "Achernar",
+              name: "Achernar",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-achernar.wav",
+            },
+            {
+              id: "Achird",
+              name: "Achird",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-achird.wav",
+            },
+            {
+              id: "Algenib",
+              name: "Algenib",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-algenib.wav",
+            },
+            {
+              id: "Algieba",
+              name: "Algieba",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-algieba.wav",
+            },
+            {
+              id: "Alnilam",
+              name: "Alnilam",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-alnilam.wav",
+            },
+            {
+              id: "Aoede",
+              name: "Aoede",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-aoede.wav",
+            },
+            {
+              id: "Autonoe",
+              name: "Autonoe",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-autonoe.wav",
+            },
+            {
+              id: "B",
+              name: "B",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-b.wav",
+            },
+            {
+              id: "C",
+              name: "C",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-c.wav",
+            },
+            {
+              id: "Callirrhoe",
+              name: "Callirrhoe",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-callirrhoe.wav",
+            },
+            {
+              id: "Charon",
+              name: "Charon",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-charon.wav",
+            },
+            {
+              id: "D",
+              name: "D",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-d.wav",
+            },
+            {
+              id: "Despina",
+              name: "Despina",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-despina.wav",
+            },
+            {
+              id: "E",
+              name: "E",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-e.wav",
+            },
+            {
+              id: "Enceladus",
+              name: "Enceladus",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-enceladus.wav",
+            },
+            {
+              id: "Erinome",
+              name: "Erinome",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-erinome.wav",
+            },
+            {
+              id: "F",
+              name: "F",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-f.wav",
+            },
+            {
+              id: "Fenrir",
+              name: "Fenrir",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-fenrir.wav",
+            },
+            {
+              id: "G",
+              name: "G",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-g.wav",
+            },
+            {
+              id: "Gacrux",
+              name: "Gacrux",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-gacrux.wav",
+            },
+            {
+              id: "H",
+              name: "H",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-h.wav",
+            },
+            {
+              id: "I",
+              name: "I",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-i.wav",
+            },
+            {
+              id: "Iapetus",
+              name: "Iapetus",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-iapetus.wav",
+            },
+            {
+              id: "J",
+              name: "J",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-j.wav",
+            },
+            {
+              id: "K",
+              name: "K",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-k.wav",
+            },
+            {
+              id: "Kore",
+              name: "Kore",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-kore.wav",
+            },
+            {
+              id: "L",
+              name: "L",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-l.wav",
+            },
+            {
+              id: "Laomedeia",
+              name: "Laomedeia",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-laomedeia.wav",
+            },
+            {
+              id: "Leda",
+              name: "Leda",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-leda.wav",
+            },
+            {
+              id: "M",
+              name: "M",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-m.wav",
+            },
+            {
+              id: "N",
+              name: "N",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-n.wav",
+            },
+            {
+              id: "O",
+              name: "O",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-o.wav",
+            },
+            {
+              id: "Orus",
+              name: "Orus",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-orus.wav",
+            },
+            {
+              id: "Puck",
+              name: "Puck",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-puck.wav",
+            },
+            {
+              id: "Pulcherrima",
+              name: "Pulcherrima",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-pulcherrima.wav",
+            },
+            {
+              id: "Q",
+              name: "Q",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-q.wav",
+            },
+            {
+              id: "Rasalgethi",
+              name: "Rasalgethi",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-rasalgethi.wav",
+            },
+            {
+              id: "Sadachbia",
+              name: "Sadachbia",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-sadachbia.wav",
+            },
+            {
+              id: "Sadaltager",
+              name: "Sadaltager",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-sadaltager.wav",
+            },
+            {
+              id: "Schedar",
+              name: "Schedar",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-schedar.wav",
+            },
+            {
+              id: "Sulafat",
+              name: "Sulafat",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-sulafat.wav",
+            },
+            {
+              id: "Umbriel",
+              name: "Umbriel",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-umbriel.wav",
+            },
+            {
+              id: "Vindemiatrix",
+              name: "Vindemiatrix",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-vindemiatrix.wav",
+            },
+            {
+              id: "Zephyr",
+              name: "Zephyr",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-zephyr.wav",
+            },
+            {
+              id: "Zubenelgenubi",
+              name: "Zubenelgenubi",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/google-cloud-tts-zubenelgenubi.wav",
+            },
           ],
           languages: [
             { code: "af-ZA", name: "af-ZA" },
@@ -1012,36 +1477,216 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
       "gemini-2.5-flash-tts": {
         ttsOptions: {
           voices: [
-            { id: "Achernar", name: "Achernar", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-achernar.wav" },
-            { id: "Achird", name: "Achird", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-achird.wav" },
-            { id: "Algenib", name: "Algenib", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-algenib.wav" },
-            { id: "Algieba", name: "Algieba", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-algieba.wav" },
-            { id: "Alnilam", name: "Alnilam", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-alnilam.wav" },
-            { id: "Aoede", name: "Aoede", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-aoede.wav" },
-            { id: "Autonoe", name: "Autonoe", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-autonoe.wav" },
-            { id: "Callirrhoe", name: "Callirrhoe", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-callirrhoe.wav" },
-            { id: "Charon", name: "Charon", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-charon.wav" },
-            { id: "Despina", name: "Despina", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-despina.wav" },
-            { id: "Enceladus", name: "Enceladus", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-enceladus.wav" },
-            { id: "Erinome", name: "Erinome", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-erinome.wav" },
-            { id: "Fenrir", name: "Fenrir", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-fenrir.wav" },
-            { id: "Gacrux", name: "Gacrux", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-gacrux.wav" },
-            { id: "Iapetus", name: "Iapetus", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-iapetus.wav" },
-            { id: "Kore", name: "Kore", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-kore.wav" },
-            { id: "Laomedeia", name: "Laomedeia", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-laomedeia.wav" },
-            { id: "Leda", name: "Leda", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-leda.wav" },
-            { id: "Orus", name: "Orus", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-orus.wav" },
-            { id: "Puck", name: "Puck", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-puck.wav" },
-            { id: "Pulcherrima", name: "Pulcherrima", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-pulcherrima.wav" },
-            { id: "Rasalgethi", name: "Rasalgethi", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-rasalgethi.wav" },
-            { id: "Sadachbia", name: "Sadachbia", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-sadachbia.wav" },
-            { id: "Sadaltager", name: "Sadaltager", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-sadaltager.wav" },
-            { id: "Schedar", name: "Schedar", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-schedar.wav" },
-            { id: "Sulafat", name: "Sulafat", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-sulafat.wav" },
-            { id: "Umbriel", name: "Umbriel", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-umbriel.wav" },
-            { id: "Vindemiatrix", name: "Vindemiatrix", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-vindemiatrix.wav" },
-            { id: "Zephyr", name: "Zephyr", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-zephyr.wav" },
-            { id: "Zubenelgenubi", name: "Zubenelgenubi", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-zubenelgenubi.wav" },
+            {
+              id: "Achernar",
+              name: "Achernar",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-achernar.wav",
+            },
+            {
+              id: "Achird",
+              name: "Achird",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-achird.wav",
+            },
+            {
+              id: "Algenib",
+              name: "Algenib",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-algenib.wav",
+            },
+            {
+              id: "Algieba",
+              name: "Algieba",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-algieba.wav",
+            },
+            {
+              id: "Alnilam",
+              name: "Alnilam",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-alnilam.wav",
+            },
+            {
+              id: "Aoede",
+              name: "Aoede",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-aoede.wav",
+            },
+            {
+              id: "Autonoe",
+              name: "Autonoe",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-autonoe.wav",
+            },
+            {
+              id: "Callirrhoe",
+              name: "Callirrhoe",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-callirrhoe.wav",
+            },
+            {
+              id: "Charon",
+              name: "Charon",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-charon.wav",
+            },
+            {
+              id: "Despina",
+              name: "Despina",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-despina.wav",
+            },
+            {
+              id: "Enceladus",
+              name: "Enceladus",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-enceladus.wav",
+            },
+            {
+              id: "Erinome",
+              name: "Erinome",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-erinome.wav",
+            },
+            {
+              id: "Fenrir",
+              name: "Fenrir",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-fenrir.wav",
+            },
+            {
+              id: "Gacrux",
+              name: "Gacrux",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-gacrux.wav",
+            },
+            {
+              id: "Iapetus",
+              name: "Iapetus",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-iapetus.wav",
+            },
+            {
+              id: "Kore",
+              name: "Kore",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-kore.wav",
+            },
+            {
+              id: "Laomedeia",
+              name: "Laomedeia",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-laomedeia.wav",
+            },
+            {
+              id: "Leda",
+              name: "Leda",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-leda.wav",
+            },
+            {
+              id: "Orus",
+              name: "Orus",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-orus.wav",
+            },
+            {
+              id: "Puck",
+              name: "Puck",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-puck.wav",
+            },
+            {
+              id: "Pulcherrima",
+              name: "Pulcherrima",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-pulcherrima.wav",
+            },
+            {
+              id: "Rasalgethi",
+              name: "Rasalgethi",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-rasalgethi.wav",
+            },
+            {
+              id: "Sadachbia",
+              name: "Sadachbia",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-sadachbia.wav",
+            },
+            {
+              id: "Sadaltager",
+              name: "Sadaltager",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-sadaltager.wav",
+            },
+            {
+              id: "Schedar",
+              name: "Schedar",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-schedar.wav",
+            },
+            {
+              id: "Sulafat",
+              name: "Sulafat",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-sulafat.wav",
+            },
+            {
+              id: "Umbriel",
+              name: "Umbriel",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-umbriel.wav",
+            },
+            {
+              id: "Vindemiatrix",
+              name: "Vindemiatrix",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-vindemiatrix.wav",
+            },
+            {
+              id: "Zephyr",
+              name: "Zephyr",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-zephyr.wav",
+            },
+            {
+              id: "Zubenelgenubi",
+              name: "Zubenelgenubi",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-tts-zubenelgenubi.wav",
+            },
           ],
           languages: [
             { code: "ar-XA", name: "Arabic (Generic)" },
@@ -1103,36 +1748,216 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
       "gemini-2.5-pro-tts": {
         ttsOptions: {
           voices: [
-            { id: "Achernar", name: "Achernar", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-achernar.wav" },
-            { id: "Achird", name: "Achird", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-achird.wav" },
-            { id: "Algenib", name: "Algenib", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-algenib.wav" },
-            { id: "Algieba", name: "Algieba", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-algieba.wav" },
-            { id: "Alnilam", name: "Alnilam", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-alnilam.wav" },
-            { id: "Aoede", name: "Aoede", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-aoede.wav" },
-            { id: "Autonoe", name: "Autonoe", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-autonoe.wav" },
-            { id: "Callirrhoe", name: "Callirrhoe", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-callirrhoe.wav" },
-            { id: "Charon", name: "Charon", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-charon.wav" },
-            { id: "Despina", name: "Despina", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-despina.wav" },
-            { id: "Enceladus", name: "Enceladus", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-enceladus.wav" },
-            { id: "Erinome", name: "Erinome", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-erinome.wav" },
-            { id: "Fenrir", name: "Fenrir", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-fenrir.wav" },
-            { id: "Gacrux", name: "Gacrux", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-gacrux.wav" },
-            { id: "Iapetus", name: "Iapetus", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-iapetus.wav" },
-            { id: "Kore", name: "Kore", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-kore.wav" },
-            { id: "Laomedeia", name: "Laomedeia", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-laomedeia.wav" },
-            { id: "Leda", name: "Leda", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-leda.wav" },
-            { id: "Orus", name: "Orus", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-orus.wav" },
-            { id: "Puck", name: "Puck", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-puck.wav" },
-            { id: "Pulcherrima", name: "Pulcherrima", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-pulcherrima.wav" },
-            { id: "Rasalgethi", name: "Rasalgethi", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-rasalgethi.wav" },
-            { id: "Sadachbia", name: "Sadachbia", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-sadachbia.wav" },
-            { id: "Sadaltager", name: "Sadaltager", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-sadaltager.wav" },
-            { id: "Schedar", name: "Schedar", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-schedar.wav" },
-            { id: "Sulafat", name: "Sulafat", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-sulafat.wav" },
-            { id: "Umbriel", name: "Umbriel", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-umbriel.wav" },
-            { id: "Vindemiatrix", name: "Vindemiatrix", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-vindemiatrix.wav" },
-            { id: "Zephyr", name: "Zephyr", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-zephyr.wav" },
-            { id: "Zubenelgenubi", name: "Zubenelgenubi", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-zubenelgenubi.wav" },
+            {
+              id: "Achernar",
+              name: "Achernar",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-achernar.wav",
+            },
+            {
+              id: "Achird",
+              name: "Achird",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-achird.wav",
+            },
+            {
+              id: "Algenib",
+              name: "Algenib",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-algenib.wav",
+            },
+            {
+              id: "Algieba",
+              name: "Algieba",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-algieba.wav",
+            },
+            {
+              id: "Alnilam",
+              name: "Alnilam",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-alnilam.wav",
+            },
+            {
+              id: "Aoede",
+              name: "Aoede",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-aoede.wav",
+            },
+            {
+              id: "Autonoe",
+              name: "Autonoe",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-autonoe.wav",
+            },
+            {
+              id: "Callirrhoe",
+              name: "Callirrhoe",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-callirrhoe.wav",
+            },
+            {
+              id: "Charon",
+              name: "Charon",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-charon.wav",
+            },
+            {
+              id: "Despina",
+              name: "Despina",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-despina.wav",
+            },
+            {
+              id: "Enceladus",
+              name: "Enceladus",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-enceladus.wav",
+            },
+            {
+              id: "Erinome",
+              name: "Erinome",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-erinome.wav",
+            },
+            {
+              id: "Fenrir",
+              name: "Fenrir",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-fenrir.wav",
+            },
+            {
+              id: "Gacrux",
+              name: "Gacrux",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-gacrux.wav",
+            },
+            {
+              id: "Iapetus",
+              name: "Iapetus",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-iapetus.wav",
+            },
+            {
+              id: "Kore",
+              name: "Kore",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-kore.wav",
+            },
+            {
+              id: "Laomedeia",
+              name: "Laomedeia",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-laomedeia.wav",
+            },
+            {
+              id: "Leda",
+              name: "Leda",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-leda.wav",
+            },
+            {
+              id: "Orus",
+              name: "Orus",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-orus.wav",
+            },
+            {
+              id: "Puck",
+              name: "Puck",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-puck.wav",
+            },
+            {
+              id: "Pulcherrima",
+              name: "Pulcherrima",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-pulcherrima.wav",
+            },
+            {
+              id: "Rasalgethi",
+              name: "Rasalgethi",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-rasalgethi.wav",
+            },
+            {
+              id: "Sadachbia",
+              name: "Sadachbia",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-sadachbia.wav",
+            },
+            {
+              id: "Sadaltager",
+              name: "Sadaltager",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-sadaltager.wav",
+            },
+            {
+              id: "Schedar",
+              name: "Schedar",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-schedar.wav",
+            },
+            {
+              id: "Sulafat",
+              name: "Sulafat",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-sulafat.wav",
+            },
+            {
+              id: "Umbriel",
+              name: "Umbriel",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-umbriel.wav",
+            },
+            {
+              id: "Vindemiatrix",
+              name: "Vindemiatrix",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-vindemiatrix.wav",
+            },
+            {
+              id: "Zephyr",
+              name: "Zephyr",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-zephyr.wav",
+            },
+            {
+              id: "Zubenelgenubi",
+              name: "Zubenelgenubi",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-pro-tts-zubenelgenubi.wav",
+            },
           ],
           languages: [
             { code: "ar-XA", name: "Arabic (Generic)" },
@@ -1228,36 +2053,216 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
       "gemini-2.5-flash-lite-preview-tts": {
         ttsOptions: {
           voices: [
-            { id: "Achernar", name: "Achernar", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-achernar.wav" },
-            { id: "Achird", name: "Achird", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-achird.wav" },
-            { id: "Algenib", name: "Algenib", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-algenib.wav" },
-            { id: "Algieba", name: "Algieba", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-algieba.wav" },
-            { id: "Alnilam", name: "Alnilam", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-alnilam.wav" },
-            { id: "Aoede", name: "Aoede", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-aoede.wav" },
-            { id: "Autonoe", name: "Autonoe", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-autonoe.wav" },
-            { id: "Callirrhoe", name: "Callirrhoe", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-callirrhoe.wav" },
-            { id: "Charon", name: "Charon", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-charon.wav" },
-            { id: "Despina", name: "Despina", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-despina.wav" },
-            { id: "Enceladus", name: "Enceladus", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-enceladus.wav" },
-            { id: "Erinome", name: "Erinome", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-erinome.wav" },
-            { id: "Fenrir", name: "Fenrir", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-fenrir.wav" },
-            { id: "Gacrux", name: "Gacrux", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-gacrux.wav" },
-            { id: "Iapetus", name: "Iapetus", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-iapetus.wav" },
-            { id: "Kore", name: "Kore", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-kore.wav" },
-            { id: "Laomedeia", name: "Laomedeia", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-laomedeia.wav" },
-            { id: "Leda", name: "Leda", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-leda.wav" },
-            { id: "Orus", name: "Orus", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-orus.wav" },
-            { id: "Puck", name: "Puck", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-puck.wav" },
-            { id: "Pulcherrima", name: "Pulcherrima", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-pulcherrima.wav" },
-            { id: "Rasalgethi", name: "Rasalgethi", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-rasalgethi.wav" },
-            { id: "Sadachbia", name: "Sadachbia", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-sadachbia.wav" },
-            { id: "Sadaltager", name: "Sadaltager", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-sadaltager.wav" },
-            { id: "Schedar", name: "Schedar", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-schedar.wav" },
-            { id: "Sulafat", name: "Sulafat", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-sulafat.wav" },
-            { id: "Umbriel", name: "Umbriel", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-umbriel.wav" },
-            { id: "Vindemiatrix", name: "Vindemiatrix", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-vindemiatrix.wav" },
-            { id: "Zephyr", name: "Zephyr", gender: "female", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-zephyr.wav" },
-            { id: "Zubenelgenubi", name: "Zubenelgenubi", gender: "male", previewUrl: "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-zubenelgenubi.wav" },
+            {
+              id: "Achernar",
+              name: "Achernar",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-achernar.wav",
+            },
+            {
+              id: "Achird",
+              name: "Achird",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-achird.wav",
+            },
+            {
+              id: "Algenib",
+              name: "Algenib",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-algenib.wav",
+            },
+            {
+              id: "Algieba",
+              name: "Algieba",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-algieba.wav",
+            },
+            {
+              id: "Alnilam",
+              name: "Alnilam",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-alnilam.wav",
+            },
+            {
+              id: "Aoede",
+              name: "Aoede",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-aoede.wav",
+            },
+            {
+              id: "Autonoe",
+              name: "Autonoe",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-autonoe.wav",
+            },
+            {
+              id: "Callirrhoe",
+              name: "Callirrhoe",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-callirrhoe.wav",
+            },
+            {
+              id: "Charon",
+              name: "Charon",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-charon.wav",
+            },
+            {
+              id: "Despina",
+              name: "Despina",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-despina.wav",
+            },
+            {
+              id: "Enceladus",
+              name: "Enceladus",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-enceladus.wav",
+            },
+            {
+              id: "Erinome",
+              name: "Erinome",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-erinome.wav",
+            },
+            {
+              id: "Fenrir",
+              name: "Fenrir",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-fenrir.wav",
+            },
+            {
+              id: "Gacrux",
+              name: "Gacrux",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-gacrux.wav",
+            },
+            {
+              id: "Iapetus",
+              name: "Iapetus",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-iapetus.wav",
+            },
+            {
+              id: "Kore",
+              name: "Kore",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-kore.wav",
+            },
+            {
+              id: "Laomedeia",
+              name: "Laomedeia",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-laomedeia.wav",
+            },
+            {
+              id: "Leda",
+              name: "Leda",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-leda.wav",
+            },
+            {
+              id: "Orus",
+              name: "Orus",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-orus.wav",
+            },
+            {
+              id: "Puck",
+              name: "Puck",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-puck.wav",
+            },
+            {
+              id: "Pulcherrima",
+              name: "Pulcherrima",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-pulcherrima.wav",
+            },
+            {
+              id: "Rasalgethi",
+              name: "Rasalgethi",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-rasalgethi.wav",
+            },
+            {
+              id: "Sadachbia",
+              name: "Sadachbia",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-sadachbia.wav",
+            },
+            {
+              id: "Sadaltager",
+              name: "Sadaltager",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-sadaltager.wav",
+            },
+            {
+              id: "Schedar",
+              name: "Schedar",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-schedar.wav",
+            },
+            {
+              id: "Sulafat",
+              name: "Sulafat",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-sulafat.wav",
+            },
+            {
+              id: "Umbriel",
+              name: "Umbriel",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-umbriel.wav",
+            },
+            {
+              id: "Vindemiatrix",
+              name: "Vindemiatrix",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-vindemiatrix.wav",
+            },
+            {
+              id: "Zephyr",
+              name: "Zephyr",
+              gender: "female",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-zephyr.wav",
+            },
+            {
+              id: "Zubenelgenubi",
+              name: "Zubenelgenubi",
+              gender: "male",
+              previewUrl:
+                "https://docs.cloud.google.com/static/text-to-speech/docs/audio/gemini-2-5-flash-lite-preview-tts-zubenelgenubi.wav",
+            },
           ],
           languages: [
             { code: "ar-XA", name: "Arabic (Generic)" },
