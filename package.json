@@ -110,6 +110,16 @@
       "require": "./dist/utils/*.js",
       "types": "./dist/utils/*.d.ts"
     },
+    "./lib/ai-providers": {
+      "import": "./dist/lib/ai-providers.js",
+      "require": "./dist/lib/ai-providers.js",
+      "types": "./dist/lib/ai-providers.d.ts"
+    },
+    "./lib/*": {
+      "import": "./dist/lib/*.js",
+      "require": "./dist/lib/*.js",
+      "types": "./dist/lib/*.d.ts"
+    },
     "./scripts/check-and-fix-schema": {
       "import": "./dist/scripts/check-and-fix-schema.js",
       "require": "./dist/scripts/check-and-fix-schema.js",
