@@ -83,6 +83,7 @@ export interface VoiceSource {
   fileId?: string; // Standardized file reference - URLs come from File.publicUrl
   duration?: number;
   waveformPeaks?: number[]; // Can also come from File.metadata
+  elevenLabsRequestId?: string; // ElevenLabs request ID for continuity tracking
   // Provider info stored in File.metadata
 }
 

@@ -69,6 +69,7 @@ export interface VoiceSource {
     fileId?: string;
     duration?: number;
     waveformPeaks?: number[];
+    elevenLabsRequestId?: string;
 }
 export interface ImageTimelineInstance {
     type: "image";

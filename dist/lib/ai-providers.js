@@ -2177,7 +2177,7 @@ exports.AI_PROVIDERS = {
             // TTS models - ElevenLabs uses user's voice library, so no predefined voices
             eleven_multilingual_v2: {
                 ttsOptions: {
-                    speedRange: { min: 0.25, max: 4.0, default: 1.0 },
+                    speedRange: { min: 0.7, max: 1.2, default: 1.0 }, // ElevenLabs API requires speed between 0.7 and 1.2
                     chunkDurationSeconds: {
                         min: 5,
                         max: 120,
@@ -2190,7 +2190,7 @@ exports.AI_PROVIDERS = {
             },
             eleven_turbo_v2_5: {
                 ttsOptions: {
-                    speedRange: { min: 0.25, max: 4.0, default: 1.0 },
+                    speedRange: { min: 0.7, max: 1.2, default: 1.0 }, // ElevenLabs API requires speed between 0.7 and 1.2
                     chunkDurationSeconds: {
                         min: 5,
                         max: 120,
@@ -2201,7 +2201,7 @@ exports.AI_PROVIDERS = {
             },
             eleven_turbo_v2: {
                 ttsOptions: {
-                    speedRange: { min: 0.25, max: 4.0, default: 1.0 },
+                    speedRange: { min: 0.7, max: 1.2, default: 1.0 }, // ElevenLabs API requires speed between 0.7 and 1.2
                     chunkDurationSeconds: {
                         min: 5,
                         max: 120,
@@ -2212,7 +2212,7 @@ exports.AI_PROVIDERS = {
             },
             eleven_monolingual_v1: {
                 ttsOptions: {
-                    speedRange: { min: 0.25, max: 4.0, default: 1.0 },
+                    speedRange: { min: 0.7, max: 1.2, default: 1.0 }, // ElevenLabs API requires speed between 0.7 and 1.2
                     chunkDurationSeconds: {
                         min: 5,
                         max: 120,
