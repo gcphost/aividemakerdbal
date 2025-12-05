@@ -372,7 +372,8 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
             min: 5,
             max: 300,
             default: 30,
-            description: "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
+            description:
+              "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
           },
         },
       },
@@ -467,7 +468,8 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
             min: 5,
             max: 300,
             default: 30,
-            description: "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
+            description:
+              "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
           },
         },
       },
@@ -547,7 +549,8 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
             min: 5,
             max: 300,
             default: 30,
-            description: "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
+            description:
+              "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
           },
         },
       },
@@ -1100,7 +1103,8 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
             min: 5,
             max: 300,
             default: 30,
-            description: "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
+            description:
+              "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
           },
         },
       },
@@ -1783,7 +1787,8 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
             min: 5,
             max: 600,
             default: 30,
-            description: "Gemini TTS supports up to 600 seconds (10 minutes) per chunk for longer audio segments.",
+            description:
+              "Gemini TTS supports up to 600 seconds (10 minutes) per chunk for longer audio segments.",
           },
         },
       },
@@ -2060,7 +2065,8 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
             min: 5,
             max: 600,
             default: 30,
-            description: "Gemini TTS supports up to 600 seconds (10 minutes) per chunk for longer audio segments.",
+            description:
+              "Gemini TTS supports up to 600 seconds (10 minutes) per chunk for longer audio segments.",
           },
         },
       },
@@ -2371,7 +2377,8 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
             min: 5,
             max: 300,
             default: 30,
-            description: "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
+            description:
+              "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
           },
         },
       },
@@ -2450,7 +2457,8 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
             min: 5,
             max: 120,
             default: 30,
-            description: "ElevenLabs TTS works best with chunks up to 120 seconds (2 minutes) for optimal quality.",
+            description:
+              "ElevenLabs TTS works best with chunks up to 120 seconds (2 minutes) for optimal quality.",
           },
           // Stability: 0-1, controls voice consistency
           // Similarity boost: 0-1, controls voice matching
@@ -2463,7 +2471,8 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
             min: 5,
             max: 120,
             default: 30,
-            description: "ElevenLabs TTS works best with chunks up to 120 seconds (2 minutes) for optimal quality.",
+            description:
+              "ElevenLabs TTS works best with chunks up to 120 seconds (2 minutes) for optimal quality.",
           },
         },
       },
@@ -2474,7 +2483,8 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
             min: 5,
             max: 120,
             default: 30,
-            description: "ElevenLabs TTS works best with chunks up to 120 seconds (2 minutes) for optimal quality.",
+            description:
+              "ElevenLabs TTS works best with chunks up to 120 seconds (2 minutes) for optimal quality.",
           },
         },
       },
@@ -2485,7 +2495,8 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
             min: 5,
             max: 120,
             default: 30,
-            description: "ElevenLabs TTS works best with chunks up to 120 seconds (2 minutes) for optimal quality.",
+            description:
+              "ElevenLabs TTS works best with chunks up to 120 seconds (2 minutes) for optimal quality.",
           },
         },
       },
