@@ -27,6 +27,7 @@ exports.getVoicesForModel = getVoicesForModel;
 exports.getLanguagesForModel = getLanguagesForModel;
 exports.getSpeedRangeForModel = getSpeedRangeForModel;
 exports.modelSupportsInstructions = modelSupportsInstructions;
+exports.getSupportedOptionsForModel = getSupportedOptionsForModel;
 exports.getChunkDurationForProvider = getChunkDurationForProvider;
 exports.getMusicOptionsForModel = getMusicOptionsForModel;
 exports.getGenresForModel = getGenresForModel;
@@ -176,6 +177,10 @@ exports.AI_PROVIDERS = {
                     { width: 1536, height: 1024, label: "1536×1024 (3:2)", aspectRatio: "3:2" },
                     { width: 1024, height: 1536, label: "1024×1536 (2:3)", aspectRatio: "2:3" },
                 ],
+                supportedOptions: {
+                    size: true,
+                    quality: ["auto", "high", "medium", "low"],
+                },
                 maxPromptLength: 4000, // Same as DALL-E 3
             },
             // GPT-Image-1 Mini
@@ -185,6 +190,10 @@ exports.AI_PROVIDERS = {
                     { width: 1536, height: 1024, label: "1536×1024 (3:2)", aspectRatio: "3:2" },
                     { width: 1024, height: 1536, label: "1024×1536 (2:3)", aspectRatio: "2:3" },
                 ],
+                supportedOptions: {
+                    size: true,
+                    quality: ["auto", "high", "medium", "low"],
+                },
                 maxPromptLength: 4000, // Same as DALL-E 3
             },
             // DALL-E 3
@@ -194,6 +203,11 @@ exports.AI_PROVIDERS = {
                     { width: 1792, height: 1024, label: "1792×1024 (16:9)", aspectRatio: "16:9" },
                     { width: 1024, height: 1792, label: "1024×1792 (9:16)", aspectRatio: "9:16" },
                 ],
+                supportedOptions: {
+                    size: true,
+                    quality: ["auto", "hd", "standard"],
+                    style: ["vivid", "natural"],
+                },
                 maxPromptLength: 4000, // DALL-E 3 has a maximum prompt length of ~4000 characters
             },
             // DALL-E 2
@@ -203,6 +217,10 @@ exports.AI_PROVIDERS = {
                     { width: 512, height: 512, label: "512×512 (1:1)", aspectRatio: "1:1" },
                     { width: 1024, height: 1024, label: "1024×1024 (1:1)", aspectRatio: "1:1" },
                 ],
+                supportedOptions: {
+                    size: true,
+                    quality: ["standard"],
+                },
                 maxPromptLength: 1000, // DALL-E 2 has a maximum prompt length of 1000 characters
             },
             // TTS models
@@ -292,6 +310,12 @@ exports.AI_PROVIDERS = {
                     resolutions: ["720p", "1080p"],
                     aspectRatios: ["16:9", "9:16", "1:1"],
                     maxDurationSeconds: 20,
+                    supportedOptions: {
+                        resolution: true,
+                        aspectRatio: true,
+                        duration: true,
+                        inputReference: true,
+                    },
                 },
                 maxPromptLength: 2000, // Sora supports longer prompts, but 2000 is reasonable for preview
             },
@@ -301,6 +325,12 @@ exports.AI_PROVIDERS = {
                     resolutions: ["720p", "1080p"],
                     aspectRatios: ["16:9", "9:16", "1:1"],
                     maxDurationSeconds: 20,
+                    supportedOptions: {
+                        resolution: true,
+                        aspectRatio: true,
+                        duration: true,
+                        inputReference: true,
+                    },
                 },
                 maxPromptLength: 2000, // Sora supports longer prompts, but 2000 is reasonable for preview
             },
@@ -375,6 +405,12 @@ exports.AI_PROVIDERS = {
                         },
                     ],
                     speedRange: { min: 0.25, max: 4.0, default: 1.0 },
+                    supportedOptions: {
+                        voice: true,
+                        speed: true,
+                        instructions: false, // tts-1-hd does not support instructions
+                        emotionalTags: false,
+                    },
                     chunkDurationSeconds: {
                         min: 5,
                         max: 300,
@@ -456,6 +492,12 @@ exports.AI_PROVIDERS = {
                     ],
                     speedRange: { min: 0.25, max: 4.0, default: 1.0 },
                     supportsInstructions: true,
+                    supportedOptions: {
+                        voice: true,
+                        speed: true,
+                        instructions: true,
+                        emotionalTags: false,
+                    },
                     chunkDurationSeconds: {
                         min: 5,
                         max: 300,
@@ -655,6 +697,11 @@ exports.AI_PROVIDERS = {
                     { width: 1792, height: 1024, label: "1792×1024 (16:9)", aspectRatio: "16:9" },
                     { width: 1024, height: 1792, label: "1024×1792 (9:16)", aspectRatio: "9:16" },
                 ],
+                supportedOptions: {
+                    size: true,
+                    aspectRatio: true,
+                    personGeneration: true,
+                },
                 maxPromptLength: 4000, // Imagen models support longer prompts, 4000 is a safe default
             },
             // Imagen 4.0 Ultra
@@ -666,6 +713,11 @@ exports.AI_PROVIDERS = {
                     { width: 1792, height: 1024, label: "1792×1024 (16:9)", aspectRatio: "16:9" },
                     { width: 1024, height: 1792, label: "1024×1792 (9:16)", aspectRatio: "9:16" },
                 ],
+                supportedOptions: {
+                    size: true,
+                    aspectRatio: true,
+                    personGeneration: true,
+                },
                 maxPromptLength: 4000, // Imagen models support longer prompts, 4000 is a safe default
             },
             // Gemini 2.5 Flash Image
@@ -677,6 +729,10 @@ exports.AI_PROVIDERS = {
                     { width: 1792, height: 1024, label: "1792×1024 (16:9)", aspectRatio: "16:9" },
                     { width: 1024, height: 1792, label: "1024×1792 (9:16)", aspectRatio: "9:16" },
                 ],
+                supportedOptions: {
+                    size: true, // Supports 1K and 2K
+                    aspectRatio: true,
+                },
                 maxPromptLength: 4000, // Gemini image models support longer prompts, 4000 is a safe default
             },
             // Gemini 3 Pro Image
@@ -688,6 +744,10 @@ exports.AI_PROVIDERS = {
                     { width: 1792, height: 1024, label: "1792×1024 (16:9)", aspectRatio: "16:9" },
                     { width: 1024, height: 1792, label: "1024×1792 (9:16)", aspectRatio: "9:16" },
                 ],
+                supportedOptions: {
+                    size: true, // Supports 1K, 2K, and 4K
+                    aspectRatio: true,
+                },
                 maxPromptLength: 4000, // Gemini image models support longer prompts, 4000 is a safe default
             },
             // Gemini 2.0 Flash Image (Experimental)
@@ -706,6 +766,13 @@ exports.AI_PROVIDERS = {
                     aspectRatios: ["16:9", "9:16", "1:1"],
                     maxDurationSeconds: 8,
                     durations: [4, 6, 8], // Gemini Veo models support specific duration values
+                    supportedOptions: {
+                        resolution: true,
+                        aspectRatio: true,
+                        duration: [4, 6, 8], // Specific duration values
+                        firstFrame: true,
+                        lastFrame: true,
+                    },
                 },
                 maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
             },
@@ -716,6 +783,13 @@ exports.AI_PROVIDERS = {
                     aspectRatios: ["16:9", "9:16", "1:1"],
                     maxDurationSeconds: 8,
                     durations: [4, 6, 8], // Gemini Veo models support specific duration values
+                    supportedOptions: {
+                        resolution: true,
+                        aspectRatio: true,
+                        duration: [4, 6, 8],
+                        firstFrame: true,
+                        lastFrame: true,
+                    },
                 },
                 maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
             },
@@ -726,6 +800,13 @@ exports.AI_PROVIDERS = {
                     aspectRatios: ["16:9", "9:16", "1:1"],
                     maxDurationSeconds: 8,
                     durations: [4, 6, 8], // Gemini Veo models support specific duration values
+                    supportedOptions: {
+                        resolution: true,
+                        aspectRatio: true,
+                        duration: [4, 6, 8],
+                        firstFrame: true,
+                        lastFrame: true,
+                    },
                 },
                 maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
             },
@@ -736,6 +817,13 @@ exports.AI_PROVIDERS = {
                     aspectRatios: ["16:9", "9:16"],
                     maxDurationSeconds: 8,
                     durations: [4, 6, 8], // Gemini Veo models support specific duration values
+                    supportedOptions: {
+                        resolution: true,
+                        aspectRatio: true,
+                        duration: [4, 6, 8],
+                        firstFrame: true,
+                        lastFrame: true,
+                    },
                 },
                 maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
             },
@@ -746,6 +834,13 @@ exports.AI_PROVIDERS = {
                     aspectRatios: ["16:9", "9:16"],
                     maxDurationSeconds: 8,
                     durations: [4, 6, 8], // Gemini Veo models support specific duration values
+                    supportedOptions: {
+                        resolution: true,
+                        aspectRatio: true,
+                        duration: [4, 6, 8],
+                        firstFrame: true,
+                        lastFrame: true,
+                    },
                 },
                 maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
             },
@@ -989,14 +1084,23 @@ exports.AI_PROVIDERS = {
                     ],
                     speedRange: { min: 0.25, max: 4.0, default: 1.0 },
                     supportsInstructions: true,
+                    supportedOptions: {
+                        voice: true,
+                        language: true,
+                        speed: true,
+                        instructions: true,
+                        emotionalTags: true, // chirp3-hd supports emotional tags
+                        pitch: true,
+                        volume: true,
+                    },
                     chunkDurationSeconds: {
                         min: 5,
                         max: 300,
                         default: 30,
-                        description: "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
+                        description: "Gemini TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
                     },
                 },
-                maxPromptLength: 5000, // OpenAI TTS doesn't have a hard limit, but 5000 is a safe default for preview
+                maxPromptLength: 5000, // Gemini TTS doesn't have a hard limit, but 5000 is a safe default for preview
             },
             // Google Cloud TTS (Legacy standard voices)
             "google-cloud-tts": {
@@ -1348,6 +1452,15 @@ exports.AI_PROVIDERS = {
                         { code: "yue-HK", name: "yue-HK" },
                     ],
                     speedRange: { min: 0.25, max: 4.0, default: 1.0 },
+                    supportedOptions: {
+                        voice: true,
+                        language: true,
+                        speed: true,
+                        instructions: false,
+                        emotionalTags: false,
+                        pitch: false,
+                        volume: false,
+                    },
                     chunkDurationSeconds: {
                         min: 5,
                         max: 300,
@@ -1596,6 +1709,15 @@ exports.AI_PROVIDERS = {
                     ],
                     speedRange: { min: 0.25, max: 4.0, default: 1.0 },
                     supportsInstructions: true,
+                    supportedOptions: {
+                        voice: true,
+                        language: true,
+                        speed: true,
+                        instructions: true,
+                        emotionalTags: false, // gemini-2.5-flash-tts does not support emotional tags
+                        pitch: false,
+                        volume: false,
+                    },
                     chunkDurationSeconds: {
                         min: 5,
                         max: 600,
@@ -1883,6 +2005,12 @@ exports.AI_PROVIDERS = {
                         { id: "fast", name: "Fast" },
                     ],
                     durationRange: { min: 5, max: 300, default: 30 },
+                    supportedOptions: {
+                        genre: true,
+                        mood: true,
+                        tempo: true,
+                        instrumental: true,
+                    },
                 },
             },
             // Gemini 2.5 Flash Lite TTS (Preview)
@@ -2282,6 +2410,12 @@ exports.AI_PROVIDERS = {
                         { id: "fast", name: "Fast" },
                     ],
                     durationRange: { min: 5, max: 300, default: 30 },
+                    supportedOptions: {
+                        genre: true,
+                        mood: true,
+                        tempo: true,
+                        instrumental: true,
+                    },
                 },
                 maxPromptLength: 500, // Music generation prompts are typically short descriptions
             },
@@ -2618,7 +2752,36 @@ function getSpeedRangeForModel(providerId, modelId) {
  */
 function modelSupportsInstructions(providerId, modelId) {
     const ttsOptions = getTTSOptionsForModel(providerId, modelId);
+    // Check new supportedOptions first, fallback to legacy supportsInstructions
+    if (ttsOptions?.supportedOptions?.instructions !== undefined) {
+        return ttsOptions.supportedOptions.instructions;
+    }
     return ttsOptions?.supportsInstructions || false;
+}
+/**
+ * Get supported options for a model (unified schema)
+ * Checks ttsOptions, videoOptions, musicOptions, and model-level supportedOptions
+ */
+function getSupportedOptionsForModel(providerId, modelId) {
+    const options = getGenerationOptions(providerId, modelId);
+    // Check model-level first
+    if (options?.supportedOptions) {
+        return options.supportedOptions;
+    }
+    // Check capability-specific options
+    const ttsOptions = options?.ttsOptions;
+    if (ttsOptions?.supportedOptions) {
+        return ttsOptions.supportedOptions;
+    }
+    const videoOptions = options?.videoOptions;
+    if (videoOptions?.supportedOptions) {
+        return videoOptions.supportedOptions;
+    }
+    const musicOptions = options?.musicOptions;
+    if (musicOptions?.supportedOptions) {
+        return musicOptions.supportedOptions;
+    }
+    return undefined;
 }
 /**
  * Get chunk duration limits for a TTS provider

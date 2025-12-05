@@ -313,6 +313,10 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           { width: 1536, height: 1024, label: "1536×1024 (3:2)", aspectRatio: "3:2" },
           { width: 1024, height: 1536, label: "1024×1536 (2:3)", aspectRatio: "2:3" },
         ],
+        supportedOptions: {
+          size: true,
+          quality: ["auto", "high", "medium", "low"],
+        },
         maxPromptLength: 4000, // Same as DALL-E 3
       },
       // GPT-Image-1 Mini
@@ -322,6 +326,10 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           { width: 1536, height: 1024, label: "1536×1024 (3:2)", aspectRatio: "3:2" },
           { width: 1024, height: 1536, label: "1024×1536 (2:3)", aspectRatio: "2:3" },
         ],
+        supportedOptions: {
+          size: true,
+          quality: ["auto", "high", "medium", "low"],
+        },
         maxPromptLength: 4000, // Same as DALL-E 3
       },
       // DALL-E 3
@@ -331,6 +339,11 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           { width: 1792, height: 1024, label: "1792×1024 (16:9)", aspectRatio: "16:9" },
           { width: 1024, height: 1792, label: "1024×1792 (9:16)", aspectRatio: "9:16" },
         ],
+        supportedOptions: {
+          size: true,
+          quality: ["auto", "hd", "standard"],
+          style: ["vivid", "natural"],
+        },
         maxPromptLength: 4000, // DALL-E 3 has a maximum prompt length of ~4000 characters
       },
       // DALL-E 2
@@ -340,6 +353,10 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           { width: 512, height: 512, label: "512×512 (1:1)", aspectRatio: "1:1" },
           { width: 1024, height: 1024, label: "1024×1024 (1:1)", aspectRatio: "1:1" },
         ],
+        supportedOptions: {
+          size: true,
+          quality: ["standard"],
+        },
         maxPromptLength: 1000, // DALL-E 2 has a maximum prompt length of 1000 characters
       },
       // TTS models
@@ -430,6 +447,12 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           resolutions: ["720p", "1080p"],
           aspectRatios: ["16:9", "9:16", "1:1"],
           maxDurationSeconds: 20,
+          supportedOptions: {
+            resolution: true,
+            aspectRatio: true,
+            duration: true,
+            inputReference: true,
+          },
         },
         maxPromptLength: 2000, // Sora supports longer prompts, but 2000 is reasonable for preview
       },
@@ -439,6 +462,12 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           resolutions: ["720p", "1080p"],
           aspectRatios: ["16:9", "9:16", "1:1"],
           maxDurationSeconds: 20,
+          supportedOptions: {
+            resolution: true,
+            aspectRatio: true,
+            duration: true,
+            inputReference: true,
+          },
         },
         maxPromptLength: 2000, // Sora supports longer prompts, but 2000 is reasonable for preview
       },
@@ -513,6 +542,12 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
             },
           ],
           speedRange: { min: 0.25, max: 4.0, default: 1.0 },
+          supportedOptions: {
+            voice: true,
+            speed: true,
+            instructions: false, // tts-1-hd does not support instructions
+            emotionalTags: false,
+          },
           chunkDurationSeconds: {
             min: 5,
             max: 300,
@@ -595,6 +630,12 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           ],
           speedRange: { min: 0.25, max: 4.0, default: 1.0 },
           supportsInstructions: true,
+          supportedOptions: {
+            voice: true,
+            speed: true,
+            instructions: true,
+            emotionalTags: false,
+          },
           chunkDurationSeconds: {
             min: 5,
             max: 300,
@@ -800,6 +841,11 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           { width: 1792, height: 1024, label: "1792×1024 (16:9)", aspectRatio: "16:9" },
           { width: 1024, height: 1792, label: "1024×1792 (9:16)", aspectRatio: "9:16" },
         ],
+        supportedOptions: {
+          size: true,
+          aspectRatio: true,
+          personGeneration: true,
+        },
         maxPromptLength: 4000, // Imagen models support longer prompts, 4000 is a safe default
       },
       // Imagen 4.0 Ultra
@@ -811,6 +857,11 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           { width: 1792, height: 1024, label: "1792×1024 (16:9)", aspectRatio: "16:9" },
           { width: 1024, height: 1792, label: "1024×1792 (9:16)", aspectRatio: "9:16" },
         ],
+        supportedOptions: {
+          size: true,
+          aspectRatio: true,
+          personGeneration: true,
+        },
         maxPromptLength: 4000, // Imagen models support longer prompts, 4000 is a safe default
       },
       // Gemini 2.5 Flash Image
@@ -822,6 +873,10 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           { width: 1792, height: 1024, label: "1792×1024 (16:9)", aspectRatio: "16:9" },
           { width: 1024, height: 1792, label: "1024×1792 (9:16)", aspectRatio: "9:16" },
         ],
+        supportedOptions: {
+          size: true, // Supports 1K and 2K
+          aspectRatio: true,
+        },
         maxPromptLength: 4000, // Gemini image models support longer prompts, 4000 is a safe default
       },
       // Gemini 3 Pro Image
@@ -833,6 +888,10 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           { width: 1792, height: 1024, label: "1792×1024 (16:9)", aspectRatio: "16:9" },
           { width: 1024, height: 1792, label: "1024×1792 (9:16)", aspectRatio: "9:16" },
         ],
+        supportedOptions: {
+          size: true, // Supports 1K, 2K, and 4K
+          aspectRatio: true,
+        },
         maxPromptLength: 4000, // Gemini image models support longer prompts, 4000 is a safe default
       },
       // Gemini 2.0 Flash Image (Experimental)
@@ -851,6 +910,13 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           aspectRatios: ["16:9", "9:16", "1:1"],
           maxDurationSeconds: 8,
           durations: [4, 6, 8], // Gemini Veo models support specific duration values
+          supportedOptions: {
+            resolution: true,
+            aspectRatio: true,
+            duration: [4, 6, 8], // Specific duration values
+            firstFrame: true,
+            lastFrame: true,
+          },
         },
         maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
       },
@@ -861,6 +927,13 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           aspectRatios: ["16:9", "9:16", "1:1"],
           maxDurationSeconds: 8,
           durations: [4, 6, 8], // Gemini Veo models support specific duration values
+          supportedOptions: {
+            resolution: true,
+            aspectRatio: true,
+            duration: [4, 6, 8],
+            firstFrame: true,
+            lastFrame: true,
+          },
         },
         maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
       },
@@ -871,6 +944,13 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           aspectRatios: ["16:9", "9:16", "1:1"],
           maxDurationSeconds: 8,
           durations: [4, 6, 8], // Gemini Veo models support specific duration values
+          supportedOptions: {
+            resolution: true,
+            aspectRatio: true,
+            duration: [4, 6, 8],
+            firstFrame: true,
+            lastFrame: true,
+          },
         },
         maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
       },
@@ -881,6 +961,13 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           aspectRatios: ["16:9", "9:16"],
           maxDurationSeconds: 8,
           durations: [4, 6, 8], // Gemini Veo models support specific duration values
+          supportedOptions: {
+            resolution: true,
+            aspectRatio: true,
+            duration: [4, 6, 8],
+            firstFrame: true,
+            lastFrame: true,
+          },
         },
         maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
       },
@@ -891,6 +978,13 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           aspectRatios: ["16:9", "9:16"],
           maxDurationSeconds: 8,
           durations: [4, 6, 8], // Gemini Veo models support specific duration values
+          supportedOptions: {
+            resolution: true,
+            aspectRatio: true,
+            duration: [4, 6, 8],
+            firstFrame: true,
+            lastFrame: true,
+          },
         },
         maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
       },
@@ -1580,6 +1674,15 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
             { code: "yue-HK", name: "yue-HK" },
           ],
           speedRange: { min: 0.25, max: 4.0, default: 1.0 },
+          supportedOptions: {
+            voice: true,
+            language: true,
+            speed: true,
+            instructions: false,
+            emotionalTags: false,
+            pitch: false,
+            volume: false,
+          },
           chunkDurationSeconds: {
             min: 5,
             max: 300,
@@ -2186,6 +2289,12 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
             { id: "fast", name: "Fast" },
           ],
           durationRange: { min: 5, max: 300, default: 30 },
+          supportedOptions: {
+            genre: true,
+            mood: true,
+            tempo: true,
+            instrumental: true,
+          },
         },
       },
       // Gemini 2.5 Flash Lite TTS (Preview)
@@ -2620,6 +2729,12 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
             { id: "fast", name: "Fast" },
           ],
           durationRange: { min: 5, max: 300, default: 30 },
+          supportedOptions: {
+            genre: true,
+            mood: true,
+            tempo: true,
+            instrumental: true,
+          },
         },
         maxPromptLength: 500, // Music generation prompts are typically short descriptions
       },
@@ -3003,7 +3118,45 @@ export function getSpeedRangeForModel(
  */
 export function modelSupportsInstructions(providerId: string, modelId: string): boolean {
   const ttsOptions = getTTSOptionsForModel(providerId, modelId);
+  // Check new supportedOptions first, fallback to legacy supportsInstructions
+  if (ttsOptions?.supportedOptions?.instructions !== undefined) {
+    return ttsOptions.supportedOptions.instructions;
+  }
   return ttsOptions?.supportsInstructions || false;
+}
+
+/**
+ * Get supported options for a model (unified schema)
+ * Checks ttsOptions, videoOptions, musicOptions, and model-level supportedOptions
+ */
+export function getSupportedOptionsForModel(
+  providerId: string,
+  modelId: string
+): SupportedOptions | undefined {
+  const options = getGenerationOptions(providerId, modelId);
+
+  // Check model-level first
+  if (options?.supportedOptions) {
+    return options.supportedOptions;
+  }
+
+  // Check capability-specific options
+  const ttsOptions = options?.ttsOptions;
+  if (ttsOptions?.supportedOptions) {
+    return ttsOptions.supportedOptions;
+  }
+
+  const videoOptions = options?.videoOptions;
+  if (videoOptions?.supportedOptions) {
+    return videoOptions.supportedOptions;
+  }
+
+  const musicOptions = options?.musicOptions;
+  if (musicOptions?.supportedOptions) {
+    return musicOptions.supportedOptions;
+  }
+
+  return undefined;
 }
 
 /**

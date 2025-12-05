@@ -47,11 +47,39 @@ export interface ImageSizeOption {
 /**
  * Supported video generation options
  */
+/**
+ * Unified schema for supported options across all provider types
+ * Maps to shared components and feature flags
+ */
+export interface SupportedOptions {
+    instructions?: boolean;
+    emotionalTags?: boolean;
+    voice?: boolean;
+    language?: boolean;
+    speed?: boolean;
+    pitch?: boolean;
+    volume?: boolean;
+    size?: boolean;
+    quality?: string[];
+    style?: string[];
+    aspectRatio?: boolean;
+    personGeneration?: boolean;
+    resolution?: boolean;
+    duration?: boolean | number[];
+    inputReference?: boolean;
+    firstFrame?: boolean;
+    lastFrame?: boolean;
+    genre?: boolean;
+    mood?: boolean;
+    tempo?: boolean;
+    instrumental?: boolean;
+}
 export interface VideoGenerationOptions {
     resolutions: string[];
     aspectRatios: string[];
     maxDurationSeconds: number;
     durations?: number[];
+    supportedOptions?: SupportedOptions;
 }
 /**
  * TTS voice option
@@ -78,6 +106,7 @@ export interface TTSModelOptions {
         default: number;
     };
     supportsInstructions?: boolean;
+    supportedOptions?: SupportedOptions;
     chunkDurationSeconds?: {
         min: number;
         max: number;
@@ -106,6 +135,7 @@ export interface MusicModelOptions {
         max: number;
         default: number;
     };
+    supportedOptions?: SupportedOptions;
 }
 /**
  * Generation options per model
@@ -115,6 +145,7 @@ export interface ModelGenerationOptions {
     videoOptions?: VideoGenerationOptions;
     ttsOptions?: TTSModelOptions;
     musicOptions?: MusicModelOptions;
+    supportedOptions?: SupportedOptions;
     /** Maximum prompt length in characters for this model */
     maxPromptLength?: number;
 }
@@ -217,6 +248,11 @@ export declare function getSpeedRangeForModel(providerId: string, modelId: strin
  * Check if a TTS model supports instructions
  */
 export declare function modelSupportsInstructions(providerId: string, modelId: string): boolean;
+/**
+ * Get supported options for a model (unified schema)
+ * Checks ttsOptions, videoOptions, musicOptions, and model-level supportedOptions
+ */
+export declare function getSupportedOptionsForModel(providerId: string, modelId: string): SupportedOptions | undefined;
 /**
  * Get chunk duration limits for a TTS provider
  * Returns the chunk duration configuration from any TTS model of the provider
