@@ -705,6 +705,7 @@ exports.AI_PROVIDERS = {
                     resolutions: ["720p", "1080p"],
                     aspectRatios: ["16:9", "9:16", "1:1"],
                     maxDurationSeconds: 8,
+                    durations: [4, 6, 8], // Gemini Veo models support specific duration values
                 },
                 maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
             },
@@ -714,6 +715,7 @@ exports.AI_PROVIDERS = {
                     resolutions: ["720p", "1080p"],
                     aspectRatios: ["16:9", "9:16", "1:1"],
                     maxDurationSeconds: 8,
+                    durations: [4, 6, 8], // Gemini Veo models support specific duration values
                 },
                 maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
             },
@@ -723,6 +725,7 @@ exports.AI_PROVIDERS = {
                     resolutions: ["720p", "1080p"],
                     aspectRatios: ["16:9", "9:16", "1:1"],
                     maxDurationSeconds: 8,
+                    durations: [4, 6, 8], // Gemini Veo models support specific duration values
                 },
                 maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
             },
@@ -732,6 +735,7 @@ exports.AI_PROVIDERS = {
                     resolutions: ["720p"],
                     aspectRatios: ["16:9", "9:16"],
                     maxDurationSeconds: 8,
+                    durations: [4, 6, 8], // Gemini Veo models support specific duration values
                 },
                 maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
             },
@@ -741,6 +745,7 @@ exports.AI_PROVIDERS = {
                     resolutions: ["720p"],
                     aspectRatios: ["16:9", "9:16"],
                     maxDurationSeconds: 8,
+                    durations: [4, 6, 8], // Gemini Veo models support specific duration values
                 },
                 maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
             },
@@ -2134,7 +2139,7 @@ exports.AI_PROVIDERS = {
         id: "elevenlabs",
         name: "ElevenLabs",
         description: "Premium realistic voices, background music, and sound effects",
-        website: "https://elevenlabs.io",
+        website: "https://try.elevenlabs.io/eff39b2jrnzp",
         apiKeyUrl: "https://elevenlabs.io/app/settings/api-keys",
         capabilities: ["tts", "music-generation", "sound-effects"],
         fields: [

@@ -51,6 +51,7 @@ export interface VideoGenerationOptions {
     resolutions: string[];
     aspectRatios: string[];
     maxDurationSeconds: number;
+    durations?: number[];
 }
 /**
  * TTS voice option

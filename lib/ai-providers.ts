@@ -65,6 +65,7 @@ export interface VideoGenerationOptions {
   resolutions: string[]; // e.g., ["720p", "1080p"]
   aspectRatios: string[]; // e.g., ["16:9", "9:16", "1:1"]
   maxDurationSeconds: number;
+  durations?: number[]; // Optional: specific duration values (e.g., [4, 6, 8] for Gemini models)
 }
 
 /**
@@ -810,6 +811,7 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           resolutions: ["720p", "1080p"],
           aspectRatios: ["16:9", "9:16", "1:1"],
           maxDurationSeconds: 8,
+          durations: [4, 6, 8], // Gemini Veo models support specific duration values
         },
         maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
       },
@@ -819,6 +821,7 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           resolutions: ["720p", "1080p"],
           aspectRatios: ["16:9", "9:16", "1:1"],
           maxDurationSeconds: 8,
+          durations: [4, 6, 8], // Gemini Veo models support specific duration values
         },
         maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
       },
@@ -828,6 +831,7 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           resolutions: ["720p", "1080p"],
           aspectRatios: ["16:9", "9:16", "1:1"],
           maxDurationSeconds: 8,
+          durations: [4, 6, 8], // Gemini Veo models support specific duration values
         },
         maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
       },
@@ -837,6 +841,7 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           resolutions: ["720p"],
           aspectRatios: ["16:9", "9:16"],
           maxDurationSeconds: 8,
+          durations: [4, 6, 8], // Gemini Veo models support specific duration values
         },
         maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
       },
@@ -846,6 +851,7 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           resolutions: ["720p"],
           aspectRatios: ["16:9", "9:16"],
           maxDurationSeconds: 8,
+          durations: [4, 6, 8], // Gemini Veo models support specific duration values
         },
         maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
       },
