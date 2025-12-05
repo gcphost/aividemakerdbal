@@ -14,6 +14,8 @@ export interface ImageSource {
   description?: string;
   searchTerm?: string;
   fileId?: string; // Standardized file reference - URLs come from File.publicUrl
+  desiredResolution?: string; // Video's desired resolution (e.g., "1080p", "720p-vertical", "square")
+  aspectRatio?: string; // Calculated aspect ratio (e.g., "16:9", "9:16", "1:1")
   // Note: provider/model/providerSettings are stored in File metadata, not here
   // Note: Reuse tracking is done via File.references, not isReused/reusedFrom
 }
@@ -61,7 +63,8 @@ export interface VideoSource {
   fileId?: string; // Standardized file reference - URLs come from File.publicUrl
   duration?: number;
   resolution?: string;
-  aspectRatio?: string;
+  desiredResolution?: string; // Video's desired resolution (e.g., "1080p", "720p-vertical", "square")
+  aspectRatio?: string; // Calculated aspect ratio (e.g., "16:9", "9:16", "1:1")
   loop?: boolean;
   isGenerating?: boolean;
   generationError?: string;
