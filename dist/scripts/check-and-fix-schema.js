@@ -78,10 +78,10 @@ async function checkAndFixSchema() {
         // 7. Add missing optional columns
         const optionalColumns = [
             { table: "video", column: "desiredResolution", type: "TEXT", nullable: true },
-            { table: "profile", column: "imageModel", type: "TEXT", nullable: true },
-            { table: "profile", column: "autoGenerateVideos", type: "INTEGER", nullable: true },
-            { table: "profile", column: "disableVideoGeneration", type: "INTEGER", nullable: true },
-            { table: "profile", column: "videoStylePrompt", type: "VARCHAR", nullable: true },
+            { table: "profiles", column: "imageModel", type: "TEXT", nullable: true },
+            { table: "profiles", column: "autoGenerateVideos", type: "INTEGER", nullable: true },
+            { table: "profiles", column: "disableVideoGeneration", type: "INTEGER", nullable: true },
+            { table: "profiles", column: "videoStylePrompt", type: "VARCHAR", nullable: true },
             { table: "channel", column: "descriptionFooter", type: "TEXT", nullable: true },
         ];
         for (const { table, column, type, nullable } of optionalColumns) {
