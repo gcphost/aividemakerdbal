@@ -5,8 +5,9 @@
  * This is the single source of truth for TTS emotion/markup tag configuration.
  * Used by app and socket-server for code highlighting, autocomplete, and tag insertion.
  */
-export type TTSMarkupCategory = "non-speech-sounds" | "style-modifiers" | "vocalized-markup" | "pacing-pauses";
+export type TTSMarkupCategory = "non-speech-sounds" | "style-modifiers" | "vocalized-markup" | "pacing-pauses" | "voice-control" | "emotional" | "volume-energy" | "narrative-control";
 export type TTSMarkupReliability = "High" | "Medium" | "Low";
+export type TTSProvider = "gemini" | "elevenlabs" | "openai" | "playht";
 export interface TTSMarkupTag {
     /** The markup tag itself, e.g., "[sigh]", "[sarcasm]", "[short pause]" */
     tag: string;
@@ -18,6 +19,8 @@ export interface TTSMarkupTag {
     guidance: string;
     /** Category/mode the tag belongs to */
     category: TTSMarkupCategory;
+    /** TTS providers that support this tag */
+    providers: TTSProvider[];
     /** Optional warning about the tag (e.g., for vocalized markup) */
     warning?: string;
 }
@@ -40,13 +43,25 @@ export declare const TTS_MARKUP_TAGS_LIST: TTSMarkupTag[];
  */
 export declare function getTagsByCategory(category: TTSMarkupCategory): TTSMarkupTag[];
 /**
+ * Get tags by provider
+ */
+export declare function getTagsByProvider(provider: TTSProvider): TTSMarkupTag[];
+/**
+ * Get tags by category and provider
+ */
+export declare function getTagsByCategoryAndProvider(category: TTSMarkupCategory, provider: TTSProvider): TTSMarkupTag[];
+/**
  * Search tags by tag name, behavior, or guidance
  */
-export declare function searchTags(query: string): TTSMarkupTag[];
+export declare function searchTags(query: string, provider?: TTSProvider): TTSMarkupTag[];
 /**
  * Get a tag by its tag string
  */
 export declare function getTagByTagString(tagString: string): TTSMarkupTag | undefined;
+/**
+ * Get all tags for a provider, grouped by category
+ */
+export declare function getTagsByProviderGrouped(provider: TTSProvider): Record<TTSMarkupCategory, TTSMarkupTag[]>;
 /**
  * Category metadata for display purposes
  */
