@@ -19,27 +19,28 @@ async function addMissingColumns() {
         // Check if columns exist and add them if missing
         const tables = [
             {
-                table: 'video',
-                columns: [
-                    { name: 'desiredResolution', type: 'TEXT', nullable: true }
-                ]
+                table: "video",
+                columns: [{ name: "desiredResolution", type: "TEXT", nullable: true }],
             },
             {
-                table: 'profile',
+                table: "profile",
                 columns: [
-                    { name: 'imageModel', type: 'TEXT', nullable: true }
-                ]
+                    { name: "imageModel", type: "TEXT", nullable: true },
+                    { name: "autoGenerateVideos", type: "INTEGER", nullable: true },
+                    { name: "disableVideoGeneration", type: "INTEGER", nullable: true },
+                    { name: "videoStylePrompt", type: "VARCHAR", nullable: true },
+                ],
             },
             {
-                table: 'channel',
-                columns: [
-                    { name: 'descriptionFooter', type: 'TEXT', nullable: true }
-                ]
-            }
+                table: "channel",
+                columns: [{ name: "descriptionFooter", type: "TEXT", nullable: true }],
+            },
         ];
         for (const { table, columns } of tables) {
             // Check if table exists
-            const tableInfo = db.prepare(`SELECT name FROM sqlite_master WHERE type='table' AND name=?`).get(table);
+            const tableInfo = db
+                .prepare(`SELECT name FROM sqlite_master WHERE type='table' AND name=?`)
+                .get(table);
             if (!tableInfo) {
                 console.log(`⚠️  Table ${table} does not exist, skipping...`);
                 continue;
@@ -53,16 +54,16 @@ async function addMissingColumns() {
                 }
                 else {
                     console.log(`➕ Adding column ${table}.${column.name}...`);
-                    const nullable = column.nullable ? '' : ' NOT NULL';
+                    const nullable = column.nullable ? "" : " NOT NULL";
                     db.prepare(`ALTER TABLE ${table} ADD COLUMN ${column.name} ${column.type}${nullable}`).run();
                     console.log(`✅ Added column ${table}.${column.name}`);
                 }
             }
         }
-        console.log('\n✅ Migration complete!');
+        console.log("\n✅ Migration complete!");
     }
     catch (error) {
-        console.error('❌ Migration error:', error);
+        console.error("❌ Migration error:", error);
         throw error;
     }
     finally {
@@ -72,7 +73,7 @@ async function addMissingColumns() {
 }
 if (require.main === module) {
     addMissingColumns().catch(error => {
-        console.error('Failed to run migration:', error);
+        console.error("Failed to run migration:", error);
         process.exit(1);
     });
 }

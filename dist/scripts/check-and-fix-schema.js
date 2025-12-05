@@ -79,6 +79,9 @@ async function checkAndFixSchema() {
         const optionalColumns = [
             { table: "video", column: "desiredResolution", type: "TEXT", nullable: true },
             { table: "profile", column: "imageModel", type: "TEXT", nullable: true },
+            { table: "profile", column: "autoGenerateVideos", type: "INTEGER", nullable: true },
+            { table: "profile", column: "disableVideoGeneration", type: "INTEGER", nullable: true },
+            { table: "profile", column: "videoStylePrompt", type: "VARCHAR", nullable: true },
             { table: "channel", column: "descriptionFooter", type: "TEXT", nullable: true },
         ];
         for (const { table, column, type, nullable } of optionalColumns) {
