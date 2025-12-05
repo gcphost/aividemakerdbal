@@ -16,6 +16,8 @@ exports.getTagByTagString = getTagByTagString;
 exports.getTagsByProviderGrouped = getTagsByProviderGrouped;
 exports.getCategoryInfo = getCategoryInfo;
 exports.getAllCategories = getAllCategories;
+exports.providerSupportsEmotionalTags = providerSupportsEmotionalTags;
+exports.getProvidersWithEmotionalTags = getProvidersWithEmotionalTags;
 /**
  * All available TTS markup tags organized by category
  */
@@ -486,5 +488,24 @@ function getCategoryInfo(category) {
  */
 function getAllCategories() {
     return Object.values(exports.TTS_MARKUP_CATEGORIES);
+}
+/**
+ * Check if a provider supports emotional tags
+ */
+function providerSupportsEmotionalTags(provider) {
+    const tags = getTagsByProvider(provider);
+    return tags.length > 0;
+}
+/**
+ * Get all providers that support emotional tags
+ */
+function getProvidersWithEmotionalTags() {
+    const providers = new Set();
+    for (const tag of exports.TTS_MARKUP_TAGS_LIST) {
+        for (const provider of tag.providers) {
+            providers.add(provider);
+        }
+    }
+    return Array.from(providers);
 }
 //# sourceMappingURL=tts-emotions.js.map

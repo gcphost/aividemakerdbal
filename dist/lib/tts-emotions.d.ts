@@ -79,4 +79,12 @@ export declare function getCategoryInfo(category: TTSMarkupCategory): TTSMarkupC
  * Get all categories as an array
  */
 export declare function getAllCategories(): TTSMarkupCategoryInfo[];
+/**
+ * Check if a provider supports emotional tags
+ */
+export declare function providerSupportsEmotionalTags(provider: TTSProvider): boolean;
+/**
+ * Get all providers that support emotional tags
+ */
+export declare function getProvidersWithEmotionalTags(): TTSProvider[];
 //# sourceMappingURL=tts-emotions.d.ts.map

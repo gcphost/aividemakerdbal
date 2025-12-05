@@ -560,3 +560,24 @@ export function getCategoryInfo(category: TTSMarkupCategory): TTSMarkupCategoryI
 export function getAllCategories(): TTSMarkupCategoryInfo[] {
   return Object.values(TTS_MARKUP_CATEGORIES);
 }
+
+/**
+ * Check if a provider supports emotional tags
+ */
+export function providerSupportsEmotionalTags(provider: TTSProvider): boolean {
+  const tags = getTagsByProvider(provider);
+  return tags.length > 0;
+}
+
+/**
+ * Get all providers that support emotional tags
+ */
+export function getProvidersWithEmotionalTags(): TTSProvider[] {
+  const providers = new Set<TTSProvider>();
+  for (const tag of TTS_MARKUP_TAGS_LIST) {
+    for (const provider of tag.providers) {
+      providers.add(provider);
+    }
+  }
+  return Array.from(providers);
+}
