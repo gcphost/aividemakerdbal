@@ -117,6 +117,9 @@ export class Profile extends BaseEntity {
   @Column("integer", { nullable: true })
   autoGenerateMusic?: boolean;
 
+  @Column("integer", { nullable: true })
+  autoGenerateVideos?: boolean;
+
   @Column("varchar", { nullable: true, default: "elevenlabs" })
   musicProvider?: string;
 
@@ -150,6 +153,9 @@ export class Profile extends BaseEntity {
   @Column("integer", { nullable: true })
   disableSoundGeneration?: boolean;
 
+  @Column("integer", { nullable: true })
+  disableVideoGeneration?: boolean;
+
   @Column("float", { nullable: true, default: 120 })
   channelIntroDurationSeconds?: number;
 
@@ -164,6 +170,9 @@ export class Profile extends BaseEntity {
 
   @Column("varchar", { nullable: true })
   videoModel?: string;
+
+  @Column("varchar", { nullable: true })
+  videoStylePrompt?: string;
 
   @Column({ type: "text", nullable: true })
   videoSettings?: string;

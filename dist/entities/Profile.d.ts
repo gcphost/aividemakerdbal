@@ -38,6 +38,7 @@ export declare class Profile extends BaseEntity {
     autoGenerateImages?: boolean;
     autoGenerateSounds?: boolean;
     autoGenerateMusic?: boolean;
+    autoGenerateVideos?: boolean;
     musicProvider?: string;
     musicModel?: string;
     soundEffectProvider?: string;
@@ -49,11 +50,13 @@ export declare class Profile extends BaseEntity {
     disableImageGeneration?: boolean;
     disableMusicGeneration?: boolean;
     disableSoundGeneration?: boolean;
+    disableVideoGeneration?: boolean;
     channelIntroDurationSeconds?: number;
     channelOutroDurationSeconds?: number;
     wordsPerMinute?: number;
     videoProvider: string;
     videoModel?: string;
+    videoStylePrompt?: string;
     videoSettings?: string;
     openaiSettings?: string;
     videoStyle: "minimal-talking" | "standard" | "heavy-narration";

@@ -9,6 +9,8 @@ export interface ImageSource {
     description?: string;
     searchTerm?: string;
     fileId?: string;
+    desiredResolution?: string;
+    aspectRatio?: string;
 }
 export interface SoundSource {
     id: string;
@@ -49,6 +51,7 @@ export interface VideoSource {
     fileId?: string;
     duration?: number;
     resolution?: string;
+    desiredResolution?: string;
     aspectRatio?: string;
     loop?: boolean;
     isGenerating?: boolean;

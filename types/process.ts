@@ -48,6 +48,7 @@ export type ProcessType =
   | "bulk-image-generation"
   | "bulk-music-generation"
   | "bulk-sound-generation"
+  | "bulk-video-generation"
   | "auto-generate-all-content";
 
 export type ProcessStatus =

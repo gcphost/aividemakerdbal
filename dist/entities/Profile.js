@@ -51,6 +51,7 @@ let Profile = class Profile extends BaseEntity_1.BaseEntity {
     autoGenerateImages;
     autoGenerateSounds;
     autoGenerateMusic;
+    autoGenerateVideos;
     musicProvider;
     musicModel;
     soundEffectProvider;
@@ -62,11 +63,13 @@ let Profile = class Profile extends BaseEntity_1.BaseEntity {
     disableImageGeneration;
     disableMusicGeneration;
     disableSoundGeneration;
+    disableVideoGeneration;
     channelIntroDurationSeconds;
     channelOutroDurationSeconds;
     wordsPerMinute;
     videoProvider;
     videoModel;
+    videoStylePrompt;
     videoSettings;
     openaiSettings;
     videoStyle;
@@ -228,6 +231,10 @@ __decorate([
     __metadata("design:type", Boolean)
 ], Profile.prototype, "autoGenerateMusic", void 0);
 __decorate([
+    (0, typeorm_1.Column)("integer", { nullable: true }),
+    __metadata("design:type", Boolean)
+], Profile.prototype, "autoGenerateVideos", void 0);
+__decorate([
     (0, typeorm_1.Column)("varchar", { nullable: true, default: "elevenlabs" }),
     __metadata("design:type", String)
 ], Profile.prototype, "musicProvider", void 0);
@@ -272,6 +279,10 @@ __decorate([
     __metadata("design:type", Boolean)
 ], Profile.prototype, "disableSoundGeneration", void 0);
 __decorate([
+    (0, typeorm_1.Column)("integer", { nullable: true }),
+    __metadata("design:type", Boolean)
+], Profile.prototype, "disableVideoGeneration", void 0);
+__decorate([
     (0, typeorm_1.Column)("float", { nullable: true, default: 120 }),
     __metadata("design:type", Number)
 ], Profile.prototype, "channelIntroDurationSeconds", void 0);
@@ -291,6 +302,10 @@ __decorate([
     (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Profile.prototype, "videoModel", void 0);
+__decorate([
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
+    __metadata("design:type", String)
+], Profile.prototype, "videoStylePrompt", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: "text", nullable: true }),
     __metadata("design:type", String)
