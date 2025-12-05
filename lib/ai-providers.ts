@@ -2259,7 +2259,7 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
         },
       },
       // Lyria music generation
-      lyria: {
+      "lyria-realtime-exp": {
         musicOptions: {
           genres: [
             { id: "ambient", name: "Ambient" },
@@ -2647,6 +2647,12 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
       eleven_multilingual_v2: {
         ttsOptions: {
           speedRange: { min: 0.7, max: 1.2, default: 1.0 }, // ElevenLabs API requires speed between 0.7 and 1.2
+          supportedOptions: {
+            voice: true, // Uses ElevenLabsVoiceSelector (API-based)
+            speed: true,
+            language: true, // language_code
+            emotionalTags: true, // ElevenLabs supports emotional tags
+          },
           chunkDurationSeconds: {
             min: 5,
             max: 120,
@@ -2662,6 +2668,12 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
       eleven_turbo_v2_5: {
         ttsOptions: {
           speedRange: { min: 0.7, max: 1.2, default: 1.0 }, // ElevenLabs API requires speed between 0.7 and 1.2
+          supportedOptions: {
+            voice: true,
+            speed: true,
+            language: true,
+            emotionalTags: true,
+          },
           chunkDurationSeconds: {
             min: 5,
             max: 120,
@@ -2675,6 +2687,12 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
       eleven_turbo_v2: {
         ttsOptions: {
           speedRange: { min: 0.7, max: 1.2, default: 1.0 }, // ElevenLabs API requires speed between 0.7 and 1.2
+          supportedOptions: {
+            voice: true,
+            speed: true,
+            language: true,
+            emotionalTags: true,
+          },
           chunkDurationSeconds: {
             min: 5,
             max: 120,
@@ -2688,6 +2706,12 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
       eleven_monolingual_v1: {
         ttsOptions: {
           speedRange: { min: 0.7, max: 1.2, default: 1.0 }, // ElevenLabs API requires speed between 0.7 and 1.2
+          supportedOptions: {
+            voice: true,
+            speed: true,
+            language: false, // Monolingual English only
+            emotionalTags: true,
+          },
           chunkDurationSeconds: {
             min: 5,
             max: 120,
@@ -2826,6 +2850,11 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
       "PlayHT2.0-turbo": {
         ttsOptions: {
           speedRange: { min: 0.5, max: 2.0, default: 1.0 },
+          supportedOptions: {
+            voice: true, // Uses text input for voice ID/URL
+            speed: true,
+            emotionalTags: true, // PlayHT supports emotional tags
+          },
           chunkDurationSeconds: {
             min: 5,
             max: 300,
@@ -2838,6 +2867,11 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
       "PlayHT2.0": {
         ttsOptions: {
           speedRange: { min: 0.5, max: 2.0, default: 1.0 },
+          supportedOptions: {
+            voice: true,
+            speed: true,
+            emotionalTags: true,
+          },
           chunkDurationSeconds: {
             min: 5,
             max: 300,
@@ -2850,6 +2884,11 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
       "PlayHT1.0": {
         ttsOptions: {
           speedRange: { min: 0.5, max: 2.0, default: 1.0 },
+          supportedOptions: {
+            voice: true,
+            speed: true,
+            emotionalTags: true,
+          },
           chunkDurationSeconds: {
             min: 5,
             max: 300,
