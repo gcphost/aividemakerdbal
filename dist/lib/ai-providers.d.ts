@@ -77,6 +77,12 @@ export interface TTSModelOptions {
         default: number;
     };
     supportsInstructions?: boolean;
+    chunkDurationSeconds?: {
+        min: number;
+        max: number;
+        default: number;
+        description?: string;
+    };
 }
 /**
  * Music generation options
@@ -203,6 +209,16 @@ export declare function getSpeedRangeForModel(providerId: string, modelId: strin
  * Check if a TTS model supports instructions
  */
 export declare function modelSupportsInstructions(providerId: string, modelId: string): boolean;
+/**
+ * Get chunk duration limits for a TTS provider
+ * Returns the chunk duration configuration from any TTS model of the provider
+ */
+export declare function getChunkDurationForProvider(providerId: string): {
+    min: number;
+    max: number;
+    default: number;
+    description?: string;
+} | undefined;
 /**
  * Get music generation options for a specific model
  */

@@ -26,6 +26,7 @@ exports.getVoicesForModel = getVoicesForModel;
 exports.getLanguagesForModel = getLanguagesForModel;
 exports.getSpeedRangeForModel = getSpeedRangeForModel;
 exports.modelSupportsInstructions = modelSupportsInstructions;
+exports.getChunkDurationForProvider = getChunkDurationForProvider;
 exports.getMusicOptionsForModel = getMusicOptionsForModel;
 exports.getGenresForModel = getGenresForModel;
 exports.getMoodsForModel = getMoodsForModel;
@@ -271,6 +272,12 @@ exports.AI_PROVIDERS = {
                         },
                     ],
                     speedRange: { min: 0.25, max: 4.0, default: 1.0 },
+                    chunkDurationSeconds: {
+                        min: 5,
+                        max: 300,
+                        default: 30,
+                        description: "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
+                    },
                 },
             },
             // Sora 2 Pro - High quality
@@ -360,6 +367,12 @@ exports.AI_PROVIDERS = {
                         },
                     ],
                     speedRange: { min: 0.25, max: 4.0, default: 1.0 },
+                    chunkDurationSeconds: {
+                        min: 5,
+                        max: 300,
+                        default: 30,
+                        description: "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
+                    },
                 },
             },
             "gpt-4o-mini-tts": {
@@ -434,6 +447,12 @@ exports.AI_PROVIDERS = {
                     ],
                     speedRange: { min: 0.25, max: 4.0, default: 1.0 },
                     supportsInstructions: true,
+                    chunkDurationSeconds: {
+                        min: 5,
+                        max: 300,
+                        default: 30,
+                        description: "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
+                    },
                 },
             },
         },
@@ -946,6 +965,12 @@ exports.AI_PROVIDERS = {
                     ],
                     speedRange: { min: 0.25, max: 4.0, default: 1.0 },
                     supportsInstructions: true,
+                    chunkDurationSeconds: {
+                        min: 5,
+                        max: 300,
+                        default: 30,
+                        description: "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
+                    },
                 },
             },
             // Google Cloud TTS (Legacy standard voices)
@@ -1298,6 +1323,12 @@ exports.AI_PROVIDERS = {
                         { code: "yue-HK", name: "yue-HK" },
                     ],
                     speedRange: { min: 0.25, max: 4.0, default: 1.0 },
+                    chunkDurationSeconds: {
+                        min: 5,
+                        max: 300,
+                        default: 30,
+                        description: "Google Cloud TTS supports up to 300 seconds (5 minutes) per chunk.",
+                    },
                 },
             },
             // Gemini native TTS (uses Gemini model voices)
@@ -1540,6 +1571,12 @@ exports.AI_PROVIDERS = {
                     ],
                     speedRange: { min: 0.25, max: 4.0, default: 1.0 },
                     supportsInstructions: true,
+                    chunkDurationSeconds: {
+                        min: 5,
+                        max: 600,
+                        default: 30,
+                        description: "Gemini TTS supports up to 600 seconds (10 minutes) per chunk for longer audio segments.",
+                    },
                 },
             },
             "gemini-2.5-pro-tts": {
@@ -1781,6 +1818,12 @@ exports.AI_PROVIDERS = {
                     ],
                     speedRange: { min: 0.25, max: 4.0, default: 1.0 },
                     supportsInstructions: true,
+                    chunkDurationSeconds: {
+                        min: 5,
+                        max: 600,
+                        default: 30,
+                        description: "Gemini TTS supports up to 600 seconds (10 minutes) per chunk for longer audio segments.",
+                    },
                 },
             },
             // Lyria music generation
@@ -2056,6 +2099,12 @@ exports.AI_PROVIDERS = {
                     ],
                     speedRange: { min: 0.25, max: 4.0, default: 1.0 },
                     supportsInstructions: true,
+                    chunkDurationSeconds: {
+                        min: 5,
+                        max: 300,
+                        default: 30,
+                        description: "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
+                    },
                 },
             },
         },
@@ -2129,6 +2178,12 @@ exports.AI_PROVIDERS = {
             eleven_multilingual_v2: {
                 ttsOptions: {
                     speedRange: { min: 0.25, max: 4.0, default: 1.0 },
+                    chunkDurationSeconds: {
+                        min: 5,
+                        max: 120,
+                        default: 30,
+                        description: "ElevenLabs TTS works best with chunks up to 120 seconds (2 minutes) for optimal quality.",
+                    },
                     // Stability: 0-1, controls voice consistency
                     // Similarity boost: 0-1, controls voice matching
                 },
@@ -2136,16 +2191,34 @@ exports.AI_PROVIDERS = {
             eleven_turbo_v2_5: {
                 ttsOptions: {
                     speedRange: { min: 0.25, max: 4.0, default: 1.0 },
+                    chunkDurationSeconds: {
+                        min: 5,
+                        max: 120,
+                        default: 30,
+                        description: "ElevenLabs TTS works best with chunks up to 120 seconds (2 minutes) for optimal quality.",
+                    },
                 },
             },
             eleven_turbo_v2: {
                 ttsOptions: {
                     speedRange: { min: 0.25, max: 4.0, default: 1.0 },
+                    chunkDurationSeconds: {
+                        min: 5,
+                        max: 120,
+                        default: 30,
+                        description: "ElevenLabs TTS works best with chunks up to 120 seconds (2 minutes) for optimal quality.",
+                    },
                 },
             },
             eleven_monolingual_v1: {
                 ttsOptions: {
                     speedRange: { min: 0.25, max: 4.0, default: 1.0 },
+                    chunkDurationSeconds: {
+                        min: 5,
+                        max: 120,
+                        default: 30,
+                        description: "ElevenLabs TTS works best with chunks up to 120 seconds (2 minutes) for optimal quality.",
+                    },
                 },
             },
             // Music generation
@@ -2235,16 +2308,34 @@ exports.AI_PROVIDERS = {
             "PlayHT2.0-turbo": {
                 ttsOptions: {
                     speedRange: { min: 0.5, max: 2.0, default: 1.0 },
+                    chunkDurationSeconds: {
+                        min: 5,
+                        max: 300,
+                        default: 30,
+                        description: "Play.HT TTS supports up to 300 seconds (5 minutes) per chunk.",
+                    },
                 },
             },
             "PlayHT2.0": {
                 ttsOptions: {
                     speedRange: { min: 0.5, max: 2.0, default: 1.0 },
+                    chunkDurationSeconds: {
+                        min: 5,
+                        max: 300,
+                        default: 30,
+                        description: "Play.HT TTS supports up to 300 seconds (5 minutes) per chunk.",
+                    },
                 },
             },
             "PlayHT1.0": {
                 ttsOptions: {
                     speedRange: { min: 0.5, max: 2.0, default: 1.0 },
+                    chunkDurationSeconds: {
+                        min: 5,
+                        max: 300,
+                        default: 30,
+                        description: "Play.HT TTS supports up to 300 seconds (5 minutes) per chunk.",
+                    },
                 },
             },
         },
@@ -2452,6 +2543,29 @@ function getSpeedRangeForModel(providerId, modelId) {
 function modelSupportsInstructions(providerId, modelId) {
     const ttsOptions = getTTSOptionsForModel(providerId, modelId);
     return ttsOptions?.supportsInstructions || false;
+}
+/**
+ * Get chunk duration limits for a TTS provider
+ * Returns the chunk duration configuration from any TTS model of the provider
+ */
+function getChunkDurationForProvider(providerId) {
+    const provider = exports.AI_PROVIDERS[providerId];
+    if (!provider?.generationOptions) {
+        return undefined;
+    }
+    // Find any TTS model for this provider
+    for (const [modelId, options] of Object.entries(provider.generationOptions)) {
+        if (options?.ttsOptions?.chunkDurationSeconds) {
+            return options.ttsOptions.chunkDurationSeconds;
+        }
+    }
+    // Default fallback
+    return {
+        min: 5,
+        max: 300,
+        default: 30,
+        description: "Default limits when provider is auto-detected or unknown.",
+    };
 }
 /**
  * Get music generation options for a specific model

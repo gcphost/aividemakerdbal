@@ -86,6 +86,12 @@ export interface TTSModelOptions {
   languages?: { code: string; name: string }[];
   speedRange?: { min: number; max: number; default: number };
   supportsInstructions?: boolean;
+  chunkDurationSeconds?: {
+    min: number;
+    max: number;
+    default: number;
+    description?: string;
+  };
 }
 
 /**
@@ -362,6 +368,12 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
             },
           ],
           speedRange: { min: 0.25, max: 4.0, default: 1.0 },
+          chunkDurationSeconds: {
+            min: 5,
+            max: 300,
+            default: 30,
+            description: "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
+          },
         },
       },
       // Sora 2 Pro - High quality
@@ -451,6 +463,12 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
             },
           ],
           speedRange: { min: 0.25, max: 4.0, default: 1.0 },
+          chunkDurationSeconds: {
+            min: 5,
+            max: 300,
+            default: 30,
+            description: "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
+          },
         },
       },
       "gpt-4o-mini-tts": {
@@ -525,6 +543,12 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           ],
           speedRange: { min: 0.25, max: 4.0, default: 1.0 },
           supportsInstructions: true,
+          chunkDurationSeconds: {
+            min: 5,
+            max: 300,
+            default: 30,
+            description: "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
+          },
         },
       },
     },
@@ -1072,6 +1096,12 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           ],
           speedRange: { min: 0.25, max: 4.0, default: 1.0 },
           supportsInstructions: true,
+          chunkDurationSeconds: {
+            min: 5,
+            max: 300,
+            default: 30,
+            description: "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
+          },
         },
       },
       // Google Cloud TTS (Legacy standard voices)
@@ -1471,6 +1501,12 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
             { code: "yue-HK", name: "yue-HK" },
           ],
           speedRange: { min: 0.25, max: 4.0, default: 1.0 },
+          chunkDurationSeconds: {
+            min: 5,
+            max: 300,
+            default: 30,
+            description: "Google Cloud TTS supports up to 300 seconds (5 minutes) per chunk.",
+          },
         },
       },
       // Gemini native TTS (uses Gemini model voices)
@@ -1743,6 +1779,12 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           ],
           speedRange: { min: 0.25, max: 4.0, default: 1.0 },
           supportsInstructions: true,
+          chunkDurationSeconds: {
+            min: 5,
+            max: 600,
+            default: 30,
+            description: "Gemini TTS supports up to 600 seconds (10 minutes) per chunk for longer audio segments.",
+          },
         },
       },
       "gemini-2.5-pro-tts": {
@@ -2014,6 +2056,12 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           ],
           speedRange: { min: 0.25, max: 4.0, default: 1.0 },
           supportsInstructions: true,
+          chunkDurationSeconds: {
+            min: 5,
+            max: 600,
+            default: 30,
+            description: "Gemini TTS supports up to 600 seconds (10 minutes) per chunk for longer audio segments.",
+          },
         },
       },
       // Lyria music generation
@@ -2319,6 +2367,12 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           ],
           speedRange: { min: 0.25, max: 4.0, default: 1.0 },
           supportsInstructions: true,
+          chunkDurationSeconds: {
+            min: 5,
+            max: 300,
+            default: 30,
+            description: "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
+          },
         },
       },
     },
@@ -2392,6 +2446,12 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
       eleven_multilingual_v2: {
         ttsOptions: {
           speedRange: { min: 0.25, max: 4.0, default: 1.0 },
+          chunkDurationSeconds: {
+            min: 5,
+            max: 120,
+            default: 30,
+            description: "ElevenLabs TTS works best with chunks up to 120 seconds (2 minutes) for optimal quality.",
+          },
           // Stability: 0-1, controls voice consistency
           // Similarity boost: 0-1, controls voice matching
         },
@@ -2399,16 +2459,34 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
       eleven_turbo_v2_5: {
         ttsOptions: {
           speedRange: { min: 0.25, max: 4.0, default: 1.0 },
+          chunkDurationSeconds: {
+            min: 5,
+            max: 120,
+            default: 30,
+            description: "ElevenLabs TTS works best with chunks up to 120 seconds (2 minutes) for optimal quality.",
+          },
         },
       },
       eleven_turbo_v2: {
         ttsOptions: {
           speedRange: { min: 0.25, max: 4.0, default: 1.0 },
+          chunkDurationSeconds: {
+            min: 5,
+            max: 120,
+            default: 30,
+            description: "ElevenLabs TTS works best with chunks up to 120 seconds (2 minutes) for optimal quality.",
+          },
         },
       },
       eleven_monolingual_v1: {
         ttsOptions: {
           speedRange: { min: 0.25, max: 4.0, default: 1.0 },
+          chunkDurationSeconds: {
+            min: 5,
+            max: 120,
+            default: 30,
+            description: "ElevenLabs TTS works best with chunks up to 120 seconds (2 minutes) for optimal quality.",
+          },
         },
       },
       // Music generation
@@ -2498,16 +2576,34 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
       "PlayHT2.0-turbo": {
         ttsOptions: {
           speedRange: { min: 0.5, max: 2.0, default: 1.0 },
+          chunkDurationSeconds: {
+            min: 5,
+            max: 300,
+            default: 30,
+            description: "Play.HT TTS supports up to 300 seconds (5 minutes) per chunk.",
+          },
         },
       },
       "PlayHT2.0": {
         ttsOptions: {
           speedRange: { min: 0.5, max: 2.0, default: 1.0 },
+          chunkDurationSeconds: {
+            min: 5,
+            max: 300,
+            default: 30,
+            description: "Play.HT TTS supports up to 300 seconds (5 minutes) per chunk.",
+          },
         },
       },
       "PlayHT1.0": {
         ttsOptions: {
           speedRange: { min: 0.5, max: 2.0, default: 1.0 },
+          chunkDurationSeconds: {
+            min: 5,
+            max: 300,
+            default: 30,
+            description: "Play.HT TTS supports up to 300 seconds (5 minutes) per chunk.",
+          },
         },
       },
     },
@@ -2761,6 +2857,34 @@ export function getSpeedRangeForModel(
 export function modelSupportsInstructions(providerId: string, modelId: string): boolean {
   const ttsOptions = getTTSOptionsForModel(providerId, modelId);
   return ttsOptions?.supportsInstructions || false;
+}
+
+/**
+ * Get chunk duration limits for a TTS provider
+ * Returns the chunk duration configuration from any TTS model of the provider
+ */
+export function getChunkDurationForProvider(
+  providerId: string
+): { min: number; max: number; default: number; description?: string } | undefined {
+  const provider = AI_PROVIDERS[providerId];
+  if (!provider?.generationOptions) {
+    return undefined;
+  }
+
+  // Find any TTS model for this provider
+  for (const [modelId, options] of Object.entries(provider.generationOptions)) {
+    if (options?.ttsOptions?.chunkDurationSeconds) {
+      return options.ttsOptions.chunkDurationSeconds;
+    }
+  }
+
+  // Default fallback
+  return {
+    min: 5,
+    max: 300,
+    default: 30,
+    description: "Default limits when provider is auto-detected or unknown.",
+  };
 }
 
 /**
