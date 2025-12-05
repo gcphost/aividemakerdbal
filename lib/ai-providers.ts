@@ -2410,7 +2410,7 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
     id: "elevenlabs",
     name: "ElevenLabs",
     description: "Premium realistic voices, background music, and sound effects",
-    website: "https://elevenlabs.io",
+    website: "https://try.elevenlabs.io/eff39b2jrnzp",
     apiKeyUrl: "https://elevenlabs.io/app/settings/api-keys",
     capabilities: ["tts", "music-generation", "sound-effects"],
     fields: [
@@ -2859,10 +2859,7 @@ export function getGenerationOptions(
  * Get the maximum prompt length for a specific model
  * Returns undefined if no limit is specified
  */
-export function getMaxPromptLength(
-  providerId: string,
-  modelId: string
-): number | undefined {
+export function getMaxPromptLength(providerId: string, modelId: string): number | undefined {
   const options = getGenerationOptions(providerId, modelId);
   return options?.maxPromptLength;
 }
