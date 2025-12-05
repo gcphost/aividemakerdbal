@@ -63,10 +63,6 @@ export declare function getTagByTagString(tagString: string): TTSMarkupTag | und
  */
 export declare function getTagsByProviderGrouped(provider: TTSProvider): Record<TTSMarkupCategory, TTSMarkupTag[]>;
 /**
- * Get all providers that support emotional tone tags
- */
-export declare function getProvidersWithEmotionalTags(): TTSProvider[];
-/**
  * Category metadata for display purposes
  */
 export interface TTSMarkupCategoryInfo {

@@ -6,7 +6,7 @@
  * Used by app and socket-server for code highlighting, autocomplete, and tag insertion.
  */
 
-export type TTSMarkupCategory = 
+export type TTSMarkupCategory =
   | "non-speech-sounds"
   | "style-modifiers"
   | "vocalized-markup"
@@ -53,7 +53,8 @@ export const TTS_MARKUP_TAGS: Record<TTSMarkupCategory, TTSMarkupTag[]> = {
       tag: "[laughing]",
       behavior: "Inserts a laugh.",
       reliability: "High",
-      guidance: "For best results, use a specific prompt. e.g., a generic prompt may yield a laugh of shock, while \"react with an amused laugh\" creates a laugh of amusement.",
+      guidance:
+        'For best results, use a specific prompt. e.g., a generic prompt may yield a laugh of shock, while "react with an amused laugh" creates a laugh of amusement.',
       category: "non-speech-sounds",
       providers: ["gemini"],
     },
@@ -127,7 +128,8 @@ export const TTS_MARKUP_TAGS: Record<TTSMarkupCategory, TTSMarkupTag[]> = {
       tag: "[sarcasm]",
       behavior: "Imparts a sarcastic tone on the subsequent phrase.",
       reliability: "High",
-      guidance: "This tag is a powerful modifier. It demonstrates that abstract concepts can successfully steer the model's delivery.",
+      guidance:
+        "This tag is a powerful modifier. It demonstrates that abstract concepts can successfully steer the model's delivery.",
       category: "style-modifiers",
       providers: ["gemini"],
     },
@@ -135,7 +137,8 @@ export const TTS_MARKUP_TAGS: Record<TTSMarkupCategory, TTSMarkupTag[]> = {
       tag: "[robotic]",
       behavior: "Makes the subsequent speech sound robotic.",
       reliability: "High",
-      guidance: "The effect can extend across an entire phrase. A supportive style prompt (e.g., \"Say this in a robotic way\") is still recommended for best results.",
+      guidance:
+        'The effect can extend across an entire phrase. A supportive style prompt (e.g., "Say this in a robotic way") is still recommended for best results.',
       category: "style-modifiers",
       providers: ["gemini"],
     },
@@ -143,7 +146,8 @@ export const TTS_MARKUP_TAGS: Record<TTSMarkupCategory, TTSMarkupTag[]> = {
       tag: "[shouting]",
       behavior: "Increases the volume of the subsequent speech.",
       reliability: "High",
-      guidance: "Most effective when paired with a matching style prompt (e.g., \"Shout this next part\") and text that implies yelling.",
+      guidance:
+        'Most effective when paired with a matching style prompt (e.g., "Shout this next part") and text that implies yelling.',
       category: "style-modifiers",
       providers: ["gemini", "elevenlabs"],
     },
@@ -151,7 +155,8 @@ export const TTS_MARKUP_TAGS: Record<TTSMarkupCategory, TTSMarkupTag[]> = {
       tag: "[whispering]",
       behavior: "Decreases the volume of the subsequent speech.",
       reliability: "High",
-      guidance: "Best results are achieved when the style prompt is also explicit (e.g., \"now whisper this part as quietly as you can\").",
+      guidance:
+        'Best results are achieved when the style prompt is also explicit (e.g., "now whisper this part as quietly as you can").',
       category: "style-modifiers",
       providers: ["gemini", "elevenlabs"],
     },
@@ -167,30 +172,34 @@ export const TTS_MARKUP_TAGS: Record<TTSMarkupCategory, TTSMarkupTag[]> = {
   "vocalized-markup": [
     {
       tag: "[scared]",
-      behavior: "The word \"scared\" is spoken, and the sentence adopts a scared tone.",
+      behavior: 'The word "scared" is spoken, and the sentence adopts a scared tone.',
       reliability: "High",
-      guidance: "Performance is highly dependent on text content. The phrase \"I just heard a window break\" produces a genuinely scared result. A neutral phrase produces a \"spooky\" but less authentic result.",
+      guidance:
+        'Performance is highly dependent on text content. The phrase "I just heard a window break" produces a genuinely scared result. A neutral phrase produces a "spooky" but less authentic result.',
       category: "vocalized-markup",
       providers: ["gemini"],
-      warning: "Because the tag itself is spoken, this mode is likely an undesired side effect for most use cases. Prefer using the Style Prompt to set these emotional tones instead.",
+      warning:
+        "Because the tag itself is spoken, this mode is likely an undesired side effect for most use cases. Prefer using the Style Prompt to set these emotional tones instead.",
     },
     {
       tag: "[curious]",
-      behavior: "The word \"curious\" is spoken, and the sentence adopts a curious tone.",
+      behavior: 'The word "curious" is spoken, and the sentence adopts a curious tone.',
       reliability: "High",
       guidance: "Use an inquisitive phrase to support the tag's intent.",
       category: "vocalized-markup",
       providers: ["gemini", "elevenlabs"],
-      warning: "Because the tag itself is spoken, this mode is likely an undesired side effect for most use cases. Prefer using the Style Prompt to set these emotional tones instead.",
+      warning:
+        "Because the tag itself is spoken, this mode is likely an undesired side effect for most use cases. Prefer using the Style Prompt to set these emotional tones instead.",
     },
     {
       tag: "[bored]",
-      behavior: "The word \"bored\" is spoken, and the sentence adopts a bored, monotone delivery.",
+      behavior: 'The word "bored" is spoken, and the sentence adopts a bored, monotone delivery.',
       reliability: "High",
       guidance: "Use with text that is mundane or repetitive for best effect.",
       category: "vocalized-markup",
       providers: ["gemini"],
-      warning: "Because the tag itself is spoken, this mode is likely an undesired side effect for most use cases. Prefer using the Style Prompt to set these emotional tones instead.",
+      warning:
+        "Because the tag itself is spoken, this mode is likely an undesired side effect for most use cases. Prefer using the Style Prompt to set these emotional tones instead.",
     },
   ],
   "pacing-pauses": [
@@ -214,7 +223,8 @@ export const TTS_MARKUP_TAGS: Record<TTSMarkupCategory, TTSMarkupTag[]> = {
       tag: "[long pause]",
       behavior: "Inserts a significant pause for dramatic effect (~1000ms+).",
       reliability: "High",
-      guidance: "Use for dramatic timing. For example: \"The answer is... [long pause] ...no.\" Avoid overuse, as it can sound unnatural.",
+      guidance:
+        'Use for dramatic timing. For example: "The answer is... [long pause] ...no." Avoid overuse, as it can sound unnatural.',
       category: "pacing-pauses",
       providers: ["gemini"],
     },
@@ -222,7 +232,8 @@ export const TTS_MARKUP_TAGS: Record<TTSMarkupCategory, TTSMarkupTag[]> = {
       tag: "[pauses]",
       behavior: "Inserts a pause for dramatic effect or to let information sink in.",
       reliability: "High",
-      guidance: "Use between major points or for dramatic effect. Always return to [normal voice] after pauses.",
+      guidance:
+        "Use between major points or for dramatic effect. Always return to [normal voice] after pauses.",
       category: "pacing-pauses",
       providers: ["elevenlabs"],
     },
@@ -248,12 +259,13 @@ export const TTS_MARKUP_TAGS: Record<TTSMarkupCategory, TTSMarkupTag[]> = {
       tag: "[normal voice]",
       behavior: "Returns the voice to normal/default delivery after using emotional or style tags.",
       reliability: "High",
-      guidance: "Always return to [normal voice] after using an emotional tag. This is essential for maintaining natural flow.",
+      guidance:
+        "Always return to [normal voice] after using an emotional tag. This is essential for maintaining natural flow.",
       category: "voice-control",
       providers: ["elevenlabs"],
     },
   ],
-  "emotional": [
+  emotional: [
     {
       tag: "[happy]",
       behavior: "Adopts a happy, cheerful tone.",
@@ -282,7 +294,8 @@ export const TTS_MARKUP_TAGS: Record<TTSMarkupCategory, TTSMarkupTag[]> = {
       tag: "[angry]",
       behavior: "Adopts an angry, frustrated tone.",
       reliability: "High",
-      guidance: "Use for expressing frustration or anger. Use sparingly and return to [normal voice] after.",
+      guidance:
+        "Use for expressing frustration or anger. Use sparingly and return to [normal voice] after.",
       category: "emotional",
       providers: ["elevenlabs"],
     },
@@ -417,7 +430,7 @@ export function getTagsByCategory(category: TTSMarkupCategory): TTSMarkupTag[] {
  * Get tags by provider
  */
 export function getTagsByProvider(provider: TTSProvider): TTSMarkupTag[] {
-  return TTS_MARKUP_TAGS_LIST.filter((tag) => tag.providers.includes(provider));
+  return TTS_MARKUP_TAGS_LIST.filter(tag => tag.providers.includes(provider));
 }
 
 /**
@@ -427,7 +440,7 @@ export function getTagsByCategoryAndProvider(
   category: TTSMarkupCategory,
   provider: TTSProvider
 ): TTSMarkupTag[] {
-  return getTagsByCategory(category).filter((tag) => tag.providers.includes(provider));
+  return getTagsByCategory(category).filter(tag => tag.providers.includes(provider));
 }
 
 /**
@@ -436,16 +449,16 @@ export function getTagsByCategoryAndProvider(
 export function searchTags(query: string, provider?: TTSProvider): TTSMarkupTag[] {
   const lowerQuery = query.toLowerCase();
   let results = TTS_MARKUP_TAGS_LIST.filter(
-    (tag) =>
+    tag =>
       tag.tag.toLowerCase().includes(lowerQuery) ||
       tag.behavior.toLowerCase().includes(lowerQuery) ||
       tag.guidance.toLowerCase().includes(lowerQuery)
   );
-  
+
   if (provider) {
-    results = results.filter((tag) => tag.providers.includes(provider));
+    results = results.filter(tag => tag.providers.includes(provider));
   }
-  
+
   return results;
 }
 
@@ -459,30 +472,19 @@ export function getTagByTagString(tagString: string): TTSMarkupTag | undefined {
 /**
  * Get all tags for a provider, grouped by category
  */
-export function getTagsByProviderGrouped(provider: TTSProvider): Record<TTSMarkupCategory, TTSMarkupTag[]> {
+export function getTagsByProviderGrouped(
+  provider: TTSProvider
+): Record<TTSMarkupCategory, TTSMarkupTag[]> {
   const grouped: Partial<Record<TTSMarkupCategory, TTSMarkupTag[]>> = {};
-  
+
   for (const category of Object.keys(TTS_MARKUP_TAGS) as TTSMarkupCategory[]) {
     const tags = getTagsByCategoryAndProvider(category, provider);
     if (tags.length > 0) {
       grouped[category] = tags;
     }
   }
-  
-  return grouped as Record<TTSMarkupCategory, TTSMarkupTag[]>;
-}
 
-/**
- * Get all providers that support emotional tone tags
- */
-export function getProvidersWithEmotionalTags(): TTSProvider[] {
-  const providers = new Set<TTSProvider>();
-  for (const tag of TTS_MARKUP_TAGS_LIST) {
-    for (const provider of tag.providers) {
-      providers.add(provider);
-    }
-  }
-  return Array.from(providers).sort();
+  return grouped as Record<TTSMarkupCategory, TTSMarkupTag[]>;
 }
 
 /**
@@ -498,42 +500,50 @@ export const TTS_MARKUP_CATEGORIES: Record<TTSMarkupCategory, TTSMarkupCategoryI
   "non-speech-sounds": {
     id: "non-speech-sounds",
     name: "Non-Speech Sounds",
-    description: "The markup is replaced by an audible, non-speech vocalization (e.g., a sigh, a laugh). The tag itself is not spoken. These are excellent for adding realistic, human-like hesitations and reactions.",
+    description:
+      "The markup is replaced by an audible, non-speech vocalization (e.g., a sigh, a laugh). The tag itself is not spoken. These are excellent for adding realistic, human-like hesitations and reactions.",
   },
   "style-modifiers": {
     id: "style-modifiers",
     name: "Style Modifiers",
-    description: "The markup is not spoken, but it modifies the delivery of the subsequent speech. The scope and duration of the modification can vary.",
+    description:
+      "The markup is not spoken, but it modifies the delivery of the subsequent speech. The scope and duration of the modification can vary.",
   },
   "vocalized-markup": {
     id: "vocalized-markup",
     name: "Vocalized Markup (Adjectives)",
-    description: "The markup tag itself is spoken as a word, while also influencing the tone of the entire sentence. This behavior typically applies to emotional adjectives.",
+    description:
+      "The markup tag itself is spoken as a word, while also influencing the tone of the entire sentence. This behavior typically applies to emotional adjectives.",
   },
   "pacing-pauses": {
     id: "pacing-pauses",
     name: "Pacing and Pauses",
-    description: "These tags insert silence into the generated audio, giving you granular control over rhythm, timing, and pacing. Standard punctuation (commas, periods, semicolons) will also create natural pauses, but these tags offer more explicit control.",
+    description:
+      "These tags insert silence into the generated audio, giving you granular control over rhythm, timing, and pacing. Standard punctuation (commas, periods, semicolons) will also create natural pauses, but these tags offer more explicit control.",
   },
   "voice-control": {
     id: "voice-control",
     name: "Voice Control",
-    description: "Tags that control the voice state, such as returning to normal voice after using emotional or style tags.",
+    description:
+      "Tags that control the voice state, such as returning to normal voice after using emotional or style tags.",
   },
-  "emotional": {
+  emotional: {
     id: "emotional",
     name: "Emotional",
-    description: "Tags that express emotions and feelings, such as happy, sad, excited, or thoughtful tones.",
+    description:
+      "Tags that express emotions and feelings, such as happy, sad, excited, or thoughtful tones.",
   },
   "volume-energy": {
     id: "volume-energy",
     name: "Volume & Energy",
-    description: "Tags that control the volume and energy level of the speech, such as loudly, quietly, or shouting.",
+    description:
+      "Tags that control the volume and energy level of the speech, such as loudly, quietly, or shouting.",
   },
   "narrative-control": {
     id: "narrative-control",
     name: "Narrative Control",
-    description: "Tags that control the narrative style and tone, such as dramatic, lighthearted, reflective, or sarcastic.",
+    description:
+      "Tags that control the narrative style and tone, such as dramatic, lighthearted, reflective, or sarcastic.",
   },
 };
 
@@ -550,4 +560,3 @@ export function getCategoryInfo(category: TTSMarkupCategory): TTSMarkupCategoryI
 export function getAllCategories(): TTSMarkupCategoryInfo[] {
   return Object.values(TTS_MARKUP_CATEGORIES);
 }
-

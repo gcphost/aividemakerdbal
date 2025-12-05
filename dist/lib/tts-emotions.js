@@ -14,7 +14,6 @@ exports.getTagsByCategoryAndProvider = getTagsByCategoryAndProvider;
 exports.searchTags = searchTags;
 exports.getTagByTagString = getTagByTagString;
 exports.getTagsByProviderGrouped = getTagsByProviderGrouped;
-exports.getProvidersWithEmotionalTags = getProvidersWithEmotionalTags;
 exports.getCategoryInfo = getCategoryInfo;
 exports.getAllCategories = getAllCategories;
 /**
@@ -34,7 +33,7 @@ exports.TTS_MARKUP_TAGS = {
             tag: "[laughing]",
             behavior: "Inserts a laugh.",
             reliability: "High",
-            guidance: "For best results, use a specific prompt. e.g., a generic prompt may yield a laugh of shock, while \"react with an amused laugh\" creates a laugh of amusement.",
+            guidance: 'For best results, use a specific prompt. e.g., a generic prompt may yield a laugh of shock, while "react with an amused laugh" creates a laugh of amusement.',
             category: "non-speech-sounds",
             providers: ["gemini"],
         },
@@ -116,7 +115,7 @@ exports.TTS_MARKUP_TAGS = {
             tag: "[robotic]",
             behavior: "Makes the subsequent speech sound robotic.",
             reliability: "High",
-            guidance: "The effect can extend across an entire phrase. A supportive style prompt (e.g., \"Say this in a robotic way\") is still recommended for best results.",
+            guidance: 'The effect can extend across an entire phrase. A supportive style prompt (e.g., "Say this in a robotic way") is still recommended for best results.',
             category: "style-modifiers",
             providers: ["gemini"],
         },
@@ -124,7 +123,7 @@ exports.TTS_MARKUP_TAGS = {
             tag: "[shouting]",
             behavior: "Increases the volume of the subsequent speech.",
             reliability: "High",
-            guidance: "Most effective when paired with a matching style prompt (e.g., \"Shout this next part\") and text that implies yelling.",
+            guidance: 'Most effective when paired with a matching style prompt (e.g., "Shout this next part") and text that implies yelling.',
             category: "style-modifiers",
             providers: ["gemini", "elevenlabs"],
         },
@@ -132,7 +131,7 @@ exports.TTS_MARKUP_TAGS = {
             tag: "[whispering]",
             behavior: "Decreases the volume of the subsequent speech.",
             reliability: "High",
-            guidance: "Best results are achieved when the style prompt is also explicit (e.g., \"now whisper this part as quietly as you can\").",
+            guidance: 'Best results are achieved when the style prompt is also explicit (e.g., "now whisper this part as quietly as you can").',
             category: "style-modifiers",
             providers: ["gemini", "elevenlabs"],
         },
@@ -148,16 +147,16 @@ exports.TTS_MARKUP_TAGS = {
     "vocalized-markup": [
         {
             tag: "[scared]",
-            behavior: "The word \"scared\" is spoken, and the sentence adopts a scared tone.",
+            behavior: 'The word "scared" is spoken, and the sentence adopts a scared tone.',
             reliability: "High",
-            guidance: "Performance is highly dependent on text content. The phrase \"I just heard a window break\" produces a genuinely scared result. A neutral phrase produces a \"spooky\" but less authentic result.",
+            guidance: 'Performance is highly dependent on text content. The phrase "I just heard a window break" produces a genuinely scared result. A neutral phrase produces a "spooky" but less authentic result.',
             category: "vocalized-markup",
             providers: ["gemini"],
             warning: "Because the tag itself is spoken, this mode is likely an undesired side effect for most use cases. Prefer using the Style Prompt to set these emotional tones instead.",
         },
         {
             tag: "[curious]",
-            behavior: "The word \"curious\" is spoken, and the sentence adopts a curious tone.",
+            behavior: 'The word "curious" is spoken, and the sentence adopts a curious tone.',
             reliability: "High",
             guidance: "Use an inquisitive phrase to support the tag's intent.",
             category: "vocalized-markup",
@@ -166,7 +165,7 @@ exports.TTS_MARKUP_TAGS = {
         },
         {
             tag: "[bored]",
-            behavior: "The word \"bored\" is spoken, and the sentence adopts a bored, monotone delivery.",
+            behavior: 'The word "bored" is spoken, and the sentence adopts a bored, monotone delivery.',
             reliability: "High",
             guidance: "Use with text that is mundane or repetitive for best effect.",
             category: "vocalized-markup",
@@ -195,7 +194,7 @@ exports.TTS_MARKUP_TAGS = {
             tag: "[long pause]",
             behavior: "Inserts a significant pause for dramatic effect (~1000ms+).",
             reliability: "High",
-            guidance: "Use for dramatic timing. For example: \"The answer is... [long pause] ...no.\" Avoid overuse, as it can sound unnatural.",
+            guidance: 'Use for dramatic timing. For example: "The answer is... [long pause] ...no." Avoid overuse, as it can sound unnatural.',
             category: "pacing-pauses",
             providers: ["gemini"],
         },
@@ -234,7 +233,7 @@ exports.TTS_MARKUP_TAGS = {
             providers: ["elevenlabs"],
         },
     ],
-    "emotional": [
+    emotional: [
         {
             tag: "[happy]",
             behavior: "Adopts a happy, cheerful tone.",
@@ -394,24 +393,24 @@ function getTagsByCategory(category) {
  * Get tags by provider
  */
 function getTagsByProvider(provider) {
-    return exports.TTS_MARKUP_TAGS_LIST.filter((tag) => tag.providers.includes(provider));
+    return exports.TTS_MARKUP_TAGS_LIST.filter(tag => tag.providers.includes(provider));
 }
 /**
  * Get tags by category and provider
  */
 function getTagsByCategoryAndProvider(category, provider) {
-    return getTagsByCategory(category).filter((tag) => tag.providers.includes(provider));
+    return getTagsByCategory(category).filter(tag => tag.providers.includes(provider));
 }
 /**
  * Search tags by tag name, behavior, or guidance
  */
 function searchTags(query, provider) {
     const lowerQuery = query.toLowerCase();
-    let results = exports.TTS_MARKUP_TAGS_LIST.filter((tag) => tag.tag.toLowerCase().includes(lowerQuery) ||
+    let results = exports.TTS_MARKUP_TAGS_LIST.filter(tag => tag.tag.toLowerCase().includes(lowerQuery) ||
         tag.behavior.toLowerCase().includes(lowerQuery) ||
         tag.guidance.toLowerCase().includes(lowerQuery));
     if (provider) {
-        results = results.filter((tag) => tag.providers.includes(provider));
+        results = results.filter(tag => tag.providers.includes(provider));
     }
     return results;
 }
@@ -433,18 +432,6 @@ function getTagsByProviderGrouped(provider) {
         }
     }
     return grouped;
-}
-/**
- * Get all providers that support emotional tone tags
- */
-function getProvidersWithEmotionalTags() {
-    const providers = new Set();
-    for (const tag of exports.TTS_MARKUP_TAGS_LIST) {
-        for (const provider of tag.providers) {
-            providers.add(provider);
-        }
-    }
-    return Array.from(providers).sort();
 }
 exports.TTS_MARKUP_CATEGORIES = {
     "non-speech-sounds": {
@@ -472,7 +459,7 @@ exports.TTS_MARKUP_CATEGORIES = {
         name: "Voice Control",
         description: "Tags that control the voice state, such as returning to normal voice after using emotional or style tags.",
     },
-    "emotional": {
+    emotional: {
         id: "emotional",
         name: "Emotional",
         description: "Tags that express emotions and feelings, such as happy, sad, excited, or thoughtful tones.",
