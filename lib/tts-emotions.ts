@@ -473,6 +473,19 @@ export function getTagsByProviderGrouped(provider: TTSProvider): Record<TTSMarku
 }
 
 /**
+ * Get all providers that support emotional tone tags
+ */
+export function getProvidersWithEmotionalTags(): TTSProvider[] {
+  const providers = new Set<TTSProvider>();
+  for (const tag of TTS_MARKUP_TAGS_LIST) {
+    for (const provider of tag.providers) {
+      providers.add(provider);
+    }
+  }
+  return Array.from(providers).sort();
+}
+
+/**
  * Category metadata for display purposes
  */
 export interface TTSMarkupCategoryInfo {

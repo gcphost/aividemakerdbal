@@ -14,6 +14,7 @@ exports.getTagsByCategoryAndProvider = getTagsByCategoryAndProvider;
 exports.searchTags = searchTags;
 exports.getTagByTagString = getTagByTagString;
 exports.getTagsByProviderGrouped = getTagsByProviderGrouped;
+exports.getProvidersWithEmotionalTags = getProvidersWithEmotionalTags;
 exports.getCategoryInfo = getCategoryInfo;
 exports.getAllCategories = getAllCategories;
 /**
@@ -432,6 +433,18 @@ function getTagsByProviderGrouped(provider) {
         }
     }
     return grouped;
+}
+/**
+ * Get all providers that support emotional tone tags
+ */
+function getProvidersWithEmotionalTags() {
+    const providers = new Set();
+    for (const tag of exports.TTS_MARKUP_TAGS_LIST) {
+        for (const provider of tag.providers) {
+            providers.add(provider);
+        }
+    }
+    return Array.from(providers).sort();
 }
 exports.TTS_MARKUP_CATEGORIES = {
     "non-speech-sounds": {
