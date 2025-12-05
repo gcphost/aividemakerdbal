@@ -61,11 +61,47 @@ export interface ImageSizeOption {
 /**
  * Supported video generation options
  */
+/**
+ * Unified schema for supported options across all provider types
+ * Maps to shared components and feature flags
+ */
+export interface SupportedOptions {
+  // TTS options
+  instructions?: boolean; // Supports expressive/instruction-based reading
+  emotionalTags?: boolean; // Supports emotional markup tags
+  voice?: boolean; // Voice selection available
+  language?: boolean; // Language selection available
+  speed?: boolean; // Speed control available
+  pitch?: boolean; // Pitch adjustment available
+  volume?: boolean; // Volume control available
+
+  // Image options
+  size?: boolean; // Image size selection
+  quality?: string[]; // Available quality options (e.g., ["auto", "high", "medium", "low"])
+  style?: string[]; // Available style options (e.g., ["vivid", "natural"])
+  aspectRatio?: boolean; // Aspect ratio selection
+  personGeneration?: boolean; // Person generation controls
+
+  // Video options
+  resolution?: boolean; // Resolution selection
+  duration?: boolean | number[]; // Duration control: true for free input, number[] for specific values
+  inputReference?: boolean; // Input reference image support
+  firstFrame?: boolean; // First frame image support (Gemini)
+  lastFrame?: boolean; // Last frame image support (Gemini)
+
+  // Music options
+  genre?: boolean; // Genre selection
+  mood?: boolean; // Mood selection
+  tempo?: boolean; // Tempo selection
+  instrumental?: boolean; // Instrumental toggle
+}
+
 export interface VideoGenerationOptions {
   resolutions: string[]; // e.g., ["720p", "1080p"]
   aspectRatios: string[]; // e.g., ["16:9", "9:16", "1:1"]
   maxDurationSeconds: number;
   durations?: number[]; // Optional: specific duration values (e.g., [4, 6, 8] for Gemini models)
+  supportedOptions?: SupportedOptions; // Unified feature flags
 }
 
 /**
@@ -86,7 +122,8 @@ export interface TTSModelOptions {
   voices?: TTSVoiceOption[];
   languages?: { code: string; name: string }[];
   speedRange?: { min: number; max: number; default: number };
-  supportsInstructions?: boolean;
+  supportsInstructions?: boolean; // Deprecated: use supportedOptions.instructions
+  supportedOptions?: SupportedOptions; // Unified feature flags
   chunkDurationSeconds?: {
     min: number;
     max: number;
@@ -103,6 +140,7 @@ export interface MusicModelOptions {
   moods?: { id: string; name: string }[];
   tempos?: { id: string; name: string }[];
   durationRange?: { min: number; max: number; default: number };
+  supportedOptions?: SupportedOptions; // Unified feature flags
 }
 
 /**
@@ -113,6 +151,7 @@ export interface ModelGenerationOptions {
   videoOptions?: VideoGenerationOptions;
   ttsOptions?: TTSModelOptions;
   musicOptions?: MusicModelOptions;
+  supportedOptions?: SupportedOptions; // Unified feature flags (can be at model level too)
   /** Maximum prompt length in characters for this model */
   maxPromptLength?: number;
 }
@@ -1125,15 +1164,24 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           ],
           speedRange: { min: 0.25, max: 4.0, default: 1.0 },
           supportsInstructions: true,
+          supportedOptions: {
+            voice: true,
+            language: true,
+            speed: true,
+            instructions: true,
+            emotionalTags: true, // chirp3-hd supports emotional tags
+            pitch: true,
+            volume: true,
+          },
           chunkDurationSeconds: {
             min: 5,
             max: 300,
             default: 30,
             description:
-              "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
+              "Gemini TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
           },
         },
-        maxPromptLength: 5000, // OpenAI TTS doesn't have a hard limit, but 5000 is a safe default for preview
+        maxPromptLength: 5000, // Gemini TTS doesn't have a hard limit, but 5000 is a safe default for preview
       },
       // Google Cloud TTS (Legacy standard voices)
       "google-cloud-tts": {
@@ -1810,6 +1858,15 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           ],
           speedRange: { min: 0.25, max: 4.0, default: 1.0 },
           supportsInstructions: true,
+          supportedOptions: {
+            voice: true,
+            language: true,
+            speed: true,
+            instructions: true,
+            emotionalTags: false, // gemini-2.5-flash-tts does not support emotional tags
+            pitch: false,
+            volume: false,
+          },
           chunkDurationSeconds: {
             min: 5,
             max: 600,
