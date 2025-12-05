@@ -18,6 +18,7 @@ exports.getModelsForProvider = getModelsForProvider;
 exports.getDefaultModel = getDefaultModel;
 exports.isValidModel = isValidModel;
 exports.getGenerationOptions = getGenerationOptions;
+exports.getMaxPromptLength = getMaxPromptLength;
 exports.getImageSizesForModel = getImageSizesForModel;
 exports.getVideoOptionsForModel = getVideoOptionsForModel;
 exports.getDefaultImageSize = getDefaultImageSize;
@@ -175,6 +176,7 @@ exports.AI_PROVIDERS = {
                     { width: 1536, height: 1024, label: "1536×1024 (3:2)", aspectRatio: "3:2" },
                     { width: 1024, height: 1536, label: "1024×1536 (2:3)", aspectRatio: "2:3" },
                 ],
+                maxPromptLength: 4000, // Same as DALL-E 3
             },
             // GPT-Image-1 Mini
             "gpt-image-1-mini": {
@@ -183,6 +185,7 @@ exports.AI_PROVIDERS = {
                     { width: 1536, height: 1024, label: "1536×1024 (3:2)", aspectRatio: "3:2" },
                     { width: 1024, height: 1536, label: "1024×1536 (2:3)", aspectRatio: "2:3" },
                 ],
+                maxPromptLength: 4000, // Same as DALL-E 3
             },
             // DALL-E 3
             "dall-e-3": {
@@ -191,6 +194,7 @@ exports.AI_PROVIDERS = {
                     { width: 1792, height: 1024, label: "1792×1024 (16:9)", aspectRatio: "16:9" },
                     { width: 1024, height: 1792, label: "1024×1792 (9:16)", aspectRatio: "9:16" },
                 ],
+                maxPromptLength: 4000, // DALL-E 3 has a maximum prompt length of ~4000 characters
             },
             // DALL-E 2
             "dall-e-2": {
@@ -199,6 +203,7 @@ exports.AI_PROVIDERS = {
                     { width: 512, height: 512, label: "512×512 (1:1)", aspectRatio: "1:1" },
                     { width: 1024, height: 1024, label: "1024×1024 (1:1)", aspectRatio: "1:1" },
                 ],
+                maxPromptLength: 1000, // DALL-E 2 has a maximum prompt length of 1000 characters
             },
             // TTS models
             "tts-1": {
@@ -279,6 +284,7 @@ exports.AI_PROVIDERS = {
                         description: "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
                     },
                 },
+                maxPromptLength: 5000, // OpenAI TTS doesn't have a hard limit, but 5000 is a safe default for preview
             },
             // Sora 2 Pro - High quality
             "sora-2-pro": {
@@ -287,6 +293,7 @@ exports.AI_PROVIDERS = {
                     aspectRatios: ["16:9", "9:16", "1:1"],
                     maxDurationSeconds: 20,
                 },
+                maxPromptLength: 2000, // Sora supports longer prompts, but 2000 is reasonable for preview
             },
             // Sora 2 - Fast generation
             "sora-2": {
@@ -295,6 +302,7 @@ exports.AI_PROVIDERS = {
                     aspectRatios: ["16:9", "9:16", "1:1"],
                     maxDurationSeconds: 20,
                 },
+                maxPromptLength: 2000, // Sora supports longer prompts, but 2000 is reasonable for preview
             },
             "tts-1-hd": {
                 ttsOptions: {
@@ -374,6 +382,7 @@ exports.AI_PROVIDERS = {
                         description: "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
                     },
                 },
+                maxPromptLength: 5000, // OpenAI TTS doesn't have a hard limit, but 5000 is a safe default for preview
             },
             "gpt-4o-mini-tts": {
                 ttsOptions: {
@@ -646,6 +655,7 @@ exports.AI_PROVIDERS = {
                     { width: 1792, height: 1024, label: "1792×1024 (16:9)", aspectRatio: "16:9" },
                     { width: 1024, height: 1792, label: "1024×1792 (9:16)", aspectRatio: "9:16" },
                 ],
+                maxPromptLength: 4000, // Imagen models support longer prompts, 4000 is a safe default
             },
             // Imagen 4.0 Ultra
             "imagen-4.0-ultra-generate-preview-06-06": {
@@ -656,6 +666,7 @@ exports.AI_PROVIDERS = {
                     { width: 1792, height: 1024, label: "1792×1024 (16:9)", aspectRatio: "16:9" },
                     { width: 1024, height: 1792, label: "1024×1792 (9:16)", aspectRatio: "9:16" },
                 ],
+                maxPromptLength: 4000, // Imagen models support longer prompts, 4000 is a safe default
             },
             // Gemini 2.5 Flash Image
             "gemini-2.5-flash-image": {
@@ -666,6 +677,7 @@ exports.AI_PROVIDERS = {
                     { width: 1792, height: 1024, label: "1792×1024 (16:9)", aspectRatio: "16:9" },
                     { width: 1024, height: 1792, label: "1024×1792 (9:16)", aspectRatio: "9:16" },
                 ],
+                maxPromptLength: 4000, // Gemini image models support longer prompts, 4000 is a safe default
             },
             // Gemini 3 Pro Image
             "gemini-3-pro-image-preview": {
@@ -676,6 +688,7 @@ exports.AI_PROVIDERS = {
                     { width: 1792, height: 1024, label: "1792×1024 (16:9)", aspectRatio: "16:9" },
                     { width: 1024, height: 1792, label: "1024×1792 (9:16)", aspectRatio: "9:16" },
                 ],
+                maxPromptLength: 4000, // Gemini image models support longer prompts, 4000 is a safe default
             },
             // Gemini 2.0 Flash Image (Experimental)
             "gemini-2.0-flash-exp-image-generation": {
@@ -684,6 +697,7 @@ exports.AI_PROVIDERS = {
                     { width: 1536, height: 1024, label: "1536×1024 (3:2)", aspectRatio: "3:2" },
                     { width: 1024, height: 1536, label: "1024×1536 (2:3)", aspectRatio: "2:3" },
                 ],
+                maxPromptLength: 4000, // Gemini image models support longer prompts, 4000 is a safe default
             },
             // Veo 3.1 - Latest video model
             "veo-3.1-generate": {
@@ -692,6 +706,7 @@ exports.AI_PROVIDERS = {
                     aspectRatios: ["16:9", "9:16", "1:1"],
                     maxDurationSeconds: 8,
                 },
+                maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
             },
             // Veo 3.1 Fast
             "veo-3.1-fast-generate": {
@@ -700,6 +715,7 @@ exports.AI_PROVIDERS = {
                     aspectRatios: ["16:9", "9:16", "1:1"],
                     maxDurationSeconds: 8,
                 },
+                maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
             },
             // Veo 3.1 Fast Preview
             "veo-3.1-fast-generate-preview": {
@@ -708,6 +724,7 @@ exports.AI_PROVIDERS = {
                     aspectRatios: ["16:9", "9:16", "1:1"],
                     maxDurationSeconds: 8,
                 },
+                maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
             },
             // Veo 2.1
             "veo-2.1-generate": {
@@ -716,6 +733,7 @@ exports.AI_PROVIDERS = {
                     aspectRatios: ["16:9", "9:16"],
                     maxDurationSeconds: 8,
                 },
+                maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
             },
             // Veo 2.0
             "veo-2.0-generate": {
@@ -724,6 +742,7 @@ exports.AI_PROVIDERS = {
                     aspectRatios: ["16:9", "9:16"],
                     maxDurationSeconds: 8,
                 },
+                maxPromptLength: 2000, // Veo supports longer prompts, but 2000 is reasonable for preview
             },
             // Chirp 3: HD - Latest generation HD voices
             "chirp3-hd": {
@@ -972,6 +991,7 @@ exports.AI_PROVIDERS = {
                         description: "OpenAI TTS supports up to 300 seconds (5 minutes) per chunk. Longer chunks may take more time to generate.",
                     },
                 },
+                maxPromptLength: 5000, // OpenAI TTS doesn't have a hard limit, but 5000 is a safe default for preview
             },
             // Google Cloud TTS (Legacy standard voices)
             "google-cloud-tts": {
@@ -1578,6 +1598,7 @@ exports.AI_PROVIDERS = {
                         description: "Gemini TTS supports up to 600 seconds (10 minutes) per chunk for longer audio segments.",
                     },
                 },
+                maxPromptLength: 3000, // Gemini TTS has a 4000 byte limit (text + prompt combined), conservative 3000 char limit
             },
             "gemini-2.5-pro-tts": {
                 ttsOptions: {
@@ -2187,6 +2208,7 @@ exports.AI_PROVIDERS = {
                     // Stability: 0-1, controls voice consistency
                     // Similarity boost: 0-1, controls voice matching
                 },
+                maxPromptLength: 5000, // ElevenLabs TTS doesn't have a hard limit, but 5000 is a safe default for preview
             },
             eleven_turbo_v2_5: {
                 ttsOptions: {
@@ -2198,6 +2220,7 @@ exports.AI_PROVIDERS = {
                         description: "ElevenLabs TTS works best with chunks up to 120 seconds (2 minutes) for optimal quality.",
                     },
                 },
+                maxPromptLength: 5000, // ElevenLabs TTS doesn't have a hard limit, but 5000 is a safe default for preview
             },
             eleven_turbo_v2: {
                 ttsOptions: {
@@ -2209,6 +2232,7 @@ exports.AI_PROVIDERS = {
                         description: "ElevenLabs TTS works best with chunks up to 120 seconds (2 minutes) for optimal quality.",
                     },
                 },
+                maxPromptLength: 5000, // ElevenLabs TTS doesn't have a hard limit, but 5000 is a safe default for preview
             },
             eleven_monolingual_v1: {
                 ttsOptions: {
@@ -2220,6 +2244,7 @@ exports.AI_PROVIDERS = {
                         description: "ElevenLabs TTS works best with chunks up to 120 seconds (2 minutes) for optimal quality.",
                     },
                 },
+                maxPromptLength: 5000, // ElevenLabs TTS doesn't have a hard limit, but 5000 is a safe default for preview
             },
             // Music generation
             "elevenlabs-music": {
@@ -2253,6 +2278,41 @@ exports.AI_PROVIDERS = {
                     ],
                     durationRange: { min: 5, max: 300, default: 30 },
                 },
+                maxPromptLength: 500, // Music generation prompts are typically short descriptions
+            },
+            // Sound effects
+            "elevenlabs-sfx": {
+                musicOptions: {
+                    genres: [
+                        { id: "ambient", name: "Ambient" },
+                        { id: "electronic", name: "Electronic" },
+                        { id: "cinematic", name: "Cinematic" },
+                        { id: "jazz", name: "Jazz" },
+                        { id: "classical", name: "Classical" },
+                        { id: "rock", name: "Rock" },
+                        { id: "pop", name: "Pop" },
+                        { id: "folk", name: "Folk" },
+                        { id: "hip-hop", name: "Hip-Hop" },
+                        { id: "lofi", name: "Lo-Fi" },
+                    ],
+                    moods: [
+                        { id: "calm", name: "Calm" },
+                        { id: "happy", name: "Happy" },
+                        { id: "sad", name: "Sad" },
+                        { id: "energetic", name: "Energetic" },
+                        { id: "mysterious", name: "Mysterious" },
+                        { id: "dramatic", name: "Dramatic" },
+                        { id: "romantic", name: "Romantic" },
+                        { id: "tense", name: "Tense" },
+                    ],
+                    tempos: [
+                        { id: "slow", name: "Slow" },
+                        { id: "medium", name: "Medium" },
+                        { id: "fast", name: "Fast" },
+                    ],
+                    durationRange: { min: 1, max: 10, default: 5 },
+                },
+                maxPromptLength: 500, // Sound effect prompts are typically short descriptions
             },
         },
     },
@@ -2315,6 +2375,7 @@ exports.AI_PROVIDERS = {
                         description: "Play.HT TTS supports up to 300 seconds (5 minutes) per chunk.",
                     },
                 },
+                maxPromptLength: 5000, // PlayHT TTS doesn't have a hard limit, but 5000 is a safe default for preview
             },
             "PlayHT2.0": {
                 ttsOptions: {
@@ -2326,6 +2387,7 @@ exports.AI_PROVIDERS = {
                         description: "Play.HT TTS supports up to 300 seconds (5 minutes) per chunk.",
                     },
                 },
+                maxPromptLength: 5000, // PlayHT TTS doesn't have a hard limit, but 5000 is a safe default for preview
             },
             "PlayHT1.0": {
                 ttsOptions: {
@@ -2337,6 +2399,7 @@ exports.AI_PROVIDERS = {
                         description: "Play.HT TTS supports up to 300 seconds (5 minutes) per chunk.",
                     },
                 },
+                maxPromptLength: 5000, // PlayHT TTS doesn't have a hard limit, but 5000 is a safe default for preview
             },
         },
     },
@@ -2487,6 +2550,14 @@ function getGenerationOptions(providerId, modelId) {
     if (!provider || !provider.generationOptions)
         return undefined;
     return provider.generationOptions[modelId];
+}
+/**
+ * Get the maximum prompt length for a specific model
+ * Returns undefined if no limit is specified
+ */
+function getMaxPromptLength(providerId, modelId) {
+    const options = getGenerationOptions(providerId, modelId);
+    return options?.maxPromptLength;
 }
 /**
  * Get available image sizes for a model

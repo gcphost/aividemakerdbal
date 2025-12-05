@@ -114,6 +114,8 @@ export interface ModelGenerationOptions {
     videoOptions?: VideoGenerationOptions;
     ttsOptions?: TTSModelOptions;
     musicOptions?: MusicModelOptions;
+    /** Maximum prompt length in characters for this model */
+    maxPromptLength?: number;
 }
 export interface AIProviderConfig {
     id: string;
@@ -170,6 +172,11 @@ export declare function isValidModel(providerId: string, capability: ServiceCapa
  * Get generation options for a specific model
  */
 export declare function getGenerationOptions(providerId: string, modelId: string): ModelGenerationOptions | undefined;
+/**
+ * Get the maximum prompt length for a specific model
+ * Returns undefined if no limit is specified
+ */
+export declare function getMaxPromptLength(providerId: string, modelId: string): number | undefined;
 /**
  * Get available image sizes for a model
  */
