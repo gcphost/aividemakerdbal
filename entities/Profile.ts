@@ -184,7 +184,7 @@ export class Profile extends BaseEntity {
   videoStyle!: "minimal-talking" | "standard" | "heavy-narration";
 
   @Column("varchar", { nullable: true })
-  backgroundAudio?: string;
+  audio?: string;
 
   @CreateDateColumn()
   createdAt!: Date;
