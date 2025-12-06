@@ -131,6 +131,7 @@ export interface VideoTimelineInstance {
   startTime: number;
   endTime: number;
   loop?: boolean;
+  videoStartOffset?: number; // Where to start playing in the source video (seconds)
 }
 
 export interface VoiceTimelineInstance {
