@@ -64,6 +64,16 @@ export interface FileReference {
  * @property {number} totalBitrate - Total bitrate in bits per second
  * @property {string} pixelFormat - Pixel format (e.g., "yuv420p")
  * @property {string} aspectRatio - Aspect ratio (e.g., "16:9")
+ * @property {string} startFrameFileId - File ID of extracted first frame image
+ * @property {string} endFrameFileId - File ID of extracted last frame image
+ *
+ * Frame image-specific metadata:
+ * @property {string} sourceVideoFileId - File ID of the source video
+ * @property {"start" | "end"} framePosition - Position of this frame in the video
+ * @property {string} partnerFrameFileId - File ID of the other frame (start/end pair)
+ * @property {boolean} isFirstFrame - True if this is the first frame of a video
+ * @property {boolean} isLastFrame - True if this is the last frame of a video
+ * @property {string} type - Set to "video-frame" for extracted video frames
  *
  * Additional properties may be added as needed for specific file types.
  */
@@ -114,6 +124,16 @@ export interface FileMetadata {
   totalBitrate?: number;
   pixelFormat?: string;
   aspectRatio?: string;
+  // For video files - track their extracted frames
+  startFrameFileId?: string;
+  endFrameFileId?: string;
+
+  // For frame images - track their relationships
+  sourceVideoFileId?: string;
+  framePosition?: "start" | "end";
+  partnerFrameFileId?: string;
+  isFirstFrame?: boolean;
+  isLastFrame?: boolean;
 
   // Legacy fields (for backward compatibility)
   resolution?: string; // e.g., "1024x576" (use width/height instead)
