@@ -73,7 +73,7 @@ let Profile = class Profile extends BaseEntity_1.BaseEntity {
     videoSettings;
     openaiSettings;
     videoStyle;
-    backgroundAudio;
+    audio;
     createdAt;
     updatedAt;
 };
@@ -321,7 +321,7 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
-], Profile.prototype, "backgroundAudio", void 0);
+], Profile.prototype, "audio", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)

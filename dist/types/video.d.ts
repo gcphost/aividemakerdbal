@@ -85,6 +85,7 @@ export interface ImageTimelineInstance {
         endX?: number;
         endY?: number;
     };
+    isGenerating?: boolean;
 }
 export interface SoundTimelineInstance {
     type: "sound";
@@ -94,6 +95,7 @@ export interface SoundTimelineInstance {
     endTime: number;
     volume?: number;
     loop?: boolean;
+    isGenerating?: boolean;
 }
 export interface AudioTimelineInstance {
     type: "audio";
@@ -103,6 +105,7 @@ export interface AudioTimelineInstance {
     endTime: number;
     volume?: number;
     loop?: boolean;
+    isGenerating?: boolean;
 }
 export interface VideoTimelineInstance {
     type: "video";
@@ -111,6 +114,8 @@ export interface VideoTimelineInstance {
     startTime: number;
     endTime: number;
     loop?: boolean;
+    videoStartOffset?: number;
+    isGenerating?: boolean;
 }
 export interface VoiceTimelineInstance {
     type: "voice";
@@ -119,6 +124,9 @@ export interface VoiceTimelineInstance {
     startTime: number;
     endTime: number;
     volume?: number;
+    name?: string;
+    sourceIndex?: number;
+    chunkIndex?: number;
 }
 export interface TextTimelineInstance {
     type: "text";

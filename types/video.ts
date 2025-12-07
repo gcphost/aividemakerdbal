@@ -101,6 +101,7 @@ export interface ImageTimelineInstance {
     endX?: number;
     endY?: number;
   };
+  isGenerating?: boolean;
   // Note: URLs and fileId come from the source, not the instance
 }
 
@@ -112,6 +113,7 @@ export interface SoundTimelineInstance {
   endTime: number;
   volume?: number;
   loop?: boolean;
+  isGenerating?: boolean;
 }
 
 export interface AudioTimelineInstance {
@@ -122,6 +124,7 @@ export interface AudioTimelineInstance {
   endTime: number;
   volume?: number;
   loop?: boolean;
+  isGenerating?: boolean;
 }
 
 export interface VideoTimelineInstance {
@@ -132,6 +135,7 @@ export interface VideoTimelineInstance {
   endTime: number;
   loop?: boolean;
   videoStartOffset?: number; // Where to start playing in the source video (seconds)
+  isGenerating?: boolean;
 }
 
 export interface VoiceTimelineInstance {
@@ -141,6 +145,9 @@ export interface VoiceTimelineInstance {
   startTime: number;
   endTime: number;
   volume?: number;
+  name?: string;
+  sourceIndex?: number;
+  chunkIndex?: number;
 }
 
 export interface TextTimelineInstance {
