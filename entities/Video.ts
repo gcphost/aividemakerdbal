@@ -92,6 +92,9 @@ export class Video extends BaseEntity {
   @Column("varchar", { nullable: true })
   advertisingPrompt?: string;
 
+  @Column("varchar", { nullable: true })
+  outroPrompt?: string;
+
   @Column("varchar", { default: "standard" })
   videoStyle!: "minimal-talking" | "standard" | "heavy-narration";
 
