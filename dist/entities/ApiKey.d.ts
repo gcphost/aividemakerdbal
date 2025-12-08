@@ -1,4 +1,4 @@
-import { BaseEntity } from './BaseEntity';
+import { BaseEntity } from "./BaseEntity";
 export declare class ApiKey extends BaseEntity {
     _id: string;
     userId: string;

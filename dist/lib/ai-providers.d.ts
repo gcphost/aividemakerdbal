@@ -12,6 +12,7 @@ export interface ProviderField {
     type: "text" | "password" | "textarea";
     required: boolean;
     description?: string;
+    sensitive?: boolean;
 }
 export interface ModelPricing {
     perUnit?: number;

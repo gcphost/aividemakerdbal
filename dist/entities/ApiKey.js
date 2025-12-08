@@ -23,7 +23,7 @@ const apiKeyTransformer = {
             return null;
         }
         // If value is already encrypted (contains colons from iv:encrypted:authTag format), don't re-encrypt
-        if (value.includes(':') && value.split(':').length === 3) {
+        if (value.includes(":") && value.split(":").length === 3) {
             return value;
         }
         return (0, secure_crypto_1.encrypt)(value);
@@ -34,7 +34,7 @@ const apiKeyTransformer = {
             return null;
         }
         // If value doesn't look encrypted (no colons), return as-is
-        if (!value.includes(':')) {
+        if (!value.includes(":")) {
             return value;
         }
         try {
@@ -46,7 +46,7 @@ const apiKeyTransformer = {
             console.warn(`[ApiKey] Failed to decrypt API key: ${error.message}. This usually means the encryption key changed (e.g., moved to different machine). Please re-enter your API keys.`);
             return null;
         }
-    }
+    },
 };
 let ApiKey = class ApiKey extends BaseEntity_1.BaseEntity {
     _id;
@@ -65,47 +65,47 @@ let ApiKey = class ApiKey extends BaseEntity_1.BaseEntity {
 };
 exports.ApiKey = ApiKey;
 __decorate([
-    (0, typeorm_1.PrimaryColumn)('varchar'),
+    (0, typeorm_1.PrimaryColumn)("varchar"),
     __metadata("design:type", String)
 ], ApiKey.prototype, "_id", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar'),
+    (0, typeorm_1.Column)("varchar"),
     __metadata("design:type", String)
 ], ApiKey.prototype, "userId", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar'),
+    (0, typeorm_1.Column)("varchar"),
     __metadata("design:type", String)
 ], ApiKey.prototype, "service", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true, transformer: apiKeyTransformer }),
+    (0, typeorm_1.Column)("varchar", { nullable: true, transformer: apiKeyTransformer }),
     __metadata("design:type", String)
 ], ApiKey.prototype, "apiKey", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true, transformer: apiKeyTransformer }),
+    (0, typeorm_1.Column)("varchar", { nullable: true, transformer: apiKeyTransformer }),
     __metadata("design:type", String)
 ], ApiKey.prototype, "apiSecret", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], ApiKey.prototype, "apiUrl", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], ApiKey.prototype, "model", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'boolean', default: true }),
+    (0, typeorm_1.Column)({ type: "boolean", default: true }),
     __metadata("design:type", Boolean)
 ], ApiKey.prototype, "isActive", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'text', nullable: true }),
+    (0, typeorm_1.Column)({ type: "text", nullable: true, transformer: apiKeyTransformer }),
     __metadata("design:type", String)
 ], ApiKey.prototype, "config", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'datetime', nullable: true }),
+    (0, typeorm_1.Column)({ type: "datetime", nullable: true }),
     __metadata("design:type", Date)
 ], ApiKey.prototype, "lastUsedAt", void 0);
 __decorate([
-    (0, typeorm_1.Column)('varchar', { nullable: true }),
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", Number)
 ], ApiKey.prototype, "usageCount", void 0);
 __decorate([
@@ -117,7 +117,7 @@ __decorate([
     __metadata("design:type", Date)
 ], ApiKey.prototype, "updatedAt", void 0);
 exports.ApiKey = ApiKey = __decorate([
-    (0, typeorm_1.Entity)('api_keys'),
-    (0, typeorm_1.Index)(['userId', 'service'], { unique: true })
+    (0, typeorm_1.Entity)("api_keys"),
+    (0, typeorm_1.Index)(["userId", "service"], { unique: true })
 ], ApiKey);
 //# sourceMappingURL=ApiKey.js.map

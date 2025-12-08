@@ -22,6 +22,7 @@ export interface ProviderField {
   type: "text" | "password" | "textarea";
   required: boolean;
   description?: string;
+  sensitive?: boolean; // Whether this field contains sensitive data that should be masked
 }
 
 export interface ModelPricing {
@@ -674,6 +675,7 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
         label: "Service Account Key (JSON) - Optional, for TTS",
         type: "textarea",
         required: false,
+        sensitive: true,
         description:
           "Paste your Google Cloud service account JSON key here (for Cloud TTS). Only needed if using Gemini for text-to-speech.",
       },

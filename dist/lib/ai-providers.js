@@ -535,6 +535,7 @@ exports.AI_PROVIDERS = {
                 label: "Service Account Key (JSON) - Optional, for TTS",
                 type: "textarea",
                 required: false,
+                sensitive: true,
                 description: "Paste your Google Cloud service account JSON key here (for Cloud TTS). Only needed if using Gemini for text-to-speech.",
             },
         ],

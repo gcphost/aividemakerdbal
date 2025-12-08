@@ -1,6 +1,14 @@
-import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, Index, ValueTransformer } from 'typeorm';
-import { BaseEntity } from './BaseEntity';
-import { encrypt, decrypt } from '../utils/secure-crypto';
+import {
+  Entity,
+  PrimaryColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+  Index,
+  ValueTransformer,
+} from "typeorm";
+import { BaseEntity } from "./BaseEntity";
+import { encrypt, decrypt } from "../utils/secure-crypto";
 
 /**
  * Value transformer for encrypting/decrypting API keys and secrets
@@ -12,7 +20,7 @@ const apiKeyTransformer: ValueTransformer = {
       return null;
     }
     // If value is already encrypted (contains colons from iv:encrypted:authTag format), don't re-encrypt
-    if (value.includes(':') && value.split(':').length === 3) {
+    if (value.includes(":") && value.split(":").length === 3) {
       return value;
     }
     return encrypt(value);
@@ -23,7 +31,7 @@ const apiKeyTransformer: ValueTransformer = {
       return null;
     }
     // If value doesn't look encrypted (no colons), return as-is
-    if (!value.includes(':')) {
+    if (!value.includes(":")) {
       return value;
     }
     try {
@@ -31,46 +39,48 @@ const apiKeyTransformer: ValueTransformer = {
     } catch (error: any) {
       // Decryption failed - likely encryption key mismatch (e.g., moved to different machine)
       // Return null so the app can still load, but the key will need to be re-entered
-      console.warn(`[ApiKey] Failed to decrypt API key: ${error.message}. This usually means the encryption key changed (e.g., moved to different machine). Please re-enter your API keys.`);
+      console.warn(
+        `[ApiKey] Failed to decrypt API key: ${error.message}. This usually means the encryption key changed (e.g., moved to different machine). Please re-enter your API keys.`
+      );
       return null;
     }
-  }
+  },
 };
 
-@Entity('api_keys')
-@Index(['userId', 'service'], { unique: true })
+@Entity("api_keys")
+@Index(["userId", "service"], { unique: true })
 export class ApiKey extends BaseEntity {
-  @PrimaryColumn('varchar')
+  @PrimaryColumn("varchar")
   _id!: string;
 
-  @Column('varchar')
+  @Column("varchar")
   userId!: string;
 
-  @Column('varchar')
+  @Column("varchar")
   service!: string;
 
-  @Column('varchar', { nullable: true, transformer: apiKeyTransformer })
+  @Column("varchar", { nullable: true, transformer: apiKeyTransformer })
   apiKey?: string;
 
-  @Column('varchar', { nullable: true, transformer: apiKeyTransformer })
+  @Column("varchar", { nullable: true, transformer: apiKeyTransformer })
   apiSecret?: string;
 
-  @Column('varchar', { nullable: true })
+  @Column("varchar", { nullable: true })
   apiUrl?: string;
 
-  @Column('varchar', { nullable: true })
+  @Column("varchar", { nullable: true })
   model?: string;
 
-  @Column({ type: 'boolean', default: true })
+  @Column({ type: "boolean", default: true })
   isActive!: boolean;
 
-  @Column({ type: 'text', nullable: true })
+  @Column({ type: "text", nullable: true, transformer: apiKeyTransformer })
   config?: string;
 
-  @Column({ type: 'datetime', nullable: true })
+  @Column({ type: "datetime", nullable: true })
   lastUsedAt?: Date;
 
-  @Column('varchar', { nullable: true })
+  @Column("varchar", { nullable: true })
   usageCount?: number;
 
   @CreateDateColumn()
