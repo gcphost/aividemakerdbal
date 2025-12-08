@@ -30,7 +30,9 @@ export declare class Video extends BaseEntity {
     channelId?: string;
     introPrompt?: string;
     advertisingPrompt?: string;
+    outroPrompt?: string;
     videoStyle: "minimal-talking" | "standard" | "heavy-narration";
+    contentSource?: "video" | "images" | "both";
     enableIntro?: boolean;
     enableOutro?: boolean;
     enableCTA?: boolean;

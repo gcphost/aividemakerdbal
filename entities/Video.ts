@@ -98,6 +98,9 @@ export class Video extends BaseEntity {
   @Column("varchar", { default: "standard" })
   videoStyle!: "minimal-talking" | "standard" | "heavy-narration";
 
+  @Column("varchar", { nullable: true })
+  contentSource?: "video" | "images" | "both";
+
   // Video structure controls (nullable = use profile defaults)
   @Column("integer", { nullable: true })
   enableIntro?: boolean;

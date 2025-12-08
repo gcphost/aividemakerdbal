@@ -42,7 +42,9 @@ let Video = class Video extends BaseEntity_1.BaseEntity {
     channelId;
     introPrompt;
     advertisingPrompt;
+    outroPrompt;
     videoStyle;
+    contentSource;
     // Video structure controls (nullable = use profile defaults)
     enableIntro;
     enableOutro;
@@ -175,9 +177,17 @@ __decorate([
     __metadata("design:type", String)
 ], Video.prototype, "advertisingPrompt", void 0);
 __decorate([
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
+    __metadata("design:type", String)
+], Video.prototype, "outroPrompt", void 0);
+__decorate([
     (0, typeorm_1.Column)("varchar", { default: "standard" }),
     __metadata("design:type", String)
 ], Video.prototype, "videoStyle", void 0);
+__decorate([
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
+    __metadata("design:type", String)
+], Video.prototype, "contentSource", void 0);
 __decorate([
     (0, typeorm_1.Column)("integer", { nullable: true }),
     __metadata("design:type", Boolean)
