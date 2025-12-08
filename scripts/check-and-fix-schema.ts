@@ -95,12 +95,27 @@ export async function checkAndFixSchema(): Promise<void> {
     // NOTE: Table names must match the @Entity() decorator names in entity files
     // e.g., Video entity uses @Entity("videos") so the table name is "videos" (plural)
     const optionalColumns = [
+      // Videos table columns
+      { table: "videos", column: "contentSource", type: "VARCHAR", nullable: true },
       { table: "videos", column: "desiredResolution", type: "TEXT", nullable: true },
+      { table: "videos", column: "enableIntro", type: "INTEGER", nullable: true },
+      { table: "videos", column: "enableOutro", type: "INTEGER", nullable: true },
+      { table: "videos", column: "enableCTA", type: "INTEGER", nullable: true },
+      { table: "videos", column: "chapterCount", type: "INTEGER", nullable: true },
+      { table: "videos", column: "introDurationSeconds", type: "INTEGER", nullable: true },
+      { table: "videos", column: "outroDurationSeconds", type: "INTEGER", nullable: true },
+      { table: "videos", column: "ctaDurationSeconds", type: "INTEGER", nullable: true },
+      { table: "videos", column: "introPrompt", type: "VARCHAR", nullable: true },
+      { table: "videos", column: "outroPrompt", type: "VARCHAR", nullable: true },
+      { table: "videos", column: "advertisingPrompt", type: "VARCHAR", nullable: true },
+      { table: "videos", column: "timeline", type: "TEXT", nullable: true },
+      // Profiles table columns
       { table: "profiles", column: "imageModel", type: "TEXT", nullable: true },
       { table: "profiles", column: "autoGenerateVideos", type: "INTEGER", nullable: true },
       { table: "profiles", column: "disableVideoGeneration", type: "INTEGER", nullable: true },
       { table: "profiles", column: "videoStylePrompt", type: "VARCHAR", nullable: true },
       { table: "profiles", column: "audio", type: "VARCHAR", nullable: true },
+      // Channels table columns
       { table: "channels", column: "descriptionFooter", type: "TEXT", nullable: true },
     ];
 
