@@ -92,6 +92,8 @@ export async function checkAndFixSchema(): Promise<void> {
     }
 
     // 7. Add missing optional columns
+    // NOTE: Table names must match the @Entity() decorator names in entity files
+    // e.g., Video entity uses @Entity("videos") so the table name is "videos" (plural)
     const optionalColumns = [
       { table: "videos", column: "desiredResolution", type: "TEXT", nullable: true },
       { table: "profiles", column: "imageModel", type: "TEXT", nullable: true },
@@ -99,7 +101,7 @@ export async function checkAndFixSchema(): Promise<void> {
       { table: "profiles", column: "disableVideoGeneration", type: "INTEGER", nullable: true },
       { table: "profiles", column: "videoStylePrompt", type: "VARCHAR", nullable: true },
       { table: "profiles", column: "audio", type: "VARCHAR", nullable: true },
-      { table: "channel", column: "descriptionFooter", type: "TEXT", nullable: true },
+      { table: "channels", column: "descriptionFooter", type: "TEXT", nullable: true },
     ];
 
     for (const { table, column, type, nullable } of optionalColumns) {
