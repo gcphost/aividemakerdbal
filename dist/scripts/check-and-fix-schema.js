@@ -81,6 +81,9 @@ async function checkAndFixSchema() {
         const optionalColumns = [
             // Videos table columns
             { table: "videos", column: "contentSource", type: "VARCHAR", nullable: true },
+            { table: "videos", column: "enableSounds", type: "INTEGER", nullable: true },
+            { table: "videos", column: "enableMusic", type: "INTEGER", nullable: true },
+            { table: "videos", column: "enableVoices", type: "INTEGER", nullable: true },
             { table: "videos", column: "desiredResolution", type: "TEXT", nullable: true },
             { table: "videos", column: "enableIntro", type: "INTEGER", nullable: true },
             { table: "videos", column: "enableOutro", type: "INTEGER", nullable: true },

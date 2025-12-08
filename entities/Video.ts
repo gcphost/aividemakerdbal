@@ -101,6 +101,16 @@ export class Video extends BaseEntity {
   @Column("varchar", { nullable: true })
   contentSource?: "video" | "images" | "both";
 
+  // Audio content toggles (nullable = use profile defaults)
+  @Column("integer", { nullable: true })
+  enableSounds?: boolean;
+
+  @Column("integer", { nullable: true })
+  enableMusic?: boolean;
+
+  @Column("integer", { nullable: true })
+  enableVoices?: boolean;
+
   // Video structure controls (nullable = use profile defaults)
   @Column("integer", { nullable: true })
   enableIntro?: boolean;

@@ -33,6 +33,9 @@ export declare class Video extends BaseEntity {
     outroPrompt?: string;
     videoStyle: "minimal-talking" | "standard" | "heavy-narration";
     contentSource?: "video" | "images" | "both";
+    enableSounds?: boolean;
+    enableMusic?: boolean;
+    enableVoices?: boolean;
     enableIntro?: boolean;
     enableOutro?: boolean;
     enableCTA?: boolean;

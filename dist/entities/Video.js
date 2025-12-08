@@ -45,6 +45,10 @@ let Video = class Video extends BaseEntity_1.BaseEntity {
     outroPrompt;
     videoStyle;
     contentSource;
+    // Audio content toggles (nullable = use profile defaults)
+    enableSounds;
+    enableMusic;
+    enableVoices;
     // Video structure controls (nullable = use profile defaults)
     enableIntro;
     enableOutro;
@@ -188,6 +192,18 @@ __decorate([
     (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)
 ], Video.prototype, "contentSource", void 0);
+__decorate([
+    (0, typeorm_1.Column)("integer", { nullable: true }),
+    __metadata("design:type", Boolean)
+], Video.prototype, "enableSounds", void 0);
+__decorate([
+    (0, typeorm_1.Column)("integer", { nullable: true }),
+    __metadata("design:type", Boolean)
+], Video.prototype, "enableMusic", void 0);
+__decorate([
+    (0, typeorm_1.Column)("integer", { nullable: true }),
+    __metadata("design:type", Boolean)
+], Video.prototype, "enableVoices", void 0);
 __decorate([
     (0, typeorm_1.Column)("integer", { nullable: true }),
     __metadata("design:type", Boolean)
