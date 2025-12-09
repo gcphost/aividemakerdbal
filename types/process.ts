@@ -49,7 +49,9 @@ export type ProcessType =
   | "bulk-music-generation"
   | "bulk-sound-generation"
   | "bulk-video-generation"
-  | "auto-generate-all-content";
+  | "auto-generate-all-content"
+  | "attachment-image-analysis"
+  | "attachment-audio-analysis";
 
 export type ProcessStatus =
   | "pending"
