@@ -9,7 +9,7 @@ export type DefaultPromptName = "narrator" | "anti-ai" | "intro-script" | "outro
 /**
  * Known system prompt names (core AI instructions, not user-configurable)
  */
-export type SystemPromptName = "chapter-outline" | "script-generation" | "timeline-generation" | "youtube-description" | "profile-generator";
+export type SystemPromptName = "chapter-outline" | "script-generation" | "timeline-generation" | "youtube-description" | "profile-generator" | "profile-generator-user-prompt" | "youtube-description-user-prompt" | "prompt-suggestion-generator" | "prompt-suggestion-generator-user-prompt";
 /**
  * All known prompt names
  */

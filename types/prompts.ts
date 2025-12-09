@@ -27,7 +27,11 @@ export type SystemPromptName =
   | "script-generation"
   | "timeline-generation"
   | "youtube-description"
-  | "profile-generator";
+  | "profile-generator"
+  | "profile-generator-user-prompt"
+  | "youtube-description-user-prompt"
+  | "prompt-suggestion-generator"
+  | "prompt-suggestion-generator-user-prompt";
 
 /**
  * All known prompt names
@@ -50,4 +54,3 @@ export interface PromptDefinition {
   /** The actual prompt template text with optional {{variable}} placeholders */
   prompt: string;
 }
-
