@@ -76,6 +76,46 @@ export interface VideoSource {
   // Note: provider/model/providerSettings are stored in File metadata, not here
 }
 
+export interface ScriptGenerationContext {
+  // Core generation inputs
+  chapterTitle: string;
+  chapterDescription: string;
+  chapterDuration: number;
+
+  // Profile/config settings
+  narratorPrompt?: string;
+  narratorTone?: string;
+  narratorPersonality?: string;
+  targetAudience?: string;
+  contentCategory?: string;
+
+  // Prompts and style
+  videoStyle?: string;
+  videoSubject?: string;
+  videoDescription?: string;
+  chapterTransitionPrompt?: string;
+  imageDescriptionPrompt?: string;
+
+  // Generation settings
+  wordsPerMinute?: number;
+  contentSource?: string;
+  isEmotionalTagsEnabled?: boolean;
+  ttsProvider?: string;
+  maxImagesPerChapter?: number;
+  imagesPerMinute?: number;
+
+  // Context from neighboring chapters
+  previousChaptersCount?: number;
+  futureChaptersCount?: number;
+
+  // Metadata about generation
+  generatedAt?: string; // ISO timestamp
+  generatedBy?: string; // AI provider (e.g., "openai", "anthropic")
+  model?: string; // Model name (e.g., "gpt-4", "claude-3")
+  profileId?: string;
+  channelId?: string;
+}
+
 export interface VoiceSource {
   id: string;
   title?: string;
@@ -85,6 +125,7 @@ export interface VoiceSource {
   waveformPeaks?: number[]; // Can also come from File.metadata
   elevenLabsRequestId?: string; // ElevenLabs request ID for continuity tracking
   scriptStatus?: "pending" | "completed"; // Loading state for script generation (pending = placeholder, completed = final)
+  generationContext?: ScriptGenerationContext; // Context used to generate this script (for regeneration)
   // Provider info stored in File.metadata
 }
 
