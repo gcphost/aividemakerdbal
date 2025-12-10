@@ -62,6 +62,34 @@ export interface VideoSource {
         [key: string]: any;
     };
 }
+export interface ScriptGenerationContext {
+    chapterTitle: string;
+    chapterDescription: string;
+    chapterDuration: number;
+    narratorPrompt?: string;
+    narratorTone?: string;
+    narratorPersonality?: string;
+    targetAudience?: string;
+    contentCategory?: string;
+    videoStyle?: string;
+    videoSubject?: string;
+    videoDescription?: string;
+    chapterTransitionPrompt?: string;
+    imageDescriptionPrompt?: string;
+    wordsPerMinute?: number;
+    contentSource?: string;
+    isEmotionalTagsEnabled?: boolean;
+    ttsProvider?: string;
+    maxImagesPerChapter?: number;
+    imagesPerMinute?: number;
+    previousChaptersCount?: number;
+    futureChaptersCount?: number;
+    generatedAt?: string;
+    generatedBy?: string;
+    model?: string;
+    profileId?: string;
+    channelId?: string;
+}
 export interface VoiceSource {
     id: string;
     title?: string;
@@ -71,6 +99,7 @@ export interface VoiceSource {
     waveformPeaks?: number[];
     elevenLabsRequestId?: string;
     scriptStatus?: "pending" | "completed";
+    generationContext?: ScriptGenerationContext;
 }
 export interface ImageTimelineInstance {
     type: "image";
