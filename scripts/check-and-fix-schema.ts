@@ -118,6 +118,7 @@ export async function checkAndFixSchema(): Promise<void> {
       { table: "profiles", column: "disableVideoGeneration", type: "INTEGER", nullable: true },
       { table: "profiles", column: "videoStylePrompt", type: "VARCHAR", nullable: true },
       { table: "profiles", column: "audio", type: "VARCHAR", nullable: true },
+      { table: "profiles", column: "metadata", type: "TEXT", nullable: true },
       // Channels table columns
       { table: "channels", column: "descriptionFooter", type: "TEXT", nullable: true },
     ];

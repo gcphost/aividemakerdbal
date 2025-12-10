@@ -61,6 +61,7 @@ export declare class Profile extends BaseEntity {
     openaiSettings?: string;
     videoStyle: "minimal-talking" | "standard" | "heavy-narration";
     audio?: string;
+    metadata?: string;
     createdAt: Date;
     updatedAt: Date;
 }

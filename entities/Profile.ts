@@ -186,6 +186,9 @@ export class Profile extends BaseEntity {
   @Column("varchar", { nullable: true })
   audio?: string;
 
+  @Column({ type: "text", nullable: true })
+  metadata?: string;
+
   @CreateDateColumn()
   createdAt!: Date;
 
