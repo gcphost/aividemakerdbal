@@ -84,6 +84,7 @@ export interface VoiceSource {
   duration?: number;
   waveformPeaks?: number[]; // Can also come from File.metadata
   elevenLabsRequestId?: string; // ElevenLabs request ID for continuity tracking
+  scriptStatus?: "pending" | "completed"; // Loading state for script generation (pending = placeholder, completed = final)
   // Provider info stored in File.metadata
 }
 

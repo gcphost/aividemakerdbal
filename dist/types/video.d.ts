@@ -70,6 +70,7 @@ export interface VoiceSource {
     duration?: number;
     waveformPeaks?: number[];
     elevenLabsRequestId?: string;
+    scriptStatus?: "pending" | "completed";
 }
 export interface ImageTimelineInstance {
     type: "image";
