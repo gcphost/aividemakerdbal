@@ -96,6 +96,8 @@ export interface VoiceSource {
     prompt?: string;
     fileId?: string;
     duration?: number;
+    startTime?: number;
+    endTime?: number;
     waveformPeaks?: number[];
     elevenLabsRequestId?: string;
     scriptStatus?: "pending" | "completed";

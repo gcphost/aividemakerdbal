@@ -122,6 +122,8 @@ export interface VoiceSource {
   prompt?: string; // The TTS text (formerly narrationScript)
   fileId?: string; // Standardized file reference - URLs come from File.publicUrl
   duration?: number;
+  startTime?: number; // Timeline position (seconds) - calculated during chapter positioning
+  endTime?: number; // Timeline position (seconds) - calculated during chapter positioning
   waveformPeaks?: number[]; // Can also come from File.metadata
   elevenLabsRequestId?: string; // ElevenLabs request ID for continuity tracking
   scriptStatus?: "pending" | "completed"; // Loading state for script generation (pending = placeholder, completed = final)
