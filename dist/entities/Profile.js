@@ -52,6 +52,7 @@ let Profile = class Profile extends BaseEntity_1.BaseEntity {
     autoGenerateSounds;
     autoGenerateMusic;
     autoGenerateVideos;
+    autoGenerateTts;
     musicProvider;
     musicModel;
     soundEffectProvider;
@@ -64,6 +65,7 @@ let Profile = class Profile extends BaseEntity_1.BaseEntity {
     disableMusicGeneration;
     disableSoundGeneration;
     disableVideoGeneration;
+    disableTtsGeneration;
     channelIntroDurationSeconds;
     channelOutroDurationSeconds;
     wordsPerMinute;
@@ -236,6 +238,10 @@ __decorate([
     __metadata("design:type", Boolean)
 ], Profile.prototype, "autoGenerateVideos", void 0);
 __decorate([
+    (0, typeorm_1.Column)("integer", { nullable: true }),
+    __metadata("design:type", Boolean)
+], Profile.prototype, "autoGenerateTts", void 0);
+__decorate([
     (0, typeorm_1.Column)("varchar", { nullable: true, default: "elevenlabs" }),
     __metadata("design:type", String)
 ], Profile.prototype, "musicProvider", void 0);
@@ -283,6 +289,10 @@ __decorate([
     (0, typeorm_1.Column)("integer", { nullable: true }),
     __metadata("design:type", Boolean)
 ], Profile.prototype, "disableVideoGeneration", void 0);
+__decorate([
+    (0, typeorm_1.Column)("integer", { nullable: true }),
+    __metadata("design:type", Boolean)
+], Profile.prototype, "disableTtsGeneration", void 0);
 __decorate([
     (0, typeorm_1.Column)("float", { nullable: true, default: 120 }),
     __metadata("design:type", Number)

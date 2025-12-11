@@ -39,6 +39,7 @@ export declare class Profile extends BaseEntity {
     autoGenerateSounds?: boolean;
     autoGenerateMusic?: boolean;
     autoGenerateVideos?: boolean;
+    autoGenerateTts?: boolean;
     musicProvider?: string;
     musicModel?: string;
     soundEffectProvider?: string;
@@ -51,6 +52,7 @@ export declare class Profile extends BaseEntity {
     disableMusicGeneration?: boolean;
     disableSoundGeneration?: boolean;
     disableVideoGeneration?: boolean;
+    disableTtsGeneration?: boolean;
     channelIntroDurationSeconds?: number;
     channelOutroDurationSeconds?: number;
     wordsPerMinute?: number;
