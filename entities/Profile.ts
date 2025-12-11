@@ -120,8 +120,8 @@ export class Profile extends BaseEntity {
   @Column("integer", { nullable: true })
   autoGenerateVideos?: boolean;
 
-  @Column("integer", { nullable: true })
-  autoGenerateTts?: boolean;
+  @Column("integer", { nullable: false, default: 1 })
+  autoGenerateTts!: boolean;
 
   @Column("varchar", { nullable: true, default: "elevenlabs" })
   musicProvider?: string;
