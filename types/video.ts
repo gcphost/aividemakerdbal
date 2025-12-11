@@ -33,6 +33,8 @@ export interface SoundSource {
   duration?: number;
   loop?: boolean;
   promptInfluence?: number;
+  voiceSourceId?: string; // Which voice segment this sound accompanies
+  voiceIndex?: number; // Index of the voice segment
   // Note: provider/model/providerSettings are stored in File metadata, not here
 }
 
@@ -188,10 +190,11 @@ export interface VoiceTimelineInstance {
   sourceId: string;
   startTime: number;
   endTime: number;
+  duration?: number;
+  title?: string;
+  audioUrl?: string;
+  audioFileId?: string;
   volume?: number;
-  name?: string;
-  sourceIndex?: number;
-  chunkIndex?: number;
 }
 
 export interface TextTimelineInstance {

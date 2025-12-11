@@ -101,18 +101,19 @@ async function checkAndFixSchema() {
             { table: "profiles", column: "autoGenerateVideos", type: "INTEGER", nullable: true },
             { table: "profiles", column: "disableVideoGeneration", type: "INTEGER", nullable: true },
             { table: "profiles", column: "videoStylePrompt", type: "VARCHAR", nullable: true },
-            { table: "profiles", column: "autoGenerateTts", type: "INTEGER", nullable: true },
+            { table: "profiles", column: "autoGenerateTts", type: "INTEGER", nullable: true, default: 1 },
             { table: "profiles", column: "disableTtsGeneration", type: "INTEGER", nullable: true },
             { table: "profiles", column: "audio", type: "VARCHAR", nullable: true },
             { table: "profiles", column: "metadata", type: "TEXT", nullable: true },
             // Channels table columns
             { table: "channels", column: "descriptionFooter", type: "TEXT", nullable: true },
         ];
-        for (const { table, column, type, nullable } of optionalColumns) {
+        for (const { table, column, type, nullable, default: defaultValue } of optionalColumns) {
             if (!columnExists(table, column)) {
                 console.log(`[Schema Check] Adding ${table}.${column} column...`);
                 const nullableClause = nullable ? "" : " NOT NULL";
-                db.prepare(`ALTER TABLE "${table}" ADD COLUMN "${column}" ${type}${nullableClause}`).run();
+                const defaultClause = defaultValue !== undefined ? ` DEFAULT (${defaultValue})` : "";
+                db.prepare(`ALTER TABLE "${table}" ADD COLUMN "${column}" ${type}${nullableClause}${defaultClause}`).run();
                 changesMade = true;
                 console.log(`[Schema Check] ✅ Added ${table}.${column}`);
             }

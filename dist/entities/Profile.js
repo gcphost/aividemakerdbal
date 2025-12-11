@@ -238,7 +238,7 @@ __decorate([
     __metadata("design:type", Boolean)
 ], Profile.prototype, "autoGenerateVideos", void 0);
 __decorate([
-    (0, typeorm_1.Column)("integer", { nullable: true }),
+    (0, typeorm_1.Column)("integer", { nullable: false, default: 1 }),
     __metadata("design:type", Boolean)
 ], Profile.prototype, "autoGenerateTts", void 0);
 __decorate([

@@ -39,7 +39,7 @@ export declare class Profile extends BaseEntity {
     autoGenerateSounds?: boolean;
     autoGenerateMusic?: boolean;
     autoGenerateVideos?: boolean;
-    autoGenerateTts?: boolean;
+    autoGenerateTts: boolean;
     musicProvider?: string;
     musicModel?: string;
     soundEffectProvider?: string;

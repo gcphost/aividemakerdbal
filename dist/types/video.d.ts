@@ -25,6 +25,8 @@ export interface SoundSource {
     duration?: number;
     loop?: boolean;
     promptInfluence?: number;
+    voiceSourceId?: string;
+    voiceIndex?: number;
 }
 export interface AudioSource {
     id: string;
@@ -155,10 +157,11 @@ export interface VoiceTimelineInstance {
     sourceId: string;
     startTime: number;
     endTime: number;
+    duration?: number;
+    title?: string;
+    audioUrl?: string;
+    audioFileId?: string;
     volume?: number;
-    name?: string;
-    sourceIndex?: number;
-    chunkIndex?: number;
 }
 export interface TextTimelineInstance {
     type: "text";
