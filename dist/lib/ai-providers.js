@@ -518,6 +518,7 @@ exports.AI_PROVIDERS = {
             "text-generation",
             "image-generation",
             "tts",
+            "transcription",
             "video-generation",
             "music-generation",
             "embeddings",
@@ -532,14 +533,14 @@ exports.AI_PROVIDERS = {
             },
             {
                 name: "serviceAccountKey",
-                label: "Service Account Key (JSON) - Optional, for TTS",
+                label: "Service Account Key (JSON) - Optional, for TTS/STT",
                 type: "textarea",
                 required: false,
                 sensitive: true,
-                description: "Paste your Google Cloud service account JSON key here (for Cloud TTS). Only needed if using Gemini for text-to-speech.",
+                description: "Paste your Google Cloud service account JSON key here. Required for Cloud TTS and Chirp 3 transcription.",
             },
         ],
-        notes: "Supports Gemini models, image generation, video generation, and music generation. TTS requires a Google Cloud service account with Cloud TTS API enabled.",
+        notes: "Supports Gemini models, image generation, video generation, and music generation. TTS and Chirp 3 transcription require a Google Cloud service account with Cloud TTS/Speech APIs enabled.",
         models: {
             "text-generation": [
                 {
@@ -562,6 +563,19 @@ exports.AI_PROVIDERS = {
                     id: "gemini-2.5-pro",
                     name: "Gemini 2.5 Pro",
                     description: "State-of-the-art thinking model, reasoning over complex problems in code, math, STEM, analyzing large datasets, codebases, documents using long context",
+                },
+            ],
+            transcription: [
+                {
+                    id: "chirp_3",
+                    name: "Chirp 3",
+                    description: "Universal Speech Model v3 (Multilingual) - Requires Service Account Key",
+                    default: true,
+                },
+                {
+                    id: "gemini-2.0-flash-exp",
+                    name: "Gemini 2.0 Flash Exp",
+                    description: "Fast multimodal transcription using Gemini Vision",
                 },
             ],
             "image-generation": [
@@ -2262,35 +2276,6 @@ exports.AI_PROVIDERS = {
                     },
                 },
             },
-        },
-    },
-    "google-stt": {
-        id: "google-stt",
-        name: "Google Speech-to-Text",
-        description: "Google Cloud Speech-to-Text with Chirp 3 models",
-        website: "https://cloud.google.com/speech-to-text",
-        apiKeyUrl: "https://console.cloud.google.com/apis/credentials",
-        capabilities: ["transcription"],
-        fields: [
-            {
-                name: "apiKey",
-                label: "Service Account JSON (Optional)",
-                type: "textarea",
-                required: false,
-                description: "Google Cloud Service Account JSON Key. If empty, will try to use your Gemini API key.",
-                sensitive: true,
-            },
-        ],
-        notes: "Uses your existing Gemini API key (Google Cloud Service Account) if available and compatible, or you can provide a specific key here.",
-        models: {
-            transcription: [
-                {
-                    id: "chirp_3",
-                    name: "Chirp 3",
-                    description: "Universal Speech Model v3 (Multilingual)",
-                    default: true,
-                },
-            ],
         },
     },
     elevenlabs: {

@@ -124,7 +124,7 @@ export async function checkAndFixSchema(): Promise<void> {
         column: "transcriptionProvider",
         type: "VARCHAR",
         nullable: true,
-        default: "'google-stt'",
+        default: "'gemini'",
       },
       { table: "profiles", column: "transcriptionModel", type: "VARCHAR", nullable: true },
       { table: "profiles", column: "audio", type: "VARCHAR", nullable: true },
