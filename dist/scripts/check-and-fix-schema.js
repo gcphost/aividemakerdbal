@@ -103,6 +103,14 @@ async function checkAndFixSchema() {
             { table: "profiles", column: "videoStylePrompt", type: "VARCHAR", nullable: true },
             { table: "profiles", column: "autoGenerateTts", type: "INTEGER", nullable: true, default: 1 },
             { table: "profiles", column: "disableTtsGeneration", type: "INTEGER", nullable: true },
+            {
+                table: "profiles",
+                column: "transcriptionProvider",
+                type: "VARCHAR",
+                nullable: true,
+                default: "'google-stt'",
+            },
+            { table: "profiles", column: "transcriptionModel", type: "VARCHAR", nullable: true },
             { table: "profiles", column: "audio", type: "VARCHAR", nullable: true },
             { table: "profiles", column: "metadata", type: "TEXT", nullable: true },
             // Channels table columns

@@ -60,6 +60,8 @@ let Profile = class Profile extends BaseEntity_1.BaseEntity {
     embeddingsProvider;
     embeddingsModel;
     scriptProvider;
+    transcriptionProvider;
+    transcriptionModel;
     scriptSettings;
     disableImageGeneration;
     disableMusicGeneration;
@@ -269,6 +271,14 @@ __decorate([
     (0, typeorm_1.Column)("varchar", { nullable: true, default: "openai" }),
     __metadata("design:type", String)
 ], Profile.prototype, "scriptProvider", void 0);
+__decorate([
+    (0, typeorm_1.Column)("varchar", { nullable: true, default: "google-stt" }),
+    __metadata("design:type", String)
+], Profile.prototype, "transcriptionProvider", void 0);
+__decorate([
+    (0, typeorm_1.Column)("varchar", { nullable: true }),
+    __metadata("design:type", String)
+], Profile.prototype, "transcriptionModel", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: "text", nullable: true }),
     __metadata("design:type", String)

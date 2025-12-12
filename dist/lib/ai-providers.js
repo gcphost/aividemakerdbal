@@ -2264,6 +2264,35 @@ exports.AI_PROVIDERS = {
             },
         },
     },
+    "google-stt": {
+        id: "google-stt",
+        name: "Google Speech-to-Text",
+        description: "Google Cloud Speech-to-Text with Chirp 3 models",
+        website: "https://cloud.google.com/speech-to-text",
+        apiKeyUrl: "https://console.cloud.google.com/apis/credentials",
+        capabilities: ["transcription"],
+        fields: [
+            {
+                name: "apiKey",
+                label: "Service Account JSON (Optional)",
+                type: "textarea",
+                required: false,
+                description: "Google Cloud Service Account JSON Key. If empty, will try to use your Gemini API key.",
+                sensitive: true,
+            },
+        ],
+        notes: "Uses your existing Gemini API key (Google Cloud Service Account) if available and compatible, or you can provide a specific key here.",
+        models: {
+            transcription: [
+                {
+                    id: "chirp_3",
+                    name: "Chirp 3",
+                    description: "Universal Speech Model v3 (Multilingual)",
+                    default: true,
+                },
+            ],
+        },
+    },
     elevenlabs: {
         id: "elevenlabs",
         name: "ElevenLabs",

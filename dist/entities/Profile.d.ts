@@ -47,6 +47,8 @@ export declare class Profile extends BaseEntity {
     embeddingsProvider?: string;
     embeddingsModel?: string;
     scriptProvider?: string;
+    transcriptionProvider?: string;
+    transcriptionModel?: string;
     scriptSettings?: string;
     disableImageGeneration?: boolean;
     disableMusicGeneration?: boolean;

@@ -144,6 +144,12 @@ export class Profile extends BaseEntity {
   @Column("varchar", { nullable: true, default: "openai" })
   scriptProvider?: string;
 
+  @Column("varchar", { nullable: true, default: "google-stt" })
+  transcriptionProvider?: string;
+
+  @Column("varchar", { nullable: true })
+  transcriptionModel?: string;
+
   @Column({ type: "text", nullable: true })
   scriptSettings?: string;
 
