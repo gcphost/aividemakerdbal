@@ -31,6 +31,7 @@ export type ProcessType =
   | "video-generation-ai"
   | "video-extension-ai"
   | "timeline-generation"
+  | "chunked-timeline-generation"
   | "thumbnail-generation"
   | "music-generation"
   | "sound-generation"
@@ -40,7 +41,9 @@ export type ProcessType =
   | "profile-generation"
   | "chapter-generation"
   | "script-generation"
+  | "chunked-script-generation"
   | "video-creation"
+  | "audio-timeline"
   | "audio-timeline-generation"
   | "narration-chunk"
   | "bulk-script-generation"
@@ -51,7 +54,8 @@ export type ProcessType =
   | "bulk-video-generation"
   | "auto-generate-all-content"
   | "attachment-image-analysis"
-  | "attachment-audio-analysis";
+  | "attachment-audio-analysis"
+  | "audio-transcribe";
 
 export type ProcessStatus =
   | "pending"

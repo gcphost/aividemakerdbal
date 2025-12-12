@@ -104,6 +104,7 @@ export interface VoiceSource {
     elevenLabsRequestId?: string;
     scriptStatus?: "pending" | "completed";
     generationContext?: ScriptGenerationContext;
+    isPlaceholder?: boolean;
 }
 export interface ImageTimelineInstance {
     type: "image";
