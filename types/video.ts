@@ -130,6 +130,7 @@ export interface VoiceSource {
   elevenLabsRequestId?: string; // ElevenLabs request ID for continuity tracking
   scriptStatus?: "pending" | "completed"; // Loading state for script generation (pending = placeholder, completed = final)
   generationContext?: ScriptGenerationContext; // Context used to generate this script (for regeneration)
+  isPlaceholder?: boolean; // Whether this is a placeholder during loading
   // Provider info stored in File.metadata
 }
 
