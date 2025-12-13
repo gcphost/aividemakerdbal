@@ -309,4 +309,9 @@ export declare function getHardCodedDefaults(capability: ServiceCapability): {
     provider: string;
     model?: string;
 };
+/**
+ * Get all unique embedding dimensions from all providers' embedding models
+ * @returns Array of embedding dimensions (e.g., [1536, 512, 768])
+ */
+export declare function getAllEmbeddingDimensions(): number[];
 //# sourceMappingURL=ai-providers.d.ts.map

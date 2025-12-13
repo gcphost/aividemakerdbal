@@ -36,6 +36,7 @@ exports.getTemposForModel = getTemposForModel;
 exports.getDurationRangeForModel = getDurationRangeForModel;
 exports.getModelPricing = getModelPricing;
 exports.getHardCodedDefaults = getHardCodedDefaults;
+exports.getAllEmbeddingDimensions = getAllEmbeddingDimensions;
 exports.AI_PROVIDERS = {
     openai: {
         id: "openai",
@@ -3806,5 +3807,36 @@ function getHardCodedDefaults(capability) {
         provider: defaultProvider.id,
         model: defaultModel?.id,
     };
+}
+/**
+ * Get all unique embedding dimensions from all providers' embedding models
+ * @returns Array of embedding dimensions (e.g., [1536, 512, 768])
+ */
+function getAllEmbeddingDimensions() {
+    const dimensions = new Set();
+    // Get OpenAI provider
+    const openaiProvider = getProviderConfig("openai");
+    if (openaiProvider?.models?.embeddings) {
+        for (const model of openaiProvider.models.embeddings) {
+            // Extract dimension from model name (e.g., "Text Embedding 3 Large (1536 dims)" -> 1536)
+            const match = model.name.match(/\((\d+)\s*dims?\)/i);
+            if (match && match[1]) {
+                dimensions.add(parseInt(match[1], 10));
+            }
+        }
+    }
+    // Get Gemini provider
+    const geminiProvider = getProviderConfig("gemini");
+    if (geminiProvider?.models?.embeddings) {
+        for (const model of geminiProvider.models.embeddings) {
+            // Extract dimension from model name
+            const match = model.name.match(/\((\d+)\s*dims?\)/i);
+            if (match && match[1]) {
+                dimensions.add(parseInt(match[1], 10));
+            }
+        }
+    }
+    // Return sorted dimensions
+    return Array.from(dimensions).sort((a, b) => a - b);
 }
 //# sourceMappingURL=ai-providers.js.map
