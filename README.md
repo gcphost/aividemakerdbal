@@ -1,6 +1,6 @@
 # Shared DB
 
-Shared database configuration and entities for the AI Video Maker application.
+Shared database configuration and entities for the NinjaCut application.
 
 ## Installation
 
