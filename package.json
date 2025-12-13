@@ -10,125 +10,125 @@
   },
   "exports": {
     ".": {
+      "types": "./dist/data-source.d.ts",
       "import": "./dist/data-source.js",
       "require": "./dist/data-source.js",
-      "types": "./dist/data-source.d.ts",
       "default": "./dist/data-source.js"
     },
     "./entities": {
+      "types": "./dist/entities/index.d.ts",
       "import": "./dist/entities/index.js",
-      "require": "./dist/entities/index.js",
-      "types": "./dist/entities/index.d.ts"
+      "require": "./dist/entities/index.js"
     },
     "./entities/*": {
+      "types": "./dist/entities/*.d.ts",
       "import": "./dist/entities/*.js",
-      "require": "./dist/entities/*.js",
-      "types": "./dist/entities/*.d.ts"
+      "require": "./dist/entities/*.js"
     },
     "./entities/User": {
+      "types": "./dist/entities/User.d.ts",
       "import": "./dist/entities/User.js",
-      "require": "./dist/entities/User.js",
-      "types": "./dist/entities/User.d.ts"
+      "require": "./dist/entities/User.js"
     },
     "./entities/Video": {
+      "types": "./dist/entities/Video.d.ts",
       "import": "./dist/entities/Video.js",
-      "require": "./dist/entities/Video.js",
-      "types": "./dist/entities/Video.d.ts"
+      "require": "./dist/entities/Video.js"
     },
     "./entities/Profile": {
+      "types": "./dist/entities/Profile.d.ts",
       "import": "./dist/entities/Profile.js",
-      "require": "./dist/entities/Profile.js",
-      "types": "./dist/entities/Profile.d.ts"
+      "require": "./dist/entities/Profile.js"
     },
     "./entities/Channel": {
+      "types": "./dist/entities/Channel.d.ts",
       "import": "./dist/entities/Channel.js",
-      "require": "./dist/entities/Channel.js",
-      "types": "./dist/entities/Channel.d.ts"
+      "require": "./dist/entities/Channel.js"
     },
     "./entities/File": {
+      "types": "./dist/entities/File.d.ts",
       "import": "./dist/entities/File.js",
-      "require": "./dist/entities/File.js",
-      "types": "./dist/entities/File.d.ts"
+      "require": "./dist/entities/File.js"
     },
     "./entities/Usage": {
+      "types": "./dist/entities/Usage.d.ts",
       "import": "./dist/entities/Usage.js",
-      "require": "./dist/entities/Usage.js",
-      "types": "./dist/entities/Usage.d.ts"
+      "require": "./dist/entities/Usage.js"
     },
     "./entities/ApiKey": {
+      "types": "./dist/entities/ApiKey.d.ts",
       "import": "./dist/entities/ApiKey.js",
-      "require": "./dist/entities/ApiKey.js",
-      "types": "./dist/entities/ApiKey.d.ts"
+      "require": "./dist/entities/ApiKey.js"
     },
     "./entities/Settings": {
+      "types": "./dist/entities/Settings.d.ts",
       "import": "./dist/entities/Settings.js",
-      "require": "./dist/entities/Settings.js",
-      "types": "./dist/entities/Settings.d.ts"
+      "require": "./dist/entities/Settings.js"
     },
     "./entities/BaseEntity": {
+      "types": "./dist/entities/BaseEntity.d.ts",
       "import": "./dist/entities/BaseEntity.js",
-      "require": "./dist/entities/BaseEntity.js",
-      "types": "./dist/entities/BaseEntity.d.ts"
+      "require": "./dist/entities/BaseEntity.js"
     },
     "./entities/Process": {
+      "types": "./dist/entities/Process.d.ts",
       "import": "./dist/entities/Process.js",
-      "require": "./dist/entities/Process.js",
-      "types": "./dist/entities/Process.d.ts"
+      "require": "./dist/entities/Process.js"
     },
     "./entities/ProcessEstimate": {
+      "types": "./dist/entities/ProcessEstimate.d.ts",
       "import": "./dist/entities/ProcessEstimate.js",
-      "require": "./dist/entities/ProcessEstimate.js",
-      "types": "./dist/entities/ProcessEstimate.d.ts"
+      "require": "./dist/entities/ProcessEstimate.js"
     },
     "./entities/PerformanceMetrics": {
+      "types": "./dist/entities/PerformanceMetrics.d.ts",
       "import": "./dist/entities/PerformanceMetrics.js",
-      "require": "./dist/entities/PerformanceMetrics.js",
-      "types": "./dist/entities/PerformanceMetrics.d.ts"
+      "require": "./dist/entities/PerformanceMetrics.js"
     },
     "./types": {
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/types/index.js",
-      "require": "./dist/types/index.js",
-      "types": "./dist/types/index.d.ts"
+      "require": "./dist/types/index.js"
     },
     "./types/*": {
+      "types": "./dist/types/*.d.ts",
       "import": "./dist/types/*.js",
-      "require": "./dist/types/*.js",
-      "types": "./dist/types/*.d.ts"
+      "require": "./dist/types/*.js"
     },
     "./utils/timeline-helpers": {
+      "types": "./dist/utils/timeline-helpers.d.ts",
       "import": "./dist/utils/timeline-helpers.js",
-      "require": "./dist/utils/timeline-helpers.js",
-      "types": "./dist/utils/timeline-helpers.d.ts"
+      "require": "./dist/utils/timeline-helpers.js"
     },
     "./utils/secure-crypto": {
+      "types": "./dist/utils/secure-crypto.d.ts",
       "import": "./dist/utils/secure-crypto.js",
-      "require": "./dist/utils/secure-crypto.js",
-      "types": "./dist/utils/secure-crypto.d.ts"
+      "require": "./dist/utils/secure-crypto.js"
     },
     "./utils/*": {
+      "types": "./dist/utils/*.d.ts",
       "import": "./dist/utils/*.js",
-      "require": "./dist/utils/*.js",
-      "types": "./dist/utils/*.d.ts"
+      "require": "./dist/utils/*.js"
     },
     "./lib/ai-providers": {
+      "types": "./dist/lib/ai-providers.d.ts",
       "import": "./dist/lib/ai-providers.js",
-      "require": "./dist/lib/ai-providers.js",
-      "types": "./dist/lib/ai-providers.d.ts"
+      "require": "./dist/lib/ai-providers.js"
     },
     "./lib/*": {
+      "types": "./dist/lib/*.d.ts",
       "import": "./dist/lib/*.js",
-      "require": "./dist/lib/*.js",
-      "types": "./dist/lib/*.d.ts"
+      "require": "./dist/lib/*.js"
     },
     "./scripts/check-and-fix-schema": {
+      "types": "./dist/scripts/check-and-fix-schema.d.ts",
       "import": "./dist/scripts/check-and-fix-schema.js",
-      "require": "./dist/scripts/check-and-fix-schema.js",
-      "types": "./dist/scripts/check-and-fix-schema.d.ts"
+      "require": "./dist/scripts/check-and-fix-schema.js"
     },
     "./scripts/*": {
+      "types": "./dist/scripts/*.d.ts",
       "import": "./dist/scripts/*.js",
-      "require": "./dist/scripts/*.js",
-      "types": "./dist/scripts/*.d.ts"
+      "require": "./dist/scripts/*.js"
     }
   },
   "devDependencies": {
