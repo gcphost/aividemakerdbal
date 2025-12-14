@@ -11,6 +11,7 @@ export interface ImageSource {
     fileId?: string;
     desiredResolution?: string;
     aspectRatio?: string;
+    isUserUploaded?: boolean;
 }
 export interface SoundSource {
     id: string;
@@ -44,6 +45,7 @@ export interface AudioSource {
     volume?: number;
     duration?: number;
     loop?: boolean;
+    isUserUploaded?: boolean;
 }
 export interface VideoSource {
     id: string;
@@ -58,6 +60,7 @@ export interface VideoSource {
     loop?: boolean;
     isGenerating?: boolean;
     generationError?: string;
+    isUserUploaded?: boolean;
     metadata?: {
         veoVideoObject?: any;
         extendedFrom?: string;

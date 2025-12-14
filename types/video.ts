@@ -16,6 +16,7 @@ export interface ImageSource {
   fileId?: string; // Standardized file reference - URLs come from File.publicUrl
   desiredResolution?: string; // Video's desired resolution (e.g., "1080p", "720p-vertical", "square")
   aspectRatio?: string; // Calculated aspect ratio (e.g., "16:9", "9:16", "1:1")
+  isUserUploaded?: boolean; // Flag for user-provided content (vs AI-generated)
   // Note: provider/model/providerSettings are stored in File metadata, not here
   // Note: Reuse tracking is done via File.references, not isReused/reusedFrom
 }
@@ -54,6 +55,7 @@ export interface AudioSource {
   volume?: number;
   duration?: number;
   loop?: boolean;
+  isUserUploaded?: boolean; // Flag for user-provided content (vs AI-generated)
   // Note: provider/model/providerSettings are stored in File metadata, not here
 }
 
@@ -70,6 +72,7 @@ export interface VideoSource {
   loop?: boolean;
   isGenerating?: boolean;
   generationError?: string;
+  isUserUploaded?: boolean; // Flag for user-provided content (vs AI-generated)
   metadata?: {
     veoVideoObject?: any;
     extendedFrom?: string;
