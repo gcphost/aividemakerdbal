@@ -35,7 +35,6 @@ export type ProcessType =
   | "thumbnail-generation"
   | "music-generation"
   | "sound-generation"
-  | "voice-generation"
   | "description-generation"
   | "content-generation"
   | "profile-generation"
