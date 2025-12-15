@@ -1,4 +1,5 @@
-import { BaseEntity } from './BaseEntity';
+import { BaseEntity } from "./BaseEntity";
+import { ProcessStatus } from "../types/process";
 export declare class Process extends BaseEntity {
     _id: string;
     processId?: string;
@@ -20,7 +21,7 @@ export declare class Process extends BaseEntity {
     currentChapter?: number;
     totalChapters?: number;
     metadata?: string;
-    status: "pending" | "running" | "completed" | "failed" | "queued" | "processing";
+    status: ProcessStatus;
     config?: string;
     result?: string;
     progress?: number;
