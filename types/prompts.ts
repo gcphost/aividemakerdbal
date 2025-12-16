@@ -32,7 +32,8 @@ export type SystemPromptName =
   | "youtube-description-user-prompt"
   | "prompt-suggestion-generator"
   | "prompt-suggestion-generator-user-prompt"
-  | "attachment-vision-analysis";
+  | "attachment-vision-analysis"
+  | "attachment-summary";
 
 /**
  * All known prompt names
