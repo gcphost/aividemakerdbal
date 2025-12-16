@@ -60,6 +60,7 @@ let Video = class Video extends BaseEntity_1.BaseEntity {
     desiredResolution; // Desired output resolution (preview, low, medium, high, 2k, 4k, etc.)
     timeline;
     userId;
+    metadata;
     createdAt;
     updatedAt;
 };
@@ -244,6 +245,10 @@ __decorate([
     (0, typeorm_1.Column)("varchar"),
     __metadata("design:type", String)
 ], Video.prototype, "userId", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: "text", nullable: true }),
+    __metadata("design:type", String)
+], Video.prototype, "metadata", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)

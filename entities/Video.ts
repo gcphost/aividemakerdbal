@@ -142,6 +142,9 @@ export class Video extends BaseEntity {
   @Column("varchar")
   userId!: string;
 
+  @Column({ type: "text", nullable: true })
+  metadata?: string;
+
   @CreateDateColumn()
   createdAt!: Date;
 

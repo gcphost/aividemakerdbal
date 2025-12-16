@@ -46,6 +46,7 @@ export declare class Video extends BaseEntity {
     desiredResolution?: string;
     timeline?: string;
     userId: string;
+    metadata?: string;
     createdAt: Date;
     updatedAt: Date;
 }
