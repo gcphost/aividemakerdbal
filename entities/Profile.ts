@@ -196,6 +196,22 @@ export class Profile extends BaseEntity {
   videoStyle!: "minimal-talking" | "standard" | "heavy-narration";
 
   @Column("varchar", { nullable: true })
+  contentCategory?:
+    | "long-form"
+    | "shorts-reels"
+    | "education"
+    | "storytelling"
+    | "marketing"
+    | "wellness-lifestyle"
+    | "news-commentary"
+    | "gaming-esports"
+    | "music-audio"
+    | "comedy-entertainment"
+    | "sports-fitness"
+    | "travel-vlogging"
+    | "kids-family";
+
+  @Column("varchar", { nullable: true })
   audio?: string;
 
   @Column({ type: "text", nullable: true })
