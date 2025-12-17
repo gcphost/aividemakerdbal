@@ -210,10 +210,16 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
       ],
       "image-generation": [
         {
+          id: "gpt-image-1.5",
+          name: "GPT-Image-1.5",
+          description: "Latest state-of-the-art image generation with improved instruction following",
+          default: true,
+          pricing: { perUnitLow: 0.08, perUnitMedium: 0.26, perUnitHigh: 0.76 },
+        },
+        {
           id: "gpt-image-1",
           name: "GPT-Image-1",
-          description: "Latest high-quality image generation model",
-          default: true,
+          description: "High-quality image generation model",
           pricing: { perUnitLow: 0.02, perUnitMedium: 0.07, perUnitHigh: 0.19 },
         },
         {
