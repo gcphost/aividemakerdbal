@@ -153,6 +153,7 @@ export interface VideoTimelineInstance {
     endTime: number;
     loop?: boolean;
     videoStartOffset?: number;
+    volume?: number;
     isGenerating?: boolean;
 }
 export interface VoiceTimelineInstance {

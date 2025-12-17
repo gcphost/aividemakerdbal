@@ -185,6 +185,7 @@ export interface VideoTimelineInstance {
   endTime: number;
   loop?: boolean;
   videoStartOffset?: number; // Where to start playing in the source video (seconds)
+  volume?: number; // Volume level (0-100)
   isGenerating?: boolean;
 }
 
