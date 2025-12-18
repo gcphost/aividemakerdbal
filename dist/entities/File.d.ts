@@ -23,6 +23,8 @@ export declare class File extends BaseEntity {
     vectorEmbedding?: string;
     versions?: string;
     references?: string;
+    useAsVoice?: boolean;
+    hasSpeech?: boolean;
     versionNumber?: number;
     parentVersionId?: string;
     versionChainId?: string;

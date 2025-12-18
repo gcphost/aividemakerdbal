@@ -72,6 +72,13 @@ export class File extends BaseEntity {
   @Column({ type: 'text', nullable: true })
   references?: string;
 
+  // Voice/attachment flags
+  @Column('boolean', { nullable: true, default: false })
+  useAsVoice?: boolean; // Whether this attachment should be used as voice narration
+
+  @Column('boolean', { nullable: true, default: false })
+  hasSpeech?: boolean; // Whether this audio/video file contains speech
+
   // Versioning fields
   @Column('integer', { nullable: true, default: 1 })
   versionNumber?: number;

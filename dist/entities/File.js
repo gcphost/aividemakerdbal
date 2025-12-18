@@ -36,6 +36,9 @@ let File = class File extends BaseEntity_1.BaseEntity {
     vectorEmbedding;
     versions;
     references;
+    // Voice/attachment flags
+    useAsVoice; // Whether this attachment should be used as voice narration
+    hasSpeech; // Whether this audio/video file contains speech
     // Versioning fields
     versionNumber;
     parentVersionId;
@@ -141,6 +144,14 @@ __decorate([
     (0, typeorm_1.Column)({ type: 'text', nullable: true }),
     __metadata("design:type", String)
 ], File.prototype, "references", void 0);
+__decorate([
+    (0, typeorm_1.Column)('boolean', { nullable: true, default: false }),
+    __metadata("design:type", Boolean)
+], File.prototype, "useAsVoice", void 0);
+__decorate([
+    (0, typeorm_1.Column)('boolean', { nullable: true, default: false }),
+    __metadata("design:type", Boolean)
+], File.prototype, "hasSpeech", void 0);
 __decorate([
     (0, typeorm_1.Column)('integer', { nullable: true, default: 1 }),
     __metadata("design:type", Number)
