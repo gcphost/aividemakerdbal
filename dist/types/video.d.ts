@@ -66,6 +66,10 @@ export interface VideoSource {
         extendedFrom?: string;
         [key: string]: any;
     };
+    continuity?: "none" | "soft" | "hard";
+    requiresLipsync?: boolean;
+    regenSensitivity?: "high" | "medium" | "low";
+    segmentType?: string;
 }
 export interface ScriptGenerationContext {
     chapterTitle: string;
@@ -108,6 +112,9 @@ export interface VoiceSource {
     scriptStatus?: "pending" | "completed";
     generationContext?: ScriptGenerationContext;
     isPlaceholder?: boolean;
+    sourceType?: "tts" | "attachment";
+    attachmentId?: string;
+    hasVideoCanvas?: boolean;
 }
 export interface ImageTimelineInstance {
     type: "image";

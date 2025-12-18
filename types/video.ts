@@ -141,6 +141,10 @@ export interface VoiceSource {
   generationContext?: ScriptGenerationContext; // Context used to generate this script (for regeneration)
   isPlaceholder?: boolean; // Whether this is a placeholder during loading
   // Provider info stored in File.metadata
+  // Voice source tracking
+  sourceType?: "tts" | "attachment"; // Track voice origin
+  attachmentId?: string; // Link back to original attachment
+  hasVideoCanvas?: boolean; // Does this voice source provide base video?
 }
 
 export interface ImageTimelineInstance {
