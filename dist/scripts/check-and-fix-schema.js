@@ -118,6 +118,9 @@ async function checkAndFixSchema() {
             { table: "profiles", column: "consistency", type: "INTEGER", nullable: false, default: "5" },
             // Channels table columns
             { table: "channels", column: "descriptionFooter", type: "TEXT", nullable: true },
+            // Files table columns for voice/attachment support
+            { table: "files", column: "useAsVoice", type: "INTEGER", nullable: true, default: 0 },
+            { table: "files", column: "hasSpeech", type: "INTEGER", nullable: true, default: 0 },
         ];
         for (const { table, column, type, nullable, default: defaultValue } of optionalColumns) {
             if (!columnExists(table, column)) {
@@ -229,6 +232,8 @@ async function fixBooleanColumn(db, tableName, columnName, defaultValue) {
             hasFileCol("isCurrentVersion") ? '"isCurrentVersion" boolean DEFAULT 1' : "",
             hasFileCol("versionChange") ? '"versionChange" text' : "",
             hasFileCol("duration") ? '"duration" real' : "",
+            hasFileCol("useAsVoice") ? '"useAsVoice" integer DEFAULT 0' : "",
+            hasFileCol("hasSpeech") ? '"hasSpeech" integer DEFAULT 0' : "",
         ]
             .filter(Boolean)
             .join(", ");
@@ -267,6 +272,8 @@ async function fixBooleanColumn(db, tableName, columnName, defaultValue) {
             hasFileCol("isCurrentVersion") ? '"isCurrentVersion"' : "1",
             hasFileCol("versionChange") ? '"versionChange"' : "NULL",
             hasFileCol("duration") ? '"duration"' : "NULL",
+            hasFileCol("useAsVoice") ? '"useAsVoice"' : "0",
+            hasFileCol("hasSpeech") ? '"hasSpeech"' : "0",
         ]
             .filter(Boolean)
             .join(", ");
