@@ -721,12 +721,12 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
           id: "chirp_3",
           name: "Chirp 3",
           description: "Universal Speech Model v3 (Multilingual) - Requires Service Account Key",
-          default: true,
         },
         {
           id: "gemini-2.0-flash-exp",
           name: "Gemini 2.0 Flash Exp",
           description: "Fast multimodal transcription using Gemini Vision",
+          default: true,
         },
       ],
       "image-generation": [
