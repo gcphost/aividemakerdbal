@@ -79,6 +79,12 @@ export interface VideoSource {
     [key: string]: any;
   };
   // Note: provider/model/providerSettings are stored in File metadata, not here
+
+  // 🆕 Editorial Intent Flags (AI suggests, system enforces)
+  continuity?: "none" | "soft" | "hard"; // How this video relates to previous: none=hard cut, soft=style match, hard=frame stitch
+  requiresLipsync?: boolean; // Should this use Wav2Lip for lip-syncing?
+  regenSensitivity?: "high" | "medium" | "low"; // How sensitive to regeneration changes
+  segmentType?: string; // e.g., "talking_head", "broll", "transition", "action"
 }
 
 export interface ScriptGenerationContext {
