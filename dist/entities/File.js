@@ -145,11 +145,11 @@ __decorate([
     __metadata("design:type", String)
 ], File.prototype, "references", void 0);
 __decorate([
-    (0, typeorm_1.Column)('boolean', { nullable: true, default: false }),
+    (0, typeorm_1.Column)('integer', { nullable: true, default: 0 }),
     __metadata("design:type", Boolean)
 ], File.prototype, "useAsVoice", void 0);
 __decorate([
-    (0, typeorm_1.Column)('boolean', { nullable: true, default: false }),
+    (0, typeorm_1.Column)('integer', { nullable: true, default: 0 }),
     __metadata("design:type", Boolean)
 ], File.prototype, "hasSpeech", void 0);
 __decorate([
