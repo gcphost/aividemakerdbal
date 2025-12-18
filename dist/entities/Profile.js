@@ -77,6 +77,7 @@ let Profile = class Profile extends BaseEntity_1.BaseEntity {
     videoSettings;
     openaiSettings;
     videoStyle;
+    consistency;
     contentCategory;
     audio;
     metadata;
@@ -340,6 +341,10 @@ __decorate([
     (0, typeorm_1.Column)("varchar", { nullable: false, default: "standard" }),
     __metadata("design:type", String)
 ], Profile.prototype, "videoStyle", void 0);
+__decorate([
+    (0, typeorm_1.Column)("integer", { nullable: false, default: 5 }),
+    __metadata("design:type", Number)
+], Profile.prototype, "consistency", void 0);
 __decorate([
     (0, typeorm_1.Column)("varchar", { nullable: true }),
     __metadata("design:type", String)

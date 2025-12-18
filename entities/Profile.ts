@@ -195,6 +195,9 @@ export class Profile extends BaseEntity {
   @Column("varchar", { nullable: false, default: "standard" })
   videoStyle!: "minimal-talking" | "standard" | "heavy-narration";
 
+  @Column("integer", { nullable: false, default: 5 })
+  consistency!: number;
+
   @Column("varchar", { nullable: true })
   contentCategory?:
     | "long-form"

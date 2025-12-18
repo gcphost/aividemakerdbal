@@ -115,6 +115,7 @@ async function checkAndFixSchema() {
             { table: "profiles", column: "audio", type: "VARCHAR", nullable: true },
             { table: "profiles", column: "contentCategory", type: "VARCHAR", nullable: true },
             { table: "profiles", column: "metadata", type: "TEXT", nullable: true },
+            { table: "profiles", column: "consistency", type: "INTEGER", nullable: false, default: "5" },
             // Channels table columns
             { table: "channels", column: "descriptionFooter", type: "TEXT", nullable: true },
         ];

@@ -64,6 +64,7 @@ export declare class Profile extends BaseEntity {
     videoSettings?: string;
     openaiSettings?: string;
     videoStyle: "minimal-talking" | "standard" | "heavy-narration";
+    consistency: number;
     contentCategory?: "long-form" | "shorts-reels" | "education" | "storytelling" | "marketing" | "wellness-lifestyle" | "news-commentary" | "gaming-esports" | "music-audio" | "comedy-entertainment" | "sports-fitness" | "travel-vlogging" | "kids-family";
     audio?: string;
     metadata?: string;
