@@ -139,6 +139,9 @@ export class Video extends BaseEntity {
   @Column({ type: "text", nullable: true })
   timeline?: string;
 
+  @Column({ type: "text", nullable: true })
+  attachments?: string; // JSON array of attachment objects
+
   @Column("varchar")
   userId!: string;
 

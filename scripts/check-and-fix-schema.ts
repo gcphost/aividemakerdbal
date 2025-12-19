@@ -112,6 +112,7 @@ export async function checkAndFixSchema(): Promise<void> {
       { table: "videos", column: "outroPrompt", type: "VARCHAR", nullable: true },
       { table: "videos", column: "advertisingPrompt", type: "VARCHAR", nullable: true },
       { table: "videos", column: "timeline", type: "TEXT", nullable: true },
+      { table: "videos", column: "attachments", type: "TEXT", nullable: true },
       { table: "videos", column: "metadata", type: "TEXT", nullable: true },
       // Profiles table columns
       { table: "profiles", column: "imageModel", type: "TEXT", nullable: true },
