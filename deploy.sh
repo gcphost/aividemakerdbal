@@ -43,17 +43,23 @@ else
     git push
 fi
 
+# Get the latest commit hash to force fresh install
+LATEST_COMMIT=$(git rev-parse HEAD)
+SHARED_DB_REF="github:gcphost/aividemakerdbal#$LATEST_COMMIT"
+
 echo "🔄 Updating app..."
 cd ../app
 npm cache clean --force
 rm -rf node_modules/shared-db package-lock.json
 npm install
+npm install "shared-db@$SHARED_DB_REF"
 
 echo "🔄 Updating socket-server..."
 cd ../socket-server
 npm cache clean --force
 rm -rf node_modules/shared-db package-lock.json
 npm install
+npm install "shared-db@$SHARED_DB_REF"
 
 echo "🔄 Updating electron..."
 cd ../electron
