@@ -54,6 +54,7 @@ export type ProcessType =
   | "auto-generate-all-content"
   | "attachment-image-analysis"
   | "attachment-audio-analysis"
+  | "attachment-video-analysis"
   | "audio-transcribe";
 
 export type ProcessStatus =
