@@ -119,7 +119,8 @@ async function checkAndFixSchema() {
             { table: "profiles", column: "consistency", type: "INTEGER", nullable: false, default: "5" },
             // Channels table columns
             { table: "channels", column: "descriptionFooter", type: "TEXT", nullable: true },
-            // Files table columns for voice/attachment support
+            // Files table columns
+            { table: "files", column: "hash", type: "VARCHAR", nullable: true }, // For deduplication
             { table: "files", column: "useAsVoice", type: "INTEGER", nullable: true, default: 0 },
             { table: "files", column: "hasSpeech", type: "INTEGER", nullable: true, default: 0 },
         ];
