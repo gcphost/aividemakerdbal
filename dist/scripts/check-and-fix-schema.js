@@ -107,6 +107,13 @@ async function checkAndFixSchema() {
             { table: "profiles", column: "disableTtsGeneration", type: "INTEGER", nullable: true },
             {
                 table: "profiles",
+                column: "disableVectorReuse",
+                type: "INTEGER",
+                nullable: true,
+                default: 0,
+            },
+            {
+                table: "profiles",
                 column: "transcriptionProvider",
                 type: "VARCHAR",
                 nullable: true,

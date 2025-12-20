@@ -55,6 +55,7 @@ export declare class Profile extends BaseEntity {
     disableSoundGeneration?: boolean;
     disableVideoGeneration?: boolean;
     disableTtsGeneration?: boolean;
+    disableVectorReuse?: boolean;
     channelIntroDurationSeconds?: number;
     channelOutroDurationSeconds?: number;
     wordsPerMinute?: number;

@@ -68,6 +68,7 @@ let Profile = class Profile extends BaseEntity_1.BaseEntity {
     disableSoundGeneration;
     disableVideoGeneration;
     disableTtsGeneration;
+    disableVectorReuse;
     channelIntroDurationSeconds;
     channelOutroDurationSeconds;
     wordsPerMinute;
@@ -305,6 +306,10 @@ __decorate([
     (0, typeorm_1.Column)("integer", { nullable: true }),
     __metadata("design:type", Boolean)
 ], Profile.prototype, "disableTtsGeneration", void 0);
+__decorate([
+    (0, typeorm_1.Column)("integer", { nullable: true, default: 0 }),
+    __metadata("design:type", Boolean)
+], Profile.prototype, "disableVectorReuse", void 0);
 __decorate([
     (0, typeorm_1.Column)("float", { nullable: true, default: 120 }),
     __metadata("design:type", Number)
