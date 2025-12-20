@@ -79,7 +79,7 @@ __decorate([
     __metadata("design:type", String)
 ], Video.prototype, "description", void 0);
 __decorate([
-    (0, typeorm_1.Column)("integer", { default: 120 }),
+    (0, typeorm_1.Column)("real", { default: 120 }),
     __metadata("design:type", Number)
 ], Video.prototype, "length", void 0);
 __decorate([

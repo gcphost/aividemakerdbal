@@ -14,7 +14,7 @@ export class Video extends BaseEntity {
   @Column("varchar", { nullable: true })
   description?: string;
 
-  @Column("integer", { default: 120 })
+  @Column("real", { default: 120 })
   length!: number;
 
   @Column("varchar", { default: "draft" })
