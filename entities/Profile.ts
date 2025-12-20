@@ -168,6 +168,9 @@ export class Profile extends BaseEntity {
   @Column("integer", { nullable: true })
   disableTtsGeneration?: boolean;
 
+  @Column("integer", { nullable: true, default: 0 })
+  disableVectorReuse?: boolean;
+
   @Column("float", { nullable: true, default: 120 })
   channelIntroDurationSeconds?: number;
 
